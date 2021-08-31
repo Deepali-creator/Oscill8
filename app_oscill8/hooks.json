@@ -1,0 +1,24 @@
+{
+	"hooks": [
+		{
+			"name": "app.payment.processor.XiPay",
+			"script": "./payment/processor/XiPay"
+		},
+		{
+			"name": "app.payment.processor.PAYPAL_EXPRESS",
+			"script": "./payment/processor/PAYPAL_EXPRESS"
+		},
+		{
+			"name": "app.payment.processor.BASIC_CREDIT",
+			"script": "./payment/processor/BASIC_CREDIT"
+		},
+		{
+			"name": "dw.ocapi.shop.basket.calculate",
+			"script": "./cart/calculate.js"
+		}
+
+		
+
+
+	]
+}

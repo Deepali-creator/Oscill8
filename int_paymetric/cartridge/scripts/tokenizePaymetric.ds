@@ -1,0 +1,27 @@
+/**
+*
+*
+*   @input order : dw.order.Order
+*   @input payment : dw.order.OrderPaymentInstrument
+*   @input cvn : String
+*   @output token : String
+*
+*/
+importPackage( dw.system );
+var XiSecure = require('int_paymetric/cartridge/scripts/XiSecureHelper.ds');
+
+function execute( args : PipelineDictionary ) : Number {
+	var iframeresult : Result = XiSecure.getIframe();
+	if (!iframeresult.ok){
+		Logger.error(iframeresult.errorMessage);
+		return PIPELET_ERROR;
+	};
+	var cvn=args.cvn;
+	var result : Result = XiSecure.tokenize(iframeresult.object,args.payment,cvn);
+	if (!result.ok){
+		Logger.error(result.errorMessage);
+		return PIPELET_ERROR;
+	}
+	args.token=result.object;
+	return PIPELET_NEXT;
+}

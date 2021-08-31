@@ -1,0 +1,41 @@
+/**
+*
+*
+*   @input order : dw.order.Order
+*   @input cvn : String
+*   @input hasToken : Boolean
+*   @output AuthorizationCode : String
+*   @output TransactionID : String
+*   @output AVSstreetOK : Boolean
+*   @output AVSzipOK : Boolean
+*   @output CVVOK : Boolean
+*
+*/
+importPackage( dw.system );
+importPackage( dw.util );
+importPackage( dw.svc );
+importPackage( dw.ws );
+var XiSecure = require('int_paymetric/cartridge/scripts/XiSecureHelper.ds');
+
+function execute( args : PipelineDictionary ) : Number {
+	var cvn=args.cvn;
+	var result : Result = XiSecure.authorize(args.order, cvn);
+	if(result.ok){
+		var resultObject=result.object;
+		resultObject.ignoreCVV=!args.hasToken;
+		try{
+			XiSecure.checkAuthorizeCodes(resultObject);
+			args.AuthorizationCode=resultObject.AuthorizationCode;
+			args.TransactionID=resultObject.TransactionID;
+			args.AVSstreetOK=resultObject.AVSstreetOK;
+			args.AVSzipOK=resultObject.AVSzipOK;
+			args.CVVOK=resultObject.CVVOK;
+			return PIPELET_NEXT;
+		}catch(e){
+			Logger.error(e.message);
+		}
+	}else if("ERROR"===result.status){
+		Logger.error(result.msg);
+	}
+	return PIPELET_ERROR;
+}

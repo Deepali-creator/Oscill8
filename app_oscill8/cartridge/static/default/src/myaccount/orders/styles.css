@@ -1,0 +1,174 @@
+.active-section.orders-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.orders-list {
+    margin-left: 2.5%;
+    max-width: 975px;
+    width: 100%;
+}
+.orders-list .single-order {
+    width: calc((100% - 24px) / 2);
+    margin-bottom: 24px;
+    background: rgba(248, 248, 248, 0.5);
+    border-radius: 5px;
+    padding: 24px 24px 16px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    order: 2;
+}
+.card-list .single-card.default-card {
+    /*order: 1;*/
+}
+.orders-list .single-order:hover {
+    background: rgba(220, 220, 220, 0.5);
+}
+.orders-list .single-order .inner-order .left-col {
+    flex-grow: 1;
+    margin-right: 25px;
+    font-family: 'Montserrat';
+    color: #4D4D4D;
+}
+.orders-list .single-order .inner-order .left-col .order-num {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 6px;
+}
+.orders-list .single-order .inner-order .left-col .status,
+.orders-list .single-order .inner-order .left-col .date {
+    margin-bottom: 5px;
+}
+.orders-list .single-order .inner-order .left-col .order-num span,
+.orders-list .single-order .inner-order .left-col .status span,
+.orders-list .single-order .inner-order .left-col .date span,
+.orders-list .single-order .inner-order .left-col .total  span {
+    font-family: 'Montserrat';
+}
+
+.orders-list .single-order .inner-order .left-col .status,
+.orders-list .single-order .inner-order .left-col .date,
+.orders-list .single-order .inner-order .left-col .total {
+    font-size: 14px;
+    line-height: 21px;
+}
+.orders-list .single-order .inner-order .right-col {
+    width: 110px;
+    flex-shrink: 0;
+}
+.orders-list .single-order .inner-order .right-col .view-order {
+    display: inline-block;
+    background-color: #D4DAE6;
+    padding: 9px 16px;
+    border-radius: 200px;
+    font-family: 'Montserrat';
+    color: #184A8F;
+    font-size: 14px;
+}
+.orders-list .single-order .inner-order .right-col .view-order:hover {
+    box-shadow: 0 0 12px 0 #d4d4d4;
+}
+
+@media all and (max-width: 1200px){
+    .active-section.orders-section{
+        padding-top: 3.6%;
+        padding-bottom:  3.6%;
+    }
+    .orders-list{
+        margin: 0;
+    }
+}
+@media all and (max-width: 1025px){
+    .active-titles-item-wrap{
+        display: block;
+    }
+    .active-section.orders-section{
+        padding: 15px;
+        background: #FFFFFF;
+        border: 1px solid #EAEAEA;
+        box-sizing: border-box;
+        box-shadow: inset 0 4px 4px #F3F3F3;
+        border-radius: 15px;
+    }
+    .orders-list{
+        max-width: 100%;
+        flex-direction: column;
+    }
+    .orders-list .single-order{
+        width: 100%;
+    }
+}
+@media all and (max-width: 769px){
+    .orders-list .single-order{
+        background: none;
+        padding: 0;
+    }
+    .orders-list .single-order .inner-order{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background: none;
+        padding: 0;
+    }
+    .orders-list .single-order .inner-order .left-col{
+        width: 100%;
+        background: #FCFCFC;
+        border-radius: 5px;
+        padding: 5px 13px;
+    }
+    .orders-list .single-order .inner-order .right-col{
+        width: 100%;
+        margin-top: 24px;
+    }
+    .orders-list .single-order .inner-order .right-col .view-order{
+        width: 100%;
+        display: block;
+        padding: 13px;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    .order-popup .top-info{
+        padding: 26px 11px;
+    }
+    .order-popup .products-info .product-row .left-col .product-info .product-name{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .order-popup .products-info .product-row .right-col .product-price{
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .order-popup .bottom-info{
+        padding: 16px 10px;
+    }
+    .order-popup .btn-row{
+        justify-content: center;
+        align-items: center;
+    }
+    .order-popup .btn-row a{
+        display: block;
+        padding: 14px;
+        width: 100%;
+        text-align: center;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: capitalize;
+    }
+    .order-popup .products-info .product-row .left-col .product-info .product-descr{
+        margin-bottom: 3px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .edit-popup .popup-title, .order-popup .popup-title{
+        font-size: 20px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}

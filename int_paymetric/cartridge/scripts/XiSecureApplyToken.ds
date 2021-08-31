@@ -1,0 +1,40 @@
+/**
+*
+*
+*   @input response : String
+*   @input signature : String
+*   @output type : String
+*   @output token : String
+*   @output expirationMonth : Number
+*   @output expirationYear : Number
+*   @output CVV : String
+*
+*/
+importPackage( dw.system );
+importPackage( dw.crypto );
+var XiSecure = require('int_paymetric/cartridge/scripts/XiSecureHelper.ds');
+var strPSKCC : String = "4y$NP-9n/xS3wZ2%5?Tos7*H8!Gc+q6K";
+
+function execute( args : PipelineDictionary ) : Number {
+	var response = new XML(responseIsValid(args.response, args.signature));
+	if (!response.Status=="Tokenized"){
+		return PIPELINE_ERROR;
+	}
+	args.type=XiSecure.CCTypeMap[response.CardInfo.CCType.toString()];
+	args.token=response.CardInfo.CCToken.toString();
+	args.expirationMonth=new Number(response.CardInfo.CCExpirationDate.Month.toString());
+	args.expirationYear=new Number(response.CardInfo.CCExpirationDate.Year.toString())+2000;
+	args.CVV=response.CardInfo.CVV.toString();
+	return PIPELET_NEXT;
+}
+
+function responseIsValid( response64 : String, signature64 : String ) : String { // response64 = query string parameter "r", signature64 = query string parameter "s"
+	var response : String = Encoding.fromBase64(response64.replace("-","+").replace("_","/"));
+	var keySpec : Mac = new Mac(Mac.HMAC_SHA_256);
+	var referenceSignature64 : Bytes = Encoding.toBase64(keySpec.digest(response, strPSKCC));
+	signature64 = signature64.replace("-","+","g").replace("_","/","g");
+	if (!referenceSignature64.equals(signature64)){
+		throw new Error("Token signatures don't match!");
+	}
+	return response;
+};

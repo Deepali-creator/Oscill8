@@ -1,0 +1,643 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="account/pt_account">
+	<isinclude template="util/modules"/>
+
+	<isslot id="account-banner" description="Banner for My Account pages" context="global" />
+
+	<iscomment>Builds a registration page for the user. It provides all input fields for names and address</iscomment>
+
+		<isscript>
+			var attributes = {
+				disabled: 'disabled'
+			};
+			var autocomplete_attributes = {
+				autocomplete: "off"
+			};					
+		</isscript>
+
+		<isif condition="${customer.authenticated && customer.registered}">
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/myaccount/profile/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/myaccount/account-style.css')}"/>
+		<style>
+		.profile-password {
+			width: 100% !important;
+		}
+		.resetField {
+			padding: 0px !important;
+			font-size: 14px !important;
+			font-weight: bold !important;
+			border: none !important;
+			background-color: white !important;
+		}
+		.changeable-row input {
+			padding: 0px !important;
+			font-size: 14px !important;
+			font-weight: bold !important;
+			border: none !important;
+			background-color: white !important;
+		}
+		.fixLabel label{
+			font-size: 14px !important;
+			font-weight: 500;
+			width: 100%;
+   			margin-bottom: 10px;
+    		text-align: left;
+		}
+		.fixLabel span {
+			display: inline-block;
+			margin-top: 3px;
+		}
+		.pass-inputs label {
+			width: 100%;
+    		text-align: left;
+    		margin-bottom: 10px;
+    		font-weight: 500;
+		}
+		.pass-inputs span {
+			display: block;
+		}
+		button:hover{
+			background-color: #184A8F;
+			color: white;
+		}
+		.pass-inputs span{
+            display: inline-block;
+        }
+		@media screen and (max-width: 769px) {
+			.mob-button {
+				text-align: center;
+			}
+		}
+		@media screen and (min-width: 768px) {
+            .form-horizontal .form-caption {
+             margin-left: 0px;
+             background-color: rgb(248,248,248) !important;
+            }
+        }
+		</style>
+
+
+		<div class="account-pages">
+			<div class="title-wrp">
+				<h1>My Account</h1>
+			</div>
+			<div class="account-tabs-wrp">
+				<div class="titles-wrp hide_mobile">
+					<div class="account-container">
+						<ul class="tab-titles flex fjb" style="margin: inherit;">
+							<li class="active"><a href="${URLUtils.url('Account-EditProfile')}" class="blue-small-titles">Profile</a></li>
+							<li><a href="${URLUtils.https('Address-List')}" class="blue-small-titles">Addresses</a></li>
+							<li><a href="${URLUtils.url('PaymentInstruments-List')}" class="blue-small-titles">Billing</a></li>
+							<li><a href="${URLUtils.url('Order-History')}" class="blue-small-titles">Orders</a></li>
+							<li><a href="${URLUtils.url('Subs-Show')}" class="blue-small-titles">Subscriptions</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="active-section">
+					<div class="account-container">
+						<div class="form">
+							<div class="inner-form flex">
+								<div class="left-col" id="changeable-part">
+									<p class="active-titles-item-wrap">Profile</p>
+									<div class="title-part flex fac">
+										<h2 style="text-transform: none; font-size:24px" class="blue-small-titles">Account Information</h2>
+										<a href="#" class="edit-btn trans show" id="edit-form">Edit</a>
+										<a href="#" class="edit-btn trans" id="cancel-form">Cancel</a>
+										<button type="button" class="trans" id="toggle-edit">
+											<img src="${URLUtils.staticURL('/images/edit_icon.svg')}" alt="">
+										</button>
+									</div>
+									<div id="editable" class="fixLabel" style="display:none">
+										<form action="${URLUtils.httpsContinue()}" method="post" class="form-horizontal" id="RegistrationForm">
+
+											<fieldset>
+
+												<isif condition="${!pdict.CurrentSession.customer.externallyAuthenticated}">
+													<isinputfield formfield="${pdict.CurrentForms.profile.customer.firstname}" type="input"/><div class="error" id="firstname_error" style="margin-top:-15px;color:#990000;"></div>
+													<isinputfield formfield="${pdict.CurrentForms.profile.customer.lastname}" type="input"/><div class="error" id="lastname_error" style="margin-top:-15px;color:#990000;"></div>
+												<iselse/>
+													<isinputfield formfield="${pdict.CurrentForms.profile.customer.firstname}" type="input" attributes="${attributes}"/>
+													<isinputfield formfield="${pdict.CurrentForms.profile.customer.lastname}" type="input" attributes="${attributes}"/>
+												</isif>
+											</fieldset>
+
+											<fieldset>
+
+												<isif condition="${!pdict.CurrentSession.customer.externallyAuthenticated}">			
+													<isinputfield formfield="${pdict.CurrentForms.profile.customer.email}" type="input"/><div class="error" id="email_error" style="margin-top:-15px;color:#990000;"></div>
+													
+													<iscomment><isinputfield formfield="${pdict.CurrentForms.profile.customer.emailconfirm}" type="input"/></iscomment>
+													<div id="password_field">
+													<isinputfield formfield="${pdict.CurrentForms.profile.login.password}" type="password" dynamicname="true" attributes="${autocomplete_attributes}"/><div id="password_error" style="margin-top:-15px;color:#990000;padding-bottom:20px;"></div>
+													</div>
+													<isif condition="${!(customer.authenticated && customer.registered)}">
+														<isinputfield formfield="${pdict.CurrentForms.profile.login.passwordconfirm}" type="password" dynamicname="true" attributes="${autocomplete_attributes}"/>
+													</isif>
+												<iselse/>
+													<isinputfield formfield="${pdict.CurrentForms.profile.customer.email}" type="input" attributes="${attributes}"/>
+												</isif>
+
+												<div class="mob-button">
+													<button style="margin-right: 0px;" class="form-btn" type="submit" value="${Resource.msg('global.apply','locale',null)}" name="${pdict.CurrentForms.profile.confirm.htmlName}" id="save_button">
+														Save All Changes
+													</button>
+													</div>
+
+												<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+
+											</fieldset>
+
+										</form>
+									</div>
+									<div id="non-editable">
+										<div class="changeable-part">
+										<div class="changeable-row">
+											<label for="full-name">Name</label>
+											<p style="font-weight: 600;margin-top:10px"><isprint value="${customer.profile.firstName}"/> <isprint value="${customer.profile.lastName}"/></p>
+										</div>
+										<iscomment> <isif condition="${customer.profile.phoneMobile != null}">
+											<div class="changeable-row">
+												<label for="phone">Phone</label>
+												<p style="font-weight: 600;margin-top:10px"><isprint value="${customer.profile.phoneMobile}"/></p>
+											</div>
+										</isif> </iscomment>
+										<div class="changeable-row">
+											<label for="email">Email</label>
+											<p style="font-weight: 600;margin-top:10px"><isprint value="${customer.profile.email}"/></p>
+										</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="right-col">
+									<div class="password-pard">
+										<div class="title-part">
+											<h2 class="blue-small-titles">Change Password</h2>
+										</div>
+										<div class="pass-inputs">
+											<form action="${URLUtils.httpsContinue()}" method="post" class="form-horizontal" id="ChangePassowrdForm">
+											<fieldset>
+												<isif condition="${!pdict.CurrentSession.customer.externallyAuthenticated}">
+
+													<isinputfield formfield="${pdict.CurrentForms.profile.login.currentpassword}" type="password" dynamicname="true" attributes="${autocomplete_attributes}"/>
+
+													<isinputfield formfield="${pdict.CurrentForms.profile.login.newpassword}" type="password" dynamicname="true" attributes="${autocomplete_attributes}"/>
+													<isinputfield formfield="${pdict.CurrentForms.profile.login.newpasswordconfirm}" type="password" dynamicname="true" attributes="${autocomplete_attributes}"/>
+												<iselse/>
+													<isinputfield formfield="${pdict.CurrentForms.profile.customer.email}" type="input" attributes="${attributes}"/>
+												</isif>
+
+												<div class="mob-button">
+													<button style="margin-right:0px" class="form-btn" type="submit" value="${Resource.msg('global.apply','locale',null)}" name="${pdict.CurrentForms.profile.changepassword.htmlName}">
+														Change Password
+													</button>
+												</div>
+
+												<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+
+											</fieldset>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="titles-wrp show_mobile">
+					<div class="account-container">
+						<ul class="tab-titles flex fjb" style="padding-left:0px;">
+							<li class="active"><a href="${URLUtils.url('Account-EditProfile')}" class="blue-small-titles">Profile</a></li>
+							<li><a href="${URLUtils.https('Address-List')}" class="blue-small-titles">Addresses</a></li>
+							<li><a href="${URLUtils.url('PaymentInstruments-List')}" class="blue-small-titles">Billing</a></li>
+							<li><a href="${URLUtils.url('Order-History')}" class="blue-small-titles">Orders</a></li>
+							<li><a href="${URLUtils.url('Subs-Show')}" class="blue-small-titles">Subscriptions</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+		jQuery(document).ready(function () {
+			var editBtn = $('#edit-form'),
+				changeableInputs = $('.changeable-inputs'),
+				changeablePart = $('.changeable-part'),
+				cancelBtn = $('#cancel-form');
+
+			function editForm() {
+				$("#editable").css("display","block");
+				$("#non-editable").css("display","none");
+				cancelBtn.addClass('show');
+				editBtn.removeClass('show');
+			}
+
+			function cancelForm() {
+				$("#editable").css("display","none");
+				$("#non-editable").css("display","block");
+
+				cancelBtn.removeClass('show');
+				editBtn.addClass('show');
+			}
+
+			$(document).on('click', '#edit-form', function (e) {
+				e.preventDefault();
+				editForm();
+				
+			});
+
+			$(document).on('click', '#cancel-form', function (e) {
+				e.preventDefault();
+				cancelForm();
+			});
+
+			$('#toggle-edit').clickToggle(function () {
+				$("#editable").css("display","block");
+				$("#non-editable").css("display","none");
+			}, function () {
+				$("#editable").css("display","none");
+				$("#non-editable").css("display","block");
+			});
+		});
+		</script>
+		<script>
+		document.getElementById("RegistrationForm").onsubmit = function () {
+			console.log("Hello registration form");
+		
+		var x =  $('[id*="dwfrm_profile_customer_firstname"]').val();
+		    console.log("firstname:"+ x);
+		var y =  $('[id*="dwfrm_profile_customer_lastname"]').val();
+		    console.log("lastname:"+ y);
+		var z = $('[id*="dwfrm_profile_customer_email"]').val();
+			console.log("email:"+ z);
+	    var inputPassword = $('[id*="dwfrm_profile_login_password"]').val();
+			console.log("password:"+ inputPassword);
+		var currentPassword = $('[id*="dwfrm_profile_login_currentpassword"]').val();
+			console.log("currentpassword:"+ currentPassword);
+		var a = $('#password_field').find('.error-message')[0];
+		
+		
+		var submit = true;
+
+        if (x == null || x == "") {
+           firstnameError = "Please enter a firstname";
+           document.getElementById("firstname_error").innerHTML = firstnameError;
+           submit = false;
+		}		
+
+        if (y == null || y == "") {
+           lastemailError = "Please enter a lastname";
+           document.getElementById("lastname_error").innerHTML = lastemailError;
+           submit = false;
+		}
+		
+		var regexEmail = /^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$/;
+		if (z == null || z == "") {
+          emailError = "Please enter a valid email address";
+          document.getElementById("email_error").innerHTML = emailError;
+          submit = false;
+		}else if(!regexEmail.test(z)){
+			emailError = "Please enter a valid email address";
+            document.getElementById("email_error").innerHTML = emailError;
+            submit = false;
+		}
+		
+		if (inputPassword == null || inputPassword == "") {
+			if($(a).hasClass("error-message")){
+					document.getElementById("password_error").innerHTML = "";
+                    submit = false;
+				}
+				else{
+					passwordError = "Please enter the password";
+					document.getElementById("password_error").innerHTML = passwordError;
+					submit = false;
+				}
+          
+		} else{
+
+			if(inputPassword.length <= 8){
+				if($(a).hasClass("error-message")){
+					document.getElementById("password_error").innerHTML = "";
+                    submit = false;
+				}
+				else{
+					passwordError = "Minimum length should be 8";
+					document.getElementById("password_error").innerHTML = passwordError;
+					submit = false;
+				}
+			}
+
+		}
+
+		/*var a = $('#password_field').find('.error-message')[0];
+		console.log("a:"+a);
+		console.log("Has Class:"+$(a).hasClass('error-message'));
+
+		if($(a).hasClass("error-message")){
+				console.log("error message");
+			$("#editable").css("display","block");
+			$("#non-editable").css("display","none");
+		}*/
+
+		return submit;
+
+	} 
+
+	   $("#editable").show();
+	   var inputPassword = $('[id*="dwfrm_profile_login_password"]').val();
+	   var a = $('#password_field').find('.error-message')[0];
+	   console.log("a:"+a);		
+	   console.log("a:"+$(a));
+	   console.log("Has Class:"+$(a).hasClass('error-message'));
+
+		if($(a).hasClass("error-message")){
+				console.log("error message");
+			$(a).attr('style', 'background-color: White !important; width: 100%');
+			$("#editable").show();
+			$("#non-editable").hide();
+			$("#cancel-form").show();
+			$("#edit-form").hide();
+		}
+		else{
+			$("#editable").hide();
+			$("#non-editable").show();
+			$("#cancel-form").hide();
+			$("#edit-form").show();
+
+		}
+		
+		
+	    function removeWarning() {
+		 document.getElementById("firstname_error").innerHTML = "";
+	   }
+	   function removeWarning1() {
+		 document.getElementById("lastname_error").innerHTML = "";
+	   }
+	   function removeWarning2() {
+		 document.getElementById("email_error").innerHTML = "";
+	   }
+	   function removeWarning3() {
+		 document.getElementById("password_error").innerHTML = "";
+       }
+
+
+		 $('[id*="dwfrm_profile_customer_firstname"]').keyup(removeWarning);
+		 $('[id*="dwfrm_profile_customer_lastname"]').keyup(removeWarning1);
+		 $('[id*="dwfrm_profile_customer_email"]').keyup(removeWarning2);
+		 $('[id*="dwfrm_profile_login_password"]').keyup(removeWarning3);
+         
+	    
+	   </script>
+
+
+		<iscomment>Toggle for mobile view</iscomment>
+		<script>
+		jQuery(document).ready(function () {
+		$("#toggle-edit").click(function() {
+			if($("#editable").is(":visible")){
+				$("#editable").css("display","none");
+				$("#non-editable").css("display","block");
+			} else if($("#non-editable").is(":visible")){
+				$("#editable").css("display","block");
+				$("#non-editable").css("display","none");
+			}
+		});
+		});
+		</script>
+
+
+		<iselse/>
+			<style>
+				.profile-first-name{
+					width: calc((100% - 30px) / 2);
+					display:inline-block;
+					}
+				.profile-last-name{
+					width: calc((100% - 30px) / 2);
+					display:inline-block;float:right;
+					}
+				.profile-password{
+					width: calc((100% - 30px) / 2);
+					display:inline-block;
+				}
+				.profile-confirm-password{
+					width: calc((100% - 30px) / 2);
+					display:inline-block;float:right;
+				}
+				label {
+					margin-top:5px;
+				}
+				.wd{max-width: 1600px;}
+				label{display:none;}
+				.initialDisplayNone{display:none;}
+				@media screen and (max-width: 769px) {
+					.profile-first-name{
+						width: 100%;
+					}
+					.profile-last-name{
+						width: 100%;
+					}
+					.profile-password{
+						width: 100%;
+						float: none;
+					}
+					.profile-confirm-password{
+						width: 100%;
+						float: none;
+					}
+
+				}
+			</style>
+			<div class="pg-container wd">
+				<div class="account-wrp flex fjc">
+					<div class="left-col">
+						<div class="form-wrp">
+							<h2 class="form-title" style="margin-top:0px;">
+								Create Account
+							</h2>
+							<p class="form-descr tac">
+								You're on your way to a brighter smile! Just enter your information below to create an account.
+							</p>
+							<form action="${URLUtils.httpsContinue()}" method="post" id="RegistrationForm">
+
+								<fieldset>
+									<isif condition="${!pdict.CurrentSession.customer.externallyAuthenticated}">
+										<div class="profile-first-name">
+											<isinputfield formfield="${pdict.CurrentForms.profile.customer.firstname}" type="input"/>
+											<div id="firstnameError" style="margin-top:-20px;color:#990000;"></div>
+										</div>
+										<div class="profile-last-name">
+											<isinputfield formfield="${pdict.CurrentForms.profile.customer.lastname}" type="input"/>
+											<div id="lastnameError" style="margin-top:-20px;color:#990000;"></div>
+										</div>
+									<iselse/>
+										<isinputfield formfield="${pdict.CurrentForms.profile.customer.firstname}" type="input" attributes="${attributes}"/>
+										<isinputfield formfield="${pdict.CurrentForms.profile.customer.lastname}" type="input" attributes="${attributes}"/>
+									</isif>
+								</fieldset>
+
+								<fieldset>
+
+									<isif condition="${!pdict.CurrentSession.customer.externallyAuthenticated}">
+										<isinputfield formfield="${pdict.CurrentForms.profile.customer.email}" type="input"/>
+										<div id="emailError" style="margin-top:-20px;color:#990000;"></div>
+										<iscomment><isinputfield formfield="${pdict.CurrentForms.profile.customer.emailconfirm}" type="input"/></iscomment>
+										<div class="profile-password">
+											<isinputfield formfield="${pdict.CurrentForms.profile.login.password}" type="password" dynamicname="true" attributes="${autocomplete_attributes}"/>
+											<div id="passwordError" style="margin-top:-20px;color:#990000;"></div>
+										</div>
+										<isif condition="${!(customer.authenticated && customer.registered)}">
+											<div class="profile-confirm-password" id="confirm_password">
+												<isinputfield formfield="${pdict.CurrentForms.profile.login.passwordconfirm}" type="password" dynamicname="true" attributes="${autocomplete_attributes}"/>
+												<div id="passwordConfirmError" class="initialDisplayNone" style="margin-top:-20px;color:#990000;">Password not matching</div>
+											</div>
+										</isif>
+									<iselse/>
+										<isinputfield formfield="${pdict.CurrentForms.profile.customer.email}" type="input" attributes="${attributes}"/>
+									</isif>
+									<div  style="margin-top:47px;">
+										<isinputfield formfield="${pdict.CurrentForms.profile.customer.addtoemaillist}" type="checkbox"/>
+										<label for="dwfrm_profile_customer_addtoemaillist"><span>Receive promotional emails from OSCILL8™?</span></label>
+									</div>
+									<div class="form-row form-row-button">
+										<button class="btn btn-pink" type="submit" value="${Resource.msg('global.apply','locale',null)}" name="${pdict.CurrentForms.profile.confirm.htmlName}" id="signupbutton">
+											SIGN UP
+										</button>
+									</div>
+
+									<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+
+								</fieldset>
+
+							</form>
+								<iscomment> <p class="tc-txt tac" style="margin:0px;">By Signing Up, you are agreeing to Oscill8's Privacy and <a style="text-decoration:underline" href="${URLUtils.https('TermsOfUse-Show')}">Terms of Use</a>.</p>
+								 </iscomment>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+			document.getElementById("RegistrationForm").onsubmit = function () {
+			console.log("Hello Account registration form");
+		
+		    var x =  $('[id*="dwfrm_profile_customer_firstname"]').val();
+		    console.log("Firstname:"+ x);
+		    var y =  $('[id*="dwfrm_profile_customer_lastname"]').val();
+		    console.log("Lastname:"+ y);
+		    var z = $('[id*="dwfrm_profile_customer_email"]').val();
+			console.log("Email:"+ z);
+	        var inputPassword = $('[id*="dwfrm_profile_login_password"]').val();
+			console.log("Password:"+ inputPassword);
+			var passwordConfirmInputValue = $('[id*="dwfrm_profile_login_passwordconfirm"]').val();
+			console.log("Confirm password:" + passwordConfirmInputValue);
+
+			var submit = true;
+
+		   if (x == null || x == "") {
+              firstnameError = "Please enter a firstname";
+              document.getElementById("firstnameError").innerHTML = firstnameError;
+              submit = false;
+		   }		
+
+           if (y == null || y == "") {
+               lastnameError = "Please enter a lastname";
+               document.getElementById("lastnameError").innerHTML = lastnameError;
+               submit = false;
+		    }
+		
+		   var regexEmail = /^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$/;
+		   if (z == null || z == "") {
+              emailError = "Please enter a email address";
+              document.getElementById("emailError").innerHTML = emailError;
+              submit = false;
+		   }else if(!regexEmail.test(z)){
+			  emailError = "Please enter a valid email address";
+              document.getElementById("emailError").innerHTML = emailError;
+              submit = false;
+		   }
+
+		   var regexPassword = /^[a-zA-Z]$/;
+		   var letter = /^[A-Za-z]+$/;
+           var number = /^[0-9]+$/;
+ 
+		   if (inputPassword == null || inputPassword == "") {
+					passwordError = "Please enter the password";
+					document.getElementById("passwordError").innerHTML = passwordError;
+					submit = false;
+
+			}else if(inputPassword.length < 8){
+				    console.log("password");
+				    passwordError = "Minimum length should be 8";
+					document.getElementById("passwordError").innerHTML = passwordError;
+					submit = false;
+					if(!(inputPassword === passwordConfirmInputValue)){
+						$("#passwordConfirmError").css("display", "block");
+						submit = false;
+					}
+					else{
+						$("#passwordConfirmError").css("display", "none");
+						submit = false;
+					}
+
+			}else if(inputPassword.length >= 8 && (inputPassword.match(/^[0-9]*$/gm) || inputPassword.match( /^[a-zA-Z]+$/))){
+				console.log("Alphabet and letters");
+				 passwordError = "Password must be combination of letters and characters.";
+					document.getElementById("passwordError").innerHTML = passwordError;
+					submit = false;
+					if ( inputPassword === passwordConfirmInputValue && !(inputPassword.match(/^[0-9]*$/gm) || inputPassword.match( /^[a-zA-Z]+$/))){
+					$("#passwordConfirmError").innerHTML = "";
+					$("#passwordConfirmError").css("display", "none");
+					submit = true;
+			       }
+				   else{
+					   $("#passwordConfirmError").css("display", "");
+					   submit = false;
+				   }
+
+			}
+
+			
+			return submit;
+			}
+
+			var a = $('#confirm_password').find('.error-message')[0];
+	        console.log("a:"+a);		
+	        console.log("a:"+$(a));
+	        console.log("Has Class:"+$(a).hasClass('error-message'));
+
+		    if($(a).hasClass("error-message")){
+				console.log("error message");
+			$(a).attr('style', 'width: 100%');
+			}
+
+			function removeError() {
+		      document.getElementById("firstnameError").innerHTML = "";
+	        }
+	       function removeError1() {
+		      document.getElementById("lastnameError").innerHTML = "";
+	       }
+	       function removeError2() {
+		      document.getElementById("emailError").innerHTML = "";
+	      }
+		  function removeError3() {
+		      document.getElementById("passwordError").innerHTML = "";
+	      }
+	       
+
+
+		 $('[id*="dwfrm_profile_customer_firstname"]').keyup(removeError);
+		 $('[id*="dwfrm_profile_customer_lastname"]').keyup(removeError1);
+		 $('[id*="dwfrm_profile_customer_email"]').keyup(removeError2);
+		 $('[id*="dwfrm_profile_login_password"]').keyup(removeError3);
+		 
+		</script>
+
+	
+
+		</isif>
+</isdecorate>
+		<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+		<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<title>Shopping Cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link
+			rel="stylesheet"
+			type="text/css"
+			media="screen"
+			href="../../../css/index.css"
+	/>
+	<link rel="stylesheet" type="text/css" media="screen"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"/>
+	<link rel="stylesheet" type="text/css" media="screen"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css"/>
+	<link rel="stylesheet" type="text/css" media="screen"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-shadow.min.css"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="../../../src/myaccount/account-style.css"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="./styles.css"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="../../../css/mini_cart.css"/>
+</head>
+<body>
+<!-- header-->
+<header class="oscill8-header header-fixed flex fjb">
+	<div class="flex fac ttu">
+		<a href="/">
+			<span class="logo"><img src="../../../assets/images/logo.svg" alt="OSCILL8 &trade;"></span>
+		</a>
+		<div class="header-menu">
+			<a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+			<a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+			<a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+		</div>
+	</div>
+	<div class="flex fac">
+		<a href="../cart/index.html" class="cart-svg" id="show_cart_btn" data-tooltipster data-tooltip-content="#mini_cart_content">
+			<img src="../../../assets/images/icons/cart.svg" alt="Cart Image">
+		</a>
+		<a class="back-gr-white blue-text login-btn" href="../../../src/pages/login/index.html">Log in</a>
+        <button type="button" id="menu_mobile_btn"><img src="../../../assets/images/menu-white-icon.svg"/></button>
+	</div>
+</header>
+<!-- main -->
+
+<main class="main-page-wrapper">
+	<section class="shopping-cart-wrapper">
+		<div class="shopping-cart-head">
+			<h2 class="title-text">Shopping Cart</h2>
+			<div class="desc">
+				<p>Congratulations… You’re on your way to shining brighter!</p>
+			</div>
+		</div>
+		<div class="shopping-cart-content-wrapper">
+			<div class="shopping-cart-content">
+				<div class="top_titles">
+					<div class="col col_product">Product</div>
+					<div class="col col_quantity">Quantity</div>
+					<div class="col col_price">Price</div>
+				</div>
+
+				<div class="cart_data_item_wrapper">
+					<div class="item item_pc_info">
+						<div class="item_top_title show_mobile">Product</div>
+						<div class="item_inner">
+							<div class="image_wrap">
+								<img src="./Brush_stand_RM.png"/>
+							</div>
+							<div class="content_wrap">
+								<h4>OSCILL8 Kit</h4>
+								<div class="dl_options">
+									<p class="dl_title">Options</p>
+									<div class="radio dl_item">
+										<input id="radio-1" name="radio_1" type="radio">
+										<label for="radio-1" class="radio_label cpointer">
+											<span>One Time Delivery</span>
+										</label>
+									</div>
+									<div class="radio dl_item">
+										<input id="radio-2" name="radio_1" type="radio" checked="checked">
+										<label for="radio-2" class="radio_label cpointer">
+											<span>Brush Head Subscription</span>
+										</label>
+									</div>
+								</div>
+                                <div class="dl_image_wrap show_mobile">
+                                    <img src="./Brush_stand_RM.png"/>
+                                </div>
+								<div class="dl_options mobile_margin">
+									<label class="dl_title" for="dl_option_1">Brushes Per Delivery</label>
+									<div class="select_wrap">
+										<select name="dl_option_1" id="dl_option_1">
+											<option value="1">1</option>
+											<option value="2" selected="selected">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+									</div>
+								</div>
+								<div class="dl_options mobile_margin">
+									<label class="dl_title" for="dl_option_2">Delivery Every</label>
+									<div class="select_wrap">
+										<select name="dl_option_2" id="dl_option_2">
+											<option value="1">1 Month</option>
+											<option value="1">2 Months</option>
+											<option value="2" selected="selected">3 Months</option>
+											<option value="3">4 Months</option>
+											<option value="4">5 Months</option>
+										</select>
+									</div>
+								</div>
+								<div class="dl_text">
+									<p>Recurring: <span class="color_txt">$XX</span> every 3 months</p>
+									<p class="small">* Dentists recomend every 3 months</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item item_pc_quantity">
+						<div class="item_top_title show_mobile">Quantity</div>
+						<div class="item_inner">
+							<input type="number" value="1" id="quantity_1">
+							<button type="button" class="remove_btn">Remove</button>
+						</div>
+					</div>
+					<div class="item item_pc_price">
+						<div class="item_top_title show_mobile">Price</div>
+						<div class="item_inner">
+							<span class="item_price">$49.99</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="cart_data_item_wrapper">
+					<div class="item item_pc_info">
+						<div class="item_top_title show_mobile">Product</div>
+						<div class="item_inner">
+							<div class="image_wrap">
+								<img src="./Brush_stand_RM.png"/>
+							</div>
+							<div class="content_wrap">
+								<h4>OSCILL8 Kit</h4>
+								<div class="dl_options">
+									<p class="dl_title">Options</p>
+									<div class="radio dl_item">
+										<input id="radio-3" name="radio_2" type="radio">
+										<label for="radio-3" class="radio_label cpointer">
+											<span>One Time Delivery</span>
+										</label>
+									</div>
+									<div class="radio dl_item">
+										<input id="radio-4" name="radio_2" type="radio" checked="checked">
+										<label for="radio-4" class="radio_label cpointer">
+											<span>Brush Head Subscription</span>
+										</label>
+									</div>
+								</div>
+                                <div class="dl_image_wrap show_mobile">
+                                    <img src="./Brush_stand_RM.png"/>
+                                </div>
+								<div class="dl_options mobile_margin">
+									<label class="dl_title" for="dl_option_3">Brushes Per Delivery</label>
+									<div class="select_wrap">
+										<select name="dl_option_1" id="dl_option_3">
+											<option value="1">1</option>
+											<option value="2" selected="selected">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+									</div>
+								</div>
+								<div class="dl_options mobile_margin">
+									<label class="dl_title" for="dl_option_4">Delivery Every</label>
+									<div class="select_wrap">
+										<select name="dl_option_2" id="dl_option_4">
+											<option value="1">1 Month</option>
+											<option value="1">2 Months</option>
+											<option value="2" selected="selected">3 Months</option>
+											<option value="3">4 Months</option>
+											<option value="4">5 Months</option>
+										</select>
+									</div>
+								</div>
+								<div class="dl_text">
+									<p>Recurring: <span class="color_txt">$XX</span> every 3 months</p>
+									<p class="small">* Dentists recomend every 3 months</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item item_pc_quantity">
+						<div class="item_top_title show_mobile">Quantity</div>
+						<div class="item_inner">
+							<input type="number" value="1" id="quantity_1">
+							<button type="button" class="remove_btn">Remove</button>
+						</div>
+					</div>
+					<div class="item item_pc_price">
+						<div class="item_top_title show_mobile">Price</div>
+						<div class="item_inner">
+							<span class="item_price">$49.99</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="shopping-cart-details">
+				<div class="inner_wrap">
+					<div class="buttons_wrap">
+						<button type="button" class="card_button ucase">Update Cart</button>
+						<a href="../../../src/pages/product/index.html" class="card_button blue ucase">Back to Shop</a>
+					</div>
+					<div class="promo_code_wrap">
+						<div class="field_wrap">
+							<label>Promocode</label>
+							<input type="text" value="SAVE15"/>
+						</div>
+						<div class="button_wrap">
+							<button type="button" class="card_button purple ucase mwm mz">Apply</button>
+						</div>
+					</div>
+					<div class="cart_prices_info_wrap">
+						<div class="subtotal">
+							<span class="label">Subtotal</span>
+							<span class="text price color_txt">$99.98</span>
+						</div>
+						<div class="shipping-handling">
+							<span class="label">Shipping & Handling</span>
+							<span class="text">TBD</span>
+						</div>
+						<div class="tax">
+							<span class="label">Tax</span>
+							<span class="text price color_txt">$6.30</span>
+						</div>
+						<div class="promo-code">
+							<span class="label">Promo Code</span>
+							<span class="text price">- $5.00</span>
+						</div>
+					</div>
+					<div class="cart_price_total_info">
+						<div class="label">EST. Total</div>
+						<div class="text color_txt">$101.28</div>
+					</div>
+					<button type="button" class="card_button blue ucase fw">Checkout</button>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+<div class="tooltip_templates">
+	<div id="mini_cart_content">
+		<div class="min_cart_wrapper">
+			<p class="mc_title">Added to Cart!</p>
+			<div class="mc_products_items">
+				<div class="mc_product_item flex">
+					<img class="p_image" src="../../../src/myaccount/orders/images/Brush_Heads.png"/>
+					<div class="p_info">
+						<a href="../../../src/pages/about-product/index.html" class="p_title">OSCILL8 Kit</a>
+						<div class="p_desc">2 Brush Heads<br/>Delivered Every Quarter</div>
+						<div class="p_price">$49.99</div>
+					</div>
+				</div>
+			</div>
+			<div class="mc_prices_wrap">
+				<div class="mc_price_item flex fac fjb">
+					<div class="label">Order Subtotal</div>
+					<div class="price">$89.97</div>
+				</div>
+			</div>
+			<div class="mc_footer flex fac fjb">
+				<a href="../../../src/pages/checkout/index.html" class="card_button">Go to Checkout</a>
+				<a href="../../../src/pages/cart/index.html" class="card_button blue">Go to Cart</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- footer-->
+<footer class="oscill8-footer">
+	<div class="footer-left flex fac">
+		<div>
+			<a href="/"><span class="logo"><img src="../../../assets/images/logo-footer.svg"
+												alt="OSCILL8 &trade;"></span></a>
+			<p class="cr-text hide_mobile">
+				<strong>© 2020 Conair Corporation</strong>
+			</p>
+		</div>
+	</div>
+	<div class="footer-right">
+		<div class="wrapper">
+			<div class="nav-column">
+				<h4 class="footer-menu-title">OSCILL8 &trade;</h4>
+				<a href="../../../src/pages/product/index.html">Shop</a>
+				<a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+				<a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+			</div>
+			<div class="nav-column">
+				<h4 class="footer-menu-title">ACCOUNT</h4>
+				<a href="../../../src/pages/createaccount/index.html"><span>Create Account</span></a>
+				<a href="../../../src/pages/login/index.html"><span>Sign In</span></a>
+			</div>
+			<div class="nav-column">
+				<h4 class="footer-menu-title">SUPPORT</h4>
+				<a href="../../../src/pages/faq/index.html"><span>Contact & FAQ</span></a>
+				<a href="#"><span> Privacy Policy</span></a>
+				<a href="#"><span>Terms of Service</span></a>
+			</div>
+			<div class="nav-column">
+				<h4 class="footer-menu-title">CONNECT</h4>
+				<a href="#" class="soc-link"><span class="fb-icon">Facebook</span></a>
+				<a href="#" class="soc-link"><span class="insta-icon">Instagram</span></a>
+			</div>
+		</div>
+	</div>
+    <div class="show_mobile copyright">
+        <span>&copy; 2019 Conair Corporation</span>
+    </div>
+</footer>
+
+<div id="mobile_menu_wrapper">
+	<div class="inner_wrapper">
+		<div class="mm_header">
+			<button type="button" id="close_mobile_menu_btn">&times;</button>
+		</div>
+		<div class="mm_content">
+			<ul class="mobile_menu">
+				<li>
+					<a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+				</li>
+				<li>
+					<a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+				</li>
+				<li>
+					<a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+				</li>
+			</ul>
+			<a class="button back-gr-gray dark-blue login-btn" href="../../../src/pages/login/index.html">Log in</a>
+		</div>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script type="module" src="http://oscill8.brainstormtech.pro/js/functions.js"></script>
+</body>
+</html>

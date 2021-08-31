@@ -1,0 +1,109 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+	<isscript>
+		var pageContext = {
+			title: 'My Account',
+			type: 'MyAccount',
+			ns: 'account'
+		};
+	</isscript>
+	<isinclude template="util/modules"/>
+
+	<isinclude template="components/header/htmlhead"/>
+	<isinclude template="account/pt_account_UI"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/login/styles.css')}"/>
+	<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/createaccount/styles.css')}"/>
+	<iscomment>Add template-specific header information here.</iscomment>
+
+</head>
+
+<body class="framebod">
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXP24K2"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) --> 
+<script>
+	$('#DW-SFToolkit').css('display', 'none');
+</script>
+
+<style>
+.wset {
+	max-height:850px;
+	background-color:white;
+}
+.right-col {
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.main-page-wrapper {
+	background-color: white !important;
+	margin-top: -80;
+}
+</style>
+	<div>
+
+
+		
+		<div class="main-page-wrapper">
+		<center>
+		<div class=" wset">
+			<isreplace/>
+		</div>
+			</center>	
+		</div><!-- /main -->
+
+
+
+		<isinclude template="account/pt_account_VARS"/>
+	</div>
+
+<script> 
+(function(){ 
+var s = document.createElement('script'), 
+e = ! document.body ? document.querySelector('head') : document.body; 
+s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; 
+s.async = true; 
+s.onload = function(){ 
+ acsbJS.init({ 
+ statementLink : '', 
+ footerHtml : '', 
+ hideMobile : false, 
+ hideTrigger : false, 
+ language : 'en', 
+ position : 'right', 
+ leadColor : '#146FF8', 
+ triggerColor : '#146FF8', 
+ triggerRadius : '50%', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'bottom', 
+ triggerIcon : 'people', 
+ triggerSize : 'medium', 
+ triggerOffsetX : 20, 
+ triggerOffsetY : 20, 
+ mobile : { 
+ triggerSize : 'small', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'center', 
+ triggerOffsetX : 0, 
+ triggerOffsetY : 0, 
+ triggerRadius : '50%' 
+ } 
+ }); 
+}; 
+e.appendChild(s); 
+}()); 
+</script>
+
+</body>
+</html>

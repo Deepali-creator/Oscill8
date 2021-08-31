@@ -1,0 +1,109 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="account/subscriptions/pt_subs">
+    <isinclude template="util/modules"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/reset.css')}"/>
+    <style>
+    .mobv {
+        display:none;
+            font-size: 20px;
+    line-height: 24px;
+    color: #184A8F;
+    }
+    .tab-titles {
+        margin:0px;
+    }
+    .user-infos {
+        width: 175px !important;
+    }
+    .buttonstyle {
+        background-color: unset !important;
+        border-color: unset !important;
+        border-radius: unset !important;
+        border-style: unset !important;
+        border-width: unset !important;
+        color: unset !important;
+        cursor: unset !important;
+        display: unset !important;
+        font-size:unset !important;
+        font-weight: unset !important;
+        padding: unset !important;
+        text-align: unset !important;
+        transition: unset !important;
+    }
+
+    .buttonstyle:hover {
+        background-color :#F2F2F2;
+    }
+
+    .subscriptions-wrp::-webkit-scrollbar {
+        display: none;
+    }
+    @media screen and (max-width:1024px) {
+        .mobv {
+            display:block;
+        }
+    }
+    </style>
+        <div class="account-pages">
+        <div class="title-wrp">
+            <h1>My Account</h1>
+        </div>
+        <div class="account-tabs-wrp">
+            <div class="titles-wrp">
+                <div class="account-container">
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="${URLUtils.https('Account-EditProfile')}" class="blue-small-titles">Profile</a></li>
+                        <li><a href="${URLUtils.https('Address-List')}" class="blue-small-titles">Addresses</a></li>
+                        <li><a href="${URLUtils.https('PaymentInstruments-List')}" class="blue-small-titles">Billing</a></li>
+                        <li><a href="${URLUtils.https('Order-History')}" class="blue-small-titles">Orders</a></li>
+                        <li class="active hide_mobile"><a href="${URLUtils.url('Subs-Show')}" class="blue-small-titles">Subscriptions</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="active-section">
+            <h2 class="mobv">Subscriptions</h2>
+                <isif condition="${customer.profile.custom.subproCustomerID}">
+                    <div class="subscriptions-wrp" style="overflow:scroll">
+                        <isinclude url="${URLUtils.url('Subscriptions-List')}"/>
+                    </div>
+                <iselse/>
+                <style>
+                    .tab-titles {
+                        margin:0px;
+                    }
+                    .user-infos {
+                        width: 175px !important;
+                    }
+                    
+                    
+                </style>
+                    <div class="subscriptions-wrp" style="margin-top:110px;margin-bottom:110px;">
+                    <center>
+                       <p style="font-size: 20px;color: black;font-weight: bold;font-family: 'ProximaNovaSoftW03';">You don't have any subscriptions.</p> 
+                    </center>
+                    </div>
+                </isif>
+                
+            </div>
+        </div>
+    </div>
+
+
+</isdecorate>
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+    $(document).ready(function(){
+        console.log("windows load");
+     /*var a = $(".mini-cart-product").find('.collapsed');
+        console.log($(".mini-cart-product"));
+        console.log("Has Class:"+$(a).hasClass('collapsed'));*/
+        if($(".mini-cart-product.collapsed")){
+            console.log("Collapsed");
+            $(".mini-cart-product.collapsed").removeClass("collapsed");
+        }
+        $('.mini-cart-toggle').attr('style','display: none !important');
+    });
+</script>

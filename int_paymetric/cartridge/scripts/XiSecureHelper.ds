@@ -1,0 +1,285 @@
+importPackage( dw.system );
+importPackage( dw.crypto );
+importPackage( dw.order );
+importPackage( dw.util );
+importPackage( dw.net );
+importPackage( dw.svc );
+importPackage( dw.ws );
+
+var strGUIDCC : String = "29a8ce17-1838-4f54-a49b-8d6cbff9ff24";
+var strPSKCC : String = "4y$NP-9n/xS3wZ2%5?Tos7*H8!Gc+q6K";
+
+exports.CCTypeMap = {
+	"3000" : "AmericanExpress",
+	"4000" : "Visa",
+	"5000" : "MasterCard",
+	"6000" : "Discover",
+	"7000" : "JCB",
+	"9000" : "Maestro",
+	"10000" : "Solo",
+	"11000" : "Switch"
+};
+exports.jsURL = function ( ) : String {
+	return "https://qaapp02.xisecurenet.com/diecomm/Preloader/EN.ashx?GUID=" + strGUIDCC;
+};
+exports.prepareXML = function ( basket : LineItemCtnr ) : String {
+	var subXML : XML = <Request><MerchantReference>CONAIR</MerchantReference>
+		<TotalAmount>
+			<Tax>{basket.totalTax.value}</Tax>
+			<GrandTotal>{basket.totalGrossPrice.value}</GrandTotal>
+			<CurrencyCode>{basket.currencyCode}</CurrencyCode>
+		</TotalAmount>
+		<TokenizedCard><CCToken/><CCExpirationDate><Month></Month><Year></Year></CCExpirationDate><CCType/></TokenizedCard>
+		<RedirectURL>{dw.web.URLUtils.https("Home-Show")}</RedirectURL></Request>;
+	var keySpec : Mac = new Mac(Mac.HMAC_SHA_256);
+	XML.prettyPrinting=false;
+	var signature64 : String = Encoding.toBase64(keySpec.digest(subXML.toString(), strPSKCC));
+	var outXML : XML = <MerchantRequest>
+		<MerchantGUID>{strGUIDCC}</MerchantGUID>
+		<Signature>{signature64}</Signature>
+		<AjaxCall>TRUE</AjaxCall>
+		<AjaxSubmitCallback>tokenizeCard</AjaxSubmitCallback>
+		</MerchantRequest>;
+	outXML.appendChild(subXML);
+	return outXML.toString();
+};
+exports.responseIsValid = function ( response64 : String, signature64 : String ) { // response64 = query string parameter "r", signature64 = query string parameter "s"
+	var response : String = Encoding.fromBase64(response64.replace("-","+").replace("_","/"));
+	var keySpec : Mac = new Mac(Mac.HMAC_SHA_256);
+	var referenceSignature64 : Bytes = Encoding.toBase64(keySpec.digest(response, strPSKCC));
+	signature64 = signature64.replace("-","+").replace("_","/");
+	return referenceSignature64.equals(signature64);
+};
+/*var hmac : MAC = new Mac(Mac.HMAC_SHA_256);
+var request : XML = <Request>
+		<MerchantReference>CONAIR</MerchantReference>
+		<TotalAmount>
+			<Tax>{args.order.totalTax.value}</Tax>
+			<GrandTotal>{args.order.totalNetPrice.value}</GrandTotal>
+			<CurrencyCode>{args.order.currencyCode}</CurrencyCode>
+		</TotalAmount><TokenizedCard>
+			<CCToken/>
+			<CCExpirationDate><Month>{args.payment.creditCardExpirationMonth}</Month><Year>{args.payment.creditCardExpirationYear}</Year></CCExpirationDate>
+			<CCType>{cardTypeNumbers[args.payment.creditCardType]}</CCType>
+		</TokenizedCard>
+		<RedirectURL></RedirectURL>
+	</Request>
+var sig : String = Encoding.toBase64(hmac.digest(request.toString(), Site.current.getCustomPreferenceValue('XiPayPreSharedKey')));
+var merchantReq = <MerchantRequest>
+	<MerchantGUID>{Site.current.getCustomPreferenceValue('XiPayMerchant')}</MerchantGUID>
+	<Signature>{sig}</Signature>
+	<AjaxSubmitCallback>tokenizeCard</AjaxSubmitCallback>{request.toString()}
+</MerchantRequest>*/
+exports.getIframe=function(){
+	return LocalServiceRegistry.createService("XiInterceptiFrame",{
+		parseResponse : function(service : Service, client : Object) : Object {
+			var merchantRequest = client.text.match(/UpdatePaymentPageContent\(\"(.*?)\"\);/)[1];
+			var viewstate = client.text.match(/name=\"__VIEWSTATE\".*?value=\"(.*?)\"/)[1];
+			var viewstategenerator = client.text.match(/name=\"__VIEWSTATEGENERATOR\".*?value=\"(.*?)\"/)[1];
+			return {'Paymetric_Packet': merchantRequest, 'VIEWSTATE': viewstate, 'VIEWSTATEGENERATOR': viewstategenerator};
+		}
+	}).call({});
+};
+exports.tokenize=function(iframeresult:Object,payment:OrderPaymentInstrument,cvn:String){
+	var cardTypeNumbers = {
+		"Amex" : "3000",
+		"Visa" : "4000",
+		"Master" : "5000",
+		"Discover" : "6000",
+		"JCB" : "7000",
+		"Maestro" : "9000",
+		"Solo" : "10000",
+		"Switch" : "11000"
+	};
+	return LocalServiceRegistry.createService("XiPayTokenize",{
+		createRequest: function(service : Service, params : Object){
+			var httppart:Array=new Array();
+			for(var param in params){
+				httppart.push(new HTTPRequestPart(param,params[param]));
+			}
+			return httppart;
+		},
+		execute: function(service : Service, data : Object){
+			var client : HTTPClient = new HTTPClient();
+			client.open("POST", service.configuration.credential.URL);
+			client.setTimeout(service.configuration.profile.timeoutMillis);
+			client.sendMultiPart(data.toArray());
+			if(client.statusCode<500){
+				var nextLocation : String = client.getResponseHeader("Location");
+				Logger.getLogger("service.XiPayTokenize.comm").debug("going to: "+nextLocation);
+				client.open("GET", nextLocation);
+				client.send();
+				if(client.statusCode<500){
+					return client.text;
+				}else{
+					throw new Error("Error in tokenize service at "+nextLocation+" Could not get token after redirect. Response:\n"+client.errorText);
+				}
+			}else{
+				throw new Error("Error in tokenize service at "+service.configuration.credential.URL+" Could not get token before redirect. Response:\n"+client.errorText);
+			}
+		},
+		parseResponse : function(service : Service, response : Object) : Object {
+			var r = response.match(/<span.+?id="Token".*?>(.*?)<\/span>/);
+			return r[1];
+		}
+	}).call({
+		'Paymetric_Packet': iframeresult.Paymetric_Packet, 
+		'Paymetric_CreditCardType': cardTypeNumbers[payment.creditCardType],
+		'Paymetric_CreditCardNumber': payment.creditCardNumber, 
+		'Paymetric_Start_Month': '', 'Paymetric_Start_Year': '', 'Paymetric_IssuerNumber': '',
+		'Paymetric_Exp_Month': payment.creditCardExpirationMonth, 
+		'Paymetric_Exp_Year': payment.creditCardExpirationYear, 
+		'Paymetric_CVV': cvn,
+		'__VIEWSTATE': iframeresult.VIEWSTATE,
+		'__VIEWSTATEGENERATOR': iframeresult.VIEWSTATEGENERATOR
+	});
+};
+exports.authorize=function(order:Order,cvn:String){
+	return LocalServiceRegistry.createService("XiInterceptAuthorize_"+Site.current.ID,{
+		initServiceClient : function(service : Service) : Object {
+			var webref : WebReference2 = webreferences2['XiPayWSConnector_XiPay'];
+			var port : Port = webref.getDefaultService();
+			WSUtil.setUserNamePassword(service.configuration.credential.user, service.configuration.credential.password, port);
+			return port;
+		},
+		createRequest : function(service : Service, params) : Object {
+			var order : Order = params.order;
+			var address : OrderAddress = order.billingAddress;
+			var pi : PaymentInstrument = order.paymentInstruments[0];
+	
+			var webref : WebReference2 = webreferences2['XiPayWSConnector_XiPay'];
+			var th = new webref.ITransactionHeader();
+			var notNow : Calendar = new Calendar(new Date(Number.NaN));
+			th.setAuthorizationDate(notNow);
+			th.setBillingDate(notNow);
+			th.setCaptureDate(new Calendar(order.creationDate));
+			th.setCreationDate(new Calendar(order.creationDate));
+			th.setLastModificationDate(new Calendar(order.lastModified));
+			th.setSettlementDate(notNow);
+			th.setShippingCaptureDate(new Calendar(order.creationDate));
+	
+			th.setMerchantID(Site.current.getCustomPreferenceValue('XiInterceptMerchant'));
+			th.setCardHolderName(pi.creditCardHolder);
+			th.setCardHolderName1(address.firstName);
+			th.setCardHolderName2(address.lastName);
+			th.setCardHolderAddress1(address.address1);
+			th.setCardHolderAddress2(address.address2);
+			th.setCardHolderCity(address.city);
+			th.setCardHolderState(address.stateCode);
+			th.setCardHolderZip(address.postalCode);
+			th.setCardHolderCountry(address.countryCode);
+			th.setOrderID(order.orderNo);
+			th.setOrderDate(new Calendar(order.creationDate));
+	
+			th.setCardCVV2(params.cvn);
+			th.setCardNumber(pi.creditCardToken);
+			th.setCardExpirationDate(StringUtils.formatNumber(pi.creditCardExpirationMonth,"00")+"/"+StringUtils.formatNumber(pi.creditCardExpirationYear%100,"00"));
+			th.setCardType(pi.creditCardType.toLocaleUpperCase());
+			th.setAmount(order.totalGrossPrice.value);
+			th.setCurrencyKey(order.currencyCode);
+	
+			return th;
+		},
+		execute : function(service : Service, request : Object) : Object {
+			return service.serviceClient.authorize(request);
+		},
+		parseResponse : function(service : Service, response : Object) : Object {
+			return {"AuthorizationCode": response.getAuthorizationCode(),
+				"TransactionID": response.getTransactionID(),
+				"AVSstreetOK": null,
+				"AVSzipOK": null,
+				"CVVOK": null,
+				"AVSCode": response.getAVSCode(),
+				"CVVCode": getCVV(response),
+				"StatusCode": response.getStatusCode(),
+				"OrderID": response.getOrderID(),
+				"CCType": order.paymentInstruments[0].creditCardType.toLocaleUpperCase(),
+				"ignoreCVV": false};
+		},
+		getResponseLogMessage: function(response){
+			return JSON.stringify({"AuthorizationCode": response.getAuthorizationCode(),
+				"TransactionID": response.getTransactionID(),
+				"AVSCode": response.getAVSCode(),
+				"CVVCode": getCVV(response),
+				"StatusCode": response.getStatusCode(),
+				"OrderID": response.getOrderID(),
+				"CCType": order.paymentInstruments[0].creditCardType.toLocaleUpperCase()});
+		},
+		getRequestLogMessage: function (request){
+			return "Authorizing payment";
+		}
+	}).call({order: order, cvn: cvn});
+};
+exports.checkAuthorizeCodes=function(returnObject){
+	if(empty(returnObject.AuthorizationCode)){
+		throw new Error("Card could not be authorized for order "+returnObject.OrderID+" (no authorization code)");
+	}else{
+	switch(returnObject.StatusCode){
+		case 100:
+		case 104:
+		case 106:
+		case 107:
+		case 108:
+		case 110:
+			if(new RegExp("^ca\\-.*$").test(Site.current.ID)){ // to enable on all CA sites
+				// pass as is
+			}else if(new RegExp("^us\\-.*$").test(Site.current.ID)){
+				switch(returnObject.CCType){
+					case "VISA":
+					case "MC":
+					case "DISCOVER":
+						switch(returnObject.AVSCode){
+							case "D":
+							case "M":
+							case "Y":
+								returnObject.AVSstreetOK=true;
+								returnObject.AVSzipOK=true;
+								returnObject.CVVOK=checkCVV(returnObject);
+								break;
+							case "X":
+								returnObject.CVVOK=checkCVV(returnObject);
+								break;
+							default:
+								break;
+								//throw new Error("Card could not be authorized for order "+returnObject.OrderID+" (AVS failure)");
+						}
+						break;
+					case "AMEX":
+						switch(returnObject.AVSCode){
+							case "M":
+								returnObject.AVSstreetOK=true;
+								returnObject.AVSzipOK=true;
+								returnObject.CVVOK=checkCVV(returnObject);
+								break;
+							case "Y":
+								returnObject.CVVOK=checkCVV(returnObject);
+								break;
+							default:
+								break;
+								//throw new Error("Card could not be authorized for order "+returnObject.OrderID+" (AVS failure)");
+						}
+						break;
+				}
+			}
+			return returnObject;
+		default:
+			throw new Error("Card could not be authorized for order "+returnObject.OrderID+" (authorize failure)");
+	}
+ }
+}
+function getCVV(response){
+	var infoItems = response.getInfoItems().getInfoItem();
+	for each(var item in infoItems){
+		if("TR_CARD_CIDRESPCODE" === item.getKey() && "M" === item.getValue()){
+			return "M";
+		}
+	}
+	return null;
+}
+function checkCVV(returnObject){
+	if(returnObject.CVVCode!=="M"){
+		throw new Error("Card could not be authorized for order "+returnObject.OrderID+" (CVV failure)");
+	}
+	return true;
+}
+

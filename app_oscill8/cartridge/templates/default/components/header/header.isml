@@ -1,0 +1,130 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+<meta name="viewport" content="width=device-width, user-scalable=no">
+
+<div class="top-banner" role="banner">
+<style>
+.minicart-quantity {
+    background-color: #184A8F !important;
+    border-radius: 10px;
+    color: white !important;
+    padding: 1.5px 5px !important;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+	font-size:10px;
+}
+
+</style>
+<header class="oscill8-header flex fjb">
+			<div class="flex fac ttu mps2">
+				<span class="logo"><a href="https://oscill8.com/"><img src="${URLUtils.absStatic('/images/logo.svg')}" alt="OSCILL8 &trade;"></a>
+				</span>
+				<div class="header-menu">
+				    <isif condition="${pdict.shopHover}">
+					  <a style="text-decoration:underline;" href="${URLUtils.https('Shop-Show')}"><span>Shop</span></a>
+					<iselse/>
+                       <a href="${URLUtils.https('Shop-Show')}"><span>Shop</span></a>
+					</isif>
+
+					<isif condition="${pdict.AccessoriesHover}">
+					  <a style="text-decoration:underline;" href="${URLUtils.https('Accessories-Show')}"><span>Accessories</span></a>
+					<iselse/>
+                       <a href="${URLUtils.https('Accessories-Show')}"><span>Accessories</span></a>
+					</isif>
+
+					<isif condition="${pdict.aboutHover}">
+					  <a style="text-decoration:underline;" href="${URLUtils.https('AboutProduct-Show')}"><span>About</span></a>
+					<iselse/>
+                       <a href="${URLUtils.https('AboutProduct-Show')}"><span>About</span></a>
+					</isif>
+
+					<isif condition="${pdict.supportHover}">
+					  <a style="text-decoration:underline;" href="${URLUtils.https('Support-Show')}"><span>Support</span></a>
+					<iselse/>
+                       <a href="${URLUtils.https('Support-Show')}"><span>Support</span></a>
+					</isif>
+
+				</div>
+			</div>
+
+			<div class="flex fac mlpb" id="mlpb">
+				<div class="minicartdiv" id="mini-cart">
+		            <isinclude url="${URLUtils.url('Cart-MiniCart')}"/>
+	            </div>
+				<div class="dropdownui" id="ddui" style="margin-top:20px">
+				<center>
+				<a class="button1 back-gr-white blue-text login-btn">
+					<isif condition="${customer.registered}">
+					<style>
+						.user-infos {
+							width:175px;
+						}
+						.user-infos::before {
+							left:5rem;
+						}
+						.hvr {
+							width:160px
+						}
+						.user-links {
+							width:175px !important;
+						}
+					</style>
+					<isprint value="${Resource.msgf('global.user.name', 'locale', null, customer.profile.firstName,'')}">
+					<iselse/>
+					<style>
+						.user-links {
+							width:125px !important;
+						}
+						.user-infos {
+							margin-left:23px !important;
+						}
+					</style>
+					Login / Register
+					</isif>
+				</a>
+                <button type="button" class="hambtn" id="menu_mobile_btn"><img src="${URLUtils.absStatic('/images/menu-white-icon.svg')}"/></button>
+				<div style="height:18px">
+				<div class="user-infos">
+					<isinclude url="${URLUtils.url('Home-IncludeHeaderCustomerInfo')}"/>
+				</div>
+				</div>
+				</center>
+				</div>
+			</div>
+        </header>
+<div id="mobile_menu_wrapper">
+    <div class="inner_wrapper">
+        <div class="mm_header">
+            <button type="button" class="hambtn" id="close_mobile_menu_btn">&times;</button>
+        </div>
+        <div class="mm_content">
+            <ul class="mobile_menu">
+                <li>
+                    <a href="${URLUtils.https('Shop-Show')}"><span>Shop</span></a>
+                </li>
+                <li>
+                    <a href="${URLUtils.https('Accessories-Show')}"><span>Accessories</span></a>
+                </li>
+				<li>
+                    <a href="${URLUtils.https('AboutProduct-Show')}"><span>About</span></a>
+                </li>
+                <li>
+                    <a href="${URLUtils.https('Support-Show')}"><span>Support</span></a>
+                </li>
+            </ul>
+			<a class="button1 back-gr-gray dark-blue login-btn" href="${URLUtils.https('Login-Show')}" style="width:auto">
+				<isif condition="${customer.registered}">
+				<isprint value="${Resource.msgf('global.user.name', 'locale', null, customer.profile.firstName, customer.profile.lastName)}">
+				<iselse/>
+				Login / Register
+				</isif>
+			</a>
+			<isif condition="${customer.registered}">
+				<a class="button1 back-gr-gray dark-blue login-btn" href="${URLUtils.https('Login-Logout')}" style="width:auto">Logout</a>
+			</isif>
+        </div>
+    </div>
+</div>
+</div>

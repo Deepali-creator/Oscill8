@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>My Account - Orders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../css/index.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-shadow.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../account-style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../css/mini_cart.css"/>
+</head>
+<body>
+<!-- header-->
+<header class="oscill8-header header-fixed flex fjb">
+    <div class="flex fac ttu">
+        <a href="/">
+            <span class="logo"><img src="../../../assets/images/logo.svg" alt="OSCILL8 &trade;"></span>
+        </a>
+        <div class="header-menu">
+            <a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+            <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+            <a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+        </div>
+    </div>
+    <div class="flex fac">
+        <a href="../../../src/pages/cart/index.html" class="cart-svg" id="show_cart_btn" data-tooltipster
+           data-tooltip-content="#mini_cart_content">
+            <img src="../../../assets/images/icons/cart.svg" alt="Cart Image">
+        </a>
+        <a class="back-gr-white blue-text login-btn" href="../../../src/pages/login/index.html">Log in</a>
+        <button type="button" id="menu_mobile_btn"><img src="../../../assets/images/menu-white-icon.svg"/></button>
+    </div>
+</header>
+
+<!-- main -->
+<main class="main-page-wrapper">
+    <div class="account-pages">
+        <div class="title-wrp">
+            <h1>My Account</h1>
+        </div>
+        <div class="account-tabs-wrp">
+            <div class="titles-wrp">
+                <div class="account-container">
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="../../../src/myaccount/profile/index.html" class="blue-small-titles">Profile</a></li>
+                        <li><a href="../../../src/myaccount/addresses/index.html" class="blue-small-titles">Addresses</a></li>
+                        <li><a href="../../../src/myaccount/billing/index.html" class="blue-small-titles">Billing</a></li>
+                        <li class="active hide_mobile"><a href="../../../src/myaccount/orders/index.html"
+                                              class="blue-small-titles">Orders</a></li>
+                        <li class="hide_mobile"><a href="../../../src/myaccount/subscriptions/index.html"
+                               class="blue-small-titles">Subscriptions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="active-section orders-section">
+                <div class="account-container">
+                    <p class="active-titles-item-wrap">Orders</p>
+                    <div class="orders-list flex fwrap fjb">
+                        <div class="single-order">
+                            <div class="inner-order flex fjb fae">
+                                <div class="left-col">
+                                    <p class="order-num">
+                                        ORDER <span>#XXXXXXXXXX</span>
+                                    </p>
+                                    <p class="date">Date: <span>XX/XX/XXXX</span></p>
+                                    <p class="status">Status: <span>Pending</span></p>
+                                    <p class="total">Total: <span>$XX.XX </span></p>
+                                </div>
+                                <div class="right-col">
+                                    <a href="javascript:;" class="view-order trans" data-src="#view-order1"
+                                       data-fancybox="view-order1" data-touch="false" data-hash="false"
+                                       data-clickOutside="true">View order</a>
+                                </div>
+                            </div>
+                            <div id="view-order1" style="display: none;" class="order-popup">
+                                <h2 class="popup-title">Order #XXXXXXXXX</h2>
+                                <div class="top-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                </div>
+                                <div class="products-info">
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                    <p>Delivered Every Quarter</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 4</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Tax</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row total-price flex fjb">
+                                        <p class="info-title">Total</p>
+                                        <p class="info-val">$103.30</p>
+                                    </div>
+                                </div>
+                                <div class="btn-row flex fje">
+                                    <a href="javascript:;" class="print-btn">Print</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-order">
+                            <div class="inner-order flex fjb fae">
+                                <div class="left-col">
+                                    <p class="order-num">
+                                        ORDER <span>#XXXXXXXXXX</span>
+                                    </p>
+                                    <p class="date">Date: <span>XX/XX/XXXX</span></p>
+                                    <p class="status">Status: <span>Pending</span></p>
+                                    <p class="total">Total: <span>$XX.XX </span></p>
+                                </div>
+                                <div class="right-col">
+                                    <a href="javascript:;" class="view-order trans" data-src="#view-order2"
+                                       data-fancybox="view-order2" data-touch="false" data-hash="false"
+                                       data-clickOutside="true">View order</a>
+                                </div>
+                            </div>
+                            <div id="view-order2" style="display: none;" class="order-popup">
+                                <h2 class="popup-title">Order #XXXXXXXXX</h2>
+                                <div class="top-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                </div>
+                                <div class="products-info">
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                    <p>Delivered Every Quarter</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 4</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Tax</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row total-price flex fjb">
+                                        <p class="info-title">Total</p>
+                                        <p class="info-val">$103.30</p>
+                                    </div>
+                                </div>
+                                <div class="btn-row flex fje">
+                                    <a href="javascript:;" class="print-btn">Print</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-order">
+                            <div class="inner-order flex fjb fae">
+                                <div class="left-col">
+                                    <p class="order-num">
+                                        ORDER <span>#XXXXXXXXXX</span>
+                                    </p>
+                                    <p class="date">Date: <span>XX/XX/XXXX</span></p>
+                                    <p class="status">Status: <span>Pending</span></p>
+                                    <p class="total">Total: <span>$XX.XX </span></p>
+                                </div>
+                                <div class="right-col">
+                                    <a href="javascript:;" class="view-order trans" data-src="#view-order3"
+                                       data-fancybox="view-order3" data-touch="false" data-hash="false"
+                                       data-clickOutside="true">View order</a>
+                                </div>
+                            </div>
+                            <div id="view-order3" style="display: none;" class="order-popup">
+                                <h2 class="popup-title">Order #XXXXXXXXX</h2>
+                                <div class="top-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                </div>
+                                <div class="products-info">
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                    <p>Delivered Every Quarter</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 4</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Tax</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row total-price flex fjb">
+                                        <p class="info-title">Total</p>
+                                        <p class="info-val">$103.30</p>
+                                    </div>
+                                </div>
+                                <div class="btn-row flex fje">
+                                    <a href="javascript:;" class="print-btn">Print</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-order">
+                            <div class="inner-order flex fjb fae">
+                                <div class="left-col">
+                                    <p class="order-num">
+                                        ORDER <span>#XXXXXXXXXX</span>
+                                    </p>
+                                    <p class="date">Date: <span>XX/XX/XXXX</span></p>
+                                    <p class="status">Status: <span>Pending</span></p>
+                                    <p class="total">Total: <span>$XX.XX </span></p>
+                                </div>
+                                <div class="right-col">
+                                    <a href="javascript:;" class="view-order trans" data-src="#view-order4"
+                                       data-fancybox="view-order4" data-touch="false" data-hash="false"
+                                       data-clickOutside="true">View order</a>
+                                </div>
+                            </div>
+                            <div id="view-order4" style="display: none;" class="order-popup">
+                                <h2 class="popup-title">Order #XXXXXXXXX</h2>
+                                <div class="top-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                </div>
+                                <div class="products-info">
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                    <p>Delivered Every Quarter</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 4</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                    <div class="product-row flex fjb fac">
+                                        <div class="left-col flex fac">
+                                            <div class="img"
+                                                 style="background-image: url(../../../src/myaccount/orders/images/Brush_Heads.png)"></div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">OSCILL8 Kit</h3>
+                                                <div class="product-descr">
+                                                    <p>2 Brush Heads</p>
+                                                </div>
+                                                <p class="product-quantity">Quantity: 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="right-col">
+                                            <p class="product-price">$49.99</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-info info-same-styles">
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val">$49.99</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping & Handling</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Tax</p>
+                                        <p class="info-val">$6.30</p>
+                                    </div>
+                                    <div class="info-row total-price flex fjb">
+                                        <p class="info-title">Total</p>
+                                        <p class="info-val">$103.30</p>
+                                    </div>
+                                </div>
+                                <div class="btn-row flex fje">
+                                    <a href="javascript:;" class="print-btn">Print</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="titles-wrp show_mobile">
+                <div class="account-container">
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="../../../src/myaccount/subscriptions/index.html"
+                                                   class="blue-small-titles">Subscriptions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="mobile_menu_wrapper">
+    <div class="inner_wrapper">
+        <div class="mm_header">
+            <button type="button" id="close_mobile_menu_btn">&times;</button>
+        </div>
+        <div class="mm_content">
+            <ul class="mobile_menu">
+                <li>
+                    <a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+                </li>
+                <li>
+                    <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+                </li>
+                <li>
+                    <a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+                </li>
+            </ul>
+            <a class="button back-gr-gray dark-blue login-btn" href="../../../src/pages/login/index.html">Log in</a>
+        </div>
+    </div>
+</div>
+
+<div class="tooltip_templates">
+    <div id="mini_cart_content">
+        <div class="min_cart_wrapper">
+            <p class="mc_title">Added to Cart!</p>
+            <div class="mc_products_items">
+                <div class="mc_product_item flex">
+                    <img class="p_image" src="../../../src/myaccount/orders/images/Brush_Heads.png"/>
+                    <div class="p_info">
+                        <a href="../../../src/pages/about-product/index.html" class="p_title">OSCILL8 Kit</a>
+                        <div class="p_desc">2 Brush Heads<br/>Delivered Every Quarter</div>
+                        <div class="p_price">$49.99</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mc_prices_wrap">
+                <div class="mc_price_item flex fac fjb">
+                    <div class="label">Order Subtotal</div>
+                    <div class="price">$89.97</div>
+                </div>
+            </div>
+            <div class="mc_footer flex fac fjb">
+                <a href="../../../src/pages/checkout/index.html" class="card_button">Go to Checkout</a>
+                <a href="../../../src/pages/cart/index.html" class="card_button blue">Go to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer-->
+<footer class="oscill8-footer">
+    <div class="footer-left flex fac">
+        <div>
+            <a href="/"><span class="logo"><img src="../../../assets/images/logo-footer.svg"
+                                                alt="OSCILL8 &trade;"></span></a>
+            <p class="cr-text hide_mobile">
+                <strong>© 2020 Conair Corporation</strong>
+            </p>
+        </div>
+    </div>
+    <div class="footer-right">
+        <div class="wrapper">
+            <div class="nav-column">
+                <h4 class="footer-menu-title">OSCILL8 &trade;</h4>
+                <a href="../../../src/pages/product/index.html">Shop</a>
+                <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+                <a href="./index.html"><span>Support</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">ACCOUNT</h4>
+                <a href="../../../src/pages/createaccount/index.html"><span>Create Account</span></a>
+                <a href="../../../src/pages/login/index.html"><span>Sign In</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">SUPPORT</h4>
+                <a href="../../../src/pages/faq/index.html"><span>Contact & FAQ</span></a>
+                <a href="#"><span> Privacy Policy</span></a>
+                <a href="#"><span>Terms of Service</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">CONNECT</h4>
+                <a href="#" class="soc-link"><span class="fb-icon">Facebook</span></a>
+                <a href="#" class="soc-link"><span class="insta-icon">Instagram</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="show_mobile copyright">
+        <span>&copy; 2019 Conair Corporation</span>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script type="module" src="http://oscill8.brainstormtech.pro/js/functions.js"></script>
+<script type="module" src="http://oscill8.brainstormtech.pro/src/myaccount/orders/index.js"></script>
+</body>
+</html>
+

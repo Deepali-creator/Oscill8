@@ -1,0 +1,280 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-shadow.min.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('src/myaccount/billing/styles.css')}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('src/myaccount/account-style.css')}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/index.css')}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
+
+<style>
+
+	.iframeSection {
+		width: 100%;
+		height: 100%;
+		border: none;
+		max-height: 500px;
+	}
+
+
+	.delete {
+		display: inline-block;
+		border-radius: 200px;
+		font-family: 'Montserrat';
+		font-size: 14px;
+	}
+	ul {
+		padding-inline-start: 0px;
+	}
+	.tab-titles {
+		margin:0px;
+	}
+	@media (max-width: 1025px) {
+        .active-titles-item-wrap {
+            display: block;
+        }
+    }
+
+</style>
+<isdecorate template="account/pt_account">
+	<isinclude template="util/modules"/>
+	<isset name="isSubproCustomer" value="${customer.profile.custom.subproCustomerID}" scope="page" />
+	
+	<div class="account-pages">
+		<div class="title-wrp">
+			<h1>My Account</h1>
+		</div>
+		<div class="account-tabs-wrp">
+			<div class="titles-wrp">
+				<div class="account-container">
+					<ul class="tab-titles flex fjb">
+						<li><a href="${URLUtils.https('Account-EditProfile')}" class="blue-small-titles">Profile</a></li>
+						<li><a href="${URLUtils.https('Address-List')}" class="blue-small-titles">Addresses</a></li>
+						<li class="active hide_mobile"><a href="${URLUtils.https('PaymentInstruments-List')}" class="blue-small-titles">Billing</a></li>
+						<li class="hide_mobile"><a href="${URLUtils.https('Order-History')}" class="blue-small-titles">Orders</a></li>
+						<li class="hide_mobile"><a href="${URLUtils.url('Subs-Show')}" class="blue-small-titles">Subscriptions</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="active-section addresses-section">
+				<div class="account-container">
+					<iscomment>
+					<isset name="isSubproCustomer" value="${customer.profile.custom.subproCustomerID}" scope="page" />
+					</iscomment>
+					<isset name="bctext2" value="${Resource.msg('global.paymentsettings','locale',null)}" scope="pdict"/>
+					<isslot id="account-banner" description="Banner for My Account pages" context="global" />
+					<div class="paymentslist">
+						<p class="active-titles-item-wrap">Billing</p>
+						<isif condition="${pdict.PaymentInstruments.size() == 0}">
+					<center style="margin-top:70px;">
+						<p style="font-size:20px;color:black;font-weight:bold;font-family: 'ProximaNovaSoftW03';">You don't have saved any cards</p>
+						<button class="button1 addcard" onmouseover="this.style.color='#ffffff'" style="background-color: #1E4A89;border: none;padding: 10px;margin-bottom:30px" onclick="$('#add-card, #fancybox-container-1').css('display', 'inline-block')" title="${Resource.msg('account.paymentinstrumentlist.addcard.label','account',null)}">
+							${Resource.msg('account.paymentinstrumentlist.addcard','account',null)}
+						</button>
+					</center>
+					</isif>
+						<div class="add-card-row flex fje">
+                        <iscomment>
+                            <button class="section-header-note add-card button1" onmouseover="this.style.color='#ffffff'" style="background-color: #1E4A89;border: none;padding: 10px;" href="${URLUtils.url('PaymentInstruments-Add')}" title="${Resource.msg('account.paymentinstrumentlist.addcard.label','account',null)}">
+                                ${Resource.msg('account.paymentinstrumentlist.addcard','account',null)}
+                            </button>
+                        </iscomment>
+						<isif condition="${pdict.PaymentInstruments.size() > 0}">
+                            <button class="button1 addcard" onmouseover="this.style.color='#ffffff'" style="background-color: #1E4A89;border: none;padding: 10px;" onclick="$('#add-card, #fancybox-container-1').css('display', 'inline-block')" title="${Resource.msg('account.paymentinstrumentlist.addcard.label','account',null)}">
+                                ${Resource.msg('account.paymentinstrumentlist.addcard','account',null)}
+                            </button>
+						</isif>
+                        </div>
+						
+						<div class="fancybox-container fancybox-is-open" role="dialog" tabindex="-1" id="fancybox-container-1" style="display: none; transition-duration: 366ms;">
+							<div class="fancybox-bg"></div>
+							<div class="fancybox-inner">
+								<div class="fancybox-infobar">
+									<span data-fancybox-index="">1</span>&nbsp;/&nbsp;<span data-fancybox-count="">1</span>
+								</div>
+								<div class="fancybox-toolbar">
+									<button data-fancybox-zoom="" class="fancybox-button fancybox-button--zoom" title="Zoom" disabled="">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<path d="M18.7 17.3l-3-3a5.9 5.9 0 0 0-.6-7.6 5.9 5.9 0 0 0-8.4 0 5.9 5.9 0 0 0 0 8.4 5.9 5.9 0 0 0 7.7.7l3 3a1 1 0 0 0 1.3 0c.4-.5.4-1 0-1.5zM8.1 13.8a4 4 0 0 1 0-5.7 4 4 0 0 1 5.7 0 4 4 0 0 1 0 5.7 4 4 0 0 1-5.7 0z"></path>
+										</svg>
+									</button>
+									<button data-fancybox-play="" class="fancybox-button fancybox-button--play" title="Start slideshow" style="display: none;">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<path d="M6.5 5.4v13.2l11-6.6z"></path>
+										</svg>
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<path d="M8.33 5.75h2.2v12.5h-2.2V5.75zm5.15 0h2.2v12.5h-2.2V5.75z"></path>
+										</svg>
+									</button>
+									<button data-fancybox-thumbs="" class="fancybox-button fancybox-button--thumbs" title="Thumbnails" style="display: none;">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<path d="M14.59 14.59h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76H5.65v-3.76zm8.94-4.47h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76H5.65v-3.76zm8.94-4.47h3.76v3.76h-3.76V5.65zm-4.47 0h3.76v3.76h-3.76V5.65zm-4.47 0h3.76v3.76H5.65V5.65z"></path>
+										</svg>
+									</button>
+									<button data-fancybox-close="" class="fancybox-button fancybox-button--close" title="Close">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<path d="M12 10.6L6.6 5.2 5.2 6.6l5.4 5.4-5.4 5.4 1.4 1.4 5.4-5.4 5.4 5.4 1.4-1.4-5.4-5.4 5.4-5.4-1.4-1.4-5.4 5.4z"></path>
+										</svg>
+									</button>
+								</div>
+								<div class="fancybox-navigation">
+									<button data-fancybox-prev="" class="fancybox-button fancybox-button--arrow_left" title="Previous" disabled="">
+										<div>
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+												<path d="M11.28 15.7l-1.34 1.37L5 12l4.94-5.07 1.34 1.38-2.68 2.72H19v1.94H8.6z"></path>
+											</svg>
+										</div>
+									</button>
+									<button data-fancybox-next="" class="fancybox-button fancybox-button--arrow_right" title="Next" disabled="">
+										<div>
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+												<path d="M15.4 12.97l-2.68 2.72 1.34 1.38L19 12l-4.94-5.07-1.34 1.38 2.68 2.72H5v1.94z"></path>
+											</svg>
+										</div>
+									</button>
+								</div>
+								<div class="fancybox-stage">
+									<div class="fancybox-slide fancybox-slide--html fancybox-slide--current fancybox-slide--complete" style="overflow:hidden">
+										<div id="add-card" style="display: none; overflow-y: hidden;" class="edit-popup fancybox-content">
+								
+											<div id="framecontainer">
+												<iframe id="addcardframe" src="" class="iframeSection"></iframe>
+											</div>
+
+                    						<button type="button" data-fancybox-close="" style="display: block" onclick="$('#add-card, #fancybox-container-1').css('display', 'none')" class="fancybox-button fancybox-close-small" title="Close"><svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg></button>
+										</div>
+									</div>
+								</div>
+								<div class="fancybox-caption fancybox-caption--separate">
+									<div class="fancybox-caption__body"></div>
+								</div>
+							</div>
+						</div>
+
+						<isif condition="${pdict.PaymentInstruments.size() > 0}">
+							<div class="card-list flex fwrap fjb">
+								<isloop items="${pdict.CurrentForms.paymentinstruments.creditcards.storedcards}" var="creditcard" status="loopstate">
+								<div class="payment-list single-card default-card">	
+									<div class="left-col flex fac <isif condition="${loopstate.first}">first <iselseif condition="${loopstate.last}">last </isif>${pdict.PaymentInstruments[loopstate.count - 1].creditCardType}">
+										<div class="img-wrp">
+											<img src="${URLUtils.absStatic('/images/Visa.svg')}" alt="">
+										</div>
+										<div class="info">
+											<isminicreditcard card="${creditcard.object}" show_expiration="${true}"/>
+										</div>
+									</div>
+									<div class="right-col">
+											
+										<form action="${URLUtils.url('PaymentInstruments-Delete')}" name="payment-remove" method="post" id="creditcards_${loopstate.count}">
+											<fieldset>
+													<div class="btn-wrp">
+														<button type="submit" class="button-text delete" style="background-color:#D4DAE6;padding:9px 20px;color:#184A8F; text-decoration: none !important;" value="${Resource.msg('account.paymentinstrumentlist.deletecard','account',null)}" name="${creditcard.remove.htmlName}">
+															Delete
+														</button>
+														<input type="hidden" name="${pdict.CurrentForms.paymentinstruments.secureKeyHtmlName}" value="${pdict.CurrentForms.paymentinstruments.secureKeyValue}"/>
+											
+													</div>
+											</fieldset>
+										</form>
+											
+									</div>
+								</div>
+								</isloop>
+							</div>
+							
+						</isif>
+						
+					</div>
+					
+						<isset name="hasNewCard" value="${ pdict.newCard != null }" scope="page" />
+						<isset name="hasUpdatedCard" value="${ pdict.updatedCard != null }" scope="page"/>
+						<isset name="hasDeletedCard" value="${ pdict.deletedCard != null }" scope="page"/>
+						<isset name="loadWidget" value="${ hasNewCard || hasUpdatedCard || hasDeletedCard}" scope="page" />
+						
+						<isif condition="${isSubproCustomer}">
+							<!-- Subscribe Pro Wallet Assist Widget -->
+							<div id="sp-wallet-assist-widget"></div>
+						</isif>
+						<isif condition="${isSubproCustomer && loadWidget}">
+							<iscomment>
+								Configure the Subscribe Pro Wallet Assist Widget
+							</iscomment>
+							<!-- Load the Subscribe Pro widget script -->
+							
+							<script src="${require('dw/system/Site').getCurrent().getCustomPreferenceValue('subproWalletWidgetScriptUrl')}"></script>
+							<isset name="widgetConfig" scope="page" value="${require('int_subscribe_pro/cartridge/scripts/subpro/helpers/WidgetsHelper').getWidgetConfig(customer.profile.custom.subproCustomerID, 'client_credentials', 'widget', 'sp-wallet-assist-widget')}"/>
+							<!-- Pass configuration and init the Subscribe Pro widget -->
+							<script>
+								// Setup config for Subscribe Pro
+								var widgetConfig = <isprint value="${JSON.stringify(widgetConfig)}" encoding="off" />;
+								WalletAssist.init(widgetConfig);
+								<isif condition="${ hasNewCard }">
+									var newCard = <isprint value="${JSON.stringify(pdict.newCard)}" encoding="off" />;
+									WalletAssist.onPaymentProfileCreated(newCard, function (result) {
+										var newCardSfccId = '<isprint value="${pdict.newCardSfccId}" encoding="off" />';
+										$.get("${URLUtils.url('PaymentInstruments-SetSPPaymentProfileID')}", {"paymentInstrumentId": newCardSfccId, "spPaymentProfileId":result.id});
+										});
+								</isif>
+								<isif condition="${ hasUpdatedCard }">
+									var updatedCard = <isprint value="${JSON.stringify(pdict.updatedCard)}" encoding="off" />;
+									WalletAssist.onPaymentProfileUpdated(updatedCard);
+								</isif>
+								<isif condition="${ hasDeletedCard }">
+									var deletedCard = <isprint value="${JSON.stringify(pdict.deletedCard)}" encoding="off" />;
+									WalletAssist.onPaymentProfileDeleted(deletedCard);
+								</isif>
+							</script>
+						</isif>
+					
+				</div>
+			</div>
+			<div class="titles-wrp show_mobile">
+                <div class="account-container">
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="${URLUtils.https('Order-History')}"
+                               class="blue-small-titles">Orders</a></li>
+                        <li><a href="${URLUtils.url('Subs-Show')}"
+                               class="blue-small-titles">Subscriptions</a></li>
+                    </ul>
+                </div>
+            </div>
+		</div>
+	</div>
+
+					
+</isdecorate>
+
+
+<script>
+
+	$('.addcard').on('click', function (){
+		$("#addcardframe").attr("src","${URLUtils.https('PaymentInstruments-Add')}");
+	});
+
+	/*$(document).ready(function(){
+		console.log("parent page");
+		if( window.history.replaceState ){
+          window.history.replaceState('null','null',window.location.href);
+		}
+   });*/
+
+   $(document).ready(function () {
+         $('body').css('overflow', 'hidden');  //ADD THIS
+     });
+
+    $(document).ready(function(){
+        console.log("windows load");
+     /*var a = $(".mini-cart-product").find('.collapsed');
+        console.log($(".mini-cart-product"));
+        console.log("Has Class:"+$(a).hasClass('collapsed'));*/
+        if($(".mini-cart-product.collapsed")){
+            console.log("Collapsed");
+            $(".mini-cart-product.collapsed").removeClass("collapsed");
+        }
+        $('.mini-cart-toggle').attr('style','display: none !important');
+    });
+
+</script>

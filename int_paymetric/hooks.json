@@ -1,0 +1,12 @@
+{
+    "hooks": [
+        {
+            "name": "app.payment.processor.xipay",
+            "script": "./cartridge/scripts/payment/processor/XiPay"
+        },
+        {
+            "name": "app.payment.form.processor.xipay",
+            "script": "./cartridge/scripts/payment/processor/XiPayFormProcessor"
+        }
+    ]
+}

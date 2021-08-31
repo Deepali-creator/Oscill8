@@ -1,0 +1,182 @@
+<isscript>
+var dynamicForm = require('~/cartridge/scripts/common/dynamicForm');
+var fields = dynamicForm.getFields(pdict.formobject, pdict.formdata);
+</isscript>
+<style>
+.firstNameDiv{
+	width:48%; margin-right:2%;float:left;height:70px;
+}
+.lastNameDiv{
+	width:48%; margin-left:2%;float:right;height:70px;
+}
+.address1Div{
+	width:58%; margin-right:2%;float:left;height:70px;
+}
+.address2Div{
+	width:38%; margin-left:2%;float:right;height:70px;
+}
+.cityDiv{
+	width:24%; margin-right:2%;float:left;height:70px;
+}
+.statesDiv{
+	width:20%; margin-left:2%;margin-right:0%;float:left;height:70px;
+}
+.postalDiv{
+	width:20%; margin-left:2%;margin-right:2%;float:left;height:70px;
+}
+.countryDiv{
+	width:24%; margin-left:2%;margin-right:2%;float:left;height:70px;pointer-events: none;
+}
+.emailDiv{
+	width:48%; margin-right:2%;float:left;height:70px;
+}
+.phoneDiv{
+	width:48%; margin-left:2%;float:right;height:70px;
+}
+.monthDiv{
+	width:19%;padding-top:8px;margin-left:2%;margin-right:2%;float:left;height:70px;
+}
+.monthDiv label{
+	color: #4c4c4e;
+	font-family: Montserrat !important;
+}
+.yearDiv{
+	width:15%;margin:0% 2% 0% 2%;padding-top:8px;float:left;height:70px;
+}
+.yearDiv label{
+	color: #4c4c4e;
+	font-family: Montserrat !important;
+}
+@media only screen and (max-width: 1600px) and (min-width: 1360px) {
+    .cityDiv{
+	width:20%; margin-right:2%;float:left;height:70px;
+	}
+	.statesDiv{
+		width:24%; margin-left:2%;margin-right:0%;float:left;height:70px;
+	}
+}
+@media only screen and (max-width: 1360px) and (min-width: 480px) {
+    .cityDiv{
+		width:48%; margin-right:2%;float:left;height:70px;
+	}
+	.statesDiv{
+		width:48%; margin-left:0%;margin-right:2%;float:right;height:70px;
+	}
+	.postalDiv{
+		width:48%; margin-left:2%;margin-right:0%;float:left;height:70px;
+	}
+	.countryDiv{
+		width:48%; margin-left:2%;margin-right:0px;float:right;height:70px;
+	}
+}
+@media only screen and (max-width: 480px) {
+    .firstNameDiv{
+        width:90%; float:left;height:70px;
+    }
+    .lastNameDiv{
+        width:90%; float:left;margin-left: 0px;height:70px;
+    }
+    .address1Div{
+        width:90%; float:left;height:70px;
+    }
+    .address2Div{
+        width:90%; float:left;margin-left: 0px;height:70px;
+    }
+    .cityDiv{
+        width:90%; float:left;height:70px;
+    }
+    .statesDiv{
+        width:90%; float:left;margin-left: 0px;height:70px;
+    }
+    .postalDiv{
+        width:90%; float:left;margin-left: 0px;height:70px;
+    }
+    .countryDiv{
+        width:90%; float:left;margin-left: 0px;height:70px;pointer-events: none;
+    }
+    .emailDiv{
+        width:90%; float:left;height:70px;
+    }
+    .phoneDiv{
+        width:90%; float:left;margin-left: 0px;height:70px;
+    }
+    .monthDiv {
+    width: 70%; padding-top: 8px; margin-left: 0px; margin-right: 3%; float: left; height: 70px;
+    }
+    .yearDiv{
+        width:32%;margin:0% 3% 0% 0%;padding-top:8px;float:left;height:70px;
+    }
+}
+</style>
+<isloop items="${fields}" var="field">
+		<isif condition="${field.formElementName == 'firstName'}">
+		<div class="firstNameDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'lastName'}">
+		<div class="lastNameDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'address1'}">
+		<div class="address1Div">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'address2'}">
+		<div class="address2Div">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'city'}">
+		<div class="cityDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'states'}">
+		<div class="statesDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'postal'}">
+		<div class="postalDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'country'}">
+		<div class="countryDiv">
+		
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'email'}">
+		<div class="emailDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'shippingEmail'}">
+		<div class="emailDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'phone'}">
+		<div class="phoneDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'month'}">
+		<div class="monthDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'year'}">
+		<div class="yearDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'type'}">
+		<div class="typeDiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'number'}">
+		<div class="numberdiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselseif condition="${field.formElementName == 'owner'}">
+		<div class="ownerdiv">
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		<iselse>
+		<div>
+			<isinputfield formfield="${field.formfield}" type="${field.type}" dynamicname="${field.dynamicname}" attributes="${field.attributes}" help="${field.help}" rowclass="${field.rowclass}" required="${field.required}"/>
+		</div>
+		</isif>
+</isloop>

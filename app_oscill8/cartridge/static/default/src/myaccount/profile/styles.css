@@ -1,0 +1,250 @@
+.account-wrp .form-wrp .checkbox-row input {
+    margin-right: 24px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-image: url(../../../src/myaccount/images/checkbox-icon.svg);
+}
+.account-wrp .form-wrp .checkbox-row label {
+    font-size: 16px;
+    color: rgb(148, 148, 148);
+    font-family: "Comfortaa";
+    margin-top: 6px;
+}
+.account-wrp .form-wrp input:not([type=checkbox]) {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: "Comfortaa";
+    letter-spacing: 0.1em;
+    color: #525353;
+    padding: 15px 33px;
+}
+.account-wrp .form-wrp input::placeholder {
+    color: #e0e0e0;
+}
+.btn-blue:hover {
+    background-color: #154288;
+}
+.active-section .form .left-col {
+    max-width: 418px;
+    width: 100%;
+    margin-right: 102px;
+    padding: 17px 0;
+}
+.active-section .form .left-col .changeable-part {
+    margin-top: 16px;
+}
+.active-section .form .left-col .changeable-part label {
+    color: #000000;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.active-section .form .left-col .changeable-part .changeable-row {
+    margin-bottom: 24px;
+}
+.active-section .form .left-col .title-part,  .active-section .form .right-col .title-part{
+    padding-bottom: 13px;
+    border-bottom: 1px solid #DCDCDC;
+    min-height: 46px;
+}
+.active-section .form .left-col .title-part h2 {
+    margin-right: 38px;
+}
+.active-section .form .left-col.active-tochange .changeable-part .changeable-row {
+    margin-bottom: 18px;
+}
+.active-section .form .left-col.active-tochange .changeable-part label {
+    font-size: 11px;
+    color: #B2B2B2;
+    margin-bottom: 7px;
+}
+.active-section .form .left-col.active-tochange #edit-form {
+    display: none;
+}
+.active-section .form .right-col {
+    max-width: 475px;
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 17px 34px;
+    border-radius: 5px;
+}
+.active-section .form .right-col .pass-inputs {
+    margin-top: 16px;
+}
+.active-section .form .right-col .pass-inputs label{
+    font-size: 11px;
+    color: #4D4D4D;
+}
+.active-section .form .right-col .pass-inputs .pass-row {
+    margin-bottom: 18px;
+}
+#cancel-btn {
+    display: none;
+    font-family: 'Montserrat-Medium';
+    color: #4D4D4D;
+    margin-right: 24px;
+}
+#cancel-btn.show {
+    display: block;
+}
+body.account.profile input:disabled{
+    background: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    color: #000000;
+}
+body.account.profile input[type=text]{
+    background: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #4D4D4D;
+}
+body.account.profile input::-webkit-input-placeholder{
+    color: #4D4D4D;
+}
+body.account.profile input::-moz-placeholder{
+    color: #4D4D4D;
+}
+body.account.profile input::placeholder{
+    color: #4D4D4D;
+}
+body.account.profile input:disabled{
+    font-weight: 600 !important;
+    color: #000000 !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #000000;
+    padding: 0 !important;
+}
+body.account.profile input:disabled::-webkit-input-placeholder{
+    font-weight: 600 !important;
+    color: #000000 !important;
+}
+body.account.profile input:disabled::-moz-placeholder{
+    font-weight: 600 !important;
+    color: #000000 !important;
+}
+body.account.profile input:disabled::placeholder{
+    font-weight: 600 !important;
+    color: #000000 !important;
+}
+#cancel-form:not(.show){
+    display: none;
+}
+#edit-form:not(.show){
+    display: none;
+}
+.active-section .form .right-col .password-pard .form-btn-wrp{
+    margin-top: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+#toggle-edit{
+    display: none;
+}
+.active-section form .right-col + .mobile-inner-form{
+    display: none;
+}
+@media all and (max-width: 1200px){
+}
+@media all and (max-width: 1101px){
+}
+@media all and (max-width: 1025px){
+    .active-section .form .left-col{
+        max-width: 100%;
+        margin-right: 15px;
+    }
+}
+@media all and (max-width: 769px){
+    .active-titles-item-wrap{
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 18px;
+    }
+    .active-section:after{
+        display: none;
+    }
+    #toggle-edit{
+        display: inherit;
+        margin: 0;
+        padding: 0;
+        background: none;
+        border-width: 0;
+    }
+    #edit-form, #cancel-btn{
+        display: none !important;
+    }
+    .active-section{
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        background: none;
+    }
+    .active-section .form .left-col{
+        background: #FFFFFF;
+        border: 1px solid #EAEAEA;
+        box-sizing: border-box;
+        box-shadow: inset 0 4px 4px #F3F3F3;
+        border-radius: 15px;
+        padding: 15px;
+        margin-bottom: 32px;
+        margin-top: 15px;
+    }
+    .active-section .form .right-col{
+        background: #FCFCFC;
+        border: 1px solid #EAEAEA;
+        box-sizing: border-box;
+        box-shadow: inset 0 4px 4px #F3F3F3;
+        border-radius: 15px;
+        padding: 15px;
+    }
+    .active-section .form .right-col .password-pard .form-btn-wrp{
+        display: none;
+    }
+    .active-section .account-container .inner-form{
+        flex-direction: column;
+    }
+    .active-section .form .left-col{
+        margin-right: 0;
+    }
+    .active-section .form .right-col{
+        max-width: 100%;
+        margin-right: 0;
+    }
+    .active-section .form .left-col .title-part,
+    .active-section .form .right-col .title-part{
+        justify-content: space-between;
+    }
+    .active-section .form .right-col + .mobile-inner-form{
+        display: inherit;
+        margin-top: 32px;
+        margin-bottom: 22px;
+    }
+    .active-section .form .right-col + .mobile-inner-form .form-btn{
+        display: block;
+        text-transform: uppercase;
+        width: calc(100% - 44px);
+        padding: 14px;
+        margin-left: 22px;
+        margin-right: 22px;
+    }
+}
+@media all and (max-width: 550px){
+    body.account.profile input[type=text],
+    body.account.profile input[type=password],
+    body.account.profile input[type=email]{
+        width: 100%;
+        max-width: 100%;
+    }
+}

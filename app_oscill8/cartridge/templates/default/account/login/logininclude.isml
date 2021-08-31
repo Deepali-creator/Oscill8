@@ -1,0 +1,196 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<style>
+.forgot-password{
+    position: relative;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    text-align: center;
+    text-decoration-line: underline;
+	color: #184A8F;
+	letter-spacing: 1px;
+}
+.error-message {
+	width: auto;
+	padding-top: 5px;
+	border: none;
+	background-color: white;
+}
+.form-row{
+	cursor:pointer;
+
+}
+</style>
+<isif condition="${pdict.ErrorCode != null}">
+<div id="login-section" class="form-wrp" style="display:none">
+	<h2 class="form-title" style="margin-top:0px">
+    	Login
+    </h2>
+	<isif condition="${!pdict.CurrentSession.customer.externallyAuthenticated}">
+		<form action="${URLUtils.httpsContinue()}" method="post" class="clearfix" id="${pdict.CurrentForms.login.htmlName}">
+			<iscomment>Login Unsuccessful Error Message</iscomment>
+			<isif condition="${pdict.TempCustomer != null && pdict.TempCustomer.profile != null && pdict.TempCustomer.profile.credentials.locked}">
+				
+				<div class="error-form">${Resource.msg('account.login.logininclude.locked','account',null)}</div>
+			<iselseif condition="${pdict.TempCustomer != null && pdict.TempCustomer.profile != null && (pdict.TempCustomer.profile.credentials.remainingLoginAttempts == 1)}">
+				
+				<div class="error-form">${Resource.msg('account.login.logininclude.willbelocked','account',null)}</div>
+			<iselseif condition="${pdict.RegistrationStatus != false && pdict.RegistrationStatus.code == 'CustomerAlreadyExistError'}">
+				
+				<div class="error-form">${Resource.msg('account.login.logininclude.loginfberror','account',null)}</div>
+			<iselseif condition="${!pdict.CurrentForms.login.loginsucceeded.valid}">
+				
+				<div class="error-form">${Resource.msg('account.login.logininclude.loginerror','account',null)}</div>
+			<iselseif condition="${!pdict.CurrentForms.login.customerLocked.valid}">
+				<div class="error-form">${Resource.msg('account.login.logininclude.locked','account',null)}</div>
+			</isif>
+			<fieldset>
+				<isinputfield formfield="${pdict.CurrentForms.login.username}" rowclass="username" type="input" dynamicname="true" requiredtext="${Resource.msg('login.username.missing-error','forms',null)}"/>
+				<isscript>
+					var attributes = {
+						autocomplete: "off"
+					};
+				</isscript>
+				<isinputfield formfield="${pdict.CurrentForms.login.password}" rowclass="password" type="password" dynamicname="true" requiredtext="${Resource.msg('login.password.missing-error','forms',null)}" attributes="${attributes}"/>
+				<div class="form-row tac">
+					<a class="forgot-pass gray-txt" id="password-reset" onclick="showForgotPasswordSection()" title="${Resource.msg('account.login.logininclude.forgotpassword.label','account',null)}">
+						${Resource.msg('account.login.logininclude.forgotpassword','account',null)}
+					</a>
+				</div>
+				<button class="btn btn-blue" type="submit" value="${Resource.msg('global.login','locale',null)}" name="${pdict.CurrentForms.login.login.htmlName}">
+					${Resource.msg('global.login','locale',null)}
+				</button>
+				<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+			</fieldset>
+		</form>
+	</isif>
+</div>
+<div id="forgot-password-section" class="form-wrp">
+	<h2 class="form-title" style="margin-top:0px;">
+    	Forgot Password
+    </h2>
+	<isif condition="${pdict.ShowContinue}">
+		<div class="confirmation-container" >	
+	    	${Resource.msg('account.passwordreset.sent','account',null)}					
+		</div><!-- END: confirmation-container -->	
+	</isif>
+	<isif condition="${pdict.ErrorCode != null}">
+	 	<div class="error-form">
+	 		<isprint value="${Resource.msg('account.passwordreset.' + pdict.ErrorCode, 'account',null)}"/>
+	 	</div>
+	</isif>
+	<form action="${URLUtils.url('Account-PasswordResetDialogForm')}"  method="post"   id="PasswordResetForm" name="${pdict.CurrentForms.requestpassword.htmlName}">
+		<fieldset>	
+			<isinputfield formfield="${pdict.CurrentForms.requestpassword.email}" type="input" rowclass="row-inline" />			
+			<div class="form-row tac" style="margin-top: 24px;">
+				<a id="forgot-password-section" class="forgot-password" onclick="showLoginSection()">Login</a>
+			</div>
+			<button id="passwordResetButton" class="btn btn-blue" style="float:none" type="submit" value="${Resource.msg('account.passwordreset.button','account',null)}" 
+						name="${pdict.CurrentForms.requestpassword.send.htmlName}" data-dlg-action='{"isForm":true}' data-dlg-options='{"width":700,"height":250}' >
+					Reset
+			</button>
+			<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+		</fieldset>
+	</form>
+</div>
+<iselse/>
+<div id="login-section" class="form-wrp">
+	<h2 class="form-title" style="margin-top:0px">
+    	Login
+    </h2>
+	<isif condition="${!pdict.CurrentSession.customer.externallyAuthenticated}">
+		<form action="${URLUtils.httpsContinue()}" method="post" class="clearfix" id="${pdict.CurrentForms.login.htmlName}">
+			<iscomment>Login Unsuccessful Error Message</iscomment>
+			<isif condition="${pdict.TempCustomer != null && pdict.TempCustomer.profile != null && pdict.TempCustomer.profile.credentials.locked}">
+				<div class="error-form">${Resource.msg('account.login.logininclude.locked','account',null)}</div>
+			<iselseif condition="${pdict.TempCustomer != null && pdict.TempCustomer.profile != null && (pdict.TempCustomer.profile.credentials.remainingLoginAttempts == 1)}">
+				<div class="error-form">${Resource.msg('account.login.logininclude.willbelocked','account',null)}</div>
+			<iselseif condition="${pdict.RegistrationStatus != false && pdict.RegistrationStatus.code == 'CustomerAlreadyExistError'}">
+				<div class="error-form">${Resource.msg('account.login.logininclude.loginfberror','account',null)}</div>
+			<iselseif condition="${!pdict.CurrentForms.login.loginsucceeded.valid}">
+				<div class="error-form">${Resource.msg('account.login.logininclude.loginerror','account',null)}</div>
+			<iselseif condition="${!pdict.CurrentForms.login.customerLocked.valid}">
+				<div class="error-form">${Resource.msg('account.login.logininclude.locked','account',null)}</div>
+			</isif>
+			<fieldset>
+				<isinputfield formfield="${pdict.CurrentForms.login.username}" rowclass="username" type="input" dynamicname="true" requiredtext="${Resource.msg('login.username.missing-error','forms',null)}"/>
+				<isscript>
+					var attributes = {
+						autocomplete: "off"
+					};
+				</isscript>
+				<isinputfield formfield="${pdict.CurrentForms.login.password}" rowclass="password" type="password" dynamicname="true" requiredtext="${Resource.msg('login.password.missing-error','forms',null)}" attributes="${attributes}"/>
+				<div class="form-row tac">
+					<a class="forgot-pass gray-txt" id="password-reset" onclick="showForgotPasswordSection()" title="${Resource.msg('account.login.logininclude.forgotpassword.label','account',null)}">
+						${Resource.msg('account.login.logininclude.forgotpassword','account',null)}
+					</a>
+				</div>
+				<button class="btn btn-blue" type="submit" value="${Resource.msg('global.login','locale',null)}" name="${pdict.CurrentForms.login.login.htmlName}">
+					${Resource.msg('global.login','locale',null)}
+				</button>
+				<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+			</fieldset>
+		</form>
+	</isif>
+</div>
+<div id="forgot-password-section" class="form-wrp" style="display:none">
+	<h2 class="form-title" style="margin-top:0px;">
+    	Forgot Password
+    </h2>
+	<isif condition="${pdict.ShowContinue}">
+		<div class="confirmation-container" >	
+	    	${Resource.msg('account.passwordreset.sent','account',null)}					
+		</div><!-- END: confirmation-container -->	
+	</isif>
+	<isif condition="${pdict.ErrorCode != null}">
+	 	<div class="error-form">
+	 		<isprint value="${Resource.msg('account.passwordreset.' + pdict.ErrorCode, 'account',null)}"/>
+	 	</div>
+	</isif>
+	<form action="${URLUtils.url('Account-PasswordResetDialogForm')}"  method="post"   id="PasswordResetForm" name="${pdict.CurrentForms.requestpassword.htmlName}">
+		<fieldset>	
+			<isinputfield formfield="${pdict.CurrentForms.requestpassword.email}" type="input" rowclass="row-inline" />			
+			<div class="form-row tac" style="margin-top: 24px;">
+				<a id="forgot-password-section" class="forgot-password" onclick="showLoginSection()">Login</a>
+			</div>
+			<button id="passwordResetButton" class="btn btn-blue" style="float:none" type="submit" value="${Resource.msg('account.passwordreset.button','account',null)}" 
+						name="${pdict.CurrentForms.requestpassword.send.htmlName}" data-dlg-action='{"isForm":true}' data-dlg-options='{"width":700,"height":250}' >
+					Reset
+			</button>
+			<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+		</fieldset>
+	</form>
+</div>
+</isif>
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+function showForgotPasswordSection() {
+	document.getElementById('login-section').style.display = 'none';
+	document.getElementById('forgot-password-section').style.display = 'block';
+}
+function showLoginSection() {
+	document.getElementById('login-section').style.display = 'block';
+	document.getElementById('forgot-password-section').style.display = 'none';
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function (){
+    validate();
+    $('#dwfrm_requestpassword_email').keyup(validate);
+});
+function validate(){
+	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (regex.test( $('#dwfrm_requestpassword_email').val() )) {
+        $("#passwordResetButton").prop("disabled", false);
+    }
+    else {
+        $("#passwordResetButton").prop("disabled", true);
+    }
+}
+</script>

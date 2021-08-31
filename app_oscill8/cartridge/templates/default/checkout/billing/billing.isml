@@ -1,0 +1,945 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="checkout/pt_checkout"/>
+    <isinclude template="util/modules"/>
+
+<script>
+    $(document).ready(function() {
+        console.log($( "#dwfrm_billing_billingAddress_addToAddressBook" ));
+        $( "#dwfrm_billing_billingAddress_addToAddressBook" ).next().css( "margin-top", "0px" );
+        $( ".monthDiv .form-row .form-caption" ).css( "white-space", "nowrap" );
+        if($(".monthDiv .form-row .form-caption").hasClass("form-caption error-message")){
+            $(".monthDiv .form-row").toggleClass('special');
+        }
+    });
+
+</script>
+
+<style>
+/*CSS for custom fields starts*/
+
+
+
+span.error{
+    white-space: nowrap;
+}
+
+.select-address .selectAddress select {
+	padding-right: 40px;
+}
+
+.step-2 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.order-totals-table{
+    line-height:3em;
+}
+.step-1 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.form-horizontal label {
+    text-align: left !important;
+    width: 100% !important;
+    font-size:12px !important;
+    font-weight:400 !important;
+    /*line-height:2;*/
+}
+.form-caption {
+    margin-left:0px !important;
+}
+.field-wrapper {
+    padding-left:0px !important;
+}
+.form-horizontal .form-row-button {
+    width:100% !important;
+}
+.form-row {
+    margin: 0 0 0rem 0 !important;
+}
+.s-hidden {
+    visibility:hidden;
+    padding-right:10px;
+}
+.select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    height: 35px;
+    font:normal 11.4px Arial, Sans-Serif;
+    color:black;
+    border:1px solid #ccc;
+    width:100% !important;
+    margin-bottom: 2% !important;
+}
+.styledSelect {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color:#ededed;
+    padding: 1em .5em;
+    font-family: mr-eaves-modern, sans-serif;
+
+}
+.styledSelect:after {
+    content:"";
+    width:0;
+    height:0;
+    border:5px solid transparent;
+    border-color:black transparent transparent transparent;
+    position:absolute;
+    top:13px;
+    right:6px;
+}
+.styledSelect:active, .styledSelect.active {
+    background-color:#eee;
+    height:110px;
+}
+.styledSelect::selection {
+    background-color:#ededed;
+}
+.options {
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    z-index:999;
+    margin:0 0;
+    padding:0 0;
+    height:128px;
+    overflow-y:auto;
+    list-style:none;
+    border:1px solid #ccc;
+    background-color:white;
+    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.options li {
+    margin:0 0;
+    padding:10px 10px 10px 10px;
+    background-color:#ededed;
+    color:Black;
+    
+}
+.options li:hover {
+    background-color:white;
+}
+/*CSS for custom fields ends*/
+.disableContent{
+    display:none !important;
+}
+.checkoutCartSummaryDivMob{
+    display:none;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.checkoutCartSummaryDiv{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.miniCartPricing {
+    clear: right;
+    float: right;
+    margin-right: 0.5%;
+    font-size: 13px;
+    width: 19%;
+    text-align: right;
+}
+.error > div > div {
+    border-color: rgb(153,0,0) !important;
+}
+.botdivl {
+    width:50%;
+    float:left;
+}
+.botdivr {
+    width:50%;
+    float:right;
+}
+.botscontainer{
+    margin-top:30px;
+    width:100%;
+    padding-bottom:30px;
+}
+.checkout-order-totals {
+    background-color: #f8f9fb;
+    padding: 0.3rem .5rem;
+}
+
+.checkbox-row {
+    top: 42%;
+    width: 100%;
+    vertical-align: bottom;
+    padding-top:10px;
+}
+.emaildiv {
+    width:48%; 
+    margin-right:2%;
+    float:left;
+}
+
+@media only screen and (max-width: 1360px) and (min-width: 1024px) {
+    .checkoutContentCenter{
+        margin: 3% 14% 5% 14%;
+        overflow: auto;
+    }
+    .checkoutFormOuterDiv {
+        border: 1px solid #DCDCDC;
+        float: left;
+        width: 55%;
+        margin-right: 2%;
+    }
+    .billingPaymentPartitionDiv{
+        width: 55%;
+    }
+    .checkoutCartSummaryDiv {
+        float: right;
+        width: 40%;
+    }
+    .miniCartPricing {
+        clear: right;
+        float: right;
+        margin-right: 0.5%;
+        font-size: 13px;
+        width: 19%;
+        text-align: right;
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .checkoutContentCenter{
+        margin: 3% 5% 5% 5%;
+        overflow: auto;
+    }
+    .checkoutFormOuterDiv {
+        border: 1px solid #DCDCDC;
+        float: left;
+        width: 55%;
+        margin-right: 2%;
+    }
+    .billingPaymentPartitionDiv{
+        width: 55%;
+    }
+    .checkoutCartSummaryDiv {
+        float: right;
+        width: 40%;
+    }
+    .miniCartPricing {
+        clear: right;
+        float: right;
+        margin-right: 0.5%;
+        font-size: 13px;
+        width: 19%;
+        text-align: right;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .botdivl {
+        width:100%;
+        float:left;
+    }
+    .botdivr {
+        width:100%;
+        float:left;
+    }
+    .reviewOrderButton {
+        float:left;
+        width: 100%;
+        margin-top:20px;
+    }
+    .reviewOrderButton:hover {
+        float:left;
+        width: 100%;
+        margin-top:20px;
+    }
+    .pdbtm {
+        padding-bottom:20%;
+    }
+
+}
+@media only screen and (max-width: 768px) and (min-width: 480px) {
+    .checkoutContentCenter{
+        margin: 3% 5% 5% 5%;
+        overflow: auto;
+    }
+    .headingInnerDivLeft{
+        width: 25%;
+    }
+    .headingInnerDivCenter{
+        width: 50%;
+    }
+    .headlineLarge {
+        font-size: 33px;
+        font-weight: bold;
+    }
+    .headingInnerDivRight{
+        width: 25%;
+        float: left;
+        margin: 32px 0px 32px 0px;
+    }
+    .secondaryButton {
+        width: 112px;
+        height: 40px;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+        border-radius: 0px;
+        font-weight: bold;
+    }
+    .checkoutFormOuterDiv {
+        border: 1px solid #DCDCDC;
+        float: none;
+        width: auto;
+        margin-right: 0%;
+    }
+    .checkoutCartSummaryDiv{
+        float: none;
+        width: auto;
+        margin-top:30px;
+    }
+    .billingPaymentPartitionDiv{
+        display:none;
+    }
+    .checkoutCartSummaryDiv{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .reviewOrderButtonDiv{
+        float: none;
+        text-align: end;
+    }
+    .pdbtm {
+        padding-bottom:22%;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .checkoutContentCenter{
+        margin: 3% 0% 5% 0%;
+        overflow: auto;
+    }
+    .headingMainDiv{
+        display:none;
+    }
+
+    .form-row-button {
+        clear: left;
+        display: contents;
+    }
+    .checkoutFormOuterDiv{
+        border: none;
+        width: 100%;
+    }
+    .checkoutCartSummaryDiv{
+        display:none;
+    }
+    .billingPaymentPartitionDiv{
+        display:none;
+    }
+    .billing-coupon-code{
+        display:none;
+    }
+    .checkoutCartSummaryDivMob{
+        display:block;
+        float: left;
+        margin-top:30px;
+        width:100%;
+    }
+    .reviewOrderButtonDiv{
+        float:none;
+    }
+    .reviewOrderButton{
+        width:100%;
+        font-size:12px;
+        height: 37px;
+    }
+    .reviewOrderButton:hover{
+        width:100%;
+        font-size:12px;
+        height: 37px;
+    }
+    .pdbtm {
+        padding-bottom:22%;
+    }
+    .emaildiv {
+        margin-top:7%;
+        width:100%; 
+        margin-right:2%;
+        float:left;
+    }
+    body {
+        margin-top:30%;
+    }
+}
+</style>
+<iscomment>Checkout Heading</iscomment>   
+<div class="headingMainDiv">
+
+	<div class="headingInnerDivLeft">
+   		<p class="headingInnerDivLeftText"> </p>
+   	</div>
+
+	<div class="headingInnerDivCenter">
+		<p class="headlineLarge headingInnerDivCenterText">Checkout</p>
+	</div>
+
+	<div class="headingInnerDivRight">
+		<button onclick="window.location.href='${URLUtils.url('COShipping-Start')}'" class="secondaryButton headingInnerDivRightButton">
+			BACK
+		</button>
+	</div>
+    
+</div>
+    <iscomment>
+        This template visualizes the billing step of both checkout scenarios.
+        It provides selecting a payment method, entering gift certificates and
+        specifying a separate billing address.
+        Depending on the checkout scenario (single or multi shipping) it is
+        either the second or third checkout step.
+    </iscomment>
+<div class="checkoutContentCenter" style="margin-bottom:0px;padding-bottom:150px">
+    <iscomment>Report this checkout step</iscomment>
+    <isreportcheckout checkoutstep="4" checkoutname="${'Billing'}"/>
+
+    <iscomment> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        checkout progress indicator
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</iscomment>
+
+    <isif condition="${!pdict.CurrentForms.multishipping.entered.value}">
+        <ischeckoutprogressindicator step="2" multishipping="false" rendershipping="${pdict.Basket.productLineItems.size() == 0 ? 'false' : 'true'}"/>
+    <iselse/>
+        <ischeckoutprogressindicator step="3" multishipping="true" rendershipping="${pdict.Basket.productLineItems.size() == 0 ? 'false' : 'true'}"/>
+    </isif>
+
+  
+    <form action="${URLUtils.continueURL()}" method="post" id="${pdict.CurrentForms.billing.htmlName}" class="checkout-billing address form-horizontal">
+
+        <div class="checkoutFormOuterDiv"> 
+            <div class="checkoutFormCenter">  
+                <iscomment> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    billing address
+                ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</iscomment>
+                <iscomment>Kount change 1</iscomment>
+                <isif condition="${!empty(pdict.KountOrderStatus) && pdict.KountOrderStatus =='DECLINED'}">
+                    <div class="error-message">
+                        <isprint value="${dw.web.Resource.msg('kount.DECLINED','kount',null)}" encoding="on"/>
+                    </div>
+                </isif>
+
+                <legend class="billingHeading">
+                    ${Resource.msg('billing.addressheader','checkout',null)}
+                    <iscomment><div class="dialog-required"> <span class="required-indicator">&#8226; <em>${Resource.msg('global.requiredfield','locale',null)}</em></span></div></iscomment>
+                </legend>
+
+                <isif condition="${pdict.CurrentForms.singleshipping.shippingAddress.useAsBillingAddress.value}">
+                    <div class="billingDetailsSection"> 
+                        <isset name="Shipments" value="${pdict.Basket.shipments}" scope="page"/>
+                        <isif condition="${!empty(Shipments)}">
+                            <iscomment>render a box per shipment</iscomment>
+                            <isset name="shipmentCount" value="${0}" scope="page"/>
+                            <isloop items="${Shipments}" var="shipment" status="loopstate">
+                                <isif condition="${shipment.shippingAddress != null}">
+                                    <isif condition="${shipment.productLineItems.length <= 0 || shipment.custom.shipmentType == null && shipment.UUID==pdict.Basket.defaultShipment.UUID && !empty(shipment.shippingAddress) && empty(shipment.shippingAddress.address1)}">
+                                        <iscontinue/>
+                                    </isif>
+                                        <div class="details">
+                                            <isminicheckout_address p_address="${shipment.shippingAddress}"/>
+                                        </div>
+                                </isif>
+                            </isloop>
+                        </isif>
+                    </div>
+                <iselse/>
+                    <fieldset>
+
+                        <iscomment>billing address area</iscomment>
+
+                        <iscomment>hidden input with action to trigger for the address form</iscomment>
+                        <input type="hidden" name="${pdict.CurrentForms.billing.save.htmlName}" value="true" />
+
+                        <iscomment>display select box with stored addresses if customer is authenticated and there are saved addresses</iscomment>
+                        <isif condition="${pdict.CurrentCustomer.authenticated && pdict.CurrentCustomer.profile.addressBook.addresses.size() > 0}">
+                            <div class="select-address">
+                                <div class="form-row selectAddressDiv">
+                                    <iscomment>
+                                    <label for="${pdict.CurrentForms.billing.addressList.htmlName}">
+                                        ${Resource.msg('global.selectaddressmessage','locale',null)}
+                                    </label>
+                                    </iscomment>
+                                    <isscript>
+                                        importScript("cart/CartUtils.ds");
+                                        var customerAddresses = CartUtils.getAddressList(pdict.Basket, pdict.CurrentCustomer, false);
+                                    </isscript>
+                                    <div class="selectAddress">
+                                        <isaddressselectlist p_listId="${pdict.CurrentForms.billing.addressList.htmlName}" p_listaddresses="${customerAddresses}" />
+                                    </div>
+                                </div>
+
+                                <iscomment>
+                                <div class="form-row form-row-button">
+                                    <button id="address-select-go-button" name="${pdict.CurrentForms.billing.selectAddress.htmlName}" type="submit" value="Go" class="simple-submit">Select</button>
+                                </div>
+                                </iscomment>
+
+                            </div>
+
+                        </isif>
+
+                        <isscript>
+                            var currentCountry = require('~/cartridge/scripts/util/Countries').getCurrent(pdict);
+                        </isscript>
+                        <isdynamicform formobject="${pdict.CurrentForms.billing.billingAddress.addressFields}" formdata="${currentCountry.dynamicForms.addressDetails}"/>
+
+                        <div class="emaildiv">
+                        <isinputfield formfield="${pdict.CurrentForms.billing.billingAddress.email.emailAddress}" type="input"/>
+                        </div>
+                        
+                        <iscomment>provide option to add address to address book if customer is authenticated</iscomment>
+                        <div style="width:100%">
+                            <isif condition="${pdict.CurrentCustomer.authenticated}">
+                                <isinputfield formfield="${pdict.CurrentForms.billing.billingAddress.addToAddressBook}" type="checkbox"/>
+                            </isif>
+                        </div>
+
+<iscomment>
+                        <isinputfield formfield="${pdict.CurrentForms.billing.billingAddress.addToEmailList}" type="checkbox"/>
+                        <div class="form-caption">
+                            <a title="${Resource.msg('global.privacypolicy','locale',null)}" href="${URLUtils.url('Page-Show','cid','privacy-policy')}" class="privacy-policy" >${Resource.msg('global.privacypolicy','locale',null)}</a>
+                        </div>
+                        </iscomment>
+                    </fieldset>
+                </isif>
+                <iscomment> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    coupon / discount codes
+                ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</iscomment>
+                
+                <fieldset style="display:none">
+                    <isset name="gcApplicable" value="${'false'}" scope="page"/>
+                    <isif condition="${dw.order.PaymentMgr.getPaymentMethod(dw.order.PaymentInstrument.METHOD_GIFT_CERTIFICATE).isActive() }">
+                        <isset name="gcApplicable" value="${'true'}" scope="page"/>
+                    </isif>
+                    <iscomment>
+                    <legend>
+                        <isif condition="${pdict.Basket.giftCertificateLineItems.size() == 0 && gcApplicable == 'true'}">
+                            ${Resource.msg('billing.giftcouponheader','checkout',null)}
+                        <iselse/>
+                            ${Resource.msg('billing.couponheader','checkout',null)}
+                        </isif>
+                    </legend>
+                    </iscomment>
+                    <div class="form-indent billing-coupon-code">
+                    <iscomment>coupon code / gift certificate area</iscomment>
+
+                        
+                        <iscomment>
+                        <isinputfield formfield="${pdict.CurrentForms.billing.couponCode}" type="input" rowclass="label-above"/>
+
+                        <div class="coupon-apply">
+                            <button class="apply cancel" id="add-coupon" type="submit" name="${pdict.CurrentForms.billing.applyCoupon.htmlName}" value="${Resource.msg('global.apply','locale',null)}"><span>${Resource.msg('global.apply','locale',null)}</span></button>
+                            <a href="#" class="tooltip">
+                                ${Resource.msg('global.helplink','locale',null)}
+                                <div class="tooltip-content" data-layout="small">
+                                    <isif condition="${gcApplicable == 'true'}">
+                                        <iscontentasset aid="checkout-giftcertcoupon-help"/>
+                                    <iselse/>
+                                        <iscontentasset aid="checkout-coupon-help"/>
+                                    </isif>
+                                </div>
+                            </a>
+                        </div>
+                        </iscomment>
+                        <div class="form-row coupon-error error">
+                            <isif condition="${pdict.CouponStatus != null && pdict.CouponStatus.error}">
+                                ${Resource.msgf('cart.' + pdict.CouponStatus.code,'checkout', null, pdict.CurrentForms.billing.couponCode.htmlValue)}
+                            </isif>
+                        </div>
+                        <div class="redemption coupon form-row"><!-- container for coupon applied success messages -->
+                            <isif condition="${pdict.Basket.couponLineItems.length > 0}">
+                                <isloop items="${pdict.Basket.couponLineItems}" var="couponLineItem" status="cliloopstate">
+                                    <isif condition="${couponLineItem.valid && couponLineItem.applied}">
+                                        <span class="success">${Resource.msgf('billing.couponapplied', 'checkout', null, couponLineItem.couponCode)}</span>
+                                    </isif>
+                                </isloop>
+                            </isif>
+                        </div>
+
+                        <isset name="gcPITotal" value="${0}" scope="pdict"/>
+                        <isset name="OrderTotal" value="${pdict.Basket.totalGrossPrice.value}" scope="pdict"/>
+                        <isif condition="${gcApplicable == 'true'}">
+
+                            <iscomment>only provide gift certificate redemption, if the basket doesn't contain any gift certificates</iscomment>
+                            <isif condition="${pdict.Basket.giftCertificateLineItems.size() == 0}">
+
+                                <isinputfield formfield="${pdict.CurrentForms.billing.giftCertCode}" type="input" rowclass="label-above"/>
+
+                                <div class="giftcert-apply">
+                                    <button class="apply cancel" id="add-giftcert" type="submit" name="${pdict.CurrentForms.billing.redeemGiftCert.htmlName}" value="${Resource.msg('global.apply','locale',null)}">
+                                        <span>${Resource.msg('global.apply','locale',null)}</span>
+                                    </button>
+                                    <button class="simple cancel" id="check-giftcert" type="submit" name="${pdict.CurrentForms.billing.checkBalance.htmlName}" value="${Resource.msg('global.checkbalance','locale',null)}">
+                                        <span>${Resource.msg('global.checkbalance','locale',null)}</span>
+                                    </button>
+                                    <a href="#" class="tooltip">
+                                        ${Resource.msg('global.helplink','locale',null)}
+                                        <div class="tooltip-content" data-layout="small">
+                                            <iscontentasset aid="checkout-giftcert-help"/>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="form-row balance"></div>
+                                <div class="form-row giftcert-error error">
+                                    <isif condition="${pdict.GiftCertStatus && pdict.GiftCertStatus.error}">
+                                        ${Resource.msg('billing.' + pdict.GiftCertStatus.code, 'checkout', pdict.GiftCertStatus.code)}
+                                    </isif>
+                                </div>
+                                <div class="form-row redemption giftcert">
+                                    <iscomment>render gift cert redeemed success message for each gift certificate payment instrument</iscomment>
+                                    <isset name="gcPITotal" value="${0}" scope="pdict"/>
+                                    <isif condition="${pdict.Basket.giftCertificatePaymentInstruments.size() > 0}">
+                                        <isloop items="${pdict.Basket.giftCertificatePaymentInstruments}" var="giftCertPI">
+                                            <isset name="gcPITotal" value="${pdict.gcPITotal + giftCertPI.paymentTransaction.amount}" scope="pdict"/>
+                                            <div class="success giftcert-pi" id="gc-${giftCertPI.getGiftCertificateCode()}">
+                                                ${Resource.msgf('billing.giftcertredeemed', 'checkout', null, giftCertPI.paymentTransaction.amount, giftCertPI.getMaskedGiftCertificateCode())}
+                                                <a id="rgc-${giftCertPI.getGiftCertificateCode()}" class="remove" href="${URLUtils.https('COBilling-RemoveGiftCertificate', 'giftCertificateID', giftCertPI.getGiftCertificateCode(),'format','old')}">
+                                                    <img src="${URLUtils.staticURL('/images/icon_remove.gif')}" alt="${Resource.msg('global.remove','locale',null)}"/>
+                                                    <span>${Resource.msg('global.remove','locale',null)}</span>
+                                                </a>
+                                            </div>
+                                        </isloop>
+
+                                        <isif condition="${pdict.Basket.totalGrossPrice!=null && pdict.Basket.totalGrossPrice.value-pdict.gcPITotal<=0}">
+                                            <isset name="OrderTotal" value="${pdict.Basket.totalGrossPrice.value-pdict.gcPITotal}" scope="pdict"/>
+                                        </isif>
+                                    </isif>
+
+                                </div>
+                            </isif>
+
+                        </isif>
+                        
+                    </div>
+                            
+                </fieldset>
+
+                <iscomment> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    payment methods
+                ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</iscomment>
+            </div>
+        </div>
+
+        <div class="checkoutCartSummaryDiv">
+            <isinclude template="checkout/minisummary"/>
+        </div>
+
+        <div class="billingPaymentPartitionDiv">
+        </div>
+
+        <div class="checkoutFormOuterDiv pdbtm"> 
+            <div class="checkoutFormCenter">    
+                <iscomment>payment method area</iscomment>
+                <isinclude template="checkout/billing/paymentmethods"/>
+                <isbonusdiscountlineitem p_alert_text="${Resource.msg('billing.bonusproductalert','checkout',null)}" p_discount_line_item="${pdict.BonusDiscountLineItem}"/>
+
+
+                   
+                    
+
+
+                        <div class="botscontainer">
+                            <div class="botdivl">
+                                
+                                <p>*Required Fields</p>
+                             </div>
+                         
+                        
+                            <div class="botdivr">
+                                <div class="reviewOrderButtonDiv">
+                                    <button class="reviewOrderButton disableContent"  type="submit" style="opacity:0;display:none" name="${pdict.CurrentForms.billing.save.htmlName}" value="${Resource.msg('global.continueplaceorder','locale',null)}"><span>${Resource.msg('global.continueplaceorder','locale',null)}</span></button>
+                                    <isinclude template="edq/edqUnicorn" />
+                                </div>
+                                <input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+                            </div>
+                        </div>
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="checkoutCartSummaryDivMob">
+            <isinclude template="checkout/minisummary"/>
+        </div>
+    </form>
+    <div id="stateretainer" style="display:none">
+    <isprint value="${session.forms.singleshipping.shippingAddress.addressFields.states.state.value}"/>
+    </div>   
+</div>
+
+<isscript>
+    importScript("util/ViewHelpers.ds");
+    var addressForm = pdict.CurrentForms.billing.billingAddress.addressFields;
+    var countries = ViewHelpers.getCountriesAndRegions(addressForm);
+    var json = JSON.stringify(countries);
+</isscript>
+<script>window.Countries = <isprint value="${json}" encoding="off"/>;</script>
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+<script>
+$( document ).ready(function() {
+  /*$('#form-submit').attr('disabled','disabled');
+   //button fix
+    $('#form-submit').attr('name','dwfrm_singleshipping_shippingAddress_save');
+    $('#form-submit').attr('value','Continue');*/
+    $('#form-submit').attr('class','reviewOrderButton');
+   
+
+    //MonthFix
+     var csstatecode1 = document.getElementById('dwfrm_billing_paymentMethods_creditCard_expiration_month').value;
+    csstatecode1=csstatecode1.replace(/(\r\n|\n|\r)/gm,"");
+    var csstate1 = document.querySelectorAll('[rel="'+csstatecode1+'"]')[0].innerHTML;
+    //document.getElementById('state').innerhtml=csstate;
+    var $s1= $('#dwfrm_billing_paymentMethods_creditCard_expiration_month').parent();
+    var abc1 = $('div.styledSelect');
+    var styledSelect1 = $s1.find(abc1);
+    // Show the first select option in the styled div
+    styledSelect1.text(csstate1);
+
+    //Year Fix
+    var csstatecode2 = document.getElementById('dwfrm_billing_paymentMethods_creditCard_expiration_year').value;
+    csstatecode2=csstatecode2.replace(/(\r\n|\n|\r)/gm,"");
+    var csstate2 = document.querySelectorAll('[rel="'+csstatecode2+'"]')[0].innerHTML;
+    //document.getElementById('state').innerhtml=csstate;
+    var $s2= $('#dwfrm_billing_paymentMethods_creditCard_expiration_year').parent();
+    var abc2 = $('div.styledSelect');
+    var styledSelect2 = $s2.find(abc2);
+    // Show the first select option in the styled div
+    styledSelect2.text(csstate2); 
+
+    //Statefix
+    if($('#dwfrm_billing_billingAddress_addressFields_states_state') != null) {
+        var csstatecode = $('#dwfrm_billing_billingAddress_addressFields_states_state').val();
+        csstatecode=csstatecode.replace(/(\r\n|\n|\r)/gm,"");
+        var csstate = document.querySelectorAll('[rel="'+csstatecode+'"]')[0].innerHTML;
+        var $s= $('#dwfrm_billing_billingAddress_addressFields_states_state').parent();
+        var abc = $('div.styledSelect');
+        var styledSelect = $s.find(abc);
+        // Show the first select option in the styled div
+        styledSelect.text(csstate);
+    }
+});
+
+window.addEventListener('load', (event) => {
+    
+});
+//Mutation Observer for instant state change value
+if(document.getElementById('dwfrm_billing_billingAddress_addressFields_address1') != null) {
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type == "attributes") {
+if(mutation.attributeName==='edq-metadata'){
+statefix();
+}
+    }
+  });
+});
+observer.observe(document.getElementById('dwfrm_billing_billingAddress_addressFields_address1'), {
+  attributes: true //configure it to listen to attribute changes
+});
+}
+ function statefix() {
+
+    var csstatecode = document.getElementById('dwfrm_billing_billingAddress_addressFields_states_state').value;
+    csstatecode=csstatecode.replace(/(\r\n|\n|\r)/gm,"");
+    var csstate = document.querySelectorAll('[rel="'+csstatecode+'"]')[0].innerHTML;
+    console.log(csstatecode,csstate);
+    //document.getElementById('state').innerhtml=csstate;
+    var $s= $('#dwfrm_billing_billingAddress_addressFields_states_state').parent();
+    var abc = $('div.styledSelect');
+    var styledSelect = $s.find(abc);
+    // Show the first select option in the styled div
+    console.log('hi');
+    styledSelect.text(csstate);
+ }
+window.onload=major;
+
+
+function major() {
+document.getElementById('shipping-done').style.color="black";
+    load(); 
+    
+    }
+
+ menuitems  = [];      
+    firstChars = [];  
+
+    function load() {
+            var v=document.getElementsByClassName("styledSelect");
+            if(v[0].outerHTML.includes("Select State")){
+
+                v[0].style.backgroundColor = "white";   
+            }
+            menuElements = document.getElementById('ulid').getElementsByTagName('li');
+            for (var i = 0; i < menuElements.length; i++) {
+                menuElement = menuElements[i];
+                if (!menuElement.firstElementChild && menuElement.getAttribute('role') != 'separator') {
+                    this.menuitems.push(menuElement);
+                    textContent = menuElement.textContent.trim();
+
+                    this.firstChars.push(textContent.substring(0, 1).toLowerCase());
+                }
+            }
+            numItems = this.menuitems.length;
+            if (numItems > 0) {
+                this.firstItem = this.menuitems[0];
+                this.lastItem  = this.menuitems[numItems - 1];
+            }
+        };
+
+    var staticChar = '';
+    var endIndex = 0;
+
+    function foucusLiTag(char) {
+
+        charIndex = this.firstChars.indexOf(char);
+        if (staticChar === char) {
+            if(this.firstChars[this.endIndex+1] === char){
+                this.menuitems[this.endIndex+1].focus();
+                this.endIndex = this.endIndex+1;
+            }
+            else{
+                this.menuitems[charIndex].focus();
+                this.endIndex = charIndex;
+            }
+        }
+        else{
+            this.menuitems[charIndex].focus();
+            this.staticChar = char;
+            this.endIndex = charIndex;
+        }
+    }
+
+    function isPrintableCharacter (str) {
+      return str.length === 1 && str.match(/\S/);
+    }
+
+
+
+
+
+$('div.select').on('focus', 'li', function() {
+    $this = $(this);
+    $this.addClass('active').siblings().removeClass();
+    $this.closest('div.select').scrollTop($this.index() * $this.outerHeight());
+}).on('keydown', 'li', function(e) {
+    $this = $(this);
+    if (e.keyCode == 40) {        
+        $this.next().focus();
+        return false;
+    } else if (e.keyCode == 38) {        
+        $this.prev().focus();
+        return false;
+    }
+}).find('li').first().focus();
+
+</script>
+<script>
+
+function removatt() {
+    if (this.hasAttribute('readonly'))
+     { this.removeAttribute('readonly');
+      }   
+      }
+</script>
+<iscomment>
+<script>
+function myFunction() {
+document.getElementById('errorcaption').style.display = "none";
+}
+</script>
+
+</iscomment>
+<script>
+    $(document).ready(function () {
+        $('#dwfrm_billing_addressList').on('change', function() {
+            $('#dwfrm_billing_billingAddress_email_emailAddress').val($(this).find(':selected').data('address').email);
+            var selectedCardType = $('#dwfrm_billing_paymentMethods_creditCard_type').val();
+            setTimeout(function(){ 
+                $('#dwfrm_billing_paymentMethods_creditCard_type').val(selectedCardType);
+                $('#dwfrm_billing_paymentMethods_creditCard_type').focusout();
+            });
+            
+        });
+    });
+
+   
+  $(".styledSelect").keypress(function() {
+    $(this).next().css('display','block');
+    $(this).next().children()[0].focus();
+});
+
+  $(".shippingMethodDiv").keypress(function() {
+    $(this).next().css('display','block');
+    $(this).next().find('shippingmethods').children()[0].focus();
+});
+
+ function sul(event,ele) {
+    /*console.log(''+ele.next());
+    var unol=document.getElementById('ulid');
+    unol.style.display="block";
+    unol.firstChild.focus();
+    console.log('sul()');*/
+    console.log(event.key);
+    char = event.key;
+    
+    if(isPrintableCharacter(char)){
+        if(parseInt(char)){
+            console.log('True');
+        }
+        else{
+            console.log('False');
+            foucusLiTag(char);
+        }
+    }
+    else{
+        console.log('False');
+    }
+    }
+ 
+</script>
+
+</isdecorate>
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+    $(document).ready(function(){
+        console.log("windows load");
+     /*var a = $(".mini-cart-product").find('.collapsed');
+        console.log($(".mini-cart-product"));
+        console.log("Has Class:"+$(a).hasClass('collapsed'));*/
+        if($(".mini-cart-product.collapsed")){
+            console.log("Collapsed");
+            $(".mini-cart-product.collapsed").removeClass("collapsed");
+        }
+        $('.mini-cart-toggle').attr('style','display: none !important');
+    });
+</script>

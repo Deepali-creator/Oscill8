@@ -1,0 +1,70 @@
+/**
+*
+*
+*   @input order : dw.order.Order
+*   @input payment : dw.order.OrderPaymentInstrument
+*   @input cvn : String
+*   @output token : String
+*
+*/
+importPackage( dw.system );
+importPackage( dw.crypto );
+importPackage( dw.svc );
+
+var cardTypeNumbers = {
+	"Amex" : "3000",
+	"Visa" : "4000",
+	"Master" : "5000",
+	"Discover" : "6000",
+	"JCB" : "7000",
+	"Maestro" : "9000",
+	"Solo" : "10000",
+	"Switch" : "11000"
+};
+
+function execute( args : PipelineDictionary ) : Number {
+	/*var hmac : MAC = new Mac(Mac.HMAC_SHA_256);
+	var request : XML = <Request>
+			<MerchantReference>CONAIR</MerchantReference>
+			<TotalAmount>
+				<Tax>{args.order.totalTax.value}</Tax>
+				<GrandTotal>{args.order.totalNetPrice.value}</GrandTotal>
+				<CurrencyCode>{args.order.currencyCode}</CurrencyCode>
+			</TotalAmount><TokenizedCard>
+				<CCToken/>
+				<CCExpirationDate><Month>{args.payment.creditCardExpirationMonth}</Month><Year>{args.payment.creditCardExpirationYear}</Year></CCExpirationDate>
+				<CCType>{cardTypeNumbers[args.payment.creditCardType]}</CCType>
+			</TokenizedCard>
+			<RedirectURL></RedirectURL>
+		</Request>
+	var sig : String = Encoding.toBase64(hmac.digest(request.toString(), Site.current.getCustomPreferenceValue('XiPayPreSharedKey')));
+	var merchantReq = <MerchantRequest>
+		<MerchantGUID>{Site.current.getCustomPreferenceValue('XiPayMerchant')}</MerchantGUID>
+		<Signature>{sig}</Signature>
+		<AjaxSubmitCallback>tokenizeCard</AjaxSubmitCallback>{request.toString()}
+	</MerchantRequest>*/
+	var iframesvc : Service = ServiceRegistry.get("XiInterceptiFrame");
+	var iframeresult : Result = iframesvc.call({});
+	if (!iframeresult.ok){
+		Logger.error(iframeresult.errorMessage);
+		return PIPELET_ERROR;
+	};
+	var svcConfig : Service = ServiceRegistry.get("XiPayTokenize");
+	var result : Result = svcConfig.call({
+		'Paymetric_Packet': iframeresult.object.Paymetric_Packet, 
+		'Paymetric_CreditCardType': cardTypeNumbers[args.payment.creditCardType],
+		'Paymetric_CreditCardNumber': args.payment.creditCardNumber, 
+		'Paymetric_Start_Month': '', 'Paymetric_Start_Year': '', 'Paymetric_IssuerNumber': '',
+		'Paymetric_Exp_Month': args.payment.creditCardExpirationMonth, 
+		'Paymetric_Exp_Year': args.payment.creditCardExpirationYear, 
+		'Paymetric_CVV': args.cvn,
+		'__VIEWSTATE': iframeresult.object.VIEWSTATE,
+		'__VIEWSTATEGENERATOR': iframeresult.object.VIEWSTATEGENERATOR
+		});
+	if (!result.ok){
+		Logger.error(result.errorMessage);
+		return PIPELET_ERROR;
+	}
+	args.token=result.object;
+	return PIPELET_NEXT;
+}

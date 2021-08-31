@@ -1,0 +1,607 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<!doctype html>
+
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+<title>Rechargeable Toothbrush | Automatic Toothbrush Kit | Electric Brush</title>
+<meta charset="UTF-8">
+  <meta name="description" content="Buy the Oscill8 Rechargeable Toothbrush kit here! The electric brush kit comes with two brush heads, a comfortable grip, and a UV toothbrush sanitizer holder">
+  <meta name="keywords" content="conair, interplak, interplak by conair, interplak toothbrush, oscill8, oscill8 rechargeable toothbrush, buy oscill8, oscill8 kit, brush head subscription, oscill8 brush heads, electric toothbrush, best electric toothbrush, electric toothbrush charger, electric toothbrush heads, rechargeable toothbrush, rechargeable electric toothbrush, battery powered toothbrush, nt18">
+  <meta name="viewport" maximum-scale=1.0 user-scalable=no>
+
+	<isscript>
+		var pageContext = {
+			title: 'Customer Service',
+			type: 'customerservice',
+			ns:'account'
+		};
+	</isscript>
+	
+	
+	<isinclude template="util/modules"/>
+
+	<iscomment>This page must be cachable. It inherits the caching attributes by the decorated template.</iscomment>
+
+	<isinclude template="components/header/htmlhead"/>
+	<isinclude template="content/pt_customerservice_UI"/>
+
+	<iscomment>Add template-specific header information here.</iscomment>
+
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/accessories/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/faq/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/about-product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/reset.css')}"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+</head>
+
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXP24K2"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) --> 
+
+<main class="main-page-wrapper">
+
+		<isinclude template="components/header/header"/>
+
+					<isinclude template="components/browsertoolscheck"/>
+						<isinclude template="util/modules"/>
+<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/myaccount/account-style.css')}"/>
+<style>
+.dnone {
+	display:none;
+}
+sup {
+	vertical-align:revert;
+}
+input:not(:disabled):not([type=checkbox]):not([type=radio]), select {
+    padding: 4px 11px 12px !important;
+}
+.js .loader {
+    position: unset !important;
+	left: unset !important;
+    top: unset !important;
+    width: 3em !important;
+    height: 3em !important;
+}
+.loader {
+	display:none;
+  font-size: 10px;
+  text-indent: -9999em;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #1d4988;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.loader:after {
+  background: #ffffff;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+</style>
+<script>
+	var qty=$('select_11').val();
+</script>
+<isscript>
+var app = require('~/cartridge/scripts/app');
+var guard = require('~/cartridge/scripts/guard');
+var pModel=require('/dw/catalog/ProductPriceModel');
+var Product = app.getModel('Product');
+var productToAdd = Product.get('NT18');
+var kitPrice = productToAdd.getPriceModel().getPrice();
+var productToAdd = Product.get('NT18RP');
+var brushPrice = productToAdd.getPriceModel().getPrice().decimalValue;
+/*let r = require('~/cartridge/scripts/util/Response');
+var avaliabilityMatrix = JSON.stringify(productToAdd.getAvailability('1'));
+dw.system.Logger.warn('avail '+ avaliabilityMatrix);*/
+
+</isscript>
+
+<isset name="kitPrice" value="${kitPrice}" scope="page" />
+<isset name="brushPrice" value="${brushPrice}" scope="page" />
+		<section class="product-item-controller">
+		<div class="product-item-wrapper">
+			<div class="image-wrapper">
+				<img class="dnone oskit" height="350px" src="${URLUtils.absStatic('/src/pages/product/package-image.png')}" alt="rechargeable toothbrush kit"/>
+				<img style="display:none;" class="bhead" src="${URLUtils.absStatic('/src/pages/product/Brush_Head.png')}"/>
+				<img style="-webkit-transform: scaleX(-1);transform: scaleX(-1);display:none;" class="dnone otime" height="400px" src="${URLUtils.absStatic('/src/pages/product/Brush_stand_RM.svg')}"/>
+
+			</div>
+			
+			<div class="details-wrapper">
+				<h1 class="title">Oscill8<sup>&trade;</sup> TOOTHBRUSH KIT</h1>
+				<div class="description">
+					<p>Ready to shine brighter? Our brush kit comes with all the bells & whistles. It includes two brush heads, a comfortable grip, and a charging brush stand. Wait for it...you can also set it up as a subscription to make life easy peasy. See all of our purchase options below:</p>
+				</div>
+				<div class="product_purchase_selectors">
+					<div class="radio item">
+						<input id="radio-1" name="radio" type="radio" checked="checked">
+						<label for="radio-1" class="radio_label cpointer first">
+							<span>Brush Kit with Brush Head Subscription</span>
+						</label>
+						<div class="purchase-content">
+							<div class="description">Kit Includes: two brush heads, grip and brush stand charger.</div>
+							<div class="pc-options">
+								<div class="item">
+									<label for="select_11" class="label">Brush Head Subscription Quantity</label>
+									<div class="field_wrap select_box">
+										<select id="select_11" onchange="calculateR1(event)" class="field" style="padding: 4px 0px 4px 12px !important;">
+											<option value="1" selected="selected">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+									</div>
+								</div>
+								<div class="item">
+									<label for="select_12" class="label">Delivers Every</label>
+									<div class="field_wrap select_box">
+										<select id="select_12" class="field" style="padding: 4px 0px 4px 12px !important;">
+											<option value="Every 3 Months">Every 3 Months</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="pc-prices">
+								<div class="item active"><isprint value="${kitPrice}"></div>
+								<div class="item">&nbsp;</div>
+								<div class="item active" style="font-size: 18px;">Each</div>
+								<div class="item">&nbsp;</div>
+								<div class="item active" style="opacity: 0.5;" >/ $</div>
+								<div class="item active" style="opacity: 0.5;" id="total"></div>
+								<div class="item">&nbsp;</div>
+								<div class="item active" style="opacity: 0.5; font-size: 18px;">Recurring</div>
+							</div>
+							<div class="pc-footer">
+								<button type="button" class="button1 btn-blue" disabled onclick="frameClick1()">ADD TO CART</button> 
+						        <iscomment>
+								<p class="text">* Dentists recomend every 3 months</p>
+								</iscomment>
+							</div>
+						</div>
+					</div>
+
+					<div class="radio item">
+						<input id="radio-2" name="radio" type="radio">
+						<label for="radio-2" class="radio_label cpointer second">
+							<span>Brush Head Subscription Only</span>
+						</label>
+						<div class="purchase-content">
+							<div class="description">Set up for your brush head replacement to arrive at your door every three months. Free shipping included! Take one less thing off your list and you’ll smile brighter!</div>
+							<div class="pc-options">
+								<div class="item">
+									<label for="select_21" class="label">Brush Head Subscription Quantity</label>
+									<div class="field_wrap select_box">
+										<select style="padding: 4px 0px 4px 12px !important;" id="select_21" class="field" onchange="calculateR2(event)"> 
+											<option value="1" selected="selected">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+									</div>
+								</div>
+								<div class="item">
+									<label for="select_22" class="label">Delivers Every</label>
+									<div class="field_wrap select_box">
+										<select id="select_22" style="padding: 4px 0px 4px 12px !important;" class="field">
+											<option value="Every 3 Months">Every 3 Months</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="pc-prices">
+								<input type="hidden" id="brushPrice1" name="brushPrice1" value="${brushPrice}">
+								<div class="item active">$<isprint value="${brushPrice}"></div>
+								<div class="item">&nbsp;</div>
+								<div class="item active" style="font-size: 18px;">Each</div>
+								<div class="item">&nbsp;</div>
+								<div class="item active" style="opacity: 0.5;">/ $</div>
+								<div class="item active" style="opacity: 0.5;" id="total1"></div>
+								<div class="item">&nbsp;</div>
+								<div class="item active" style="opacity: 0.5; font-size: 18px;">Recurring</div>
+							</div>
+							<div class="pc-footer">
+								<button type="button" class="button1 btn-blue" disabled onclick="frameClick2()">ADD TO CART</button> 
+								<iscomment>
+								<p class="text">* Dentists recomend every 3 months</p>
+								</iscomment>
+							</div>
+						</div>
+					</div>
+
+					<div class="radio item">
+						<input id="radio-3" name="radio" type="radio">
+						<label for="radio-3" class="radio_label cpointer third">
+							<span>Brush Kit Purchase Only</span>
+						</label>
+						<div class="purchase-content">
+							<div class="description">Want to give it a shot before committing to a recurring purchase? We get that. But we're sure you'll be back to sign up for the subscription once you experience OSCILL8<sup style="vertical-align: unset;top: -0.2em;font-size: 85%;">&trade;</sup>!</div>
+							
+								<div class="pc-options">
+								<div class="item">
+									<label for="select_31" class="label">Quantity</label>
+									<div class="field_wrap select_box">
+										<select id="select_31" class="field" style="padding: 4px 0px 4px 12px !important;">
+											<option value="1"  selected="selected">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="item">
+									<div class="field_wrap ">
+										<iscomment>
+										<select id="select_32" class="field">
+											<option value="Quarter">Quarter</option>
+											<option value="Quarter1">Quarter1</option>
+											<option value="Quarter2">Quarter2</option>
+										</select>
+										</iscomment>
+									</div>
+									
+								</div>
+								
+							</div>
+							
+							
+							<div class="pc-prices">
+								<div class="item active"><isprint value="${kitPrice}"></div>
+								<div class="item">&nbsp;</div>
+								<div class="item active" style="font-size: 18px;">Each</div>
+							</div>
+							<div class="pc-footer">
+								<button type="button" class="button1 btn-blue" disabled onclick="frameClick3()">ADD TO CART</button> 
+								<iscomment>
+								<p class="text">* Dentists recomend every 3 months</p>
+								</iscomment>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> 
+		</div>
+	</section>
+
+
+
+
+
+	<section class="product-subscribe-info">
+		<div class="content_wrap">
+			<h2 style="margin-bottom:0px">Why Subscribe to Brush Head?</h2>
+			<ul style="padding:0px">
+				<li>Save a few trips to the store</li>
+				<li>No need to remember the last time you replaced your brush head</li>
+				<li>Sign up to receive your brush heads automatically!</li>
+			</ul>
+		</div>
+		<div class="image_wrap">
+			<img src="${URLUtils.absStatic('/src/pages/product/product.png')}" alt="automatical toothbrush head delivery" style="width:100%;"/>
+		</div>
+	</section>
+
+
+	
+<div style="display:none">
+	<iframe id="brushheadsframe1" src="/s/us-oscill8/NT18RP.html"></iframe>
+	<iframe id="brushheadsframe2" src="/s/us-oscill8/NT18.html"></iframe>
+</div>
+		<isinclude template="components/footer/footer"/>
+		<isinclude template="content/pt_customerservice_VARS"/>
+</main>
+<script> 
+(function(){ 
+var s = document.createElement('script'), 
+e = ! document.body ? document.querySelector('head') : document.body; 
+s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; 
+s.async = true; 
+s.onload = function(){ 
+ acsbJS.init({ 
+ statementLink : '', 
+ footerHtml : '', 
+ hideMobile : false, 
+ hideTrigger : false, 
+ language : 'en', 
+ position : 'right', 
+ leadColor : '#146FF8', 
+ triggerColor : '#146FF8', 
+ triggerRadius : '50%', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'bottom', 
+ triggerIcon : 'people', 
+ triggerSize : 'medium', 
+ triggerOffsetX : 20, 
+ triggerOffsetY : 20, 
+ mobile : { 
+ triggerSize : 'small', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'center', 
+ triggerOffsetX : 0, 
+ triggerOffsetY : 0, 
+ triggerRadius : '50%' 
+ } 
+ }); 
+}; 
+e.appendChild(s); 
+}()); 
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+	$("#brushheadsframe1").on("load", function () {
+		$(".button1").removeAttr("disabled");
+	});
+	function frameClick1() {
+		$('#load1').css('display','block');
+		jQuery.ajax({
+            type: "GET",
+            url: "/on/demandware.store/Sites-us-oscill8-Site/default/Shop-Show",
+            dataType: "html",
+            async: false,
+            context: document.body,
+            success: function(response){
+
+                fc1(function() {
+					setTimeout(function(){ redirectCart(); }, 600);
+					 //$('#mlpb').load(window.location.href+' #mini-cart, #ddui');
+					 
+				});
+
+            },
+            error: function() {
+                alert("Sorry, The requested property could not be found.");
+            }  
+        });
+	}
+	function frameClick2() {
+		$('#load2').css('display','block');
+		jQuery.ajax({
+            type: "GET",
+            url: "/on/demandware.store/Sites-us-oscill8-Site/default/Shop-Show",
+            dataType: "html",
+            async: false,
+            context: document.body,
+            success: function(response){
+
+                fc2(function() {
+					setTimeout(function(){ redirectCart(); }, 600);
+					//$('#mlpb').load(window.location.href+' #mini-cart, #ddui');
+				});
+
+            },
+            error: function() {
+                alert("Sorry, The requested property could not be found.");
+            }  
+        });
+		
+	}
+	function frameClick3() {
+		$('#load3').css('display','block');
+		jQuery.ajax({
+            type: "GET",
+            url: "/on/demandware.store/Sites-us-oscill8-Site/default/Shop-Show",
+            dataType: "html",
+            async: false,
+            context: document.body,
+            success: function(response){
+
+                fc3(function() {
+					setTimeout(function(){ redirectCart(); }, 600);
+					//$('#mlpb').load(window.location.href+' #mini-cart, #ddui');
+				});
+
+            },
+            error: function() {
+                alert("Sorry, The requested property could not be found.");
+            }  
+        });
+	}
+	function fc1(callback) {
+		/*var atdbtn=$("#brushheadsframe1").contents().find(".add-to-cart");
+		var regd=$("#brushheadsframe1").contents().find(".regdel");
+		regd[0].click();
+		var qty = $("#brushheadsframe1").contents().find("#Quantity");
+		qty[0].value= $("#select_11")[0].value;*/
+		/*$("#brushheadsframe1").contents().find("#delivery-interval").val($("#select_12")[0].value);*/
+
+		/*atdbtn[0].click();
+		console.log("Quantity:"+$("#select_11")[0].value);*/
+		var atdbtn=$("#brushheadsframe2").contents().find(".add-to-cart");
+		var iframe_select = $("#brushheadsframe2").contents().find("#delivery-interval.subscriptionQunatitySelectList");
+        iframe_select.val($("#select_11").val());
+		//var qty = $("#brushheadsframe2").contents().find("#Quantity");
+		//qty[0].value= $("#select_11")[0].value;
+		atdbtn[0].click();
+		setTimeout(() => {
+            // var ev = $("#brushheadsframe2")[0].contentWindow.document.createEvent('UIEvents');
+            // ev.initUIEvent('change', true, true, window, 1);
+			var ev = new Event("change", {"bubbles":true, "cancelable":false});
+            iframe_select[0].dispatchEvent(ev);
+            setTimeout(() => {
+				callback();
+			}, 500);
+        }, 500);
+		console.log("Quantity:"+$("#select_11")[0].value);
+	}
+	function fc2(callback) {
+		var atdbtn=$("#brushheadsframe1").contents().find(".add-to-cart");
+		/*var regd=$("#brushheadsframe1").contents().find(".regdel");
+		regd[0].click();*/
+		var qty = $("#brushheadsframe1").contents().find("#Quantity");
+		qty[0].value= $("#select_21")[0].value;
+		/*$("#brushheadsframe1").contents().find("#delivery-interval").val($("#select_22")[0].value);*/
+		atdbtn[0].click();
+		callback();
+	}
+	function fc3(callback) {
+		window.location.replace("/on/demandware.store/Sites-us-oscill8-Site/default/Checkout-User?qty="+$("#select_31")[0].value);
+		/*
+		var atdbtn=$("#brushheadsframe2").contents().find(".add-to-cart");
+		console.log("atdbtn:"+ atdbtn);
+		var qty = $("#brushheadsframe2").contents().find("#Quantity");
+		console.log("quantity:"+ qty);
+		console.log(qty[0].value);
+		qty[0].value= $("#select_31")[0].value;
+		console.log($("#select_31")[0].value);
+		console.log("quant value:"+ qty[0].value);
+		atdbtn[0].click();
+		callback();
+		*/
+	}
+	$(".pc-footer").click( function() {
+		//$(window).scrollTop(0);
+		//setTimeout( function() { $('.mini-cart-content').css('display', 'block');},1000);
+		//setTimeout( function() { $('.mini-cart-content').css('display', 'unset');}, 5000);
+    });
+	
+	function redirectCart() {
+		window.location.replace("/on/demandware.store/Sites-us-oscill8-Site/default/Cart-Show");
+
+	}
+
+	$(document).ready(function(){
+		$('.oskit').css('display','block');
+		$('.bhead').css('display','none');
+		$('.otime').css('display','none');
+	});
+
+	
+	$('.first').on('click',function() {
+		$('.bhead').css('display','none');
+		$('.otime').css('display','none');
+		$('.oskit').css('display','block');
+	});
+	$('.second').on('click',function() {
+		$('.bhead').css('display','block');
+		$('.oskit').css('display','none');
+		$('.otime').css('display','none');
+	});
+	$('.third').on('click',function() {
+		$('.bhead').css('display','none');
+		$('.oskit').css('display','none');
+		$('.otime').css('display','block');
+	});
+
+	function calculateR1(event) {
+		var quantity = document.getElementById("select_11").value;
+		console.log("quantity:"+quantity);
+		var price = document.getElementById("brushPrice1").value;
+		total = quantity * price;
+		console.log("total:"+total);
+		document.getElementById("total").value = total;
+		console.log(document.getElementById("total").value);
+		$("#total").text(quantity * price);
+	}
+
+	function calculateR2(event) {
+		var quantity = document.getElementById("select_21").value;
+		console.log("quantity:"+quantity);
+		var price = document.getElementById("brushPrice1").value;
+		total = quantity * price;
+		console.log("total:"+total);
+		document.getElementById("total1").value = total;
+		console.log(document.getElementById("total1").value);
+		$("#total1").text(quantity * price);
+	}
+
+	$(document).ready(function(){
+		console.log(document.getElementById("select_11").value);
+		var quantity = document.getElementById("select_11").value;
+		var quantity1 = document.getElementById("select_21").value;
+		var price = document.getElementById("brushPrice1").value;
+
+		$("#total").text(quantity * price);
+		$("#total1").text(quantity1 * price);
+        
+	});
+</script>

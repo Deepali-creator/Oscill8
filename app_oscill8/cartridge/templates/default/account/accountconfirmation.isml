@@ -1,0 +1,32 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="account/pt_account">
+
+<style>
+@media only screen and (max-width: 769px) {
+	.main-page-wrapper {
+		min-height: 0;
+	}
+}
+</style>
+    <isinclude template="util/modules"/>
+
+			<div class="pg-container wd">
+				<div class="account-wrp flex fjc">
+					<div class="left-col">
+						<div class="form-wrp">
+							<h2 class="form-title" style="margin-top:0px;">
+								Confirm Your Account
+							</h2>
+							<p class="form-descr tac" style="font-size:12px;">
+								An account confirmation has been sent to your email address, confirm it to create an account.
+							</p>
+							
+							<p class="tc-txt tac"><a class="btn ttu btn-pink " href="${URLUtils.https('Home-Show')}">
+						        Go to Home
+					        </a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+</isdecorate>

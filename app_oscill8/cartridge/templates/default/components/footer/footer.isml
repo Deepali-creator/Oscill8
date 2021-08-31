@@ -1,0 +1,74 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+<iscomment>
+	This is the footer for all pages. Be careful caching it if it contains
+	user dependent information. Cache its elements instead if necessary (do not forget
+	to change the isinclude into a pipeline include for that).
+</iscomment>
+<isinclude template="util/modules"/>
+<style>
+@media (max-width: 769px) {
+.nav-column h4.footer-menu-title {
+    font-size: 20px !important;
+	line-height: 24px !important;
+	
+}
+.mt-none-mob {
+    margin-top:0px;
+}
+}
+@media screen and (max-width: 480px) {
+    .oscill8-footer img {
+         width: 250px;
+    }
+}
+</style>
+<footer class="oscill8-footer">
+		<div class="footer-left flex fac">
+			<div>
+				<a href="${URLUtils.https('Home-Show')}"><span class="logo" style="padding-right:10px"><img src="${URLUtils.absStatic('/images/interplank.jpg')}" alt="OSCILL8 &trade;"></span></a>
+				<p class="cr-text hide_mobile">
+					<span>© 2021 Conair Corporation</span>
+				</p>
+			</div>
+		</div>
+		<div class="footer-right">
+			<div class="wrapper">
+				<div class="nav-column">
+					<h4 class="footer-menu-title mt-none-mob">OSCILL8&trade;</h4>
+					<a href="${URLUtils.https('Shop-Show')}">Shop</a>
+					<a href="${URLUtils.https('Accessories-Show')}"><span>Accessories</span></a>
+					
+				</div>
+				<div class="nav-column">
+					<h4 class="footer-menu-title">ACCOUNT</h4>
+					<a href="${URLUtils.https('Login-Show')}"><span>Create Account</span></a>
+					<a href="${URLUtils.https('Login-Show')}"><span>Sign In</span></a>
+				</div>
+				<div class="nav-column">
+					<h4 class="footer-menu-title">SUPPORT</h4>
+					<a href="${URLUtils.https('Support-Show')}"><span>Contact & FAQ</span></a>
+					<a href="${URLUtils.https('PrivacyPolicy-Show')}"><span> Privacy Policy</span></a>
+					<a href="${URLUtils.https('TermsOfUse-Show')}"><span>Terms of use</span></a>
+					<a href="${URLUtils.https('DoNotSell-Show')}"><span>Do not sell</span></a>
+				</div>
+				<div class="nav-column">
+					<h4 class="footer-menu-title">CONNECT</h4>
+					<a href="https://www.facebook.com/conairbeauty" target="_blank" class="soc-link"><span class="fb-icon">Facebook</span></a>
+					<a href="https://www.instagram.com/conair/" target="_blank" class="soc-link"><span class="insta-icon">Instagram</span></a>
+				</div>
+			</div>
+		</div>
+        <div class="show_mobile copyright1">
+            <span>&copy; 2021 Conair Corporation</span>
+        </div>
+	</footer>
+
+<iscomment>
+	Customer registration can happen everywhere in the page flow. As special tag in the pdict
+	is indicating it. So we have to check on every page, if we have to report this event for
+	the reporting engine.
+</iscomment>
+<isinclude template="util/reporting/ReportUserRegistration.isml"/>
+
+<isinclude template="components/footer/footer_UI"/>

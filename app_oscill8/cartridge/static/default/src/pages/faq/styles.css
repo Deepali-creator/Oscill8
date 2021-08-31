@@ -1,0 +1,328 @@
+.faq-container {
+    margin: 80px 110px 100px 110px;
+}
+
+.faq-title{
+    padding: 0 50px;
+}
+
+.faq-item-title{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #4D4D4D;
+    padding: 20px 20px 20px 44px;
+}
+
+.faq-content .question-answer {
+    margin-bottom: 15px;
+}
+
+.faq-content .question-answer h6 {
+    color: #000000;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: 'Montserrat';
+    letter-spacing: 0.5px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom:-5px;
+}
+
+.faq-content .question-answer p {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 140%;
+    color: #000000;
+}
+
+.radio input[type="radio"] + .radio-label:before{
+    background: #ffffff !important;
+    border: 1px solid #000000 !important;
+}
+.radio input[type="radio"]:checked + .radio-label:before{
+    background: #000000 !important;
+}
+
+.radio.styled-wrapper{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.faq-content .question-answer .pink-text {
+    color: #e70189;
+}
+
+/* collapsible radio button control */
+
+.radio {
+    margin-bottom: 1rem;
+    padding: 2px 12px 1px;
+}
+
+.radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio .radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.radio .radio-label:after{
+    content: ' ';
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(/assets/images/small-arrow-down-black.svg);
+    position: absolute;
+    right: 32px;
+    top: 29px;
+    width: 12px;
+    height: 10px;
+}
+.radio input[type="radio"]:checked + .radio-label:after{
+    transform: rotate(-180deg);
+}
+
+.radio input[type="radio"] + .radio-label:before {
+    content: '';
+    background: #f4f4f4;
+    border-radius: 100%;
+    border: 1px solid #b4b4b4;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    position: relative;
+    top: -0.2em;
+    margin-right: 1em;
+    vertical-align: top;
+    text-align: center;
+    transition: all 250ms ease;
+}
+
+.radio input[type="radio"]:checked + .radio-label:before {
+    background-color: #37393b;
+    box-shadow: inset 0 0 0 3px #f4f4f4;
+}
+
+.radio .faq-content {
+    display: none;
+    padding: 10px 44px 10px 90px;
+}
+
+.radio input[type="radio"]:checked + label + .faq-content {
+    display: block;
+}
+
+/* Contact Us */
+
+.contact-us {
+    margin-left: 121px;
+    margin-bottom: 90px;
+    padding: 38px 170px 38px 91px;
+}
+
+.contact-us.styled-wrapper-to-left{
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), inset 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us .contact-inputs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-us .contact-inputs .left-part {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    margin-right: 50px;
+}
+
+.contact-us .contact-inputs .right-part {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 8;
+}
+
+.contact-us .button {
+    width: 200px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.contact-us .contact-subtitle {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #4D4D4D;
+    margin: 13px 0 10px 0;
+}
+
+.contact-us .contact-desc {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #4D4D4D;
+    margin-bottom: 24px;
+}
+
+.margin-bottom-35 {
+    margin-bottom: 35px
+}
+
+#cf_send_mail_box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+}
+#cf_send_mail_box > img{
+    margin-bottom: 30px;
+}
+#cf_send_mail_box .cf_sm_title{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #4D4D4D;
+}
+#cf_send_mail_box .cf_sm_text{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    text-align: center;
+    color: #4D4D4D;
+    width: 100%;
+    margin: 12px auto;
+    max-width: 713px;
+}
+
+@media (max-width: 1200px) {
+    .contact-us {
+        padding-right: 100px;
+    }
+    .contact-us.styled-wrapper-to-left{
+        margin-right: 121px;
+    }
+    .faq-container{
+        margin: 40px;
+    }
+    .contact-us.styled-wrapper-to-left{
+        margin: 40px;
+    }
+}
+
+@media (max-width: 1025px) {
+    .faq-title{
+        padding: 0;
+    }
+    .contact-us {
+        border-radius: 15px;
+        box-shadow: inset 0 4px 4px #F3F3F3;
+        padding: 24px;
+        margin-top: 0 !important;
+    }
+    .contact-us .contact-inputs{
+        flex-direction: column;
+    }
+    .form-field{
+        margin-right: 0;
+    }
+    .contact-us .contact-inputs .left-part{
+        margin-right: 0;
+    }
+    .contact-us .button{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .radio .faq-content{
+        padding: 5px;
+    }
+    .title-text.contact-title{
+        font-size: 30px;
+        line-height: 35px;
+    }
+    .contact-us .contact-subtitle{
+        font-size: 24px;
+        line-height: 29px;
+    }
+    .contact-us.styled-wrapper-to-left {
+        padding: 24px !important;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .contact-us .contact-desc{
+        font-size: 16px;
+        line-height: 150.5%;
+    }
+    .faq-container {
+        margin: 38px 15px 38px 15px;
+    }
+
+    .faq-title .title-text {
+        font-size: 36px;
+    }
+
+    .radio-label .title-gray-30 {
+        font-size: 20px;
+    }
+
+    .contact-us {
+        padding: 40px 80px 70px 70px;
+    }
+
+    .contact-us .contact-inputs .left-part {
+        margin-right: 0;
+    }
+    .faq-item-title{
+        font-size: 24px;
+        line-height: 29px;
+        padding: 20px 20px 20px 0;
+    }
+    .radio input[type="radio"] + .radio-label:before{
+        width: 17px;
+        height: 17px;
+    }
+    .faq-content .question-answer h6{
+        font-size: 20px;
+        line-height: 24px;
+        color: #4D4D4D;
+        margin-bottom:5px;
+    }
+    .faq-content .question-answer .pink-text{
+
+    }
+    .faq-content .question-answer p{
+        margin: 5px 0;
+        font-size: 16px;
+        line-height: 150.5%;
+        color: #4D4D4D;
+    }
+    .faq-content .question-answer .pink-text{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    #cf_send_mail_box{
+        padding: 44px 21px 33px 21px;
+    }
+}

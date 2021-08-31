@@ -1,0 +1,195 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+<isscript>
+            // calculate the total number of items in the cart by adding quantities together
+            // do not count bonus line items
+            var cartQty : Number = 0;
+            var pliIt : dw.util.Iterator = pdict.Basket.productLineItems.iterator();
+            while (pliIt.hasNext()) {
+                var pli : dw.order.ProductLineItem = pliIt.next();
+                cartQty += pli.quantity;
+            }
+            // add the gift certificates to cart quantity
+            cartQty += pdict.Basket.giftCertificateLineItems.size();
+</isscript>
+
+<style>
+.shippingSummaryHeadingMob{
+    display:none;
+}
+.shippingSummaryHrLineMob{
+    display:none;
+}
+.checkout-order-totals{
+
+    	border-bottom-left-radius: 10px !important;
+        border-bottom-right-radius: 10px!important;
+    
+}
+@media only screen and (max-width: 480px) {
+    .orderSummary{
+        display:block;
+        color : #184A8F;
+    }
+    .shippingSummaryHeadingMob{
+        display:inline;
+    }
+    .shippingSummaryHrLineMob{
+        display:block;
+        border: 1px solid #000000;
+    }
+    .checkout-order-totals{
+        background-color: #f8f8f8;
+        padding-top:10px;
+    	border-bottom-left-radius: 10px !important;
+        border-bottom-right-radius: 10px!important;
+    }
+}
+</style>
+
+<iscomment>
+    This template renders the summary of the current basket at the right hand side
+    of all checkout pages. It includes an order summary including order totals,
+    a list of all included shipments as well as the payment methods used to pay
+    the basket.
+</iscomment>
+<iscomment> Not needed, will use if we want number of actual product count instead of line item
+<isset name="count" value="${math.round(pdict.Basket.productLineItems.size())}" scope="page"/>
+</iscomment>
+<isif condition="${!empty(pdict.checkoutstep)}">
+    <isset name="checkoutstep" value="${pdict.checkoutstep}" scope="page"/>
+</isif>
+<isif condition="${typeof checkoutstep !== 'undefined' && !empty(checkoutstep) && (checkoutstep >= 2)}">
+    <iscomment><iscontentasset aid="cs-contact-number"/></iscomment>
+    <isif condition="${checkoutstep < 3}">
+        <h1 class="orderSummary">
+            <iscomment>
+                The edit link depends on the basket content: if there is just one gift 
+                certificate in the basket the edit link leads to the gift certificate purchase page
+                offering to edit the gift certificate settings.
+            </iscomment>
+            <iscomment>
+            <isset name="editUrl" value="${URLUtils.url('Cart-Show')}" scope="page"/>
+            <isif condition="${pdict.Basket.productLineItems.size() == 0 && pdict.Basket.giftCertificateLineItems.size() == 1}">
+                <isset name="editUrl" value="${URLUtils.url('GiftCert-Edit','GiftCertificateLineItemID', pdict.Basket.giftCertificateLineItems[0].UUID)}" scope="page"/>
+            </isif>
+            </iscomment>
+            ${Resource.msg('summary.title','checkout',null)}
+            <iscomment>
+            <a class="section-header-note" href="${editUrl}">${Resource.msg('global.edit','locale',null)}</a>
+            </iscomment>
+        </h1>
+        <div class="checkout-mini-cart">            
+            
+            <isif condition="${checkoutstep  != 5}">
+            <hr style="border:1px solid #ececec">
+                <isminilineitems p_lineitemctnr="${pdict.Basket}"/>
+            </isif>
+        </div>
+    </isif>
+    
+    <isif condition="${checkoutstep == 3 || checkoutstep == 4}">
+
+        <iscomment> This div shown only in mobile design
+        <div class="shippingSummaryHeadingMob">
+            <h4 style="font-size:12px;font-weight:bold; margin:0px 20px 0px 0px;display:inline">ORDER SUMMARY</h4>
+            <a style="text-decoration:underline;font-size:12px;display:inline" href="${URLUtils.url('Cart-Show')}">Edit</a>
+        </div>
+        </iscomment>
+
+        <h1 class="orderSummary">
+        <isprint value="${cartQty}" formatter="##" />
+            <iscomment>
+                The edit link depends on the basket content: if there is just one gift 
+                certificate in the basket the edit link leads to the gift certificate purchase page
+                offering to edit the gift certificate settings.
+            </iscomment>
+            <iscomment>
+            <isset name="editUrl" value="${URLUtils.url('Cart-Show')}" scope="page"/>
+            <isif condition="${pdict.Basket.productLineItems.size() == 0 && pdict.Basket.giftCertificateLineItems.size() == 1}">
+                <isset name="editUrl" value="${URLUtils.url('GiftCert-Edit','GiftCertificateLineItemID', pdict.Basket.giftCertificateLineItems[0].UUID)}" scope="page"/>
+            </isif>
+            </iscomment>
+            <isif condition="${cartQty == 1}">
+            Item
+             <iselse/>
+             Items
+              </isif>  
+            <iscomment>
+            <a class="section-header-note" href="${editUrl}">${Resource.msg('global.edit','locale',null)}</a>
+            </iscomment>
+        </h1>
+        <div class="checkout-mini-cart">            
+
+            <isif condition="${checkoutstep  != 5}">
+                        <hr style="border:1px solid #ececec">
+
+                <isminilineitems p_lineitemctnr="${pdict.Basket}"/>
+            </isif>
+        </div>
+        
+    </isif>
+    <isif condition="${checkoutstep == 5}">
+        <p class="summarytext">
+            ${Resource.msg('summary.title','checkout',null)}
+        </p>
+        <div class="checkout-mini-cart">          
+  
+            <isif condition="${checkoutstep  != 5}">
+                        <hr style="border:1px solid #ececec">
+
+                <isminilineitems p_lineitemctnr="${pdict.Basket}"/>
+            </isif>
+        </div>
+    </isif>
+    <iscomment>render the order totals</iscomment>
+    <isif condition="${checkoutstep < 5}">
+    <div class="checkout-order-totals">
+        <isif condition="${checkoutstep > 3}">
+            <isordertotals p_lineitemctnr="${pdict.Basket}" p_showshipmentinfo="${true}" p_shipmenteditable="${true}" p_totallabel="${Resource.msg('global.ordertotal','locale',null)}"/>
+        <iselse/>
+            <isordertotals p_lineitemctnr="${pdict.Basket}" p_showshipmentinfo="${false}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('global.estimatedtotal','locale',null)}"/>
+        </isif>
+    </div>
+    </isif>
+    <isif condition="${checkoutstep == 5}">
+    <div class="checkout-order-totals"  style="background-color:white;padding:0px;">
+        <isif condition="${checkoutstep > 3}">
+            <isreviewordertotals p_lineitemctnr="${pdict.Basket}" p_showshipmentinfo="${true}" p_shipmenteditable="${true}" p_totallabel="${Resource.msg('global.ordertotal','locale',null)}"/>
+        <iselse/>
+            <isreviewordertotals p_lineitemctnr="${pdict.Basket}" p_showshipmentinfo="${false}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('global.estimatedtotal','locale',null)}"/>
+        </isif>
+    </div>
+    </isif>
+    <isif condition="${checkoutstep == 5}">
+    <div class="submit-order-div">
+          
+            <form action="${URLUtils.https('COSummary-Submit')}" method="post" class="submit-order">
+                <fieldset>
+                    <div class="form-row" style="width:100%;margin:0px;">
+                        <iscomment>
+                            <a class="back-to-cart" href="${URLUtils.url('Cart-Show')}">
+                                <isprint value="${Resource.msg('summary.editcart','checkout',null)}" encoding="off" />
+                            </a></iscomment>
+                        <button class="submitpay" style="margin-left: -10%;background-color: #1d4988;"  type="submit" name="submit" value="${Resource.msg('global.submitorder','locale',null)}">
+                            ${Resource.msg('global.submitpayment','locale',null)}
+                        </button>
+                    </div>
+                    <input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+                </fieldset>
+            </form>
+        <p>Proceed using the selected payment method</p>
+        
+    </div>
+    </isif>
+    <iscomment>render single shipment boxes</iscomment>
+    <iscomment> Removed the Shipping address in order summary section
+    <isif condition="${pdict.CurrentForms.multishipping.entered != true}">
+        <isinclude template="checkout/shipping/minishipments"/>
+    </isif>
+    </iscomment>
+    <iscomment>render billing information: billing address and payment instruments</iscomment>  
+    <iscomment> Not showing the Billing info
+    <isinclude template="checkout/billing/minibillinginfo"/>
+    </iscomment>
+</isif>

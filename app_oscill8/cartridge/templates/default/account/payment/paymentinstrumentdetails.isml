@@ -1,0 +1,461 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+
+
+<style>
+	
+	.ownerdiv {
+		width:60%;
+		float:left;
+	}
+	.typediv {
+		width:35%;
+		float:right;
+	}
+	.carddiv {
+		width:53%;
+		float:left;
+	}
+	.numberdiv {
+		margin-right:5%;
+	}
+
+	.inner-card-wrp {
+		margin-bottom: 20px;
+		background: rgba(248, 248, 248, 0.5);
+		border-radius: 5px;
+		padding: 27px 20px;
+	}
+	.img-wrp {
+		max-width: 42px;
+		width: 100%;
+		margin-right: 16px;
+	}
+
+	.top-info {
+		padding-bottom: 16px;
+		position: relative;
+	}
+	input[type="checkbox"] {
+		margin: 0 !important;
+	}
+	.right-col label {
+		margin-bottom: -4px;
+		color: #4D4D4D;
+		font-size: 12px;
+		margin-left: 10px;
+	}
+	.yearDiv {
+		width: 17% ;
+		margin-top:9px !important;
+		margin-right:unset !important;
+	}
+	.monthDiv {
+		margin-left: 5% !important;
+		margin-top:9px;
+		width:23% !important;
+
+	}
+	.form-label-text {
+		display: none;
+	}
+
+	input:not(:disabled):not([type=checkbox]):not([type=radio]), select {
+		max-width: unset;
+	}
+
+	.popup-title {
+		color: #184A8F;
+		font-family: 'ProximaNovaSoftW03';
+		font-size: 24px !important;
+		font-style: normal !important;
+		text-transform: none !important;
+	}
+	.apply-button {
+		display: block !important;
+		font-family: 'Montserrat' !important;
+		float: right;
+		margin-right: 0% !important;
+	}
+	.cancel-button {
+		color: #4D4D4D !important;
+		font-size: 14px;
+		margin-top: 0.5%;
+	}
+	.apply-button:hover {
+		background-color: #184A8F;
+	}
+	.dialog-content .dialog-required {
+		display: none !important;
+	}
+	.dialog-content {
+		padding: 10px 44px 44px 44px !important;
+	}
+	.ui-dialog {
+		border-radius: 10px;
+		top: 10.8em !important;
+		width: 680px !important;
+	}
+
+	.ui-dialog .ui-dialog-titlebar {
+		border-radius: 10px;
+		background-color: white !important;
+	}
+	
+
+/*CSS for custom fields starts*/
+.form-horizontal label {
+    text-align: left !important;
+    width: 100% !important;
+    font-size:12px !important;
+    font-weight:400 !important;
+    line-height:2;
+}
+.form-caption {
+    margin-left:0px !important;
+	float:left;
+}
+.field-wrapper {
+    padding-left:0px !important;
+}
+.form-horizontal .form-row-button {
+    width:100% !important;
+}
+.form-row {
+    margin: 0 0 0rem 0 !important;
+}
+.s-hidden {
+    visibility:hidden;
+    padding-right:10px;
+}
+.select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    height: 35px;
+    font:normal 11.4px Arial, Sans-Serif;
+    color:black;
+    border:1px solid #ccc;
+    width:100% !important;
+    margin-bottom: 2% !important;
+}
+.styledSelect {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color:#ededed;
+    padding: 1em .5em;
+    font-family: mr-eaves-modern, sans-serif;
+
+}
+.styledSelect:after {
+    content:"";
+    width:0;
+    height:0;
+    border:5px solid transparent;
+    border-color:black transparent transparent transparent;
+    position:absolute;
+    top:13px;
+    right:6px;
+}
+.styledSelect:active, .styledSelect.active {
+    background-color:#eee;
+    height:110px;
+}
+.styledSelect::selection {
+    background-color:#ededed;
+}
+.options {
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    z-index:999;
+    margin:0 0;
+    padding:0 0;
+    height:128px;
+    overflow-y:auto;
+    list-style:none;
+    border:1px solid #ccc;
+    background-color:white;
+    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.options li {
+    margin:0 0;
+    padding:10px 10px 10px 10px;
+    background-color:#ededed;
+    color:Black;
+    
+}
+.options li:hover {
+    background-color:white;
+}
+/*CSS for custom fields ends*/
+.disableContent{
+    display:none !important;
+}
+.checkoutCartSummaryDivMob{
+    display:none;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.checkoutCartSummaryDiv{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.miniCartPricing {
+    clear: right;
+    float: right;
+    margin-right: 0.5%;
+    font-size: 13px;
+    width: 19%;
+    text-align: right;
+}
+.error > div > div {
+    border-color: rgb(153,0,0) !important;
+}
+.botdivl {
+    width:50%;
+    float:left;
+}
+.botdivr {
+    width:50%;
+    float:right;
+}
+.botscontainer{
+    margin-top:30px;
+    width:100%;
+    padding-bottom:30px;
+}
+.checkout-order-totals {
+    background-color: #f8f9fb;
+    padding: 0.3rem .5rem;
+}
+
+.checkbox-row {
+    top: 42%;
+    width: 100%;
+    vertical-align: bottom;
+    padding-top:10px;
+}
+.form-horizontal select {
+	padding-left: 10px;
+}
+span.error {
+	float:left;
+}
+.monthDiv label {
+	float:left !important;
+}
+.yearDiv label {
+	float:left !important;
+}
+.framebod::-webkit-scrollbar {
+  display: none;
+}
+.error-message {
+		width:200px !important;
+		text-align:left;
+	}
+
+@media only screen and (min-width: 500px) and (max-width: 1900px) {
+	.monthDiv .form-row:after {
+	position: absolute !important;
+	margin-left: 20% !important;
+    margin-top: -20px;
+}
+.yearDiv .form-row:after {
+	position: absolute !important;
+	margin-left: 12% !important;
+    margin-top: -20px;
+}
+}
+@media only screen and (max-width: 1274px) {
+	.ui-dialog {
+		margin-left: -11rem;
+	}
+}
+
+@media only screen and (max-width: 1128px) {
+	.ui-dialog {
+		margin-left: -12rem;
+		width: 600px !important;
+	}
+}
+
+@media only screen and (max-width: 998px) {
+	.ui-dialog {
+		margin-left: -15rem;
+	}
+}
+
+@media only screen and (max-width: 924px) {
+	.ui-dialog {
+		margin-left: -17rem;
+	}
+}
+@media only screen and (max-width: 860px) {
+	.ui-dialog {
+		margin-left: -18rem;
+	}
+}
+@media only screen and (max-width: 783px) {
+	.ui-dialog {
+		margin-left: -20rem;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.ui-dialog {
+		width: 580px !important;
+        margin-left: -21rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+	.left-col{
+		width:100%;
+	}
+	.right-col{
+		width:100%;
+		margin-left:20px;
+	}
+	.ownerdiv {
+		width:100%;
+		float:left;
+	}
+	.typediv {
+		width:100%;
+		float:right;
+	}
+	.carddiv {
+		width:100%;
+		float:left;
+	}
+	.numberdiv {
+		margin-right:5%;
+	}
+	.monthDiv {
+		width:47%!important;
+		margin-left:unset !important;
+	}
+	.yeardiv {
+		width:45% !important;
+	}
+	.monthDiv .form-row:after {
+	position: absolute !important;
+	margin-left: 40% !important;
+    margin-top: -20px;
+}
+.yearDiv .form-row:after {
+	position: absolute !important;
+	margin-left: 38% !important;
+    margin-top: -20px;
+}
+
+}
+
+
+
+
+</style>
+<isset name="DecoratorTemplate" value="account/pt_account1" scope="page"/>
+
+<isif condition="${pdict.CurrentHttpParameterMap.format.stringValue == 'ajax' || pdict.CurrentHttpParameterMap.ajax.stringValue == 'true' }">
+	<isset name="DecoratorTemplate" value="util/pt_empty" scope="page"/>
+</isif>
+
+<isdecorate template="${DecoratorTemplate}">
+
+	<h2 class="popup-title">Add Payment Information</h2>
+		<div class="inner-card-wrp">
+			<div class="top-info flex fjb fac">
+				<div class="left-col flex fac">
+					<div class="img-wrp">
+						<img src="${URLUtils.absStatic('/images/Visa.svg')}" alt="">
+					</div>
+					<div class="info">
+						<p class="card-name">Visa Card</p>
+						<p class="card-number">Debit *** XXXXX</p>
+					</div>
+				</div>
+				<div class="right-col">
+					<div class="popup-set-default flex fac">
+						<input type="checkbox" style="border: none !important;" id="popup-set-default" name="set-default">
+						<label for="popup-set-default">Make this my default payment
+							method.</label>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-info flex fac">
+				<p>We Accept:</p>
+				<div class="card-types">
+					<img src="${URLUtils.absStatic('/images/card-types.png')}" alt="Card Types">
+				</div>
+			</div>
+		</div>
+		
+
+	<form id="CreditCardForm" name="CreditCardForm" action="${URLUtils.httpsContinue()}" class="form-horizontal" method="post" id="newcreditcard" target="_self">
+	
+		<fieldset>
+			<isscript>
+				var ownerAttributes = {
+					maxlength: 40,
+					size: 40
+				};
+				var numberAttributes = {
+					maxlength: 16,
+					size: 17
+				};
+			</isscript>
+			<isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.owner}" type="input" attributes="${ownerAttributes}" />
+			<isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.type}" type="select"/>
+			<isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.number}" dynamicname="true" type="input" attributes="${numberAttributes}"/>
+			<div class="form-label-text">
+				<span class="required-indicator">&#8226; </span>
+				${Resource.msg('account.paymentinstrumentdetails.expires','account',null)}
+			</div>
+			<isscript>
+					var currentCountry = require('~/cartridge/scripts/util/Countries').getCurrent(pdict);
+			</isscript>
+
+			<isdynamicform formobject="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.expiration}" formdata="${currentCountry.dynamicForms.expirationInfo}" />
+
+			<div class="form-row form-row-button">
+				<button id="applyBtn" class="apply-button form-btn button1 btn-blue" style="width:120px;margin-top:30px" onmouseover="this.style.color='white'" type="submit" name="${pdict.CurrentForms.paymentinstruments.creditcards.create.htmlName}" value="${Resource.msg('global.apply','locale',null)}">
+					Save
+				</button>
+			</div>
+			<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+		</fieldset>
+	</form>
+	
+	<div class="confirmation-container dialog-content" id="confirmation-container" style="display:none;">
+		<div class="error-form">${Resource.msg('account.paymentinstruments.forbidden', 'account', null)}</div>
+		<button type="button">${Resource.msg('global.close', 'locale', null)}</button>
+	</div>
+
+
+</isdecorate>
+<script>
+/*
+	$('#dwfrm_paymentinstruments_creditcards_newcreditcard_owner').parent().css('width', '65%');
+	$('#dwfrm_paymentinstruments_creditcards_newcreditcard_owner').parent().css('float', 'left');
+	$('#dwfrm_paymentinstruments_creditcards_newcreditcard_type').parent().css('width', '30%');
+	$('#dwfrm_paymentinstruments_creditcards_newcreditcard_type').parent().css('float', 'right');
+
+	$('*[placeholder="Card Number"]').parent().css('width', '55%');
+	$('*[placeholder="Card Number"]').parent().css('float', 'left');
+*/
+$('#dwfrm_paymentinstruments_creditcards_newcreditcard_owner').parent().addClass('ownerdiv');
+	$('#dwfrm_paymentinstruments_creditcards_newcreditcard_type').parent().addClass('typediv');
+	$('*[placeholder="Card Number"]').parent().addClass('carddiv');	
+	 
+
+
+</script>

@@ -1,0 +1,110 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<title>Rechargeable Toothbrush | Electric Toothbrush | Conair Interplak Oscill8</title>
+<meta charset="UTF-8">
+  <meta name="description" content="The Rechargeable Toothbrush OSCILL8™ features an innovative brush head with 270 ̊ tuft rotation to brush your teeth correctly for dentist-level oral hygiene.">
+  <meta name="keywords" content="conair, interplak, interplak by conair, interplak toothbrush, oscill8, oscill8 rechargeable toothbrush, home page, electric toothbrush, best electric toothbrush, electric toothbrush charger, electric toothbrush heads, rechargeable toothbrush, rechargeable electric toothbrush, battery powered toothbrush, electric toothbrush amazon, electric toothbrush walmart, nt18">
+  <meta name="viewport" maximum-scale=1.0 user-scalable=no>
+	<isscript>
+		var pageContext = {
+			title: 'Storefront',
+			type: 'storefront',
+			ns: 'storefront'
+		};
+		pdict.showCountrySelector = true;
+	</isscript>
+	<isinclude template="util/modules"/>
+
+	<iscomment>This page must be cachable. It inherits the caching attributes by the decorated template.</iscomment>
+
+	<isinclude template="components/header/htmlhead"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/reset.css')}"/>
+
+	<isinclude template="content/home/pt_storefront_UI"/>
+
+	<iscomment>Add page specific header information here.</iscomment>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<title>Oscill8</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<meta name="google-site-verification" content="AN1ANQf2SKJZoq7cZCkB1DkKqwy94dZHYhjtim1AteE" />
+
+    <script type="application/ld+json">
+	{
+		"@context": "http://schema.org/",
+		"@type": "VideoObject",
+		"name": "Oscill8 Rechargeable Power Toothbrush",
+		"description": "The Rechargeable Toothbrush OSCILL8™ features an innovative brush head with 8 individual oscillating tufts that makes 270 ̊ tuft rotation to brush your teeth correctly for dentist-level oral hygiene.",
+		"thumbnailUrl": "https://i.vimeocdn.com/video/1070026188_640",
+		"uploadDate": "2021-02-25",
+		"duration": "PT39S",
+		"contentUrl": "https://oscill8.com/"
+	}
+	</script>
+	
+</head>
+<body style="background:repeat #f8f9fb">
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXP24K2"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) --> 
+
+
+
+
+
+			<isreplace/>
+			
+			<isinclude template="components/browsertoolscheck"/>
+
+
+		<isinclude template="content/home/pt_storefront_VARS"/>
+
+<script> 
+(function(){ 
+console.log("Script included");
+var s = document.createElement('script'), 
+e = ! document.body ? document.querySelector('head') : document.body; 
+s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; 
+s.async = true; 
+s.onload = function(){
+ acsbJS.init({ 
+ statementLink : '', 
+ footerHtml : '', 
+ hideMobile : false, 
+ hideTrigger : false, 
+ language : 'en', 
+ position : 'right', 
+ leadColor : '#146FF8', 
+ triggerColor : '#146FF8', 
+ triggerRadius : '50%', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'bottom', 
+ triggerIcon : 'people', 
+ triggerSize : 'medium', 
+ triggerOffsetX : 20, 
+ triggerOffsetY : 20, 
+ mobile : { 
+ triggerSize : 'small', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'center', 
+ triggerOffsetX : 0, 
+ triggerOffsetY : 0, 
+ triggerRadius : '50%' 
+ } 
+ }); 
+}; 
+e.appendChild(s); 
+}()); 
+</script>
+
+
+</body>
+</html>

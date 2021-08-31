@@ -1,0 +1,352 @@
+.subscriptions-wrp .subscription-row{
+    margin-bottom: 24px;
+}
+
+.subscriptions-wrp .subscription-row:last-child{
+    margin-bottom: 0;
+}
+
+.subscriptions-wrp .status-row{
+    background: rgba(227, 228, 229, 0.5);
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 5px 35px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #4D4D4D;
+}
+
+.subscriptions-wrp .subscription-info{
+    background: #FCFCFC;
+    border-radius: 5px;
+    padding: 24px;
+}
+
+.subscriptions-wrp .cancel-btn{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #184A8F;
+    margin-top: 20px;
+}
+
+.subscriptions-wrp .subscription-info .product-info > .img{
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+}
+
+.subscriptions-wrp .subscription-info .product-info > .text-info{
+    margin-left: 16px;
+}
+
+.subscriptions-wrp .subscription-info .product-info .product-name{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #4D4D4D;
+    margin-bottom: 10px;
+}
+
+.subscriptions-wrp .subscription-info .product-info .product-price,
+.subscriptions-wrp .subscription-info .product-info .subscription-time{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    color: #4D4D4D;
+}
+
+.subscriptions-wrp .subscription-info .product-info{
+    width: 30%;
+}
+
+.subscriptions-wrp .subscription-info .btns-wrp{
+    width: 20%;
+}
+
+.subscriptions-wrp .subscription-info .inputs-wrp{
+    width: 50%;
+}
+
+.subscriptions-wrp .subscription-info .inputs-wrp input{
+    font-family: 'Montserrat';
+    border: 1px solid #4D4D4D;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #4D4D4D;
+}
+
+.subscriptions-wrp .subscription-info .inputs-wrp label{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #4D4D4D;
+}
+
+.subscriptions-wrp .subscription-info .inputs-wrp .same-col-stiles{
+    margin-right: 38px;
+}
+
+.subscriptions-wrp .subscription-info .inputs-wrp .same-col-stiles:last-child{
+    margin-right: 0;
+}
+
+.subscriptions-wrp .subscription-info .inputs-wrp .quantity-col input{
+    width: 95px;
+    text-align: center;
+}
+
+.subscription-payments-shipping{
+    margin-top: 18px;
+}
+
+.subscription-payments-shipping .sps-toggle-wrapper{
+    text-align: center;
+}
+
+.subscription-payments-shipping .sps-toggle-wrapper .sps_toggle_btn{
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #4D4D4D;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+.subscription-payments-shipping .sps-toggle-wrapper .sps_toggle_btn .arr-ico{
+    background: #FFFFFF;
+    border: 1px solid #B2B2B2;
+    box-sizing: border-box;
+    display: inline-flex;
+    text-align: center;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.subscription-payments-shipping .sps-items{
+    display: none;
+    margin-top: 18px;
+}
+
+.subscription-payments-shipping .sps-items.active{
+    display: block;
+}
+
+.subscription-payments-shipping .sps-items .sps-items-inner{
+    margin-right: -12px;
+    margin-left: -12px;
+}
+
+.subscription-payments-shipping .sps-item{
+    width: calc(33.33% - 24px);
+    margin: 12px;
+    background: #FFFFFF;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 24px 20px;
+}
+
+.subscription-payments-shipping .sps-item .title{
+    font-family: 'ProximaNovaSoftW03';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #184A8F;
+    margin-right: 10px;
+}
+
+.subscription-payments-shipping .sps-item .sps-item-inner{
+    background: #FCFCFC;
+    border-radius: 5px;
+    padding: 16px;
+    margin-top: 25px;
+    transition: all .3s;
+}
+
+.subscription-payments-shipping .sps-item .sps-item-inner:hover{
+    background: rgba(220, 220, 220, 0.5);
+}
+
+.subscription-payments-shipping .sps-item .sps-item-inner .name{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.subscription-payments-shipping .sps-item .sps-item-inner .desc{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #000000;
+}
+
+.edit-popup .card-list,
+.edit-popup .address-list{
+    margin-left: 0;
+    margin-top: 32px;
+}
+
+.edit-popup .address-list .single-address .info-wrp .name{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.edit-popup .address-list .single-address .info-wrp .address{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #000000;
+}
+
+@media all and (max-width: 1200px){
+}
+
+@media all and (max-width: 1101px){
+    .subscription-info .subscription-info-inner{
+        flex-wrap: wrap;
+    }
+    .subscriptions-wrp .subscription-info .product-info{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .subscriptions-wrp .subscription-info .inputs-wrp{
+        width: 100%;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    .subscriptions-wrp .subscription-info .inputs-wrp .same-col-stiles{
+        flex: 1;
+    }
+    .subscriptions-wrp .subscription-info .inputs-wrp .quantity-col input{
+        width: 100%;
+    }
+    .subscriptions-wrp .subscription-info .btns-wrp{
+        width: 100%;
+    }
+    .subscription-payments-shipping{
+        margin-top: 22px;
+        margin-bottom: 22px;
+    }
+    .subscription-payments-shipping .sps-item{
+        width: calc(100% - 24px)
+    }
+}
+
+@media all and (max-width: 1025px){
+    .edit-popup .card-list,
+    .edit-popup .address-list{
+        flex-direction: column;
+    }
+    .address-list .single-address,
+    .card-list .single-card{
+        width: 100% !important;
+        margin-bottom: 10px !important;
+    }
+    .subscriptions-wrp .subscription-info .inputs-wrp .same-col-stiles input{
+        width: 100%;
+        max-width: 100%;
+    }
+    .subscriptions-wrp .subscription-info .product-info > .img{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media all and (max-width: 769px){
+    .subscriptions-wrp .subscription-info .inputs-wrp .quantity-col.same-col-stiles{
+        flex: 35%;
+        width: 35%;
+        margin-right: 11px;
+    }
+    .subscriptions-wrp .subscription-info .inputs-wrp .sendtime-col.same-col-stiles{
+        flex: 100%;
+        margin-top: 15px;
+    }
+    .subscriptions-wrp .subscription-info .inputs-wrp .delivery-col.same-col-stiles{
+        margin-right: 0;
+        flex: calc(65% - 11px);
+        width: calc(65% - 11px);
+    }
+    .subscriptions-wrp .subscription-info .btns-wrp a.activation-btn{
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .subscriptions-wrp .subscription-info .btns-wrp a.activation-btn .active-btn{
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        height: 45px;
+    }
+    .subscriptions-wrp .status-row{
+        padding: 9px 12px;
+    }
+    .subscription-payments-shipping .sps-toggle-wrapper{
+        text-align: left;
+    }
+    .subscription-payments-shipping .sps-toggle-wrapper .sps_toggle_btn{
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .subscription-payments-shipping + .btns-wrp.show_mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .active-section{
+        padding: 15px;
+    }
+    .subscriptions-wrp .subscription-info{
+        padding: 15px;
+    }
+    .subscription-payments-shipping{
+        margin-top: 0;
+    }
+    .subscription-payments-shipping .sps-item{
+        padding: 17px;
+    }
+}

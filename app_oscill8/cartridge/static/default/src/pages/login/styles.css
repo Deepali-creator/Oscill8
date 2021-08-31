@@ -1,0 +1,191 @@
+.main-page-wrapper {
+
+}
+.oscill8-footer {
+    margin: 0;
+}
+.pg-container {
+    width: 100%;
+    padding: 0 30px;
+    margin: auto;
+}
+.login-wrp {
+    padding: 35px 0 40px 0;
+}
+.login-wrp .left-col ,.login-wrp .right-col{
+    width: calc((100% - 25px) / 2);
+    padding: 22px 150px;
+    background-color: #fff;
+    box-shadow: 1px 1px 6px 0 #cccaca;
+
+}
+.login-wrp .form-wrp .form-title {
+    font-family: 'ProximaNovaSoftW03';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 43px;
+    color: #184A8F;
+    text-align: center;
+}
+.login-wrp .form-wrp .form-row {
+    margin-bottom: 24px;
+}
+.login-wrp .form-wrp .btn {
+    height: 50px;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-family: "Montserrat";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    max-width: 162px;
+    width: 100%;
+    margin: auto;
+}
+.login-wrp .form-wrp input {
+    width: 100%;
+    padding: 8px 12px;
+    background: #FFFFFF;
+    border: 1px solid rgba(178, 178, 178, 0.5);
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #363636;
+}
+.login-wrp .form-wrp input::-webkit-input-placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #B2B2B2;
+}
+.login-wrp .form-wrp input::-moz-placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #B2B2B2;
+}
+.login-wrp .form-wrp input::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #B2B2B2;
+}
+.login-wrp .form-wrp .gray-txt {
+    font-size: 16px;
+    color: rgb(148, 148, 148);
+    font-family: "Comfortaa-Bold";
+    letter-spacing: 1px;
+}
+.login-wrp .left-col .form-wrp .forgot-pass {
+    position: relative;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #184A8F;
+}
+.login-wrp .left-col .form-wrp .btn {
+    margin-top: 32px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.login-wrp .left-col .form-wrp form {
+    margin-top: 32px;
+}
+.btn-blue:hover {
+    background-color: #154288;
+}
+.login-wrp .right-col .top-row, .login-wrp .right-col .bottom-row {
+    max-width: 470px;
+    width: 100%;
+    margin: auto;
+}
+.login-wrp .right-col .top-row {
+    padding-bottom: 35px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(178, 178, 178, 0.5);
+}
+.login-wrp .right-col .form-wrp .form-descr {
+    margin-bottom: 24px;
+    margin-top: -18px !important;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #4D4D4D;
+}
+.login-wrp .left-col, .login-wrp .right-col{
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), inset 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+@media (max-width: 2450px) {
+    .pg-container {
+        max-width: 1540px;
+    }
+    .login-wrp .left-col, .login-wrp .right-col {
+        padding: 22px 70px;
+    }
+}
+@media (max-width: 1750px) {
+    .pg-container {
+        max-width: 1140px;
+    }
+    .login-wrp .left-col, .login-wrp .right-col {
+        padding: 22px 40px;
+    }
+}
+@media (max-width: 1500px) {
+    .pg-container {
+        max-width: 1100px;
+    }
+}
+@media (max-width: 1200px) {
+    .pg-container {
+        max-width: 100%;
+    }
+}
+@media (max-width: 1025px) {
+
+}
+@media (max-width: 850px) {
+    .login-wrp{
+        flex-direction: column;
+    }
+    .login-wrp .left-col, .login-wrp .right-col{
+        width: 100%;
+        box-shadow: inset 0 4px 4px #F3F3F3;
+        border-radius: 15px;
+    }
+    .login-wrp .form-wrp .form-title{
+        font-size: 30px;
+    }
+    .login-wrp .left-col{
+        margin-bottom: 20px;
+    }
+    
+}
+@media (max-width: 769px) {
+
+}

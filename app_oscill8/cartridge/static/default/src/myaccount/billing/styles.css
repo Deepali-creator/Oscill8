@@ -1,0 +1,305 @@
+.active-section.addresses-section {
+    padding-top: 30px;
+}
+.add-card-row{
+    margin-bottom: 24px;
+    max-width: 975px;
+    width: 100%;
+    margin-left: 2.5%;
+}
+.add-card-row a {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #A8529D;
+}
+.card-list {
+    margin-left: 2.5%;
+    max-width: 975px;
+    width: 100%;
+}
+.card-list .single-card {
+    width: calc((100% - 24px) / 2);
+    margin-bottom: 24px;
+    background: rgba(248, 248, 248, 0.5);
+    border-radius: 5px;
+    padding: 17px 22px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    order: 2;
+}
+.card-list .single-card.default-card {
+    /*order: 1;*/
+}
+.card-list .single-card:hover {
+    background: rgba(220, 220, 220, 0.5);
+}
+
+.card-list .single-card .left-col {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+.card-list .single-card .left-col .img-wrp {
+    max-width: 42px;
+    width: 100%;
+    margin-right: 16px;
+}
+.card-list .single-card .left-col .info .card-name {
+    font-family: 'Montserrat';
+    font-size: 17px;
+    line-height: 21px;
+    margin-bottom: 6px;
+    color: #000000;
+}
+.card-list .single-card .left-col .info .card-number {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    line-height: 21px;
+    color: #4D4D4D;
+}
+.card-list .single-card .right-col {
+    width: 115px;
+    flex-shrink: 0;
+}
+.card-list .single-card .right-col .btn-wrp {
+    text-align: right;
+}
+.card-list .single-card .right-col .btn-wrp:first-child {
+    margin-bottom: 15px;
+
+    padding-right: 5px;
+}
+.card-list .single-card .right-col .btn-wrp .set-default {
+    color: #828282;
+    font-family: 'Montserrat';
+    font-size: 14px;
+}
+.card-list .single-card .right-col .btn-wrp .set-default.checked .default-txt,.card-list .single-card .right-col .btn-wrp .set-default .sd-txt {
+    display: block;
+}
+.card-list .single-card .right-col .btn-wrp .set-default.checked .sd-txt, .card-list .single-card .right-col .btn-wrp .set-default .default-txt {
+    display: none;
+}
+.card-list .single-card .right-col .btn-wrp .set-default.checked {
+    color: #184A8F;
+    font-family: 'Montserrat';
+}
+.card-list .single-card .right-col .btn-wrp .edit-card-btn {
+    display: inline-block;
+    background-color: #D4DAE6;
+    padding: 9px 20px;
+    border-radius: 200px;
+    font-family: 'Montserrat';
+    color: #184A8F;
+    font-size: 14px;
+}
+.card-list .single-card .right-col .btn-wrp .edit-card-btn:hover {
+    box-shadow: 0 0 12px 0 #d4d4d4;
+}
+.btn-wrp .mob-edit-card-btn{
+    display: none;
+}
+
+@media all and (max-width: 1200px){
+    .active-section.addresses-section{
+        padding: 30px 0 0 0;
+    }
+    .active-section.addresses-section .card-list{
+        margin-right: 0;
+        margin-left: 0;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .add-card-row{
+        max-width: 100%;
+        padding: 0 15px;
+        margin-right: 0;
+        margin-left: 0;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+@media all and (max-width: 1025px){
+    .active-section.addresses-section .card-list{
+        flex-direction: column;
+    }
+    .active-section.addresses-section .card-list .single-card{
+        width: 100%;
+    }
+    .active-titles-item-wrap{
+        display: block;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@media all and (max-width: 769px){
+    .btn-wrp .edit-card-btn{
+        display: none !important;
+    }
+    .btn-wrp .mob-edit-card-btn{
+        display: inherit;
+    }
+    .card-list .single-card .left-col .img-wrp{
+        width: 28px;
+        height: 28px;
+    }
+    .active-section.addresses-section .card-list .single-card{
+        background: #FCFCFC;
+        box-shadow: 0 4px 4px rgba(216, 216, 216, 0.25);
+        margin-bottom: 10px;
+    }
+    .active-section.addresses-section .card-list .single-card:last-child{
+        margin-bottom: 30px;
+    }
+    .edit-popup form .inner-wrp .inner-card-wrp .left-col .img-wrp{
+        width: 28px;
+        height: 28px;
+    }
+    .edit-popup form .inner-wrp .inner-card-wrp{
+        flex-direction: column;
+        justify-content: flex-start;
+        justify-items: flex-start;
+        align-items: center;
+    }
+    .edit-popup form .inner-wrp .inner-card-wrp .left-col,
+    .edit-popup form .inner-wrp .inner-card-wrp .right-col{
+        width: 100%;
+    }
+    .edit-popup form .inner-wrp .inner-card-wrp{
+        padding: 0;
+        box-shadow: none;
+        background: none;
+    }
+    .edit-popup form .inner-wrp .inner-card-wrp .left-col{
+        background: #F8F8F8;
+        box-shadow: 0 4px 4px rgba(216, 216, 216, 0.25);
+        padding: 11px;
+        margin: 15px;
+    }
+    .edit-popup .popup-title:first-child,
+    .order-popup .popup-title:first-child{
+        margin-bottom: 0;
+    }
+    .edit-popup form .card-info .popup-form-row.card-info-row .inner-row:last-child{
+        margin-top: 15px;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.card-info-row{
+        flex-direction: column;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.card-info-row .inner-row{
+        width: 100%;
+        max-width: 100% !important;
+    }
+    .edit-popup form .card-info .popup-form-row.card-info-row .inner-row select{
+        width: 100%;
+        display: block;
+    }
+    .edit-popup form .popup-form-row.state-row{
+        flex-wrap: wrap;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.city_field{
+        order: 1;
+        width: 100%;
+        max-width: 60% !important;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.state_field{
+        order: 2;
+        width: 100%;
+        max-width: 30% !important;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.zip_code_field{
+        order: 4;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        max-width: 30% !important;
+        margin-top: 15px;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.country_field{
+        order: 3;
+        width: 100%;
+        max-width: 60% !important;
+        margin-top: 15px;
+    }
+    .edit-popup form .btns-wrp{
+        flex-direction: column;
+    }
+    .edit-popup form .btns-wrp .left-part{
+        justify-content: space-between;
+    }
+    .edit-popup form .btns-wrp .left-part .form-btn{
+        width: 47%;
+        text-align: center;
+    }
+    .edit-popup form .btns-wrp .left-part .close-popup{
+        border: 1px solid #C4C4C4;
+        box-sizing: border-box;
+        border-radius: 200px;
+        padding: 9px 24px;
+        width: 47%;
+        text-align: center;
+    }
+    .edit-popup form .btns-wrp .right-part{
+        margin: 23px 0 13px 0;
+    }
+    .edit-popup form .btns-wrp .delete-method{
+        text-align: center;
+    }
+    .edit-popup form .popup-form-row.name-row{
+        flex-direction: column;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.name-row .inner-row:not(:last-child){
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .edit-popup form .popup-form-row.address-row{
+        flex-direction: column;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.address-row .inner-row{
+        max-width: 100% !important;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.address-row .inner-row:not(:last-child){
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .edit-popup form .popup-form-row.emailphone-row{
+        flex-direction: column;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.emailphone-row .inner-row{
+        max-width: 100% !important;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.emailphone-row .inner-row:not(:last-child){
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .edit-popup form .inner-wrp .inner-card-wrp > .top-info{
+        flex-direction: column;
+    }
+    .edit-popup#add-card .top-info:after{
+        display: none;
+    }
+    .edit-popup#add-card .bottom-info{
+        background: #F8F8F8;
+        border-radius: 5px;
+        padding: 13px 8px;
+    }
+    .edit-popup form .btns-wrp .left-part{
+        order: 1;
+    }
+    .edit-popup form .btns-wrp .right-part{
+        order: 2;
+    }
+    .edit-popup form .btns-wrp .left-part .form-btn{
+        order: 1;
+    }
+    .edit-popup form .btns-wrp .left-part .close-popup{
+        order: 2;
+    }
+    .edit-popup#add-card  .btns-wrp .left-part .close-popup{
+        margin-right: 0;
+    }
+}

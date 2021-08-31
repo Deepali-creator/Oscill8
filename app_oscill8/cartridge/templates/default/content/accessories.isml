@@ -1,0 +1,261 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<title>Electric Toothbrush Head | UV Toothbrush Sanitizer | Brush Sterilizer</title>
+<meta charset="UTF-8">
+  <meta name="description" content="Buy brush accessories for the Oscill8 rechargeable toothbrush such as brush heads and the UltraViolet toothbrush sanitizer (toothbrush sterilizer) here.">
+  <meta name="keywords" content="conair, interplak, interplak by conair, interplak toothbrush, oscill8, oscill8 rechargeable toothbrush, buy oscill8 accessories, buy brush heads, ultraviolet toothbrush sanitizer, oscill8 brush heads, electric toothbrush, best electric toothbrush, electric toothbrush charger, electric toothbrush heads, rechargeable toothbrush, rechargeable electric toothbrush, battery powered toothbrush, nt18">
+  <meta name="viewport" maximum-scale=1.0 user-scalable=no>
+
+
+	<isscript>
+		var pageContext = {
+			title: 'Customer Service',
+			type: 'customerservice',
+			ns:'account'
+		};
+	</isscript>
+	
+	
+	<isinclude template="util/modules"/>
+
+	<iscomment>This page must be cachable. It inherits the caching attributes by the decorated template.</iscomment>
+
+	<isinclude template="components/header/htmlhead"/>
+	<isinclude template="content/pt_customerservice_UI"/>
+
+	<iscomment>Add template-specific header information here.</iscomment>
+
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/accessories/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/faq/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/about-product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/reset.css')}"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+</head>
+
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXP24K2"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) --> 
+
+<main class="main-page-wrapper">
+
+		<isinclude template="components/header/header"/>
+
+					<isinclude template="components/browsertoolscheck"/>
+					
+
+
+
+	<isinclude template="util/modules"/>
+	<isscript>
+        var ProductMgr = require('dw/catalog/ProductMgr');
+        var brushHeadPrice = ProductMgr.getProduct('NT18RP').priceModel.price;
+        var ultravioletPrice = ProductMgr.getProduct('TBS1').priceModel.price;
+    </isscript>
+
+		<section class="accessories">
+		<div class="accessories-title-sec">
+			<h1 class="title-text">Toothbrush Accessories</h1>
+			<div class="accessories-text-sec">
+                <p>
+                    You can buy replacements whenever you need them. We do our best to make life as easy as possible for you.
+                </p>
+            </div>
+		</div>
+
+		<div class="accessories-details" style="position:center; align:center">
+			<div class="brush-heads column">
+				<div class="col-center">
+					<div class="pending-img pink-text-32">
+						<img src="${URLUtils.absStatic('/src/pages/accessories/Brush_Head.png')}" alt="electric toothbrush head">
+					</div>
+					<h2 class="accessories-detail-title">Brush Heads</h2>
+					<div class="accessories-detail-text">
+                        <p>
+                            If you're not sure yet about committing to a subscription, don't fret! You can purchase brush heads separately here. We recommend replacing your brush head every three months. 
+							Each purchase comes with one brush head.
+                        </p>
+                    </div>
+				</div>
+				<div class="col-center margin-top-20">
+					<p class="accessories-detail-price" style="margin:0px"><isprint value="${brushHeadPrice}"/> Plus Shipping</p>
+					<a id="bhead" class="accessories-detail-btn button1 btn-blue marg-top-20" style="margin:0;margin-top:10px;" disabled onclick="frameClick1()">Add To Cart</a>
+				</div>
+			</div>
+			
+			<div class="brush-heads column">
+				<div class="col-center">
+					<div class="pending-img pink-text-32">
+						<img src="${URLUtils.absStatic('/images/tbs1-interplak-by-conair-ultraviolet-toothbrush-sanitizer-inset-2.png')}" alt="uv toothbrush sanitizer">
+					</div>
+					<h2 class="accessories-detail-title" style="white-space:nowrap">UV Toothbrush Sanitizer</h2>
+					<div class="accessories-detail-text" style="max-width:300px">
+                        <p>
+							Cleaning your toothbrush is easier than ever with the Ultraviolet Toothbrush Sanitizer from Interplak® by Conair®. Now more than ever, it's vitally important to keep essentials like your toothbrush thoroughly sanitized.
+						</p>
+                    </div>
+				</div>
+				<div class="col-center margin-top-20">
+					<p class="accessories-detail-price" style="margin:0px"><isprint value="${ultravioletPrice}"/> Plus Shipping</p>
+					<a id="bhead1" class="accessories-detail-btn button1 btn-blue marg-top-20" style="margin:0;margin-top:10px;" onclick="frameClick2()">Add To Cart</a>
+				</div>
+			</div>
+		
+		    <iscomment>
+			<div class="brush-heads column">
+				<div class="col-center">
+					<div class="pending-img pink-text-32">
+						<img src="${URLUtils.absStatic('/images/comming soon.png')}" alt="">
+					</div>
+					<h3 class="accessories-detail-title">Brush Stand</h3>
+					<div class="accessories-detail-text">
+                        <p>
+							OSCILL8™ comes with a convenient stand to hold and charge your brush so it is always ready to use (and you never have to lay it down on the counter!). But. you may want an extra for travel! 
+                        </p>
+                    </div>
+				</div>
+				<div class="col-center margin-top-20">
+					<p class="accessories-detail-price" style="margin:0px">$XX.XX</p>
+					<a class="accessories-detail-btn button1 btn-blue marg-top-20" style="margin:0;margin-top:10px;" disabled onclick="">Add To Cart</a>
+				</div>
+			</div>
+			</iscomment>
+		
+			
+		</div>
+	</section>
+<div style="display:none">
+	<iframe id="brushheadsframe1" src="/s/us-oscill8/NT18RP.html"></iframe>
+	<iframe id="brushheadsframe2" src="/s/us-oscill8/TBS1.html"></iframe>
+</div>
+
+		<isinclude template="components/footer/footer"/>
+		<isinclude template="content/pt_customerservice_VARS"/>
+</main>
+<script> 
+(function(){ 
+var s = document.createElement('script'), 
+e = ! document.body ? document.querySelector('head') : document.body; 
+s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; 
+s.async = true; 
+s.onload = function(){ 
+ acsbJS.init({ 
+ statementLink : '', 
+ footerHtml : '', 
+ hideMobile : false, 
+ hideTrigger : false, 
+ language : 'en', 
+ position : 'right', 
+ leadColor : '#146FF8', 
+ triggerColor : '#146FF8', 
+ triggerRadius : '50%', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'bottom', 
+ triggerIcon : 'people', 
+ triggerSize : 'medium', 
+ triggerOffsetX : 20, 
+ triggerOffsetY : 20, 
+ mobile : { 
+ triggerSize : 'small', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'center', 
+ triggerOffsetX : 0, 
+ triggerOffsetY : 0, 
+ triggerRadius : '50%' 
+ } 
+ }); 
+}; 
+e.appendChild(s); 
+}()); 
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+	$("#brushheadsframe1").on("load", function () {
+		$("#bhead").removeAttr("disabled");
+	});
+	
+	function frameClick1() {
+		fc1(function() {
+		  //$('#mlpb').load(window.location.href+' #mini-cart, #ddui');
+		  setTimeout(function(){ redirectCart(); }, 600);
+		});
+		
+	}
+
+	function frameClick2() {
+		fc2(function() {
+		  //$('#mlpb').load(window.location.href+' #mini-cart, #ddui');
+		  setTimeout(function(){ redirectCart(); }, 600);
+		});
+
+	}
+
+	function fc1(callback) {
+		var atdbtn=$("#brushheadsframe1").contents().find(".add-to-cart");
+		/*var regd=$("#brushheadsframe1").contents().find(".regdel");
+		regd[0].click();
+		var qty = $("#brushheadsframe1").contents().find("#Quantity");
+		qty[0].value= $("#select_21")[0].value;*/
+		//$("#brushheadsframe1").contents().find("#delivery-interval").val($("#select_22")[0].value);
+		atdbtn[0].click();
+		console.log("click:"+atdbtn[0]);
+		callback();
+	}
+
+	function fc2(callback) {
+		console.log("f2callback");
+		var atdbtn=$("#brushheadsframe2").contents().find(".add-to-cart");
+		console.log("atdbtn:"+atdbtn);
+		console.log("f2callbackagain");
+		/*var regd=$("#brushheadsframe1").contents().find(".regdel");
+		regd[0].click();
+		var qty = $("#brushheadsframe1").contents().find("#Quantity");
+		qty[0].value= $("#select_21")[0].value;*/
+		//$("#brushheadsframe1").contents().find("#delivery-interval").val($("#select_22")[0].value);
+		atdbtn[0].click();
+		callback();
+	}
+	$("#bhead").click( function() {
+		 //$(window).scrollTop(0);
+		 //setTimeout( function() { $('.mini-cart-content').css('display', 'block');}, 1000);
+		 //setTimeout( function() { $('.mini-cart-content').css('display', 'none');}, 4000);
+        });
+	function redirectCart() {
+		window.location.replace("/on/demandware.store/Sites-us-oscill8-Site/default/Cart-Show");
+	}
+
+	$(document).ready(function(){
+		$(".accessories-details").style("align:center");
+    });
+</script>

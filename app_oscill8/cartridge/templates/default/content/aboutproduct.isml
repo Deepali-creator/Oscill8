@@ -1,0 +1,433 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+<title>About Interplak By Conair Oscill8 Best Electric Toothbrush</title>
+<meta charset="UTF-8">
+  <meta name="description" content="Find out how the Oscill8 Electric Rechargeable Toothbrush makes oral hygiene easy and enjoyable. Clean teeth and healthy gums for a happier you!">
+  <meta name="keywords" content="conair, interplak, interplak by conair, interplak toothbrush, oscill8, oscill8 rechargeable toothbrush, about the oscill8, buy brush heads, ultraviolet toothbrush sanitizer, oscill8 brush heads, electric toothbrush, best electric toothbrush, electric toothbrush charger, electric toothbrush heads, rechargeable toothbrush, rechargeable electric toothbrush, battery powered toothbrush, nt18">
+  <meta name="viewport" maximum-scale=1.0 user-scalable=no>
+
+	<isscript>
+		var pageContext = {
+			title: 'Customer Service',
+			type: 'customerservice',
+			ns:'account'
+		};
+	</isscript>
+	
+	
+	<isinclude template="util/modules"/>
+
+	<iscomment>This page must be cachable. It inherits the caching attributes by the decorated template.</iscomment>
+
+	<isinclude template="components/header/htmlhead"/>
+	<isinclude template="content/pt_customerservice_UI"/>
+
+	<iscomment>Add template-specific header information here.</iscomment>
+
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/accessories/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/faq/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/about-product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/reset.css')}"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+</head>
+
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXP24K2"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) --> 
+
+<main class="main-page-wrapper">
+
+		<isinclude template="components/header/header"/>
+
+					<isinclude template="components/browsertoolscheck"/>
+				
+                <isinclude template="util/modules"/>
+    <style>
+    .right-side img {
+        max-width: 100% !important;
+    }
+    .left-side img {
+        max-width: 100% !important;
+    }
+    .hambtn img {
+        max-width: none !important;
+    }
+    .mini-cart-link .mini-cart-empty img {
+        max-width: none !important;
+    }
+
+    .product-description .product-content {
+        padding-left: 10px;
+        margin-top: -15%;
+    }
+
+
+    @media (min-width: 769px) {
+        .product-features ul {
+            padding: 0;
+        }
+        /* .product-description .product-content .product-features li .heading {
+            width: 11%;
+        } */
+        .product-description .product-content .product-features li .heading figure {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .product-description .product-content .product-features li .content {
+            margin-top: -95px;
+            width: 85%;
+            /* float: right; */
+            padding: 8px;
+        }
+        .product-description .product-content .product-features li .content p {
+            padding-left: 74px;
+        }
+    }
+
+    @media (max-width: 290px) {
+        .mlpb {
+            margin-left: 12% !important;
+        }
+    }
+    .about-conair-info-heading {
+        max-width: 800px;
+        margin: auto;
+        font-family: "ProximaNovaSoftW03";
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 1.2;
+        color: #184A8F;
+        margin-bottom: 35px;
+    }
+    .about-conair-info-text {
+        max-width: 800px;
+        margin: auto;
+        margin-bottom: 60px;
+    }
+    .about-conair-info-div {
+        text-align: center;
+    }
+
+    @media (max-width: 1170px) {
+        .product-description .product-content {
+            margin-top: -7%;
+        }
+    }
+
+    @media screen and (max-width: 950px) and (min-width: 769px){
+        .product-description .product-content {
+            margin-top: 1%;
+        }
+        .product-description {
+            margin-top: -10%;
+        }
+    }
+
+    @media (max-width: 769px) {
+        .product-description .product-content {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .about-conair-info-heading {
+            max-width: 600px;
+        }
+        .about-conair-info-text {
+            max-width: 600px;
+        }
+    }
+    @media (max-width: 769px) {
+        .about-conair-info-heading {
+            max-width: 600px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .about-conair-info-text {
+            max-width: 600px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 35px;
+        }
+        .conair-logo-img {
+            margin-left: 20px;
+            margin-right: 20px;
+
+        }
+        .about-conair-info-div {
+            text-align: left;
+        }
+        .conair-logo-img {
+            height: 30px;
+        }
+    }
+
+
+    @media screen and (max-width: 2500px) and (min-width: 769px){
+        .product-image img{
+            height: 1150px;
+        }
+    }
+</style>
+<section class="product-description">
+        <div class="container">
+            <div class="content-holder">
+                <figure class="product-image" style="margin:0;">
+                    <picture align="center" style="text-align:center">
+                        <source media="(max-width: 600px)" srcset="${URLUtils.absStatic('/src/pages/about-product/images/Brush_stand_RM-mob.png')}">
+                        <img style="-webkit-transform: scaleX(-1);transform: scaleX(-1);padding: 40px;" src="${URLUtils.absStatic('/src/pages/about-product/images/Brush_stand_RM.svg')}" alt="rechargeable electric toothbrush">
+                    </picture>
+                </figure>
+                <div class="product-content">
+                    <iscomment><h3>About the Product</h3></iscomment>
+                    <h1>Innovative Toothbrush to Shine Brighter.</h1>
+                    <div class="product-text">
+                        <p>As simple to use as a regular toothbrush, Interplak by Conair® Oscill8™ makes oral hygiene easy and enjoyable. Extremely soft, rounded bristles gently massage gums while oscillating tufts reach between and over teeth to deep-clean even the most hard-to-reach places. As the shorter tufts polish teeth, they smooth the surface to remove plaque and keep your mouth healthy and your smile bright.</p>
+                        <p>All this, plus you can get replacement heads delivered right to your door!</p>
+                    </div>
+                    <h2>Show Your Teeth Some Love.</h2>
+                    <div class="product-text">
+                        <p>It’s all here—everything you need to thoroughly and gently clean and polish your teeth, plus treat your gums to a rejuvenating massage. Get ready for the revolutionary rechargeable toothbrush that takes dental hygiene to another level with powerful oscillating bristles for a gorgeous smile and better overall oral hygiene. Clean teeth. Healthy gums. Happy you. Welcome to OSCILL8™.</p>
+                    </div>
+                    <div class="product-features">
+                        <ul>
+                            <li>
+                                <div class="heading">
+                                    <figure>
+                                        <img src="${URLUtils.absStatic('images/feature_1.png')}" alt="feature">
+                                    </figure>
+                                    <iscomment> <h4>Feature 1</h4> </iscomment>
+                                    <iscomment> <p>Clinically proven to reduce gingivitis, help prevent gum disease, and clean teeth so that they're nearly plaque free.</p> </iscomment>
+                                </div>
+                                <div class="content">
+                                    <p>Clinically proven to reduce gingivitis, help prevent gum disease, and clean teeth so that they're nearly plaque free.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="heading">
+                                    <figure>
+                                        <img src="${URLUtils.absStatic('images/feature_2.png')}" alt="feature">
+                                    </figure>
+                                    <iscomment> <h4>Feature 2</h4> </iscomment>
+                                    <iscomment> <p>Sleek comfort-grip design for easy handling.</p> </iscomment>
+                                </div>
+                                <div class="content">
+                                    <p>Sleek comfort-grip design for easy handling.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="heading">
+                                    <figure>
+                                        <img src="${URLUtils.absStatic('images/feature_3.png')}" alt="feature">
+                                    </figure>
+                                    <iscomment> <h4>Feature 3</h4> </iscomment>
+                                    <iscomment> <p>Convenient brush stand holds and charges your brush so it’s always ready to roll.</p> </iscomment>
+                                </div>
+                                <div class="content">
+                                    <p>Convenient brush stand holds and charges your brush so it’s always ready to roll.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="heading">
+                                    <figure>
+                                        <img src="${URLUtils.absStatic('images/feature_4.png')}" alt="feature">
+                                    </figure>
+                                    <iscomment> <h4>Feature 4</h4> </iscomment>
+                                    <iscomment> <p>Replaceable brush heads switch out with a simple twist and pull. Recommended: Replace ‘em every 2 to 3 months. Use our subscription service to avoid searching for more in stores!</p> </iscomment>
+                                </div>
+                                <div class="content">
+                                    <p>Replaceable brush heads switch out with a simple twist and pull. Recommended: Replace ‘em every 2 to 3 months. Use our subscription service to avoid searching for more in stores!</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product-across-section">
+        <div class="across-holder">
+            <div class="right-side">
+                <picture>
+                    <source media="(min-width: 769px) and (max-width: 1260px)" srcset="${URLUtils.absStatic('/images/NT18-TB-rotating-med.png')}">
+                    <img src="${URLUtils.absStatic('/images/NT18-TB-rotating-640x545.jpg')}" alt="toothbrush oscillating tufts">
+                </picture>
+            </div>
+            <div class="left-side">
+                <div class="left-holder">
+                    <h2 style="font-size: 36px;">Experience a Revolutionary Clean with 8 Individually Oscillating Tufts of Bristles</h2>
+                    <div class="text">
+                        <p>
+                            The only toothbrush of its kind, OSCILL8™ features an innovative brush head with 270˚ tuft rotation to put the power of a complete clean in the palm of your hand.</br>8 tufts of tapered bristles oscillate at 2,300 cycles per minute to eliminate plaque from even the tightest places.
+                        </p>
+                        <p>Did we mention clinically proven? Your daily dental hygiene is about to get real.</p>
+                    </div>
+                    <div class="btn-holder">
+                        <a href="${URLUtils.https('Shop-Show')}" class="button1 btn-pink" style="width:10rem">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product-specs">
+        <iscomment>
+        <div class="specs-holder">
+            <figure class="left-side">
+                <img src="https://fakeimg.pl/510x608/" alt="feature">
+            </figure>
+            <div class="right-side">
+                <h3>Product Specifications</h3>
+                <div class="specs-table">
+                    <div class="table">
+                        <div class="tr">
+                            <div class="thead">
+                                <span>Model</span>
+                            </div>
+                            <div class="tbody">
+                                <span>XXXXXXX</span>
+                            </div>
+                        </div>
+                        <div class="tr">
+                            <div class="thead">
+                                <span>Power</span>
+                            </div>
+                            <div class="tbody">
+                                <span>XXXXXXXXXXXXX</span>
+                            </div>
+                        </div>
+                        <div class="tr">
+                            <div class="thead">
+                                <span>Brush</span>
+                            </div>
+                            <div class="tbody">
+                                <span>XXXXXXXXXX</span>
+                            </div>
+                        </div>
+                        <div class="tr">
+                            <div class="thead">
+                                <span>Weight</span>
+                            </div>
+                            <div class="tbody">
+                                <span>XXX</span>
+                            </div>
+                        </div>
+                        <div class="tr">
+                            <div class="thead">
+                                <span>Color</span>
+                            </div>
+                            <div class="tbody">
+                                <span>XXXXXXXXXXXX</span>
+                            </div>
+                        </div>
+                        <div class="tr">
+                            <div class="thead">
+                                <span>Type</span>
+                            </div>
+                            <div class="tbody">
+                                <span>XXXXXXXXXX</span>
+                            </div>
+                        </div>
+                        <div class="tr">
+                            <div class="thead">
+                                <span>Brand</span>
+                            </div>
+                            <div class="tbody">
+                                <span>XXXXXXXX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </iscomment>
+        <div class="about-conair-info-div">
+            <p class="about-conair-info-heading">OSCILL8™ Comes to You Courtesy of Conair®,</br>
+                The Trusted Name in Personal Care Essentials</br> for Over 60 Years
+            </p>
+            <p class="about-conair-info-text">As part of our ongoing legacy of innovation, Interplak by Conair® is proud to introduce OSCILL8™ as yet another breakthrough in our ever-growing portfolio of products that enhance the lives of people around the world.</p>
+            <img class="conair-logo-img" src="${URLUtils.absStatic('/images/interplank.jpg')}" alr="">
+        </div>
+    </section>
+
+		<isinclude template="components/footer/footer"/>
+		<isinclude template="content/pt_customerservice_VARS"/>
+</main>
+<script> 
+(function(){ 
+var s = document.createElement('script'), 
+e = ! document.body ? document.querySelector('head') : document.body; 
+s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; 
+s.async = true; 
+s.onload = function(){ 
+ acsbJS.init({ 
+ statementLink : '', 
+ footerHtml : '', 
+ hideMobile : false, 
+ hideTrigger : false, 
+ language : 'en', 
+ position : 'right', 
+ leadColor : '#146FF8', 
+ triggerColor : '#146FF8', 
+ triggerRadius : '50%', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'bottom', 
+ triggerIcon : 'people', 
+ triggerSize : 'medium', 
+ triggerOffsetX : 20, 
+ triggerOffsetY : 20, 
+ mobile : { 
+ triggerSize : 'small', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'center', 
+ triggerOffsetX : 0, 
+ triggerOffsetY : 0, 
+ triggerRadius : '50%' 
+ } 
+ }); 
+}; 
+e.appendChild(s); 
+}()); 
+</script>
+
+
+</body>
+</html>
+
+
+
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+    $(document).ready(function(){
+        console.log("windows load");
+     /*var a = $(".mini-cart-product").find('.collapsed');
+        console.log($(".mini-cart-product"));
+        console.log("Has Class:"+$(a).hasClass('collapsed'));*/
+        if($(".mini-cart-product.collapsed")){
+            console.log("Collapsed");
+            $(".mini-cart-product.collapsed").removeClass("collapsed");
+        }
+        $('.mini-cart-toggle').attr('style','display: none !important');
+    });
+</script>

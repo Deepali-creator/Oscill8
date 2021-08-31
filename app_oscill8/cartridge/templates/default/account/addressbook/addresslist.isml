@@ -1,0 +1,47 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isset name="DecoratorTemplate" value="account/pt_account" scope="page"/>
+<iscomment>pwr = power review write</iscomment>
+<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('src/myaccount/addresses/styles.css')}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('src/myaccount/account-style.css')}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/index.css')}"/>
+<isif condition="${pdict.CurrentHttpParameterMap.format.stringValue == 'ajax' || pdict.CurrentHttpParameterMap.pwr.stringValue == 'true' || pdict.CurrentHttpParameterMap.source.stringValue == 'search' || pdict.CurrentHttpParameterMap.source.stringValue == 'quickview' || pdict.CurrentHttpParameterMap.source.stringValue == 'cart'}">
+	<isset name="DecoratorTemplate" value="util/pt_empty" scope="page"/>
+</isif>
+<style>
+	@media only screen and (max-width: 480px) {
+		.phoneDiv{
+			margin-left: 7px !important;
+		}
+	}
+</style>
+<isdecorate template="${DecoratorTemplate}">
+
+	<isset name="bctext2" value="${Resource.msg('account.addressbook.addresslist.header','account',null)}" scope="pdict"/>
+
+	<isslot id="account-banner" description="Banner for My Account pages" context="global" />
+	
+	<div id="addresses">
+		<iscomment>
+			<h1>${Resource.msg('account.addressbook.addresslist.header','account',null)}</h1>
+		</iscomment>
+		<isinclude template="account/addressbook/addressinclude"/>
+	</div>
+
+</isdecorate>
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+    $(document).ready(function(){
+        console.log("windows load");
+     /*var a = $(".mini-cart-product").find('.collapsed');
+        console.log($(".mini-cart-product"));
+        console.log("Has Class:"+$(a).hasClass('collapsed'));*/
+        if($(".mini-cart-product.collapsed")){
+            console.log("Collapsed");
+            $(".mini-cart-product.collapsed").removeClass("collapsed");
+        }
+        $('.mini-cart-toggle').attr('style','display: none !important');
+    });
+</script>

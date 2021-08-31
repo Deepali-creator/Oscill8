@@ -1,0 +1,49 @@
+<!--- TEMPLATENAME: tokenize.isml --->
+
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="checkout/pt_checkout">
+	<isinclude template="util/modules"/>
+
+	<iscomment>
+		This template visualizes the billing step of both checkout scenarios.
+		It provides selecting a payment method, entering gift certificates and
+		specifying a separate billing address.
+		Depending on the checkout scenario (single or multi shipping) it is
+		either the second or third checkout step.
+	</iscomment>
+
+	<iscomment>Report this checkout step</iscomment>
+	<isreportcheckout checkoutstep="4" checkoutname="${'Billing'}"/>
+	<isset name="stepNo" value="${4}" scope="pdict"/>
+	<iscomment> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		checkout progress indicator
+	 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</iscomment>
+
+	<isif condition="${!pdict.CurrentForms.multishipping.entered.value}">
+		<ischeckoutprogressindicator step="2" multishipping="false" rendershipping="${pdict.Basket.productLineItems.size() == 0 ? 'false' : 'true'}"/>
+	<iselse/>
+		<ischeckoutprogressindicator step="3" multishipping="true" rendershipping="${pdict.Basket.productLineItems.size() == 0 ? 'false' : 'true'}"/>
+	</isif>
+
+	<form action="${URLUtils.continueURL()}" method="post" id="${pdict.CurrentForms.billing.htmlName}" class="checkout-billing address form-horizontal">
+		<iscomment>
+			<script type="text/javascript" src="https://xiintercept.conair.demandware.net/DieCommerce/DIeCommerce.js"></script>
+			<script language="javascript" type="text/javascript">document.domain = getRelaxedDomain(location.hostname, parseInt("2"));</script>
+			<iframe id="diFrame" onload="return InitForTokenization('ccNumber','ccInstitute',true);" style="display: block;" allowTransparency="true" scrolling="yes" frameborder="yes" src="https://xiintercept.conair.demandware.net/DieCommerce/DIRequest.aspx"></iframe>
+		</iscomment>
+		<isset name="XiSecure" value="${require('int_paymetric/cartridge/scripts/XiSecureHelper.ds')}" scope="page"/>
+		<script type="text/javascript" src="${XiSecure.jsURL()}"></script>
+		<script language="javascript" type="text/javascript">
+			PerformTypeCheck = false;
+			ShowCVV=true;
+			IssuerNumberSizeErrorMessage = 'Issuers Number must be two digits or less';
+			CVVRequiredErrorMessage = 'The CVV value is required';
+			CVVSizeErrorMessage = 'The CVV value must be three or four digits';
+			CCNumberRequiredMessage = 'The Credit Card Number is required';
+			CCNumberLuhnErrorMessage = 'The Credit Card Number is not a valid card number';
+			CCNumberCardTypeErrorMessage = 'Card number does not match the type selected';
+			ExpirationDateErrorMessage = 'The expiration date is not valid';
+			UpdatePaymentPageContent('<isprint value="${XiSecure.prepareXML(pdict.Basket)}" encoding="off"/>');
+		</script>
+	</form>
+</isdecorate>

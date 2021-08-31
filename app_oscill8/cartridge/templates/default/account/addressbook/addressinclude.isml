@@ -1,0 +1,229 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules.isml"/>
+
+
+<style>
+	.info-wrp .mini-address-title {
+		font-style: normal;
+		font-family: 'Montserrat';
+		font-size: 17px;
+		line-height: 21px;
+		font-weight: 600;
+	}
+	.info-wrp  .mini-address-location address {
+		line-height: 21px;
+		font-style: normal;
+		font-family: 'Montserrat';
+		font-size: 15px;
+	}
+
+	.info-wrp .mini-address-name {
+		font-style: normal;
+		font-family: 'Montserrat';
+		font-size: 15px;
+		line-height: 21px;
+	}
+
+	.bottom-part label {
+		font-weight: normal;
+		width: 10em;
+	}
+	.bottom-part input {
+		border: none !important;
+	}
+	.add-address-row a {
+		margin-bottom: -0.5em;
+		background-color: unset;
+		border-color: unset;
+		border-style: unset;
+		padding: unset;
+	}
+	.section-header-note:hover {
+		text-decoration: none !important;
+	}
+	.tab-titles {
+		margin:0px;
+	}
+	.input-select {
+		padding-left:10px;
+	}
+
+
+	@media only screen and (max-width: 1024px) {
+		.addresses-section {
+			margin-left: 2.8em;
+		}	
+		.active-titles-item-wrap {
+			display: block;
+		}
+		.account-tabs-wrp {
+            margin-left: 0em !important;
+        }
+	}
+    @media (max-width: 768px) {
+        .account-tabs-wrp {
+            margin-left: -2em !important;
+        }
+    }
+
+	
+	
+
+</style>
+
+<div class="account-pages" id="address-section">
+	<div class="title-wrp">
+		<h1>My Account</h1>
+	</div>
+	<div class="account-tabs-wrp">
+		<div class="titles-wrp">
+			<div class="account-container">
+				<ul class="tab-titles flex fjb">
+					<li><a href="${URLUtils.https('Account-EditProfile')}" class="blue-small-titles">Profile</a></li>
+					<li class="active hide_mobile"><a href="${URLUtils.https('Address-List')}" class="blue-small-titles">Addresses</a></li>
+					<li class="hide_mobile"><a href="${URLUtils.https('PaymentInstruments-List')}" class="blue-small-titles">Billing</a></li>
+					<li class="hide_mobile"><a href="${URLUtils.https('Order-History')}" class="blue-small-titles">Orders</a></li>
+					<li class="hide_mobile"><a href="${URLUtils.url('Subs-Show')}" class="blue-small-titles">Subscriptions</a></li>
+				</ul>
+			</div>
+		</div>
+		<isset name="rowcount" value="0" scope="page" />
+        <isloop items="${pdict.CurrentCustomer.profile.addressBook.addresses}" var="address" status="loopstate">
+            <isset name="rowcount" value="${loopstate.count}" scope="page" />
+        </isloop>
+        <div class="active-section addresses-section">
+            <div class="account-container">
+                <p class="active-titles-item-wrap">Addresses</p>
+				
+				<isif condition="${rowcount == '0'}">
+				<div style="text-align:center">
+					<p style="font-size:20px;color:black;font-weight:bold;font-family: 'ProximaNovaSoftW03';">You don't have any saved addresses</p>
+					<a class="section-header-note address-create button1 btn-blue" style="width:200px;margin:auto;background-color: rgb(30, 74, 137); border: none; padding: 14px; border-radius: 20px; font-size: 14px; color: black;margin-bottom:20px" onMouseOver="this.style.color='black'" title="${Resource.msg('account.addressbook.addresslist.create.label','account',null)}" href="${URLUtils.url('Address-Add')}" >
+					CREATE NEW ADDRESS
+					</a>
+				</div>
+				</isif>
+				<div class="add-address-row flex fje">
+				<isif condition="${rowcount != '0'}">
+					<a class="section-header-note address-create button1 btn-blue" style="background-color: rgb(30, 74, 137); border: none; padding: 14px; border-radius: 20px; font-size: 14px; color: black;margin-bottom:10px" onMouseOver="this.style.color='black'" title="${Resource.msg('account.addressbook.addresslist.create.label','account',null)}" href="${URLUtils.url('Address-Add')}" >
+						CREATE NEW ADDRESS
+					</a>
+				</isif>
+				</div>
+				<isif condition="${!empty(pdict.CurrentCustomer.profile.addressBook.addresses)}">
+						
+					<iscomment>addresses are sorted, preferred first, than alphabetic </iscomment>
+						
+					<isif condition="${pdict.Status != null && pdict.Status.isError()}">				 
+						<iscomment> Use the error code value to build an appropriate error message </iscomment>
+						<span class="form-error">
+							<isprint value="${Resource.msg('addressdetails.' + pdict.Status.code, 'account',null)}"/>
+						</span>
+					</isif>
+
+					<div class="address-list flex fwrap fjb">
+						<isloop items="${pdict.CurrentCustomer.profile.addressBook.addresses}" var="address" status="loopstate">
+							<isscript>
+								var isDefault = !empty(pdict.CurrentCustomer.profile.addressBook.preferredAddress) && (pdict.CurrentCustomer.profile.addressBook.preferredAddress.ID == address.ID);
+								var cssClass = "address-tile ";			
+								if (isDefault) { cssClass+=" default"; }
+							</isscript>
+						
+						
+							<div class="single-address">
+								<div class="top-part flex fjb fac">
+									<div class="info-wrp">
+										<isminiaddress p_address="${address}"/>
+									</div>
+									<div class="btns-wrp flex fac">
+										<a href="${URLUtils.url('Address-Delete','AddressID', address.ID)}" class="mob-delete-address-btn trans delete"><img src="${URLUtils.absStatic('/images/trash_icon.svg')}"></a>
+										<a href="${URLUtils.url('Address-Edit','AddressID', address.ID)}" class="mob-edit-address-btn trans address-edit"><img src="${URLUtils.absStatic('/images/edit_icon.svg')}"></a>
+										<a href="${URLUtils.url('Address-Edit','AddressID', address.ID)}" title="${Resource.msg('account.addressbook.addressinclude.edit.label','account',null)}" class="address-edit edit-address-btn">
+											${Resource.msg('global.edit','locale',null)}
+										</a> 
+										<a href="${URLUtils.url('Address-Delete','AddressID', address.ID)}" title="${Resource.msg('account.addressbook.addressinclude.delete.label','account',null)}" class="address-delete delete delete-btn">
+											${Resource.msg('account.addressbook.addressinclude.delete','account',null)}
+										</a>
+									</div>
+								</div>
+											
+								<div class="bottom-part flex">
+									<div class="default-ship flex fac checkbox-styles">
+											
+										<isif condition="${isDefault}">
+											<input type="checkbox" name="default-ship1" id="default-ship1" disabled checked>
+											<label for="default-ship1">Default Address</label>
+											<iscomment>
+												<h3>${Resource.msg('account.addressbook.editaddress.defaultaddress','account',null)} </h3>
+											</iscomment>
+										</isif>
+										<isif condition="${!isDefault}">
+											<a  id="makedefault"  style="display:none;" href="${URLUtils.url('Address-SetDefault','AddressID', address.ID)}" class="address-make-default"> 
+												<h3>${Resource.msg('account.addressbook.editaddress.makedefaultaddress','account',null)}</h3>	
+											</a> 
+											<input type="checkbox" name="default-ship1" id="default-ship1" onclick="document.getElementById('makedefault').click()">
+											<label or="default-ship1" >Default Address</label>
+										</isif>
+										
+										
+										
+									</div>
+									
+								</div>   
+							</div>
+						</isloop>
+					</div>
+				</isif>
+			</div>
+		</div>
+		<div class="titles-wrp show_mobile">
+			<div class="account-container">
+				<ul class="tab-titles flex fjb">
+					<li><a href="${URLUtils.https('PaymentInstruments-List')}"class="blue-small-titles">Billing</a></li>
+					<li><a href="${URLUtils.https('Order-History')}" class="blue-small-titles">Orders</a></li>
+					<li><a href="${URLUtils.url('Subs-Show')}"
+												class="blue-small-titles">Subscriptions</a></li>
+				</ul>
+			</div>
+        </div>
+	</div>
+</div>
+	
+
+
+<isset name="hasNewAddress" value="${ pdict.newAddress != null }" scope="page" />
+<isset name="hasUpdatedAddress" value="${ pdict.updatedAddress != null }" scope="page" />
+<isset name="hasDeletedAddress" value="${ pdict.deletedAddress != null }" scope="page" />
+<isset name="loadWidget" value="${ hasNewAddress || hasUpdatedAddress || hasDeletedAddress}" scope="page" />
+<isif condition="${customer.profile.custom.subproCustomerID && loadWidget}">
+	<!-- Subscribe Pro Address Book Assist Widget -->
+	<div id="sp-address-book-widget"></div>
+	<iscomment>
+		Configure the Subscribe Pro Address Book Assist Widget
+	</iscomment>
+	<!-- Load the Subscribe Pro widget script -->
+	<script src="${require('dw/system/Site').getCurrent().getCustomPreferenceValue('subproAddressWidgetScriptUrl')}"></script>
+	<isset name="widgetConfig" scope="page" value="${require('/int_subscribe_pro/cartridge/scripts/subpro/helpers/WidgetsHelper').getWidgetConfig(customer.profile.custom.subproCustomerID, 'client_credentials', 'widget', 'sp-address-book-widget')}"/>
+	<!-- Pass configuration and init the Subscribe Pro widget -->
+	<script>
+		// Setup config for Subscribe Pro
+		var widgetConfig = <isprint value="${JSON.stringify(widgetConfig)}" encoding="off" />;
+		AddressBookAssist.init(widgetConfig);
+		<isif condition="${ hasNewAddress }">
+			var newAddress = <isprint value="${JSON.stringify(pdict.newAddress)}" encoding="off" />;
+        	var newAddressSfccId = '<isprint value="${pdict.newAddressSfccId}" encoding="off" />';
+			AddressBookAssist.onAddressCreated(newAddress).then(function (result){
+				$.get("${URLUtils.url('Address-SetSPAddressID')}",
+				{"addressId": newAddressSfccId, "spAddressId": result.id});
+			});
+		</isif>
+		<isif condition="${ hasUpdatedAddress }">
+			var updatedAddress = <isprint value="${JSON.stringify(pdict.updatedAddress)}" encoding="off" />;
+			AddressBookAssist.onAddressUpdated(updatedAddress);
+		</isif>
+		<isif condition="${ hasDeletedAddress }">
+			var deletedAddress = <isprint value="${JSON.stringify(pdict.deletedAddress)}" encoding="off" />;
+			AddressBookAssist.onAddressDeleted(deletedAddress);
+		</isif>
+	</script>
+</isif>

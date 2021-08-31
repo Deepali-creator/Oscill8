@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Forgot Password</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="../../../css/index.css"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-shadow.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../css/mini_cart.css"/>
+</head>
+<body>
+<!-- header-->
+<header class="oscill8-header flex fjb">
+    <div class="flex fac ttu">
+        <a href="/">
+            <span class="logo"><img src="../../../assets/images/logo.svg" alt="OSCILL8 &trade;"></span>
+        </a>
+        <div class="header-menu">
+            <a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+            <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+            <a href="./index.html"><span>Support</span></a>
+        </div>
+    </div>
+    <div class="flex fac">
+        <a href="../../../src/pages/cart/index.html" class="cart-svg" id="show_cart_btn" data-tooltipster data-tooltip-content="#mini_cart_content">
+            <img src="../../../assets/images/icons/cart.svg" alt="Cart Image">
+        </a>
+        <a class="button back-gr-white blue-text login-btn" href="../../../src/pages/login/index.html">Log in</a>
+        <button type="button" id="menu_mobile_btn"><img src="../../../assets/images/menu-white-icon.svg"/></button>
+    </div>
+</header>
+<!-- main -->
+<main class="main-page-wrapper ptz">
+    <div class="pg-container">
+        <div class="login-wrp flex fjb">
+            <div class="left-col">
+                <!-- Log In form -->
+                <div class="form-wrp">
+                    <h2 class="form-title">
+                        Forgot Password
+                    </h2>
+                    <form action="" id="login">
+                        <div class="form-row">
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="form-row tac">
+                            <a href="../../../src/pages/login/index.html" class="forgot-pass gray-txt">Log In</a>
+                        </div>
+                        <button class="btn btn-blue">Reset</button>
+                    </form>
+                </div>
+                <!-- End Log In form -->
+            </div>
+            <div class="right-col">
+                <!-- Sign Up form -->
+                <div class="top-row form-wrp">
+                    <h2 class="form-title">Sign Up</h2>
+                    <p class="form-descr gray-txt tac">Don’t have an account? Sign up now.</p>
+                    <a href="../../../src/pages/createaccount/index.html" class="btn ttu btn-pink ">Continue</a>
+                </div>
+                <!-- End Sign Up form -->
+                <!-- Sign Up form -->
+                <div class="bottom-row form-wrp">
+                    <h2 class="form-title">Contact Support</h2>
+                    <p class="form-descr gray-txt tac">Problems signing in? Contact us.</p>
+                    <a href="" class="btn ttu btn-pink ">Contact</a>
+                </div>
+                <!-- End Sign Up form -->
+            </div>
+        </div>
+    </div>
+</main>
+<!-- footer-->
+<footer class="oscill8-footer">
+    <div class="footer-left flex fac">
+        <div>
+            <a href="/"><span class="logo"><img src="../../../assets/images/logo-footer.svg"
+                                                alt="OSCILL8 &trade;"></span></a>
+            <p class="cr-text hide_mobile">
+                <strong>© 2020 Conair Corporation</strong>
+            </p>
+        </div>
+    </div>
+    <div class="footer-right">
+        <div class="wrapper">
+            <div class="nav-column">
+                <h4 class="footer-menu-title">OSCILL8 &trade;</h4>
+                <a href="../../../src/pages/product/index.html">Shop</a>
+                <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+                <a href="./index.html"><span>Support</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">ACCOUNT</h4>
+                <a href="../../../src/pages/createaccount/index.html"><span>Create Account</span></a>
+                <a href="../../../src/pages/login/index.html"><span>Sign In</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">SUPPORT</h4>
+                <a href="../../../src/pages/faq/index.html"><span>Contact & FAQ</span></a>
+                <a href="#"><span> Privacy Policy</span></a>
+                <a href="#"><span>Terms of Service</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">CONNECT</h4>
+                <a href="#" class="soc-link"><span class="fb-icon">Facebook</span></a>
+                <a href="#" class="soc-link"><span class="insta-icon">Instagram</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="show_mobile copyright">
+        &copy; 2019 Conair Corporation
+    </div>
+</footer>
+
+<div id="mobile_menu_wrapper">
+    <div class="inner_wrapper">
+        <div class="mm_header">
+            <button type="button" id="close_mobile_menu_btn">&times;</button>
+        </div>
+        <div class="mm_content">
+            <ul class="mobile_menu">
+                <li>
+                    <a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+                </li>
+                <li>
+                    <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+                </li>
+                <li>
+                    <a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+                </li>
+            </ul>
+            <a class="button back-gr-gray dark-blue login-btn" href="../../../src/pages/login/index.html">Log in</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script type="module" src="http://oscill8.brainstormtech.pro/js/functions.js"></script>
+<script type="module" src="http://oscill8.brainstormtech.pro/index.js"></script>
+</body>
+</html>

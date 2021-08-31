@@ -1,0 +1,46 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="paypal-redirect-link">
+<div class="container">
+  <input type="radio" class="input-radio" name="paypal" id="paypalSelected"  value="PAYPAL"/>
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7WrKoEuF02CvgGmLl88O9FdTRmhxeybsH4w&usqp=CAU" alt=""/>
+</div>
+<button class="button button-fancy-large" type="submit" id="placeOrder"><span>Continue to Billing</span></button>
+    <iscomment> <isprint value="${pdict.TOKEN}"/>
+    <isprint value="${pdict.url}"/>  </iscomment>
+</div>   
+<div>
+ <isprint value ="${pdict.url}"/>
+</div>     
+ <script>
+    var paypalSelect = document.getElementById('paypalSelected');  
+    var paypal =  paypalSelect.checked;
+     console.log(paypal.toString());
+
+//    if(paypal.toString() == 'true')
+//    {
+//        console.log(paypalSelect.checked);
+ $('#placeOrder').on('click' ,function callAjax(event)
+{
+
+    $.ajax({
+      type: 'POST',
+      url: 'Xipay-Paypal',
+      datatype: 'json',
+      success: function (data, xhr, status) {
+         
+         console.log('success');
+         console.log('url '+data);
+
+         location.href = data;
+        
+      },
+      error: function (xhr, textStatus, error) {
+           console.log('4 '+error);
+      }
+  });
+  
+
+
+});
+
+</script> 

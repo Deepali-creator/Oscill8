@@ -1,0 +1,96 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isset name="DecoratorTemplate" value="error/pt_error" scope="page"/>
+<isif condition="${!empty(pdict.nodecorator) && pdict.nodecorator == true}">
+	<isset name="DecoratorTemplate" value="util/pt_empty" scope="page"/>
+</isif>
+
+<isdecorate template="${DecoratorTemplate}">
+<isinclude template="util/modules"/>
+<style>
+.mdiv {
+	padding-top:15%;
+}
+a {
+	color:#1e4787;
+	text-decoration:underline;
+}
+@media screen and (max-width:768px) {
+	.mdiv {
+		padding-top:20%;
+	}
+}
+@media screen and (max-width:480px) {
+	.mdiv {
+		padding-top:25%;
+	}
+}
+</style>
+<div class="mdiv">
+<h1>Something went wrong!</h1>
+<h1> Sorry for inconvenience but looks like an error has occured while we were trying to process your request. </h1>
+<a href="${URLUtils.https('Home-Show')}">Click here to continue with your shopping experience.</a>
+<p>For any queries please reachout to our support team <a href="${URLUtils.https('Support-Show')}">Here</a></p>
+</div>
+<iscomment>
+<h1>${Resource.msg('generalerror.erroroccured','error',null)}</h1>
+
+	<isslot id="error-banner" description="Banner for error pages" context="global"/>
+
+		<div class="error-page-message">
+			<iscontentasset aid="error-callout"/>		
+		</div>
+		
+		<div class="error-page-search">
+		 	<form action="${URLUtils.url('Search-Show')}" method="get">
+				<fieldset>
+				<div class="form-row label-above">
+					<label for="q">${Resource.msg('search.nohits.searchlabel','search',null)}</label>
+					<input type="text" name="q" value="" class="input-text" />
+					<button type="submit" value="${Resource.msg('global.go','locale',null)}" name="simplesearch">
+						${Resource.msg('global.go','locale',null)}
+					</button>
+				</div>
+				</fieldset>
+			</form>
+		</div>
+		
+		
+			<isscript>
+				var instanceType = dw.system.System.getInstanceType();
+				var production = dw.system.System.PRODUCTION_SYSTEM;
+				var staging = dw.system.System.STAGING_SYSTEM;
+			</isscript>
+			<div class="error-page-tech-details" <isif condition="${instanceType == production || instanceType == staging}">style="display:none"</isif>>
+				
+				
+				<isif condition="${'PipelineName' in pdict || 'CurrentStartNodeName' in pdict}">			
+					<p>${Resource.msg('generalerror.request','error',null)}</p>
+					<p><code><isprint value="${pdict.PipelineName}"/>-<isprint value="${pdict.CurrentStartNodeName}"/></code></p>
+				</isif>
+				
+				<isif condition="${'ErrorText' in pdict}">			
+					<p>${Resource.msg('generalerror.errortext','error',null)}</strong></p>
+					<p><code><isprint value="${pdict.ErrorText}"/></code></p>
+				</isif>
+							
+			</div>
+		
+		
+		<div class="error-page-footer">
+		
+			<div class="error-page-footer-asset">
+				<iscontentasset aid="error-service"/>
+			</div>
+			
+			<div class="error-page-footer-slot">
+				<isslot id="error-promo" description="Banner for general error" context="global" />
+			</div>
+			
+		</div>
+</iscomment>
+
+</isdecorate>
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>

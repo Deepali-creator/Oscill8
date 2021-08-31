@@ -1,0 +1,69 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="account/pt_account">
+<isinclude template="util/modules"/>
+<style>
+	label{display:none;}
+</style>
+
+<div class="pg-container">
+
+	<div class="login-wrp flex fjb">
+
+		<div class="left-col">
+			<isinclude template="account/login/logininclude"/>
+		</div>
+		<div class="right-col">
+
+            <div class="top-row form-wrp">
+                <h2 class="form-title" style="margin-top:0px;">Create Account</h2>
+                <p class="form-descr gray-txt tac">Don’t have an account? Sign up now.</p>
+				<form action="${URLUtils.httpsContinue()}" method="post" id="${pdict.CurrentForms.login.htmlName}_register">
+					<fieldset>
+							<button class="btn ttu btn-pink " type="submit" value="${Resource.msg('global.createbutton','locale',null)}" name="${pdict.CurrentForms.login.register.htmlName}">
+								Continue
+							</button>
+						<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+					</fieldset>
+				</form>
+            </div>
+			<div class="bottom-row form-wrp">
+					<center >
+					
+						<div class="login-box">
+
+							<h2 class="form-title">${Resource.msg('checkoutlogin.guestheader','checkout',null)}</h2>
+							
+							<div class="login-box-content clearfix">
+
+								<p class="form-descr gray-txt tac">${Resource.msg('checkoutlogin.guestmessage','checkout',null)}</p>
+								<form action="${URLUtils.httpsContinue()}" method="post">
+								<fieldset>
+										<button type="submit" class="button1 btn-pink" value="${Resource.msg('checkoutlogin.checkoutguestbutton','checkout',null)}" name="${pdict.CurrentForms.login.unregistered.htmlName}"><span>${Resource.msg('checkoutlogin.checkoutguestbutton','checkout',null)}</span></button>
+									<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+								</fieldset>
+								</form>
+
+								<iscomment>new customer
+								<form action="${URLUtils.httpsContinue()}" method="post">
+									<fieldset>
+											<button type="submit" lass="button1 btn-pink" value="${Resource.msg('global.createbutton','locale',null)}" name="${pdict.CurrentForms.login.register.htmlName}"><span>${Resource.msg('global.createnowbutton','locale',null)}</span></button>
+										<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+									</fieldset>
+								</form>
+								</iscomment>
+										
+							</div>	
+								
+						</div>
+						
+					</center>
+            </div>
+		</div>
+
+</div><!-- END: page column -->
+
+</isdecorate>
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>

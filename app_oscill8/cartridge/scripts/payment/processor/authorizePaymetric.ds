@@ -1,0 +1,111 @@
+/**
+*
+*
+*   @input order : dw.order.Order
+*   @input cvn : String
+*   @output AuthorizationCode : String
+*   @output TransactionID : String
+*
+*/
+importPackage( dw.system );
+importPackage( dw.util );
+importPackage( dw.svc );
+importPackage( dw.ws );
+
+function execute( args : PipelineDictionary ) : Number {
+	var authservice : Service = LocalServiceRegistry.createService("XiInterceptAuthorize_"+Site.current.ID,XiInterceptAuthorizeService);
+	var result : Result = authservice.call({order: args.order, cvn: args.cvn});
+	if(result.ok){
+		args.AuthorizationCode=result.object.AuthorizationCode;
+		args.TransactionID=result.object.TransactionID;
+		return PIPELET_NEXT;
+	}else if("ERROR"===result.status){
+		Logger.error(result.msg);
+	}
+	return PIPELET_ERROR;
+}
+
+var XiInterceptAuthorizeService={
+	initServiceClient : function(service : Service) : Object {
+		var webref : WebReference2 = webreferences2['XiPayWSConnector_XiPay'];
+		var port : Port = webref.getDefaultService();
+		WSUtil.setUserNamePassword(service.configuration.credential.user, service.configuration.credential.password, port);
+		return port;
+	},
+	createRequest : function(service : Service, params) : Object {
+		var order : Order = params.order;
+		var address : OrderAddress = order.billingAddress;
+		var pi : PaymentInstrument = order.paymentInstruments[0];
+
+		var webref : WebReference2 = webreferences2['XiPayWSConnector_XiPay'];
+		var th = new webref.ITransactionHeader();
+		var notNow : Calendar = new Calendar(new Date(Number.NaN));
+		th.setAuthorizationDate(notNow);
+		th.setBillingDate(notNow);
+		th.setCaptureDate(new Calendar(order.creationDate));
+		th.setCreationDate(new Calendar(order.creationDate));
+		th.setLastModificationDate(new Calendar(order.lastModified));
+		th.setSettlementDate(notNow);
+		th.setShippingCaptureDate(new Calendar(order.creationDate));
+
+		th.setMerchantID(Site.current.getCustomPreferenceValue('XiInterceptMerchant'));
+		th.setCardHolderName(pi.creditCardHolder);
+		th.setCardHolderName1(address.firstName);
+		th.setCardHolderName2(address.lastName);
+		th.setCardHolderAddress1(address.address1);
+		th.setCardHolderAddress2(address.address2);
+		th.setCardHolderCity(address.city);
+		th.setCardHolderState(address.stateCode);
+		th.setCardHolderZip(address.postalCode);
+		th.setCardHolderCountry(address.countryCode);
+		th.setOrderID(order.orderNo);
+		th.setOrderDate(new Calendar(order.creationDate));
+
+		th.setCardNumber(pi.creditCardToken);
+		th.setCardCVV2(params.cvn);
+		th.setCardExpirationDate(StringUtils.formatNumber(pi.creditCardExpirationMonth,"00")+"/"+StringUtils.formatNumber(pi.creditCardExpirationYear%100,"00"));
+		th.setCardType(pi.creditCardType.toLocaleUpperCase());
+		th.setAmount(order.totalGrossPrice.value);
+		th.setCurrencyKey(order.currencyCode);
+
+		return th;
+	},
+	execute : function(service : Service, request : Object) : Object {
+		return service.serviceClient.authorize(request);
+	},
+	parseResponse : function(service : Service, response : Object) : Object {
+		switch(response.getStatusCode()){
+			case 100:
+			case 104:
+			case 106:
+			case 107:
+			case 108:
+			case 110:
+				if("CuisinartCA"==Site.current.ID){
+					switch(response.getAVSCode()){
+						case "A3":
+						case "A4":
+						case "A7":
+						case "I1":
+						case "I2":
+						case "I3":
+							// TODO: check CVV reponse code
+							var infoItems = response.getInfoItems().getInfoItem();
+							for each(var item in infoItems){
+								if("TR_CARD_CIDRESPCODE" === item.getKey() && "M" === item.getValue()){
+									return {"AuthorizationCode": response.getAuthorizationCode(), "TransactionID": response.getTransactionID()};
+								}
+							}
+							throw new Error("Card could not be authorized for order "+response.getOrderID()+" (CVV failure)");
+						default:
+							throw new Error("Card could not be authorized for order "+response.getOrderID()+" (AVS failure)");
+					}
+				}else{
+					return {"AuthorizationCode": response.getAuthorizationCode(), "TransactionID": response.getTransactionID()};
+				}
+				break;
+			default:
+				throw new Error("Card could not be authorized for order "+response.getOrderID()+" (authorize failure)");
+		}
+	}
+};

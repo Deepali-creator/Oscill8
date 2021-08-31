@@ -1,0 +1,239 @@
+.main-page-wrapper {
+
+}
+.oscill8-footer {
+    margin: 0;
+}
+.pg-container {
+    width: 100%;
+    padding: 0 30px;
+    margin: auto;
+}
+.account-wrp {
+    padding: 52px 0;
+}
+.account-wrp .left-col , .account-wrp .right-col{
+    width: calc((100% - 25px) / 2);
+    padding: 22px 75px;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), inset 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+.account-wrp .form-wrp .form-title {
+    font-family: 'ProximaNovaSoftW03';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 35px;
+    color: #184A8F;
+    text-align: center;
+}
+.account-wrp .form-wrp .form-row .inner-row {
+    width: calc((100% - 30px) / 2);
+}
+.account-wrp .form-wrp .form-row {
+    margin-bottom: 24px;
+}
+.account-wrp .form-wrp .btn {
+    height: 50px;
+    padding: 0 17px;
+    font-size: 16px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-family: "ProximaNovaSoftW03";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    max-width: 215px;
+    width: 100%;
+    margin: auto;
+}
+.account-wrp .tc-txt {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 146.48%;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #4D4D4D;
+    margin-top: 14px;
+}
+.account-wrp .tc-txt a:hover {
+    text-decoration: underline;
+}
+.account-wrp .tc-txt a {
+    color: #4D4D4D;
+}
+.account-wrp .form-wrp .form-descr {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    text-align: center;
+    color: #4D4D4D;
+    margin: 12px;
+    max-width: 90%;
+}
+.account-wrp .form-wrp .checkbox-row input:checked {
+    background-image: url(images/Vector_Check.svg);
+}
+.account-wrp .form-wrp .checkbox-row input {
+    margin-right: 13px !important;
+    margin-top: 8px !important;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
+    border: 1px solid #B2B2B2;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+.account-wrp .form-wrp .checkbox-row label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 146.48%;
+    text-align: center;
+    color: #4D4D4D;
+}
+.account-wrp .form-wrp input:not([type=checkbox]) {
+    width: 100%;
+    border-radius: 6px;
+    padding: 9px 12px;
+    background: #FFFFFF;
+    border: 1px solid #B2B2B2;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 146.48%;
+    color: #000000;
+}
+.account-wrp .form-wrp input::-webkit-input-placeholder { /* Edge */
+    color: #B2B2B2;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+}
+
+.account-wrp .form-wrp input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #B2B2B2;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+}
+.account-wrp .form-wrp input::placeholder {
+    color: #B2B2B2;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+}
+.account-wrp .form-wrp .gray-txt {
+    font-size: 16px;
+    color: rgb(148, 148, 148);
+    font-family: "Comfortaa-Bold";
+    letter-spacing: 1px;
+}
+.account-wrp .left-col .form-wrp .forgot-pass {
+
+    position: relative;
+}
+.account-wrp .left-col .form-wrp .forgot-pass:after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(148, 148, 148);
+
+}
+.account-wrp .left-col .form-wrp .btn {
+    margin-top: 24px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.account-wrp .left-col .form-wrp form {
+    margin-top: 24px;
+}
+.btn-blue:hover {
+    background-color: #154288;
+}
+.account-wrp .right-col .top-row, .account-wrp .right-col .bottom-row {
+    max-width: 470px;
+    width: 100%;
+    margin: auto;
+}
+.account-wrp .right-col .top-row {
+    padding-bottom: 35px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #E3E3E5;
+}
+.account-wrp .right-col .form-wrp .form-descr {
+    margin-bottom: 32px;
+    margin-top: 25px;
+}
+
+@media all and (max-width: 1200px){
+    .account-wrp .left-col, .account-wrp .right-col{
+        width: 100%;
+        max-width: 590px;
+    }
+}
+
+@media all and (max-width: 1025px){
+
+}
+@media all and (max-width: 769px){
+    .pg-container{
+        padding: 0 15px;
+    }
+    .account-wrp .left-col, .account-wrp .right-col{
+        max-width: 100%;
+        box-shadow: inset 0 4px 4px #F3F3F3;
+        border-radius: 15px;
+        padding: 14px 27px;
+    }
+    .account-wrp .form-wrp .form-row{
+        flex-direction: column;
+    }
+    .account-wrp .form-wrp .form-row .inner-row{
+        width: 100%;
+        margin-bottom: 24px;
+    }
+    .account-wrp .form-wrp .form-row .inner-row:last-child{
+        margin-bottom: 0;
+    }
+    .account-wrp .form-wrp .form-row.checkbox-row{
+        flex-direction: row;
+    }
+    .account-wrp{
+        padding: 28px 0 32px 0;
+    }
+    .account-wrp .form-wrp .checkbox-row input{
+        margin-right: 13px;
+    }
+    .account-wrp .form-wrp .checkbox-row label{
+        max-width: 85%;
+    }
+    
+}
+@media only screen and (max-width: 379px) and (min-width: 200px) {
+    .account-wrp .form-wrp .checkbox-row input {
+        margin-top: -12px !important;
+    }
+}

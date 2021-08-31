@@ -1,0 +1,727 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+
+<script>
+	$('#dwfrm_profile_address_firstname').parent().css('width', '48%');
+	$('#dwfrm_profile_address_lastname').parent().css('width', '48%');
+	$('#dwfrm_profile_address_firstname').parent().css('float', 'left');
+	$('#dwfrm_profile_address_lastname').parent().css('float', 'right');
+    $('#form-submit').css('display', 'none');
+    
+    $('#dwfrm_profile_address_firstname').parent().addClass('firstnamedivision');
+    $('#dwfrm_profile_address_lastname').parent().addClass('lastnamedivision');
+    
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function iOS() {
+        return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+        ].includes(navigator.platform)
+        // iPad on iOS 13 detection
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+    }
+    function myFunction(x) {
+        if (x.matches && iOS()) { // If media query matches and ios detected
+            $(".phoneDiv label").css('margin-top', '6.5em');
+        }
+    }
+    var x = window.matchMedia("(max-width: 480px)")
+    myFunction(x) // Call listener function at run time
+    x.addListener(myFunction) // Attach listener function on state changes
+</script>
+<style>
+
+/*CSS for Custom fields Starts*/
+
+.popup-title {
+	color: #184A8F;
+    font-family: 'ProximaNovaSoftW03';
+	font-size: 24px !important;
+	font-style: normal !important;
+	text-transform: none !important;
+}
+
+.dialog-content h1 {
+	display: none !important;
+}
+
+.dialog-content .dialog-required {
+	display: none !important;
+}
+
+.dialog-content {
+	padding: 10px 44px 44px 44px !important;
+}
+
+
+.apply-button {
+	display: block !important;
+	font-family: 'Montserrat' !important;
+}
+.apply-button:hover {
+	background-color: #184A8F;
+}
+
+.delete-button {
+    margin-top: 1em;
+}
+
+
+.ui-dialog {
+	border-radius: 10px;
+	top: 10.8em !important;
+	width: 680px !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	border-radius: 10px;
+	background-color: white !important;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+	font-size: 14px !important;
+}
+
+
+input:not(:disabled):not([type=checkbox]):not([type=radio]), select {
+	max-width: none;
+}
+
+.statesDiv {
+	margin-right: 2% !important;
+}
+.postalDiv {
+	margin-left: 2%;
+}
+
+.countryDiv {
+	margin-right: 0% !important;
+}
+
+.emailDiv {
+	margin-bottom: 1.5em;
+}
+
+.form-horizontal label {
+    text-align: left !important;
+    width: 100% !important;
+    font-size:12px !important;
+    font-weight:400 !important;
+    line-height:2;
+}
+.form-horizontal .form-row-button {
+    width:100% !important;
+}
+.form-row {
+	margin: 0 0 0rem 0 !important;
+}
+
+.form-caption {
+	/*margin-left:0px !important;*/
+	display: none !important;
+}
+
+.s-hidden {
+    visibility:hidden;
+    padding-right:10px;
+}
+.select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    font:normal 11.4px Arial, Sans-Serif;
+    color:black;
+    height: 35px !important;
+    border:1px solid #ccc;
+    width:100% !important;
+    margin-bottom: 2% !important;
+
+}
+select {
+    height: 37px !important;
+}
+.styledSelect {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color:#ededed;
+    padding: 1em .5em;
+    font-family: mr-eaves-modern, sans-serif;
+    
+}
+.styledSelect:after {
+    content:"";
+    width:0;
+    height:0;
+    border:5px solid transparent;
+    border-color:black transparent transparent transparent;
+    position:absolute;
+    top:13px;
+    right:6px;
+}
+.styledSelect:active, .styledSelect.active {
+    background-color:#eee;
+    height:110px;
+}
+.styledSelect::selection {
+    background-color:#ededed;
+}
+.options {
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    z-index:999;
+    margin:0 0;
+    padding:0 0;
+    height:167px;
+    overflow-y:auto;
+    list-style:none;
+    border:1px solid #ccc;
+    background-color:white;
+    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.options li {
+    margin:0 0;
+    padding:10px 10px 10px 10px;
+    background-color:#ededed;
+    color:Black;
+    
+}
+.options li:hover {
+    background-color:white;
+}
+
+#methodtext i {
+    margin-left:10%;
+}
+
+.shippingMethodDiv {
+    height:37px;
+    width:210px;
+    background-color:white;
+    margin:0px;
+    border: 1px solid rgba(178, 178, 178, 0.5);
+    border-radius:6px;
+}
+.shippingMethodDiv:hover {
+    cursor: pointer;
+}
+/*CSS for Custom fields Ends*/
+.disableContent{
+    display:none !important;
+}
+.checkoutHeadingOuterDiv{
+    overflow:auto;
+}
+.checkoutHeadingDiv1{
+    width:20%;
+    float:left;
+}
+.checkoutHeadingDiv2{
+    width:60%;
+    float:left;
+}
+.checkoutHeadingDiv3{
+    width:20%;
+    float:left;
+    margin:55px 0px 55px 0px;
+}
+.textCenter{
+    text-align:center;
+}
+.shippingFieldsOuterDiv{
+    overflow: none;
+    height:300px;
+}
+.sameBillingAddressDiv{
+    margin-left:-36%;
+}
+.shippingContinueButtonDiv{
+    margin-top:5%;text-align:right;
+}
+.miniCartPricing {
+    clear: right;
+    float: right;
+    margin-right: 0.5%;
+    font-size: 13px;
+    width: 19%;
+    text-align: right;
+}
+.botdivl {
+    width:50%;
+    float:left;
+}
+.botdivr {
+    width:50%;
+    float:right;
+}
+.checkout-order-totals {
+    background-color: #f8f9fb;
+    padding: 0.3rem .5rem;
+}
+.order-totals-table{
+    line-height:2.5em;
+}
+
+@media only screen and (max-width: 1360px) and (min-width: 480px) {
+    .statesDiv {
+        margin-right: 0% !important;
+    }
+    .postalDiv {
+        margin-left: 0% !important;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+	.ui-dialog {
+		margin-left: -6rem;
+	}
+}
+@media only screen and (max-width: 1274px) {
+	.ui-dialog {
+		margin-left: -11rem;
+	}
+}
+
+@media only screen and (max-width: 1128px) {
+	.ui-dialog {
+		margin-left: -12rem;
+		width: 600px !important;
+	}
+}
+
+@media only screen and (max-width: 998px) {
+	.ui-dialog {
+		margin-left: -15rem;
+	}
+}
+
+@media only screen and (max-width: 924px) {
+	.ui-dialog {
+		margin-left: -17rem;
+	}
+}
+@media only screen and (max-width: 860px) {
+	.ui-dialog {
+		margin-left: -18rem;
+	}
+}
+@media only screen and (max-width: 783px) {
+	.ui-dialog {
+		margin-left: -20rem;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.ui-dialog {
+		width: auto !important;
+        margin-right: 2em;
+        margin-left: -34em;
+        
+    }
+
+    .firstnamedivision {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    .lastnamedivision {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    .address1Div {
+        width: 100% !important;
+        margin-left: 0% !important;
+        float: none !important;
+    }
+
+    .address2Div {
+        width: 100% !important;
+        margin-left: 0% !important;
+        float: none !important;
+    }
+    
+    .statesDiv {
+        width: 37% !important;
+        margin-right: 0% !important;
+    }
+
+    .cityDiv {
+        width: 55% !important;
+    }
+
+    .countryDiv {
+        width: 37% !important;
+        margin-right: 0% !important;
+    }
+
+    .postalDiv {
+        width: 55% !important;
+    }
+
+    .emailDiv {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    .phoneDiv {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    .phoneDiv label{
+        margin-top: 4em;
+        margin-left: -0.5em;
+    }
+
+    .phoneDiv input{
+        margin-left: -0.5em;
+    }
+
+    .apply-button {
+        width: 100% !important;
+        margin-top: 10em !important;
+    }
+    .delete-button {
+        width: 100% !important;
+    }
+}
+@media only screen and (max-width: 641px) {
+    .ui-dialog {
+        left: 425px !important;
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    .ui-dialog {
+        width: 550px !important;
+        margin-left: -34em;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .ui-dialog {
+        left: 411px !important;
+    }
+}
+
+@media only screen and (max-width: 368px) {
+    .ui-dialog {
+        width: 320px !important;
+        margin-left: -33em;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 1360px) and (min-width: 1024px) {
+
+	
+
+    .checkoutContentCenter{
+        margin: 3% 10% 5% 10%;
+        overflow: auto;
+    }
+    .checkoutFormOuterDiv {
+        border: 1px solid #DCDCDC;
+        float: left;
+        width: 55%;
+        margin-right: 2%;
+    }
+    .checkoutCartSummaryDiv {
+        border: 1px solid #DCDCDC;
+        float: right;
+        width: 40%;
+    }
+    .sameBillingAddressDiv{
+        margin-left:-36%;  
+        margin-top: 70px;
+    }
+    .miniCartPricing {
+        clear: right;
+        float: right;
+        margin-right: 0.5%;
+        font-size: 13px;
+        width: 19%;
+        text-align: right;
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .checkoutContentCenter{
+        margin: 3% 5% 5% 5%;
+        overflow: auto;
+    }
+    .checkoutFormOuterDiv {
+        border: 1px solid #DCDCDC;
+        float: left;
+        width: 55%;
+        margin-right: 2%;
+    }
+    .checkoutCartSummaryDiv {
+        border: 1px solid #DCDCDC;
+        float: right;
+        width: 40%;
+    }
+    .sameBillingAddressDiv {
+        margin-left: -36%;
+        margin-top: 70px;
+    }
+    .miniCartPricing {
+        clear: right;
+        float: right;
+        margin-right: 0.5%;
+        font-size: 13px;
+        width: 19%;
+        text-align: right;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .botdivl {
+        width:100%;
+        float:left;
+    }
+    .botdivr {
+        width:100%;
+        float:left;
+    }
+    .reviewOrderButton {
+        float:left;
+        width: 100%;
+        margin-top:20px;
+    }
+
+}
+@media only screen and (max-width: 768px) and (min-width: 480px) {
+    .checkoutContentCenter{
+        margin: 3% 5% 5% 5%;
+        overflow: auto;
+    }
+    .checkoutHeadingDiv1{
+        width: 25%;
+    }
+    .checkoutHeadingDiv2{
+        width: 50%;
+    }
+    .headlineLarge {
+        font-size: 33px;
+        font-weight: bold;
+    }
+    .checkoutHeadingDiv3{
+        width: 25%;
+        float: left;
+        margin: 32px 0px 32px 0px;
+    }
+    .secondaryButton {
+        width: 112px;
+        height: 40px;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+        border-radius: 0px;
+        font-weight: bold;
+    }
+    .checkoutFormOuterDiv {
+        border: 1px solid #DCDCDC;
+        float: none;
+        width: auto;
+        margin-right: 0%;
+        padding-bottom: 130px;
+    }
+    .checkoutCartSummaryDiv{
+        border: 1px solid #DCDCDC;
+        float: none;
+        width: auto;
+        margin-top:30px;
+    }
+    .sameBillingAddressDiv {
+        margin-left: 0px;
+        margin-top: 70px; 
+    }
+
+}
+@media only screen and (max-width: 480px) {
+    .checkoutContentCenter{
+    margin: 3% 0% 5% 0%;
+    overflow: auto;
+    }
+    .checkoutHeadingOuterDiv{
+        display:none;
+    }
+    .shippingHeading{
+        display:none;
+    }
+    .shippingFieldsOuterDiv{
+        overflow: none;
+        height:700px;
+    }
+    .sameBillingAddressDiv{
+        margin-left:0%;
+        margin-top: 30px; 
+    }
+    .showHorizontalLine{
+        display:none;
+    }
+    .shippingMethodDiv {
+        height:37px;
+        width:270px;
+        background-color:#ededed;
+        margin:0px;
+        border:1px solid #aaa;
+    }
+    .shippingMethodDiv:hover {
+        cursor: pointer;
+    }
+    .shippingContinueButtonDiv{
+        margin-top:8%;text-align:left;
+    }
+    .checkoutFormOuterDiv{
+        border: none;
+        float:left;
+        width:100%;
+        margin-right:0px;
+    }
+    .checkoutCartSummaryDiv{
+        border: none;
+        float: left;
+        width: 100%;
+        margin-top:30px;
+    }
+    .shippingContinueButton{
+        background-color: #A9C439;
+        color: black;
+        width: 110px;
+        height: 30px;
+        text-decoration: none;
+        font-size: 12px;
+        border: none;
+        border-radius: 0px;
+        font-weight: bold;
+        text-transform: none;
+    }
+    .shippingContinueButton:Hover{
+        background-color: #A9C439;
+        color: black;
+        width: 110px;
+        height: 30px;
+        text-decoration: none;
+        font-size: 12px;
+        border: none;
+        border-radius: 0px;
+        font-weight: bold;
+        text-transform: none;
+    }
+    .shippingContinueFieldsetMob{
+        width:100%;
+        float:right;
+    }
+    .form-row {
+        margin-left:0px !important;
+    }
+    .reviewOrderButton{
+        width: 100%;
+        margin-top:20px;
+    }
+    .statesDiv {
+        margin-left: 6% !important;
+    }
+    .countryDiv {
+        margin-left: 6% !important;
+    }
+    
+}
+@media only screen and (max-width: 320px) {
+    .shippingmethods{
+        width:200px;
+    }
+    .shippingMethodDiv{
+        width:200px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .mgt {
+        margin-bottom:10px;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .mgt {
+        margin-right:10px;
+    }
+}
+</style>
+
+<isset name="DecoratorTemplate" value="account/pt_account" scope="page"/>
+<isif condition="${pdict.CurrentHttpParameterMap.format.stringValue == 'ajax' || pdict.CurrentHttpParameterMap.pwr.stringValue == 'true' || pdict.CurrentHttpParameterMap.source.stringValue == 'search' || pdict.CurrentHttpParameterMap.source.stringValue == 'quickview' || pdict.CurrentHttpParameterMap.source.stringValue == 'cart'}">
+	<isset name="DecoratorTemplate" value="util/pt_empty" scope="page"/>
+</isif>
+
+<isdecorate template="${DecoratorTemplate}">
+
+	<isif condition="${pdict.Action == 'add'}">
+		<h1>${Resource.msg('account.addressbook.editaddress.addaddress','account',null)}</h1>
+	<iselse/>
+		<h1>${Resource.msg('account.addressbook.editaddress.editaddress','account',null)}</h1>
+	</isif>
+	<div class="dialog-required"> <span class="required-indicator">&#8226; <em>${Resource.msg('global.requiredfield','locale',null)}</em></span></div>
+	<h2 class="popup-title">New Address Information</h2>
+	<form method="post" class="form-horizontal" action="${URLUtils.httpsContinue()}" id="edit-address-form" name="${pdict.CurrentForms.profile.address.htmlName}">
+		<fieldset>
+
+			<isif condition="${pdict.Status != null && pdict.Status.isError()}">
+				<!-- Use the error code value to build an appropriate error message -->
+				<span class="form-error">
+					<isprint value="${Resource.msg('addressdetails.' + pdict.Status.code, 'account',null)}"/>
+				</span>
+			</isif>
+
+			<isscript>
+				var currentCountry = require('~/cartridge/scripts/util/Countries').getCurrent(pdict);
+			</isscript>
+				
+			
+			
+			<isdynamicform formobject="${pdict.CurrentForms.profile.address}" formdata="${currentCountry.dynamicForms.addressDetails}"/>
+			
+			<div class="form-row form-row-button">
+				<isinclude template="edq/edqUnicorn" />
+				<button class="apply-button button1 mgt form-btn" style="width: 20%;float:left" onmouseover="this.style.color='white'" type="submit" name="${pdict.Action == 'add' ? pdict.CurrentForms.profile.address.create.htmlName : pdict.CurrentForms.profile.address.edit.htmlName}" value="${Resource.msg('global.apply','locale',null)}">
+					Save
+				</button>
+				<iscomment>
+					<button class="cancel cancel-button simple" type="submit" name="${pdict.CurrentForms.profile.address.cancel.htmlName}" value="${Resource.msg('global.cancel','locale',null)}">
+						${Resource.msg('global.cancel','locale',null)}
+					</button>
+				</iscomment>
+
+					<isif condition="${pdict.Action != 'add'}">
+						<input type="hidden" value="${pdict.Address.ID}" name="addressid" id="addressid" />
+						<button class="delete-button delete button1 btn-red-in-white cancel" style="width: 20%;" type="submit" name="${pdict.CurrentForms.profile.address.remove.htmlName}" value="${Resource.msg('global.delete','locale',null)}">
+							${Resource.msg('global.delete','locale',null)}
+						</button>
+					</isif>
+				
+			</div>
+			<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+		</fieldset>
+
+	</form>
+<isscript>
+	importScript("util/ViewHelpers.ds");
+	var addressForm = pdict.CurrentForms.profile.address;
+	var countries = ViewHelpers.getCountriesAndRegions(addressForm);
+	var json = JSON.stringify(countries);
+</isscript>
+<script>window.Countries = <isprint value="${json}" encoding="off"/>;</script>
+</isdecorate>

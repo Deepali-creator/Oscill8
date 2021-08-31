@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>My Account - Billing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../css/index.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-shadow.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../account-style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../../css/mini_cart.css"/>
+</head>
+<body>
+<!-- header-->
+<header class="oscill8-header header-fixed flex fjb">
+    <div class="flex fac ttu">
+        <a href="/">
+            <span class="logo"><img src="../../../assets/images/logo.svg" alt="OSCILL8 &trade;"></span>
+        </a>
+        <div class="header-menu">
+            <a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+            <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+            <a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+        </div>
+    </div>
+    <div class="flex fac">
+        <a href="../../../src/pages/cart/index.html" class="cart-svg" id="show_cart_btn" data-tooltipster
+           data-tooltip-content="#mini_cart_content">
+            <img src="../../../assets/images/icons/cart.svg" alt="Cart Image">
+        </a>
+        <a class="back-gr-white blue-text login-btn" href="../../../src/pages/login/index.html">Log in</a>
+        <button type="button" id="menu_mobile_btn"><img src="../../../assets/images/menu-white-icon.svg"/></button>
+    </div>
+</header>
+
+<!-- main -->
+<main class="main-page-wrapper">
+    <div class="account-pages">
+        <div class="title-wrp">
+            <h1>My Account</h1>
+        </div>
+        <div class="account-tabs-wrp">
+            <div class="titles-wrp">
+                <div class="account-container">
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="../../../src/myaccount/profile/index.html" class="blue-small-titles">Profile</a></li>
+                        <li><a href="../../../src/myaccount/addresses/index.html" class="blue-small-titles">Addresses</a></li>
+                        <li class="active hide_mobile"><a href="../../../src/myaccount/billing/index.html"
+                                                          class="blue-small-titles">Billing</a></li>
+                        <li class="hide_mobile"><a href="../../../src/myaccount/orders/index.html" class="blue-small-titles">Orders</a>
+                        </li>
+                        <li class="hide_mobile"><a href="../../../src/myaccount/subscriptions/index.html"
+                                                   class="blue-small-titles">Subscriptions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="active-section addresses-section">
+                <div class="account-container">
+                    <p class="active-titles-item-wrap">Billing</p>
+                    <div class="add-card-row flex fje"><a href="javascript:;" data-src="#add-card"
+                                                          data-fancybox="add-card" data-touch="false" data-hash="false"
+                                                          data-clickOutside="true">Add another card</a></div>
+                    <div id="add-card" style="display: none;" class="edit-popup">
+
+                        <form action="">
+                            <h2 class="popup-title">Payment Information</h2>
+                            <div class="card-part">
+                                <div class="card-info inner-wrp">
+                                    <div class="inner-card-wrp">
+                                        <div class="top-info flex fjb fac">
+                                            <div class="left-col flex fac">
+                                                <div class="img-wrp">
+                                                    <img src="../../../src/myaccount/billing/images/Visa.svg" alt="">
+                                                </div>
+                                                <div class="info">
+                                                    <p class="card-name">Visa Card</p>
+                                                    <p class="card-number">Debit *** XXXXX</p>
+                                                </div>
+                                            </div>
+                                            <div class="right-col">
+                                                <div class="popup-set-default flex fac">
+                                                    <input type="checkbox" id="popup-set-default" name="set-default">
+                                                    <label for="popup-set-default">Make this my default payment
+                                                        method.</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom-info flex fac">
+                                            <p>We Accept:</p>
+                                            <div class="card-types">
+                                                <img src="../../../src/myaccount/billing/images/card-types.png"
+                                                     alt="Card Types">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popup-form-row card-info-row flex fjb">
+                                        <div class="inner-row">
+                                            <label for="card-fname">First Name</label>
+                                            <input type="text" name="card-fname" id="card-fname" value="">
+                                        </div>
+                                        <div class="inner-row select-wrp">
+                                            <label for="card-type">Card type</label>
+                                            <select name="cardtype" id="card-type">
+                                                <option value="" checked></option>
+                                                <option value="visa">Visa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="popup-form-row state-row flex fjb">
+                                        <div class="inner-row city_field">
+                                            <label for="card-city">City</label>
+                                            <input type="text" name="card-city" id="card-city" value="">
+                                        </div>
+                                        <div class="inner-row state_field select-wrp">
+                                            <label for="card-state">State</label>
+                                            <select name="card-state" id="card-state">
+                                                <option value="" checked></option>
+                                                <option value="ny">NY</option>
+                                            </select>
+                                        </div>
+                                        <div class="inner-row zip_code_field">
+                                            <label for="card-zip">Zip Code</label>
+                                            <input type="text" value="" id="card-zip" name="card-zip">
+                                        </div>
+                                        <div class="inner-row country_field select-wrp">
+                                            <label for="card-country">Country</label>
+                                            <select name="card-country" id="card-country">
+                                                <option value="" checked></option>
+                                                <option value="US">United States</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="popup-title">Billing Address</h2>
+                            <div class="inner-wrp">
+                                <div class="popup-form-row name-row flex fjb">
+                                    <div class="inner-row">
+                                        <label for="fname">First Name</label>
+                                        <input type="text" name="fname" id="fname" value="">
+                                    </div>
+                                    <div class="inner-row">
+                                        <label for="lname">Last Name</label>
+                                        <input type="text" name="fname" id="lname" value="">
+                                    </div>
+                                </div>
+                                <div class="popup-form-row address-row flex fjb">
+                                    <div class="inner-row">
+                                        <label for="address1">Street Address 1</label>
+                                        <input type="text" name="address1" id="address1" value="">
+                                    </div>
+                                    <div class="inner-row">
+                                        <label for="address2">Street Address 2</label>
+                                        <input type="text" name="address2" id="address2" value="">
+                                    </div>
+                                </div>
+                                <div class="popup-form-row state-row flex fjb">
+                                    <div class="inner-row city_field">
+                                        <label for="city">City</label>
+                                        <input type="text" name="city" id="city" value="">
+                                    </div>
+                                    <div class="inner-row state_field select-wrp">
+                                        <label for="state">State</label>
+                                        <select name="state" id="state">
+                                            <option value="" checked></option>
+                                            <option value="ny">NY</option>
+                                        </select>
+                                    </div>
+                                    <div class="inner-row zip_code_field">
+                                        <label for="zip">Zip Code</label>
+                                        <input type="text" value="" id="zip" name="zip">
+                                    </div>
+                                    <div class="inner-row country_field select-wrp">
+                                        <label for="country">Country</label>
+                                        <select name="country" id="country">
+                                            <option value="" checked></option>
+                                            <option value="US">United States</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="popup-form-row emailphone-row flex fjb">
+                                    <div class="inner-row">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" name="email" id="email" value="">
+                                    </div>
+                                    <div class="inner-row">
+                                        <label for="phone">Phone Number (Optional)</label>
+                                        <input type="text" name="phone" id="phone" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btns-wrp flex fjb">
+                                <div class="right-part">
+                                    <a href="javascript:;" class="delete-method" data-fancybox-close="">Delete Payment
+                                        Method</a>
+                                </div>
+                                <div class="left-part flex fac">
+                                    <a data-fancybox-close="" class="close-popup">Cancel</a>
+                                    <button class="form-btn">Save</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="card-list flex fwrap fjb">
+
+                        <div class="single-card default-card" data-id="1">
+                            <div class="inner-card-wrp flex fjb fac">
+                                <div class="left-col flex fac">
+                                    <div class="img-wrp">
+                                        <img src="../../../src/myaccount/billing/images/Visa.svg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <p class="card-name">Visa Card</p>
+                                        <p class="card-number">Debit *** XXXXX</p>
+                                    </div>
+                                </div>
+                                <div class="right-col">
+                                    <div class="btn-wrp">
+                                        <a href="javascript:;" class="set-default checked"><span class="sd-txt">Set as Default</span><span
+                                                class="default-txt">Default</span></a>
+                                    </div>
+                                    <div class="btn-wrp">
+                                        <a href="javascript:;" class="edit-card-btn trans" data-src="#edit-card1"
+                                           data-fancybox data-touch="false" data-hash="false"
+                                           data-clickOutside="true">Edit Card</a>
+                                        <a href="javascript:;" class="mob-edit-card-btn trans" data-src="#edit-card1"
+                                           data-fancybox data-touch="false" data-hash="false"
+                                           data-clickOutside="true"><img src="../../../assets/images/edit_icon.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="edit-card1" style="display: none;" class="edit-popup">
+
+                                <form action="">
+                                    <h2 class="popup-title">Payment Information</h2>
+                                    <div class="card-part">
+                                        <div class="card-info inner-wrp">
+                                            <div class="inner-card-wrp flex fjb fac">
+                                                <div class="left-col flex fac">
+                                                    <div class="img-wrp">
+                                                        <img src="../../../src/myaccount/billing/images/Visa.svg" alt="">
+                                                    </div>
+                                                    <div class="info">
+                                                        <p class="card-name">Visa Card</p>
+                                                        <p class="card-number">Debit *** XXXXX</p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-col">
+                                                    <div class="popup-set-default flex fac">
+                                                        <input type="checkbox" id="popup-set-default1"
+                                                               name="set-default1">
+                                                        <label for="popup-set-default1">Make this my default payment
+                                                            method.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="popup-form-row card-info-row flex fjb">
+                                                <div class="inner-row">
+                                                    <label for="card-fname1">First Name</label>
+                                                    <input type="text" name="card-fname" id="card-fname1" value="Jhon">
+                                                </div>
+                                                <div class="inner-row select-wrp">
+                                                    <label for="card-type1">Card type</label>
+                                                    <select name="cardtype" id="card-type1">
+                                                        <option value="visa" checked>Visa</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="popup-form-row state-row flex fjb">
+                                                <div class="inner-row city_field">
+                                                    <label for="card-city1">City</label>
+                                                    <input type="text" name="card-city" id="card-city1"
+                                                           value="New York">
+                                                </div>
+                                                <div class="inner-row state_field select-wrp">
+                                                    <label for="card-state1">State</label>
+                                                    <select name="card-state" id="card-state1">
+                                                        <option value="ny" checked>NY</option>
+                                                    </select>
+                                                </div>
+                                                <div class="inner-row zip_code_field">
+                                                    <label for="card-zip1">Zip Code</label>
+                                                    <input type="text" value="10004" id="card-zip1" name="card-zip">
+                                                </div>
+                                                <div class="inner-row country_field select-wrp">
+                                                    <label for="card-country1">Country</label>
+                                                    <select name="card-country" id="card-country1">
+                                                        <option value="US" checked>United States</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 class="popup-title">Billing Address</h2>
+                                    <div class="inner-wrp">
+                                        <div class="popup-form-row name-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="fname1">First Name</label>
+                                                <input type="text" name="fname" id="fname1" value="John">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="lname1">Last Name</label>
+                                                <input type="text" name="fname" id="lname1" value="Doe">
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row address-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="address11">Street Address 1</label>
+                                                <input type="text" name="address1" id="address11" value="100 Main St.">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="address21">Street Address 2</label>
+                                                <input type="text" name="address2" id="address21" value="Apt. 4">
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row state-row flex fjb">
+                                            <div class="inner-row city_field">
+                                                <label for="city1">City</label>
+                                                <input type="text" name="city" id="city1" value="New York">
+                                            </div>
+                                            <div class="inner-row state_field select-wrp">
+                                                <label for="state1">State</label>
+                                                <select name="state" id="state1">
+                                                    <option value="ny" checked>NY</option>
+                                                </select>
+                                            </div>
+                                            <div class="inner-row zip_code_field">
+                                                <label for="zip1">Zip Code</label>
+                                                <input type="text" value="10004" id="zip1" name="zip">
+                                            </div>
+                                            <div class="inner-row country_field select-wrp">
+                                                <label for="country1">Country</label>
+                                                <select name="country" id="country1">
+                                                    <option value="US" checked>United States</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row emailphone-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="email1">Email Address</label>
+                                                <input type="email" name="email" id="email1" value="johndoe@email.com">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="phone1">Phone Number (Optional)</label>
+                                                <input type="text" name="phone" id="phone1" value="212 - 800 - 1234">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btns-wrp flex fjb">
+                                        <div class="left-part flex fac">
+                                            <button class="form-btn">Update</button>
+                                            <a data-fancybox-close="" class="close-popup">Cancel</a>
+                                        </div>
+                                        <div class="right-part">
+                                            <a href="javascript:;" class="delete-method" data-id="1">Delete Payment
+                                                Method</a>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="single-card" data-id="2">
+                            <div class="inner-card-wrp flex fjb fac">
+                                <div class="left-col flex fac">
+                                    <div class="img-wrp">
+                                        <img src="../../../src/myaccount/billing/images/Visa.svg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <p class="card-name">Visa Card</p>
+                                        <p class="card-number">Debit *** XXXXX</p>
+                                    </div>
+                                </div>
+                                <div class="right-col">
+                                    <div class="btn-wrp">
+                                        <a href="javascript:;" class="set-default"><span
+                                                class="sd-txt">Set as Default</span><span
+                                                class="default-txt">Default</span></a>
+                                    </div>
+                                    <div class="btn-wrp">
+                                        <a href="javascript:;" class="edit-card-btn trans" data-src="#edit-card2"
+                                           data-fancybox="edit-card2" data-touch="false" data-hash="false"
+                                           data-clickOutside="true">Edit Card</a>
+                                        <a href="javascript:;" class="mob-edit-card-btn trans" data-src="#edit-card2"
+                                           data-fancybox data-touch="false" data-hash="false"
+                                           data-clickOutside="true"><img src="../../../assets/images/edit_icon.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="edit-card2" style="display: none;" class="edit-popup">
+
+                                <form action="">
+                                    <h2 class="popup-title">Payment Information</h2>
+                                    <div class="card-part">
+                                        <div class="card-info inner-wrp">
+                                            <div class="inner-card-wrp flex fjb fac">
+                                                <div class="left-col flex fac">
+                                                    <div class="img-wrp">
+                                                        <img src="../../../src/myaccount/billing/images/Visa.svg" alt="">
+                                                    </div>
+                                                    <div class="info">
+                                                        <p class="card-name">Visa Card</p>
+                                                        <p class="card-number">Debit *** XXXXX</p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-col">
+                                                    <div class="popup-set-default flex fac">
+                                                        <input type="checkbox" id="popup-set-default2"
+                                                               name="set-default1">
+                                                        <label for="popup-set-default2">Make this my default payment
+                                                            method.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="popup-form-row card-info-row flex fjb">
+                                                <div class="inner-row">
+                                                    <label for="card-fname2">First Name</label>
+                                                    <input type="text" name="card-fname" id="card-fname2" value="Jhon">
+                                                </div>
+                                                <div class="inner-row select-wrp">
+                                                    <label for="card-type2">Card type</label>
+                                                    <select name="cardtype" id="card-type2">
+                                                        <option value="visa" checked>Visa</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="popup-form-row state-row flex fjb">
+                                                <div class="inner-row city_field">
+                                                    <label for="card-city2">City</label>
+                                                    <input type="text" name="card-city" id="card-city2"
+                                                           value="New York">
+                                                </div>
+                                                <div class="inner-row state_field select-wrp">
+                                                    <label for="card-state2">State</label>
+                                                    <select name="card-state" id="card-state2">
+                                                        <option value="ny" checked>NY</option>
+                                                    </select>
+                                                </div>
+                                                <div class="inner-row zip_code_field">
+                                                    <label for="card-zip2">Zip Code</label>
+                                                    <input type="text" value="10004" id="card-zip2" name="card-zip">
+                                                </div>
+                                                <div class="inner-row country_field select-wrp">
+                                                    <label for="card-country2">Country</label>
+                                                    <select name="card-country" id="card-country2">
+                                                        <option value="US" checked>United States</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 class="popup-title">Billing Address</h2>
+                                    <div class="inner-wrp">
+                                        <div class="popup-form-row name-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="fname2">First Name</label>
+                                                <input type="text" name="fname" id="fname2" value="John">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="lname2">Last Name</label>
+                                                <input type="text" name="fname" id="lname2" value="Doe">
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row address-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="address12">Street Address 1</label>
+                                                <input type="text" name="address1" id="address12" value="100 Main St.">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="address22">Street Address 2</label>
+                                                <input type="text" name="address2" id="address22" value="Apt. 4">
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row state-row flex fjb">
+                                            <div class="inner-row city_field">
+                                                <label for="city2">City</label>
+                                                <input type="text" name="city" id="city2" value="New York">
+                                            </div>
+                                            <div class="inner-row state_field select-wrp">
+                                                <label for="state2">State</label>
+                                                <select name="state" id="state2">
+                                                    <option value="ny" checked>NY</option>
+                                                </select>
+                                            </div>
+                                            <div class="inner-row zip_code_field">
+                                                <label for="zip2">Zip Code</label>
+                                                <input type="text" value="10004" id="zip2" name="zip">
+                                            </div>
+                                            <div class="inner-row country_field select-wrp">
+                                                <label for="country2">Country</label>
+                                                <select name="country" id="country2">
+                                                    <option value="US" checked>United States</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row emailphone-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="email2">Email Address</label>
+                                                <input type="email" name="email" id="email2" value="johndoe@email.com">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="phone2">Phone Number (Optional)</label>
+                                                <input type="text" name="phone" id="phone2" value="212 - 800 - 1234">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btns-wrp flex fjb">
+                                        <div class="left-part flex fac">
+                                            <button class="form-btn">Update</button>
+                                            <a data-fancybox-close="" class="close-popup">Cancel</a>
+                                        </div>
+                                        <div class="right-part">
+                                            <a href="javascript:;" class="delete-method" data-id="2">Delete Payment
+                                                Method</a>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="single-card" data-id="3">
+                            <div class="inner-card-wrp flex fjb fac">
+                                <div class="left-col flex fac">
+                                    <div class="img-wrp">
+                                        <img src="../../../src/myaccount/billing/images/Master.svg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <p class="card-name">Visa Card</p>
+                                        <p class="card-number">Debit *** XXXXX</p>
+                                    </div>
+                                </div>
+                                <div class="right-col">
+                                    <div class="btn-wrp">
+                                        <a href="javascript:;" class="set-default"><span
+                                                class="sd-txt">Set as Default</span><span
+                                                class="default-txt">Default</span></a>
+                                    </div>
+                                    <div class="btn-wrp">
+                                        <a href="javascript:;" class="edit-card-btn trans" data-src="#edit-card3"
+                                           data-fancybox="edit-card3" data-touch="false" data-hash="false"
+                                           data-clickOutside="true">Edit Card</a>
+                                        <a href="javascript:;" class="mob-edit-card-btn trans" data-src="#edit-card3"
+                                           data-fancybox data-touch="false" data-hash="false"
+                                           data-clickOutside="true"><img src="../../../assets/images/edit_icon.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="edit-card3" style="display: none;" class="edit-popup">
+
+                                <form action="">
+                                    <h2 class="popup-title">Payment Information</h2>
+                                    <div class="card-part">
+                                        <div class="card-info inner-wrp">
+                                            <div class="inner-card-wrp flex fjb fac">
+                                                <div class="left-col flex fac">
+                                                    <div class="img-wrp">
+                                                        <img src="../../../src/myaccount/billing/images/Master.svg" alt="">
+                                                    </div>
+                                                    <div class="info">
+                                                        <p class="card-name">Visa Card</p>
+                                                        <p class="card-number">Debit *** XXXXX</p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-col">
+                                                    <div class="popup-set-default flex fac">
+                                                        <input type="checkbox" id="popup-set-default3"
+                                                               name="set-default1">
+                                                        <label for="popup-set-default3">Make this my default payment
+                                                            method.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="popup-form-row card-info-row flex fjb">
+                                                <div class="inner-row">
+                                                    <label for="card-fname3">First Name</label>
+                                                    <input type="text" name="card-fname" id="card-fname3" value="Jhon">
+                                                </div>
+                                                <div class="inner-row select-wrp">
+                                                    <label for="card-type3">Card type</label>
+                                                    <select name="cardtype" id="card-type3">
+                                                        <option value="visa" checked>Visa</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="popup-form-row state-row flex fjb">
+                                                <div class="inner-row city_field">
+                                                    <label for="card-city3">City</label>
+                                                    <input type="text" name="card-city" id="card-city3"
+                                                           value="New York">
+                                                </div>
+                                                <div class="inner-row state_field select-wrp">
+                                                    <label for="card-state3">State</label>
+                                                    <select name="card-state" id="card-state3">
+                                                        <option value="ny" checked>NY</option>
+                                                    </select>
+                                                </div>
+                                                <div class="inner-row zip_code_field">
+                                                    <label for="card-zip3">Zip Code</label>
+                                                    <input type="text" value="10004" id="card-zip3" name="card-zip">
+                                                </div>
+                                                <div class="inner-row country_field select-wrp">
+                                                    <label for="card-country3">Country</label>
+                                                    <select name="card-country" id="card-country3">
+                                                        <option value="US" checked>United States</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 class="popup-title">Billing Address</h2>
+                                    <div class="inner-wrp">
+                                        <div class="popup-form-row name-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="fname3">First Name</label>
+                                                <input type="text" name="fname" id="fname3" value="John">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="lname3">Last Name</label>
+                                                <input type="text" name="fname" id="lname3" value="Doe">
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row address-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="address13">Street Address 1</label>
+                                                <input type="text" name="address1" id="address13" value="100 Main St.">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="address23">Street Address 2</label>
+                                                <input type="text" name="address2" id="address23" value="Apt. 4">
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row state-row flex fjb">
+                                            <div class="inner-row city_field">
+                                                <label for="city3">City</label>
+                                                <input type="text" name="city" id="city3" value="New York">
+                                            </div>
+                                            <div class="inner-row state_field select-wrp">
+                                                <label for="state3">State</label>
+                                                <select name="state" id="state3">
+                                                    <option value="ny" checked>NY</option>
+                                                </select>
+                                            </div>
+                                            <div class="inner-row zip_code_field">
+                                                <label for="zip3">Zip Code</label>
+                                                <input type="text" value="10004" id="zip3" name="zip">
+                                            </div>
+                                            <div class="inner-row country_field select-wrp">
+                                                <label for="country3">Country</label>
+                                                <select name="country" id="country3">
+                                                    <option value="US" checked>United States</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="popup-form-row emailphone-row flex fjb">
+                                            <div class="inner-row">
+                                                <label for="email3">Email Address</label>
+                                                <input type="email" name="email" id="email3" value="johndoe@email.com">
+                                            </div>
+                                            <div class="inner-row">
+                                                <label for="phone3">Phone Number (Optional)</label>
+                                                <input type="text" name="phone" id="phone3" value="212 - 800 - 1234">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btns-wrp flex fjb">
+                                        <div class="left-part flex fac">
+                                            <button class="form-btn">Update</button>
+                                            <a data-fancybox-close="" class="close-popup">Cancel</a>
+                                        </div>
+                                        <div class="right-part">
+                                            <a href="javascript:;" class="delete-method" data-id="3">Delete Payment
+                                                Method</a>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="titles-wrp show_mobile">
+                <div class="account-container">
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="../../../src/myaccount/orders/index.html"
+                               class="blue-small-titles">Orders</a></li>
+                        <li><a href="../../../src/myaccount/subscriptions/index.html"
+                               class="blue-small-titles">Subscriptions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="tooltip_templates">
+    <div id="mini_cart_content">
+        <div class="min_cart_wrapper">
+            <p class="mc_title">Added to Cart!</p>
+            <div class="mc_products_items">
+                <div class="mc_product_item flex">
+                    <img class="p_image" src="../../../src/myaccount/orders/images/Brush_Heads.png"/>
+                    <div class="p_info">
+                        <a href="../../../src/pages/about-product/index.html" class="p_title">OSCILL8 Kit</a>
+                        <div class="p_desc">2 Brush Heads<br/>Delivered Every Quarter</div>
+                        <div class="p_price">$49.99</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mc_prices_wrap">
+                <div class="mc_price_item flex fac fjb">
+                    <div class="label">Order Subtotal</div>
+                    <div class="price">$89.97</div>
+                </div>
+            </div>
+            <div class="mc_footer flex fac fjb">
+                <a href="../../../src/pages/checkout/index.html" class="card_button">Go to Checkout</a>
+                <a href="../../../src/pages/cart/index.html" class="card_button blue">Go to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mobile_menu_wrapper">
+    <div class="inner_wrapper">
+        <div class="mm_header">
+            <button type="button" id="close_mobile_menu_btn">&times;</button>
+        </div>
+        <div class="mm_content">
+            <ul class="mobile_menu">
+                <li>
+                    <a href="../../../src/pages/product/index.html"><span>Shop</span></a>
+                </li>
+                <li>
+                    <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+                </li>
+                <li>
+                    <a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+                </li>
+            </ul>
+            <a class="button back-gr-gray dark-blue login-btn" href="../../../src/pages/login/index.html">Log in</a>
+        </div>
+    </div>
+</div>
+
+<!-- footer-->
+<footer class="oscill8-footer">
+    <div class="footer-left flex fac">
+        <div>
+            <a href="/"><span class="logo"><img src="../../../assets/images/logo-footer.svg"
+                                                alt="OSCILL8 &trade;"></span></a>
+            <p class="cr-text hide_mobile">
+                <strong>© 2020 Conair Corporation</strong>
+            </p>
+        </div>
+    </div>
+    <div class="footer-right">
+        <div class="wrapper">
+            <div class="nav-column">
+                <h4 class="footer-menu-title">OSCILL8 &trade;</h4>
+                <a href="../../../src/pages/product/index.html">Shop</a>
+                <a href="../../../src/pages/accessories/index.html"><span>Accessories</span></a>
+                <a href="../../../src/pages/faq/index.html"><span>Support</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">ACCOUNT</h4>
+                <a href="../../../src/pages/createaccount/index.html"><span>Create Account</span></a>
+                <a href="../../../src/pages/login/index.html"><span>Sign In</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">SUPPORT</h4>
+                <a href="../../../src/pages/faq/index.html"><span>Contact & FAQ</span></a>
+                <a href="#"><span> Privacy Policy</span></a>
+                <a href="#"><span>Terms of Service</span></a>
+            </div>
+            <div class="nav-column">
+                <h4 class="footer-menu-title">CONNECT</h4>
+                <a href="#" class="soc-link"><span class="fb-icon">Facebook</span></a>
+                <a href="#" class="soc-link"><span class="insta-icon">Instagram</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="show_mobile copyright">
+        <span>&copy; 2019 Conair Corporation</span>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script type="module" src="http://oscill8.brainstormtech.pro/js/functions.js"></script>
+<script type="module" src="http://oscill8.brainstormtech.pro/src/myaccount/billing/index.js"></script>
+</body>
+</html>

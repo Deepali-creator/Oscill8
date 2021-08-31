@@ -1,0 +1,636 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+<isset name="Order" value="${pdict.order}" scope="page"/>
+
+<style>
+	
+	.mini-address-name {
+		font-weight: bold;
+	}
+	.mini-address-location address {
+		font-style: normal;
+	}
+	.checkout .checkout-card .saved-info strong {
+		font-size: 14px;
+	}
+	.checkout .checkout-card .saved-info p:first-child {
+		margin-top: 0px;
+    	margin-bottom: 0px;
+	}
+	.checkout .checkout-card .saved-info p{
+		margin-top: 0px;
+    	margin-bottom: 0px;
+	}
+	.order-totals-table tr {
+		font-size: 14px;
+	}
+
+	.promo {
+		display:none;
+	}
+
+	.lineitemtable tr:first-child {
+		    background-color: unset;
+    		box-shadow: none;
+    		border-radius: unset;
+	}
+
+	.lineitemtable tr {
+		background-color: #ffffff;
+    	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    	border-radius: 10px;
+	}
+
+	.headerrow {
+		font-family: "ProximaNovaSoftW03";
+		font-weight: 600;
+		font-size: 24px;
+		line-height: 1.17;
+		color: #184a8f;
+		margin-bottom: 10px;
+	}
+
+	.form-data h2 {
+		text-transform: none;
+	}
+
+	.form-data input {
+		opacity: unset;
+	}
+
+	.form-data .nws-name {
+		margin-top: 1.8em;
+    	margin-left: -12%;
+	}
+
+	.form-data .nws-surname {
+		margin-top: 3.8em;
+    	margin-left: -16%;
+	}
+
+	.form-data .nws-email {
+		margin-top: 3.8em;
+    	margin-left: -11%;
+	}
+
+	.form-data .nws-surname-label {
+		margin-top: 3.5em;
+	}
+
+	.form-data .nws-email-label {
+		margin-top: 3.5em;
+	}
+	
+	.form-data .btn-blue {
+		font-size: 14px;
+		border-radius: 20px;
+		border: none !important;
+	}
+
+	.form-data .btn-holder {
+		margin-top: 2.5em;
+	}
+
+	.pricenameDiv {
+		display: none;	
+	}
+	.quantitynameDiv {
+		display: none;
+	}
+
+	.product-list-item .name a {
+		font-size: 23px;
+    	color: #4d4d4d;
+		font-weight: bold;
+		font-family: "Montserrat";
+	}
+
+	.product-list-item .sku {
+		font-size: 14px !important;
+    	margin-top: 6px !important;
+	}
+
+	.actions {
+		margin-left: 3em;
+	}
+	.actions a {
+		font-family: "ProximaNovaSoftW03";
+    	font-weight: 600;
+    	font-size: 20px;
+    	color: #184a8f;
+	}
+	.qdiv {
+		display:none;
+		color:#184A8F;
+		font-weight:bold;
+	}
+	.pdiv {
+		display:none;
+		color:#184A8F;
+		font-weight:bold;
+	}
+	.pricehead {
+		text-align:center !important;
+	}
+
+	.wrongmail-1 {
+		display:none !important;
+		/* margin:0px 0px 0px 5px !important; */
+	}
+	.wrongmail-2 {
+		display:block !important;
+		/* margin:0px 0px 0px 5px !important; */
+	}
+
+	@media only screen and (max-width: 948px) and (min-width: 678px) {
+		.form-data .nws-name {
+			margin-left: -5.5%;
+		}
+
+		.form-data .nws-surname {
+			margin-left: -7%;
+		}
+
+		.form-data .nws-email {
+			margin-left: -5%;
+		}
+
+	}
+
+	@media screen and (max-width: 768px) {
+		.checkout {
+			margin-left: 1%;
+			margin-right: -9%;
+			margin-top: -15%;
+		}
+		.order-shipment-table td {
+			float: none !important;
+		}
+		.order-shipment-table th {
+			display: table-cell !important;
+		}
+		.productHead {
+			width: 60% !important;
+		}
+	}
+
+	@media only screen and (max-width: 677px) and (min-width: 500px) {
+		.form-data .nws-name {
+			margin-left: -2.2em;
+		}
+
+		.form-data .nws-surname {
+			margin-left: -3em;
+		}
+
+		.form-data .nws-email {
+			margin-left: -2em;
+		}
+
+	}
+
+	@media only screen and (max-width: 520px){
+
+		.order-products .order-shipment-table .line-items .lineitemtable .headerrow .quantityHead {
+			display: none !important;
+		}
+
+		.order-products .order-shipment-table .line-items .lineitemtable .headerrow .priceHead {
+			display: none !important;
+		}
+		.productdetailscol {
+			width :100%;
+		}
+		.line-item-details {
+			width :100% !important;
+		}
+		.pricenameDiv {
+			display: block;
+			margin-top: 5em;
+			margin-bottom: -7em;
+			margin-left: -4em;
+			font-weight: 600;
+			font-size: 24px;
+			color: #184a8f;
+			font-family: "ProximaNovaSoftW03";
+		}
+		
+		.line-item-price {
+			margin-top: 8.3em;
+    		margin-left: -4.3em;
+			line-height: 17px;
+		}
+
+		.quantitynameDiv {
+			display: block;
+			margin-top: 13em;
+			margin-bottom: -13em;
+			margin-left: -11.5em;
+			font-weight: 600;
+			font-size: 24px;
+			color: #184a8f;
+			font-family: "ProximaNovaSoftW03";
+		}
+
+		.line-item-quantity {
+			margin-top: 9em;
+    		margin-left: -12em;
+		}
+		.qdiv {
+			display:block;
+		}
+		.pdiv {
+			display:block;
+		}
+
+
+	}
+
+	@media only screen and (max-width: 499px) {
+		.form-data .nws-name {
+			margin-left: -2.5em;
+		}
+
+		.form-data .nws-surname {
+			margin-left: -3.2em;
+		}
+
+		.form-data .nws-email {
+			margin-left: -2.3em;
+		}
+
+	}
+	@media only screen and (min-width: 346px) and (max-width: 434px) {
+		.line-item-price {
+			margin-top: 8.3em !important;
+    		margin-left: -4.3em;
+		}
+		.line-item-quantity {
+			margin-top: 9em !important;
+    		margin-left: -12em;
+		}
+
+	}
+
+	@media only screen and (max-width: 461px) {
+		.quantitynameDiv {
+			margin-left: -9em;
+			margin-top: 6em;
+		}
+		.line-item-quantity {
+			margin-left: -10em;
+			margin-top:9em;
+		}
+		.line-item-price {
+			margin-top: 8.3em;
+		}
+		.pricenameDiv {
+			margin-top: 6em;
+		}
+		.productdetailscol {
+			white-space: nowrap !important;
+		}
+	}
+
+	@media screen and (max-width: 390px) {
+		.spacerdiv {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 345px) {
+		.lineitemtable td {
+			padding: 0.3em !important;
+		}
+
+		.line-item-quantity {
+			margin-left: -11em;
+			margin-top:9em;
+		}
+		.line-item-price {
+			margin-top: 8.3em;
+		}
+		
+	}
+
+	@media screen and (max-width: 290px) {
+		.quantitynameDiv {
+			margin-left: -7.5em;
+		}
+		.line-item-quantity {
+			margin-left: -11.5em;
+		}
+	}
+
+	
+
+</style>
+
+<iscomment>
+	Displays order details, such as order number, creation date, payment information,
+	order totals and information for each contained shipment.
+	This template module can be used in order confirmation pages as well as in the
+	order history to render the details of a given order. Depending on the context
+	being used in, one might omit rendering certain information.
+
+	Parameters:
+
+	order		: the order whose details to render
+	orderstatus	: if set to true, the order status will be rendered
+				  if set to false or not existing, the order status will not be rendered
+</iscomment>
+<section class="checkout confirmation">
+        <div class="container">
+            <div class="heading">
+                <div class="left-side">
+					<isif condition="${Order.status.displayValue == 'FAILED'}">
+						<h1>Order Failed!</h1>
+					<iselse/>
+						<h1>Order Confirmed!</h1>
+					</isif>
+                    <p>Thank you for your order. If you have any questions about your order,
+                        we're happy to take your call Monday-Friday, 9AM-5PM</p>
+                </div>
+                <div class="right-side">
+                    <p><strong>Order Number:</strong> <isprint value="${Order.orderNo}"/></p>
+                    <p><strong>Date:</strong> <isprint value="${Order.creationDate}" style="DATE_LONG"/></p>
+                </div>
+            </div>
+            <div class="review-data confirmation flex fjb">
+                <div class="checkout-card saved-data summary">
+                    <h2 class="card-title">Summary</h2>
+					<div class="summary-info">
+						<isif condition="${Order.shipments.length > 1}">
+							<isconfirmationordertotals p_lineitemctnr="${Order}" p_showshipmentinfo="${true}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('global.ordertotal','locale',null)}"/>
+						<iselse/>
+							<isconfirmationordertotals p_lineitemctnr="${Order}" p_showshipmentinfo="${false}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('global.ordertotal','locale',null)}"/>
+						</isif>
+					</div>
+                </div>
+                <div class="checkout-card saved-data">
+                    <h2 class="card-title">Billing Address</h2>
+                    <div class="saved-info">
+						<isminiaddress p_address="${Order.billingAddress}"/>
+                    </div>
+                </div>
+                <div class="checkout-card saved-data">
+                    <h2 class="card-title">Shipping Address</h2>
+                    <div class="saved-info">
+						<isloop items="${Order.shipments}" var="shipment" status="shipmentloopstate">
+                      			<isif condition="${shipment.productLineItems.size() > 0}">
+									<iscomment>Shipment Items</iscomment>
+									<div class="order-shipment-table">
+										<div class="order-shipment-details">
+											<div class="order-shipment-address">
+												<isif condition="${!empty(shipment.custom.shipmentType) && shipment.custom.shipmentType == 'instore'}">
+													<div class="label">${Resource.msg('cart.store.instorepickup','checkout',null)}</div>
+												<iselse/>
+													<iscomment><p style="font-size:14px;font-weight:bold">Shipping Address</p></iscomment>
+												</isif>
+												<isminishippingaddress p_shipment="${shipment}" p_editable="${false}" p_showmethod="${false}" p_showpromos="${false}"/>
+											</div>
+												
+											<isif condition="${!empty(shipment.trackingNumber)}">
+												<div class="trackingnumber">
+													<div class="label">${Resource.msg('order.orderdetails.tracking','order',null)}</div>
+													<div class="value"><!-- Tracking Number --><isprint value="${shipment.trackingNumber}"/></div>
+												</div>
+											</isif>
+										</div>
+									</div>
+                      			</isif>	
+                      		</isloop>
+                    </div>
+                </div>
+                <div class="checkout-card saved-data">
+                    <h2 class="card-title">Payment Method</h2>
+                    <div class="saved-info">
+						<isloop items="${Order.getPaymentInstruments()}" var="paymentInstr">
+							<isif condition="${dw.order.PaymentInstrument.METHOD_GIFT_CERTIFICATE.equals(paymentInstr.paymentMethod)}">
+								<div class="orderpaymentinstrumentsgc">
+									<span class="label"><isprint value="${dw.order.PaymentMgr.getPaymentMethod(paymentInstr.paymentMethod).name}" /></span>
+									<span class="value"><isprint value="${paymentInstr.maskedGiftCertificateCode}"/></span>
+									<span class="payment-amount">
+										<span class="label">${Resource.msg('global.amount','locale',null)}:</span>
+										<span class="value"><isprint value="${paymentInstr.paymentTransaction.amount}"/></span>
+									</span>
+								</div>
+							<iselse/>
+								<div class="payment-type"><isprint value="${dw.order.PaymentMgr.getPaymentMethod(paymentInstr.paymentMethod).name}" /></div>
+								<isminicreditcard card="${paymentInstr}" show_expiration="${false}"/>
+								<div class="payment-amount">
+									<iscomment><span class="label">${Resource.msg('global.amount','locale',null)}:</span>
+									<span class="value"><isprint value="${paymentInstr.paymentTransaction.amount}"/></span></iscomment>
+								</div><!-- END: payment-amount -->
+							</isif>
+						</isloop>
+					</div>
+                </div>
+            </div>
+            <div class="checkout-cards review">
+                <div class="left-side">
+                    <div class="order-products">
+						<isloop items="${Order.shipments}" var="shipment" status="shipmentloopstate">
+                      			
+							<isif condition="${shipment.productLineItems.size() > 0}">
+                      			<iscomment>Shipment Items</iscomment>
+                      			<div class="order-shipment-table">
+                      				<div class="order-shipment-details"></div>
+                      				<div class="line-items">
+										  
+									<table class="lineitemtable" style="border-collapse: separate;border-spacing: 0 10px;">
+										<tr class="headerrow"><th  class="productHead" style="padding-left:0.5em;padding-bottom:5px;font-size:24px" colspan="2">Product</th><th class="quantityHead" style="padding-bottom:5px;font-size:24px;">Quantity</th colspan="0.5"><th></th><th class="priceHead" style="padding-left:1.1%;padding-bottom:5px;font-size:24px;text-align:center">Price</th></tr>
+                      					<isloop items="${shipment.productLineItems}" var="productLineItem" status="pliloopstate">
+											<tr>
+												<td class="item-image" style="padding:2% 0% 0% 4%">
+													<isif condition="${productLineItem.product != null && productLineItem.product.getImage('small',0) != null}">
+														<img width="80px" height="90px" src="${productLineItem.product.getImage('small',0).getURL()}" alt="${productLineItem.product.getImage('small',0).alt}" title="${productLineItem.product.getImage('small',0).title}"/>
+													<iselse/>
+														<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${productLineItem.productName}" title="${productLineItem.productName}"/>
+													</isif>
+													<isif condition="${productLineItem.bonusProductLineItem}">
+														<div class="bonus-item">
+															<isset name="bonusProductPrice" value="${productLineItem.getAdjustedPrice()}" scope="page"/>
+																<isinclude template="checkout/components/displaybonusproductprice" />
+															<isprint value="${bonusProductPriceValue}" />
+														</div>
+													</isif>
+														
+												</td>
+												<td class="productdetailscol">
+													<div class="line-item-details" >
+
+														<iscomment>Display product line and product using module</iscomment>
+															
+														<isdisplayliproduct p_productli="${productLineItem}" p_editable="${false}"/>
+														<isif condition="${productLineItem.custom.subproSubscriptionOptionMode}">
+														<div class="subscription" style="font-size:14px">
+														<isinclude url="${URLUtils.url('SubPro-OrderConfirmation', 'orderNo', Order.orderNo, 'productID', productLineItem.productID)}" />
+														</div>
+														</isif>
+													</div>
+												</td>
+												<td>
+													
+													<div class="line-item-quantity quantitydiv">
+													<center>
+														<div class="qdiv">
+															Quantity
+														</div><br/>
+														<isprint value="${productLineItem.quantity}"/>
+													</center>
+													</div>
+												</td>
+												<td class="spacerdiv"></td>
+												<td>
+													
+													<div class="line-item-price" style="font-size:22px">
+														<center>
+															<div class="pdiv">
+																Price
+															</div><br/>
+															<iscomment>Render quantity. If it is a bonus product render word 'Bonus'</iscomment>
+															<isif condition="${productLineItem.bonusProductLineItem}">
+																<div class="bonus-item">
+																	<isset name="bonusProductPrice" value="${productLineItem.getAdjustedPrice()}" scope="page"/>
+																	<isinclude template="checkout/components/displaybonusproductprice" />
+																	<isprint value="${bonusProductPriceValue}" />
+																</div>
+															<iselse/>
+																<isprint value="${productLineItem.adjustedPrice}"/>
+																<isif condition="${productLineItem.optionProductLineItems.size() > 0}">
+																	<isloop items="${productLineItem.optionProductLineItems}" var="optionLI">
+																		<div class="product-option-price">+ <isprint value="${optionLI.adjustedPrice}"/></div>
+																	</isloop>
+																</isif>
+															</isif>
+														</center>
+													</div>
+												</td>
+											</tr>
+                      					</isloop>
+
+									</table>
+                      				</div>
+                    			</div>
+                			</isif>
+
+                      	<isif condition="${shipment.giftCertificateLineItems.size() > 0}">
+                      		<div class="order-shipment-table">
+                      			<div class="order-shipment-details">
+                      				<iscomment>Shipment Gift Certificate</iscomment>
+                      				<isloop items="${shipment.giftCertificateLineItems}" var="giftCertificateLineItem" status="gcliloopstate">
+                      					<div class="order-gift-cert-attributes order-shipment-address">
+                      						<div class="order-gift-cert-to">
+                      							<div class="label">${Resource.msg('order.orderdetails.giftcertto','order',null)}</div>
+                      							<div class="value"><isprint value="${giftCertificateLineItem.recipientName}"/></div>
+                      							<div class="value"><isprint value="${giftCertificateLineItem.recipientEmail}"/></div>
+                      						</div>
+                      						<div class="order-gift-cert-from">
+                      							<div class="label">${Resource.msg('order.orderdetails.giftcertfrom','order',null)}</div>
+                      							<div class="value"><isprint value="${giftCertificateLineItem.senderName}"/></div>
+                      							<div class="value"><isprint value="${Order.customerEmail}"/></div>
+                      						</div>
+                      					</div>
+                      					<div class="order-gift-cert-amount">
+                      						<div class="label">${Resource.msg('global.giftcertificate','locale',null)}</div>
+                      						<div class="value"><isprint value="${giftCertificateLineItem.price}"/></div>
+                      					</div>
+                      					<div class="shipping-method">
+                      						<div class="label">${Resource.msg('order.orderdetails.shippingmethod','order',null)}</div>
+                      						<div class="value">${Resource.msg('order.orderdetails.giftcertshipping','order',null)}</div>
+                      						<div class="value"><isprint value="${giftCertificateLineItem.recipientEmail}"/></div>
+                      					</div>
+                      				</isloop>
+
+                      				<iscomment>if shipment is marked as gift</iscomment>
+                      				<isif condition="${shipment.gift}">
+                      					<div class="order-shipment-gift-message">
+                      						<div class="label">${Resource.msg('order.orderdetails.giftmessage','order',null)}</div>
+                      						<isif condition="${!empty(shipment.giftMessage)}">
+                      							<div class="value"><isprint value="${shipment.giftMessage}"/></div>
+                      						</isif>
+                      					</div>
+                      					
+											<iselse/>
+												<div class="order-shipment-gift-message">
+													<isset name="theGiftCert" value="${shipment.giftCertificateLineItems.iterator().next()}" scope="page"/>
+													<div class="label">${Resource.msg('order.orderdetails.giftmessage','order',null)}</div>
+													<isif condition="${!empty(theGiftCert.message)}">
+														<div class="value"><isprint value="${theGiftCert.message}"/></div>
+													</isif>
+												</div>
+											</isif>
+                      					</div>
+                      					</div>
+                      				</isif>
+                      		</isloop>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="checkout-card newsletter">
+                        <div>
+                            <div class="form-data">
+                                <h2 class="card-title">Join our mailing list for deals!</h2>
+                                <div class="newsletter-form">
+                                    <form method="post" id="acoustic" onsubmit="acousticSubmit()" action="http://www.pages05.net/conaircorporation/oscill8-OptIn/Oscill8OptIn" pageId="17327039" siteId="778931" parentPageId="17327037" target="hiddenFrame">
+                                        <div class="form-row">
+                                            <label class="nws-email-label" for="nws-email">Email</label>
+                                            <input class="nws-email" id="control_EMAIL" placeholder="johndoe@gmail.com" type="text" name="email">
+											<label class="errorlabel wrongmail-1 nws-email-label" style="color:red">Please enter a valid email</label> 
+                                        </div>
+                                        <div class="btn-holder">
+											<input type="hidden" name="formSourceName" value="StandardForm">
+											<!-- DO NOT REMOVE HIDDEN FIELD sp_exp --><input type="hidden" name="sp_exp" value="yes">
+                                            <button class="button btn-blue">Sign Up
+                                            </button>
+                                        </div>
+                                    </form>
+									<iframe name="hiddenFrame" style="border:none;display:none;" width="100" height="100" border="0"></iframe>
+                                    <p class="bottom-text">Subscribe For Promotions</p>
+                                </div>
+                            </div>
+                            <div class="thankyou">
+                                <div>
+                                    <h3>Thank you for joining our mailing list</h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<script>
+	function acousticSubmit() {
+		console.log('Here Check.....');
+		$('#acoustic').submit(function (event){
+			if(IsEmail($('#control_EMAIL').val())) {
+				console.log('If');
+				$('.form-data').css('display','none');
+				$('.thankyou').css('display','contents');
+				event.preventDefault();
+			}
+			else {
+				console.log('Else');
+				$('.errorlabel').removeClass('wrongmail-1');
+				$('.errorlabel').addClass('wrongmail-2');
+				$('.form-data .btn-holder').css('margin-top', 0);
+				event.preventDefault();
+			}
+			
+
+		});
+	}
+	function IsEmail(email) {
+	var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	if(!regex.test(email)) {
+		return false;
+	}else{
+		return true;
+	}
+	}
+</script>

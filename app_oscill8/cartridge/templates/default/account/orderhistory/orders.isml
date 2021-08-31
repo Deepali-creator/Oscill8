@@ -1,0 +1,359 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="account/orderhistory/pt_orderhistory">
+    <isinclude template="util/modules"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/reset.css')}"/>
+        
+
+<style> 
+
+    .order-popup .info-same-styles .info-row:not(:last-child) {
+        margin-bottom: 0px;
+    }
+    .subtotalDiv1 p{
+        margin: 0;
+    }
+    .subtotalDiv2 p{
+        margin: 0;
+    }
+    .taxDiv p{
+        margin: 0;
+    }
+    .order-popup .top-info {
+        padding: 22px 42px 17px;
+    }
+    .order-popup .bottom-info {
+        padding: 16px 42px 8px;
+    }
+
+    .product-list-item .name {
+        margin-bottom: 6px;
+    }
+    .product-list-item .name a {
+        font-family: 'Montserrat';
+        font-size: 23px;
+        line-height: 28px;
+        color: #4D4D4D !important;
+        font-weight: 700;
+    }
+
+    .popup-title {
+        margin-top: 0em;
+    }
+
+    .fancybox-content {
+        max-width:680px;
+    }
+
+    .single-order .left-col p {
+        margin-top: 0em;
+    }
+    .single-order .right-col button {
+        margin-bottom: 1em;
+    }
+    .tab-titles {
+		margin:0px;
+	}
+    .account-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    @media (max-width: 1024px) {
+        .active-section.orders-section {
+            margin-left: 2.8em;
+        }
+        .account-tabs-wrp {
+            margin-left: 0em !important;
+        }
+    }
+    @media (max-width: 768px) {
+        .account-tabs-wrp {
+            margin-left: -2em !important;
+        }
+    }
+    @media (max-width: 400px) {
+        .fancybox-content {
+            max-width:100% !important;
+            width:auto;
+        }
+    }
+
+</style>
+<div class="account-pages">
+        <div class="title-wrp">
+            <h1>My Account</h1>
+        </div>
+        <div class="account-tabs-wrp">
+            <div class="titles-wrp">
+                <div class="account-container" >
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="${URLUtils.https('Account-EditProfile')}" class="blue-small-titles">Profile</a></li>
+                        <li><a href="${URLUtils.https('Address-List')}" class="blue-small-titles">Addresses</a></li>
+                        <li><a href="${URLUtils.https('PaymentInstruments-List')}" class="blue-small-titles">Billing</a></li>
+                        <li class="active hide_mobile"><a href="${URLUtils.https('Order-History')}" class="blue-small-titles">Orders</a></li>
+                        <li class="hide_mobile"><a href="${URLUtils.url('Subs-Show')}" class="blue-small-titles">Subscriptions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="active-section orders-section">
+                <div class="account-container" style="max-height: 500px;overflow-y: scroll;overflow-x: hidden;"><iscomment>
+        <h1>${Resource.msg('account.orders.orderhistory','account',null)}</h1>
+    </iscomment>
+    
+        <isif condition="${pdict.OrderPagingModel.empty}">
+        <p class="active-titles-item-wrap">Orders</p>
+            <div class="no_orders" style="text-align:center">
+                <p style="font-size:20px;color:black;font-weight:bold;font-family: 'ProximaNovaSoftW03';">You don't have any orders.</p>
+                <a class="section-header-note address-create button1 btn-blue" style="width:200px;margin:auto;background-color: rgb(30, 74, 137); border: none; padding: 14px; border-radius: 20px; font-size: 14px; color: black;margin-bottom:10px;font-weight: 500;" onMouseOver="this.style.color='black'" href="${URLUtils.url('Shop-Show')}" >
+                    SHOP NOW
+                </a>
+            </div>
+        <iselse/>
+            <form action="${URLUtils.httpsContinue()}" method="post" id="${pdict.CurrentForms.orders.htmlName}">
+                <iscomment>
+                <div class="search-result-options">
+                    <ispagingbar pageurl="${URLUtils.https('Order-History')}" pagingmodel="${pdict.OrderPagingModel}"/>
+                </div>
+                </iscomment>
+               
+                    <p class="active-titles-item-wrap">Orders</p>
+                    <div class="orders-list flex fwrap fjb">
+                            <isloop items="${pdict.CurrentForms.orders.orderlist}" var="order" status="orderloopstate">
+                                <div class="single-order">
+                                    <div class="left-col" style="font-size:16px">
+                                        <p class="order-num">
+                                            ORDER <span><isprint value="${order.object.orderNo}" /></span>
+                                        </p>
+                                    </div>
+                                    <div class="inner-order flex fjb fae">
+                                        
+                                        <div class="left-col">
+                                            
+                                            <p class="date">Date: <span><isprint value="${order.object.creationDate}" /></span></p>
+                                            <p class="status">Status: <span><isprint value="${order.object.status.displayValue}" /></span></p>
+                                            <isif condition="${order.object.shipments[0].trackingNumber}">
+                                                <p class="status">Tracking No: <a href="${order.object.shipments[0].trackingNumber}" target="_blank" class="status" style="font-family:'Montserrat';color: #184A8F;text-decoration: underline;"><isprint value="${order.object.shipments[0].trackingNumber.split('tracknum=')[1]}" /></a></p>
+                                            <iselse/>
+                                                <p class="status">Tracking No: <span>Not Avaialble</span></p>
+                                            </isif>
+                                            <isif condition="${order.object.totalGrossPrice.available}">
+                                                <isset name="orderTotalValue" value="${order.object.totalGrossPrice}" scope="page"/>
+                                            <iselse/>
+                                                <isset name="orderTotalValue" value="${order.object.getAdjustedMerchandizeTotalPrice(true).add(order.object.giftCertificateTotalPrice)}" scope="page"/>
+                                            </isif>
+                                            <p class="total">Total: <span><isprint value="${orderTotalValue}" /></span></p>
+                                        </div>
+                                        <div class="right-col">
+                                            <a class="view-order orderDetails" style="margin-bottom: 1em;cursor: pointer;" data-id="${order.object.orderNo}">View order</a>
+                                            <iscomment>
+                                                <button class="view-order trans" type="submit"  value="${Resource.msg('account.orders.orderdetail','account',null)}" name="${order.show.htmlName}">${Resource.msg('account.orders.orderdetail','account',null)}</button>
+                                            </iscomment> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fancybox-container fancybox-is-open ${order.object.orderNo}" role="dialog" tabindex="-1" id="fancybox-container-1" data-id="viewOrder-${order.object.orderNo}" style="transition-duration: 366ms;display:none;"><div class="fancybox-bg"></div><div class="fancybox-inner"><div class="fancybox-infobar"><span data-fancybox-index="">1</span>&nbsp;/&nbsp;<span data-fancybox-count="">1</span></div><div class="fancybox-toolbar"><button data-fancybox-zoom="" class="fancybox-button fancybox-button--zoom" title="Zoom" disabled=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.7 17.3l-3-3a5.9 5.9 0 0 0-.6-7.6 5.9 5.9 0 0 0-8.4 0 5.9 5.9 0 0 0 0 8.4 5.9 5.9 0 0 0 7.7.7l3 3a1 1 0 0 0 1.3 0c.4-.5.4-1 0-1.5zM8.1 13.8a4 4 0 0 1 0-5.7 4 4 0 0 1 5.7 0 4 4 0 0 1 0 5.7 4 4 0 0 1-5.7 0z"></path></svg></button><button data-fancybox-play="" class="fancybox-button fancybox-button--play" title="Start slideshow" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 5.4v13.2l11-6.6z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.33 5.75h2.2v12.5h-2.2V5.75zm5.15 0h2.2v12.5h-2.2V5.75z"></path></svg></button><button data-fancybox-thumbs="" class="fancybox-button fancybox-button--thumbs" title="Thumbnails" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.59 14.59h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76H5.65v-3.76zm8.94-4.47h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76h-3.76v-3.76zm-4.47 0h3.76v3.76H5.65v-3.76zm8.94-4.47h3.76v3.76h-3.76V5.65zm-4.47 0h3.76v3.76h-3.76V5.65zm-4.47 0h3.76v3.76H5.65V5.65z"></path></svg></button><button data-fancybox-close="" class="fancybox-button fancybox-button--close" title="Close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.6L6.6 5.2 5.2 6.6l5.4 5.4-5.4 5.4 1.4 1.4 5.4-5.4 5.4 5.4 1.4-1.4-5.4-5.4 5.4-5.4-1.4-1.4-5.4 5.4z"></path></svg></button></div><div class="fancybox-navigation"><button data-fancybox-prev="" class="fancybox-button fancybox-button--arrow_left" title="Previous" disabled=""><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.28 15.7l-1.34 1.37L5 12l4.94-5.07 1.34 1.38-2.68 2.72H19v1.94H8.6z"></path></svg></div></button><button data-fancybox-next="" class="fancybox-button fancybox-button--arrow_right" title="Next" disabled=""><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.4 12.97l-2.68 2.72 1.34 1.38L19 12l-4.94-5.07-1.34 1.38 2.68 2.72H5v1.94z"></path></svg></div></button></div><div class="fancybox-stage"><div class="fancybox-slide fancybox-slide--html fancybox-slide--current fancybox-slide--complete" ><div id="view-order1" class="order-popup fancybox-content">
+                                <h2 class="popup-title">Order <span><isprint value="${order.object.orderNo}" /></span></h2>
+                                <div class="top-info info-same-styles">
+                                    <div class="info-row flex fjb subtotalDiv1">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val"><isprint value="${order.object.getAdjustedMerchandizeTotalPrice(false).add(order.object.giftCertificateTotalPrice)}"/></p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping &amp; Handling</p>
+                                        <p class="info-val">
+                                            <isif condition="${order.object.shippingTotalPrice.available}">
+							                    <isprint value="${order.object.shippingTotalPrice}"/>
+						                    <iselse/>
+							                    ${Resource.msg('global.symbol.dash','locale',null)}
+						                    </isif>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="products-info">
+                                    <isloop items="${order.object.shipments}" var="shipment" status="shipmentloopstate">
+                                        <isif condition="${shipment.productLineItems.size() > 0}">
+                                            <isloop items="${shipment.productLineItems}" var="productLineItem" status="pliloopstate">
+                                                <iscomment>Shipment Items</iscomment>
+                                                <div class="product-row flex fjb fac">
+                                                    <div class="left-col flex fac">
+                                                        <div class="img" style="height:100px;width:100px">
+                                                            <isif condition="${productLineItem.product != null && productLineItem.product.getImage('small',0) != null}">
+                                                                <img width="100px" height="100px" src="${productLineItem.product.getImage('small',0).getURL()}" alt="${productLineItem.product.getImage('small',0).alt}" title="${productLineItem.product.getImage('small',0).title}"/>
+                                                            <iselse/>
+                                                                <img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${productLineItem.productName}" title="${productLineItem.productName}"/>
+                                                            </isif>
+                                                            <isif condition="${productLineItem.bonusProductLineItem}">
+                                                                <div class="bonus-item">
+                                                                    <isset name="bonusProductPrice" value="${productLineItem.getAdjustedPrice()}" scope="page"/>
+                                                                        <isinclude template="checkout/components/displaybonusproductprice" />
+                                                                    <isprint value="${bonusProductPriceValue}" />
+                                                                </div>
+                                                            </isif>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <div class="line-item-details" >
+                                                                <iscomment>Display product line and product using module</iscomment>
+                                                                <isdisplayliproduct p_productli="${productLineItem}" p_editable="${false}"/>
+                                                            </div>
+                                                            <p class="product-quantity">Quantity: <isprint value="${productLineItem.quantity}"/></p>
+                                                        </div>    
+                                                    </div>
+                                                    <div class="right-col">
+                                                        <p class="product-price">
+                                                            <iscomment>Render quantity. If it is a bonus product render word 'Bonus'</iscomment>
+                                                            <isif condition="${productLineItem.bonusProductLineItem}">
+                                                                <div class="bonus-item">
+                                                                    <isset name="bonusProductPrice" value="${productLineItem.getAdjustedPrice()}" scope="page"/>
+                                                                    <isinclude template="checkout/components/displaybonusproductprice" />
+                                                                    <isprint value="${bonusProductPriceValue}" />
+                                                                </div>
+                                                            <iselse/>
+                                                                <isprint value="${productLineItem.adjustedPrice}"/>
+                                                                <isif condition="${productLineItem.optionProductLineItems.size() > 0}">
+                                                                    <isloop items="${productLineItem.optionProductLineItems}" var="optionLI">
+                                                                        <div class="product-option-price">+ <isprint value="${optionLI.adjustedPrice}"/></div>
+                                                                    </isloop>
+                                                                </isif>
+                                                            </isif>
+                                                        </p>
+                                                    </div>
+                			                    </div>
+                                            </isloop>
+                                        </isif>
+
+                                        <isif condition="${shipment.giftCertificateLineItems.size() > 0}">
+                                            <div class="order-shipment-table">
+                                                <div class="order-shipment-details">
+                                                    <iscomment>Shipment Gift Certificate</iscomment>
+                                                    <isloop items="${shipment.giftCertificateLineItems}" var="giftCertificateLineItem" status="gcliloopstate">
+                                                        <div class="order-gift-cert-attributes order-shipment-address">
+                                                            <div class="order-gift-cert-to">
+                                                                <div class="label">${Resource.msg('order.orderdetails.giftcertto','order',null)}</div>
+                                                                <div class="value"><isprint value="${giftCertificateLineItem.recipientName}"/></div>
+                                                                <div class="value"><isprint value="${giftCertificateLineItem.recipientEmail}"/></div>
+                                                            </div>
+                                                            <div class="order-gift-cert-from">
+                                                                <div class="label">${Resource.msg('order.orderdetails.giftcertfrom','order',null)}</div>
+                                                                <div class="value"><isprint value="${giftCertificateLineItem.senderName}"/></div>
+                                                                <div class="value"><isprint value="${Order.customerEmail}"/></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="order-gift-cert-amount">
+                                                            <div class="label">${Resource.msg('global.giftcertificate','locale',null)}</div>
+                                                            <div class="value"><isprint value="${giftCertificateLineItem.price}"/></div>
+                                                        </div>
+                                                        <div class="shipping-method">
+                                                            <div class="label">${Resource.msg('order.orderdetails.shippingmethod','order',null)}</div>
+                                                            <div class="value">${Resource.msg('order.orderdetails.giftcertshipping','order',null)}</div>
+                                                            <div class="value"><isprint value="${giftCertificateLineItem.recipientEmail}"/></div>
+                                                        </div>
+                                                    </isloop>
+
+                                                    <iscomment>if shipment is marked as gift</iscomment>
+                                                    <isif condition="${shipment.gift}">
+                                                        <div class="order-shipment-gift-message">
+                                                            <div class="label">${Resource.msg('order.orderdetails.giftmessage','order',null)}</div>
+                                                            <isif condition="${!empty(shipment.giftMessage)}">
+                                                                <div class="value"><isprint value="${shipment.giftMessage}"/></div>
+                                                            </isif>
+                                                        </div>
+                                                        
+                                                            <iselse/>
+                                                                <div class="order-shipment-gift-message">
+                                                                    <isset name="theGiftCert" value="${shipment.giftCertificateLineItems.iterator().next()}" scope="page"/>
+                                                                    <div class="label">${Resource.msg('order.orderdetails.giftmessage','order',null)}</div>
+                                                                    <isif condition="${!empty(theGiftCert.message)}">
+                                                                        <div class="value"><isprint value="${theGiftCert.message}"/></div>
+                                                                    </isif>
+                                                                </div>
+                                                            </isif>
+                                                        </div>
+                                                        </div>
+                                        </isif>
+                      		        </isloop>
+                                </div>
+                                
+                                <div class="bottom-info info-same-styles">
+                                    <div class="info-row flex fjb subtotalDiv2">
+                                        <p class="info-title">Subtotal</p>
+                                        <p class="info-val"><isprint value="${order.object.getAdjustedMerchandizeTotalPrice(false).add(order.object.giftCertificateTotalPrice)}"/></p>
+                                    </div>
+                                    <div class="info-row flex fjb">
+                                        <p class="info-title">Shipping &amp; Handling</p>
+                                        <p class="info-val">
+                                            <isif condition="${order.object.shippingTotalPrice.available}">
+							                    <isprint value="${order.object.shippingTotalPrice}"/>
+						                    <iselse/>
+							                    ${Resource.msg('global.symbol.dash','locale',null)}
+						                    </isif>
+                                        </p>
+                                    </div>
+                                    <div class="info-row flex fjb taxDiv">
+                                        <p class="info-title">Tax</p>
+                                        <p class="info-val">
+                                            <isif condition="${order.object.totalTax.available}">
+                                                <isprint value="${order.object.totalTax}"/>
+                                            <iselse/>
+                                                ${Resource.msg('global.symbol.dash','locale',null)}
+                                            </isif>
+                                        </p>
+                                    </div>
+                                    <div class="info-row total-price flex fjb">
+                                        <p class="info-title">Total</p>
+                                        <p class="info-val"><span><isprint value="${orderTotalValue}" /></p>
+                                    </div>
+                                </div>
+                                <iscomment>
+                                <div class="btn-row flex fje">
+                                    <a href="javascript:;" class="print-btn">Print</a>
+                                </div>
+                                </iscomment>
+                            <button type="button" style="display: block" data-id="${order.object.orderNo}" class="fancybox-button fancybox-close-small" title="Close"><svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg></button></div></div></div><div class="fancybox-caption"><div class="fancybox-caption__body"></div></div></div></div>
+                            </isloop>
+                    </div>
+                <iscomment>
+                <div class="search-result-options">
+                    <ispagingbar pageurl="${URLUtils.https('Order-History')}" pagingmodel="${pdict.OrderPagingModel}"/>
+                </div>
+                </iscomment>
+            </form>
+        </isif>
+            </div>
+            
+        </div>
+        <div class="titles-wrp show_mobile">
+                <div class="account-container">
+                    <ul class="tab-titles flex fjb">
+                        <li><a href="${URLUtils.url('Subs-Show')}" class="blue-small-titles">Subscriptions</a></li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+</isdecorate>
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.orderDetails').on('click', function() {
+            var id = '.' + $(this).data("id");
+            $(id).css('display', 'inline-block');
+        }); 
+        $('.fancybox-close-small').on('click', function() {
+            var id = '.' + $(this).data("id");
+            $(id).css('display', 'none');
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        console.log("windows load");
+     /*var a = $(".mini-cart-product").find('.collapsed');
+        console.log($(".mini-cart-product"));
+        console.log("Has Class:"+$(a).hasClass('collapsed'));*/
+        if($(".mini-cart-product.collapsed")){
+            console.log("Collapsed");
+            $(".mini-cart-product.collapsed").removeClass("collapsed");
+        }
+        $('.mini-cart-toggle').attr('style','display: none !important');
+    });
+</script>

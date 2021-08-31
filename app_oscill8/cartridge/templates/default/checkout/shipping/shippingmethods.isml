@@ -1,0 +1,410 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+
+<iscomment>
+	This template renders the shipping methods that a customer may choose from.
+	It renders a form for the shipping method selection.  This template is
+	dynamically loaded using AJAX and may get reloaded as the customer enters
+	shipping address information depending on the configured shipping method
+	address exclusions.
+</iscomment>
+
+<isscript>
+	var shipment : dw.order.Shipment = pdict.Basket.defaultShipment;
+	var shippingModel : dw.order.ShipmentShippingModel = dw.order.ShippingMgr.getShipmentShippingModel( shipment );
+</isscript>
+<style>
+
+.form-horizontal label {
+	margin-top: 0.1rem !important;
+}
+
+.select-address .selectAddress select {
+	padding-right: 40px;
+}
+
+#shippingmethods li:hover {
+	background-color:white;
+	color:black;
+	cursor:pointer;
+}
+#shippingmethods li {
+	text-align:left;
+	margin-left:0px;
+	height:36px;
+	padding:0% 0% 0% 5%;
+	margin:0px;
+	min-width:195px;
+}
+.shippingmethods {
+	list-style-type:none;
+	display:none;
+	background-color:white;
+	width:210px;
+	vertical-align:top;
+	padding:7px 0px 0px 0px;
+	margin:0px;
+	height:auto;
+	position:absolute;
+	border: 1px solid rgba(178, 178, 178, 0.5);
+}
+.shippingmethods a {
+	color:#184A8F !important;
+}
+@media only screen and (max-width: 480px) {
+	.shippingmethods {
+	list-style-type:none;
+	display:none;
+	width:270px;
+	vertical-align:top;
+	padding:7px 0px 0px 0px;
+	margin:0px;
+	height:auto;
+	position:absolute;
+	border: solid #aaa 1px;
+	}
+	a{
+		color: black;
+	}
+}
+</style>
+<isset name="DiscountPlan" value="${dw.campaign.PromotionMgr.getDiscounts(pdict.Basket)}" scope="page" />
+
+<fieldset>
+
+	
+
+
+	<iscomment>render list of applicable shipping methods</iscomment>
+	<isif condition="${pdict.ApplicableShippingMethods.size() > 0}">
+	<isset name="LineItemCtnr" value="${pdict.p_lineitemctnr}" scope="page"/>
+
+			
+			<ul id="shippingmethods" tabindex="0" class="shippingmethods" align="left">
+				
+			
+		<isloop items="${pdict.ApplicableShippingMethods}" var="shippingMethod" status="loopstate">
+        
+		<iscomment>exclude the shipming method '005', instore shipming method</iscomment>
+
+		<isif condition="${shippingMethod.custom.storePickupEnabled}">
+			<iscontinue>
+		</isif>
+		<isset name="shippingCost" value="${pdict.ShippingCosts.get(shippingMethod.ID)}" scope="page"/>
+
+			<div class=" form-indent label-inline" style="margin:0%;padding:0%">
+
+			
+				<li style="outline: 0px solid transparent;" tabindex="0" class="liclass" >
+				<label for="shipping-method-${shippingMethod.ID}" style="cursor:pointer">
+
+					<iscomment><isprint value="${shippingMethod.displayName}"/>:</iscomment>
+
+					<iscomment>
+						The format for rendering shipping values is to render the base shipping cost. If there are shipping
+						price adjustments, the adjustments are also rendered. Finally, if there is a surcharge associated with
+						the shipping, the surcharge value is rendered.
+					</iscomment>
+
+					<isif condition="${shippingCost.shippingPriceAdjustmentsTotal != 0}">
+						<span class="standard-shipping"><isprint value="${shippingCost.baseShipping}"/></span>
+						<span class="discount-shipping"><isprint value="${shippingCost.baseShippingAdjusted}"/></span>
+					<iselse/>
+						<span><isprint value="${shippingCost.baseShipping}"></span>
+					</isif>
+
+					<isif condition="${shippingCost.surchargeAdjusted > 0}">
+						<span class="shippingsurcharge"> + <isprint value="${shippingCost.surchargeAdjusted}"/> ${Resource.msg('singleshipping.surcharge','checkout',null)}</span>
+					</isif>
+
+					<isif condition="${shippingCost.productShippingCosts.length > 0}">
+
+						<a class="tooltip">(
+							${Resource.msg('singleshipping.details','checkout',null)}
+							<div class="tooltip-content" data-layout="small tooltip-shipping">
+								<isset name="productShipCost" value="${new dw.value.Money(0.0, session.getCurrency().getCurrencyCode())}" scope="page"/>
+								<isloop items="${shippingCost.productShippingCosts}" var="productShipping" status="loopstate">
+									<isif condition="${productShipping.shippingCost != null && productShipping.shippingCost.amount != null && productShipping.shippingCost.amount > 0}">
+										<isset name="productShipCost" value="${productShipCost.add(productShipping.shippingCost.amount)}" scope="page"/>
+										<div class="surcharge-product">
+											<span class="label">
+												<isif condition="${productShipping.shippingCost.surcharge}">
+													(${Resource.msg('singleshipping.surcharge','checkout',null)})
+												</isif>
+												<isprint value="${productShipping.name}"/>:
+											</span>
+											<span class="value">
+												<isif condition="${productShipping.qty != null && productShipping.qty > 1}">
+													x<isprint value="${productShipping.qty}"/>
+												</isif>
+												<isprint value="${productShipping.shippingCost.amount}"/>
+											</span>
+										</div>
+									</isif>
+								</isloop>
+
+								<div class="shipping-method-cost">
+									<span class="label">${Resource.msg('singleshipping.standard','checkout',null)}</span>
+									<span class="value"><isprint value="${shippingModel.getShippingCost(shippingMethod).getAmount()}"/></span>
+								</div>
+								<div class="shipping-method-cost">
+									<span class="value"><isprint value="${shippingMethod.description}"/></span>
+								</div>
+								<isloop items="${shippingCost.shippingPriceAdjustments}" var="shippingPA">
+									<isif condition="${shippingPA.calloutMsg != null}">
+										<div class="promo">
+											<span class="label">
+												<isprint value="${shippingPA.calloutMsg}" encoding="off"/>:
+											</span>
+											<span class="value">
+												<isprint value="${shippingPA.price}"/>
+											</span>
+										</div>
+									</isif>
+								</isloop>
+
+								<isloop items="${shippingCost.productShippingDiscounts}" var="productShippingDiscount" status="loopstate">
+									<isset name="shippingPromotion" value="${productShippingDiscount.calloutMsg}" scope="page"/>
+									<isif condition="${shippingPromotion != null}">
+										<div class="promo">
+											<span class="label">
+												<isprint value="${shippingPromotion}"/>:
+											</span>
+											<span class="value">
+												<isprint value="${productShippingDiscount.price}"/>
+											</span>
+										</div>
+									</isif>
+								</isloop>
+
+								<div class="shippingtotal ">
+									<span class="label">${Resource.msg('singleshipping.total','checkout',null)}</span>
+									<span class="value"><isprint value="${shippingCost.shippingInclDiscounts}"/></span>
+								</div>
+
+							</div>
+						)</a>
+					</isif>
+					<isif condition="${!empty(shippingMethod.displayName)}">
+					<div class="form-caption"> <b><isprint value="${shippingMethod.displayName}"/></b></div>
+					</isif>
+				</label>
+				</li>
+				<div class="field-wrapper">
+					<input class="input-radio" onchange="setMethodInDiv()" onclick="setMethodInDiv()" style="display:none" type="radio" name="${pdict.CurrentForms.singleshipping.shippingAddress.shippingMethodID.htmlName}" id="shipping-method-${shippingMethod.ID}" value="${shippingMethod.ID}" <isif condition="${(empty(pdict.CurrentForms.singleshipping.shippingAddress.shippingMethodID.value) && shippingMethod.defaultMethod) || (pdict.CurrentForms.singleshipping.shippingAddress.shippingMethodID.value == shippingMethod.ID)}">checked="checked"</isif> />
+					
+				</div>
+
+				
+
+				<iscomment>  Display approaching shipping promotional discounts. </iscomment>
+				<ul class="shipping-promos">
+					<isloop items="${DiscountPlan.getApproachingShippingDiscounts(shipment, shippingMethod)}" var="shippingDiscount">
+						<li>${Resource.msg('approachingpromo.purchase','checkout',null)} <isprint value="${shippingDiscount.getDistanceFromConditionThreshold()}" /> ${Resource.msg('approachingpromo.more','checkout',null)} ${Resource.msg('approachingpromo.receive','checkout',null)}: <isprint value="${shippingDiscount.getDiscount().getPromotion().getCalloutMsg()}" encoding="off" /><br/>
+					</isloop>
+				</ul>
+
+			</div><!-- END: shippingmethod -->
+
+		</isloop>
+</ul>
+	<iselse/>
+		<div class="no-shipping-methods">${Resource.msg('singleshipping.noshippingmethods','checkout',null)}</div><!-- END: noshippingmethods -->
+	</isif>
+
+</fieldset>
+<script> 
+		
+	
+	
+</script> 
+<script>
+
+$(document).mouseup(function (e) { 
+		var container = $(".shippingmethods"); 
+		if(!container.is(e.target) && 
+			container.has(e.target).length === 0) { 
+			container.hide(); 
+		} 
+	}); 
+
+items  = [];
+currentIndex = 0;
+tempStr = '';
+
+function myFunction1(event) {
+
+	this.tempStr = '';
+
+	menuElements = document.getElementById('shippingmethods').getElementsByTagName('LI');
+		if(this.items.length > 0){
+			this.items = [];
+		}
+		for (var i = 0; i < menuElements.length; i++) {
+			menuElement = menuElements[i];
+			this.items.push(menuElement);
+		}
+	this.currentIndex = 0;
+}
+
+/*
+function myFunction1(event) {
+	console.log('myFunction1');
+	console.log('Key Pressed');
+	console.log('Key Code :'+ event.keyCode);
+	
+	if(event.keyCode === 38){
+		console.log('Up');
+		console.log('currentIndex '+this.currentIndex);
+		this.items[this.currentIndex].focus();
+		this.currentIndex += 1;
+		console.log('currentIndex '+this.currentIndex);
+		this.tempStr = 'Up';
+	}
+	
+	else if(event.keyCode === 40){
+		console.log('Down');
+		console.log('currentIndex '+this.currentIndex);
+		this.items[this.currentIndex].focus();
+		this.currentIndex += 1;
+		console.log('currentIndex '+this.currentIndex);
+		this.tempStr = 'Down';
+	}
+}
+*/
+
+function myFunction2(event) {
+
+	if(event.keyCode === 13){
+
+		if(this.tempStr === 'Down'){
+
+			if(this.currentIndex == 0){
+				$('.liclass').children()[this.currentIndex].click();
+				document.getElementById('shippingmethods').style.display = "none";
+			}
+			else{
+				$('.liclass').children()[this.currentIndex].click();
+				document.getElementById('shippingmethods').style.display = "none";
+			}
+		}
+		else if(this.tempStr === 'Up'){
+
+			if(this.currentIndex == 0){
+				$('.liclass').children()[this.currentIndex].click();
+				document.getElementById('shippingmethods').style.display = "none";
+			}
+			else{
+				$('.liclass').children()[this.currentIndex].click();
+				document.getElementById('shippingmethods').style.display = "none";
+			}
+		}
+		else if(this.tempStr === ''){
+
+			this.tempStr = 'tabupdate';
+
+		}
+		else if(this.tempStr === 'tabupdate'){
+			$('.liclass').children()[this.currentIndex].click();
+			document.getElementById('shippingmethods').style.display = "none";
+		}
+	}
+	
+	if(event.keyCode === 38){
+
+		if(this.currentIndex != 0){
+			this.currentIndex -= 1;
+
+			this.items[this.currentIndex].focus();
+			this.tempStr = 'Up';
+		}
+		else{
+
+			this.items[this.currentIndex].focus();
+			this.tempStr = 'Up';
+		}
+	}
+	else if(event.keyCode === 40){
+
+		if(this.currentIndex != this.items.length-1){
+
+			this.currentIndex += 1;
+			this.items[this.currentIndex].focus();
+
+			this.tempStr = 'Down';
+		}
+		else{
+			this.currentIndex = 0;
+
+			this.items[this.currentIndex].focus();
+			this.tempStr = 'Down';
+		}
+	}
+	else if(event.keyCode === 9){
+		this.currentIndex += 1;
+
+	}
+}
+
+
+
+
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+// call this to Disable
+function disableScroll() {
+	window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+// call this to Enable
+function enableScroll() {
+	window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+
+var flag = true;
+function showul() {
+    if(flag){  //document.getElementById('shippingmethods').style.display === "none"
+        document.getElementById('shippingmethods').style.display = "block";
+        disableScroll();
+        menuElements = document.getElementById('shippingmethods').getElementsByTagName('LI');
+        console.log('Size :'+ menuElements.length);
+        if(this.items.length > 0){
+            this.items = [];
+        }
+        for (var i = 0; i < menuElements.length; i++) {
+            menuElement = menuElements[i];
+            this.items.push(menuElement);
+        }
+        this.currentIndex = 0;
+        this.items[this.currentIndex].focus();
+        this.flag = false;
+    } 
+    else {
+        document.getElementById('shippingmethods').style.display = "none";
+        enableScroll();
+        this.flag = true;
+    }
+}
+$(".shippingmethods").click(function(){
+    $('.liclass').children()[0].click();
+    flag = true;
+});
+
+
+
+function cliter(ele) {
+	ele.click();
+}
+</script>

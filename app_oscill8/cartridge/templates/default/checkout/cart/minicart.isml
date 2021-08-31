@@ -1,0 +1,109 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<iscomment>This includes global utilities into the pages</iscomment>
+<isinclude template="util/modules"/>
+<style>
+a.card_button{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    min-width: 120px;
+    min-height: 33px;
+    background: #FFFFFF;
+    border: 1px solid #B2B2B2;
+    box-sizing: border-box;
+    border-radius: 100px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+    color: #184A8F;
+    transition: all ease 0.3s;
+    font-size: 12px;
+    line-height: 100%;
+}
+a.card_button.blue{
+    background: #184A8F;
+    border-color: #184A8F;
+    color: #ffffff;
+}
+.mc-totals {
+	background: #F2F2F2;
+    border-radius: 6px;
+	margin: 0.5rem;
+	padding:0.5rem;
+}
+</style>
+<iscomment>
+	This creates reporting data for the cart. The application assumes that
+	the minicartcontent template will be embeeded into every page, so that the information about
+	an open cart can be report as soon as it is available or changed.
+	Additionally this page must not be cached to allow the correct reporting any time.
+
+	This include also takes care of reporting source codes.
+</iscomment>
+<isinclude template="util/reporting/ReportBasket.isml"/>
+
+<iscomment> the mini cart total which is always visible</iscomment>
+<div class="mini-cart-total" id="mct">
+	<isif condition="${(pdict.Basket != null) && (pdict.Basket.productLineItems.size() + pdict.Basket.giftCertificateLineItems.size() > 0 )}">
+		<isscript>
+			// calculate the total number of items in the cart by adding quantities together
+			// do not count bonus line items
+			var cartQty : Number = 0;
+			var pliIt : dw.util.Iterator = pdict.Basket.productLineItems.iterator();
+
+			while (pliIt.hasNext()) {
+				var pli : dw.order.ProductLineItem = pliIt.next();
+				cartQty += pli.quantity;
+			}
+
+			// add the gift certificates to cart quantity
+			cartQty += pdict.Basket.giftCertificateLineItems.size();
+		</isscript>
+		<a class="mini-cart-link" href="${URLUtils.https('Cart-Show')}" title="${Resource.msg('minicart.viewcart','checkout',null)}">
+			<img src="${URLUtils.absStatic('/images/icons/cart.svg')}" alt="Cart">
+			<span class="minicart-quantity">
+				<isprint value="${cartQty}" formatter="##" />
+			</span>
+		</a>
+	<iselse/>
+		<a class="mini-cart-link mini-cart-empty" href="${URLUtils.https('Cart-Show')}" title="${Resource.msg('minicart.viewcart','checkout',null)}">
+			<img style="height: 40px" src="${URLUtils.absStatic('/images/icons/cart.svg')}" alt="Cart">
+			<span class="minicart-quantity">0</span>
+		</a>
+	</isif>
+</div>
+
+
+
+
+<iscomment> the dynamically shown view of the last added item </iscomment>
+<isif condition="${!empty(pdict.Basket) && (pdict.Basket.productLineItems.size() > 0 || pdict.Basket.giftCertificateLineItems.size() > 0)}">
+    <div id="mini-cart-show">
+	<div class="mini-cart-content min_cart_wrapper">
+		<div class="mini-cart-header">
+			<h2>Added To Cart</h2>
+		</div>
+		<div class="mini-cart-products">
+			<isminilineitems p_lineitemctnr="${pdict.Basket}" p_showreverse="${true}" p_productlineitem="${pdict.ProductLineItem}" p_giftcertlineitem="${pdict.GiftCertificateLineItem}"/>
+		</div>
+
+		<div class="mini-cart-totals" style="padding-bottom:1rem">
+
+			<div class="mc-totals flex fac fjb">
+				<span class="label"><b>${Resource.msg('order.ordersummary.ordersubtotal','order',null)}</b></span>
+				<span class="value"><isprint value="${pdict.Basket.getAdjustedMerchandizeTotalPrice(false).add(pdict.Basket.giftCertificateTotalPrice)}"/></span>
+			</div>
+
+			<a class="card_button" href="${URLUtils.https('Cart-Show')}" >Go to Cart</a>
+
+			<isapplepay></isapplepay>
+
+			<a class="card_button blue" href="${URLUtils.https('COCustomer-Start')}">Go to Checkout</a>
+		</div>
+	</div>
+	</div>
+
+</isif>
+<isbonusdiscountlineitem p_alert_text="${Resource.msg('product.bonusproductalert','product',null)}" p_discount_line_item="${pdict.BonusDiscountLineItem}"/>

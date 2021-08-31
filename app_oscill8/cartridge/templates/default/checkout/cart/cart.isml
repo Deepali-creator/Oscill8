@@ -1,0 +1,1247 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="checkout/cart/pt_cart">
+	<isinclude template="util/modules" />
+	<isinclude template="util/reporting/ReportBasket.isml" />
+	
+<style>
+    .subpro-options.cart label{
+		margin-bottom:-10px;
+	}
+	.delivery-interval-group label{
+		margin-bottom:2px !important;
+	}
+
+	.delivery-interval-group {
+		margin-top:20px;
+	}
+	label {
+		font-size: 1em;
+	}
+	.promo {
+		display:none
+	}
+	.promo-adjustment {
+		display:none;
+	}
+	.checkoutbtn1 {
+		float:right;
+		width:30%;
+		padding-left:3%;
+		position:absolute;
+		top:390px;
+		right:0;
+	}
+	.checkoutbtn2 {
+		width:100%;
+		top:390px;
+		right:0;
+		display:none;
+	}
+	.summarydiv1{
+		float:left;
+		width:30%;
+		padding-left:3%;
+	}
+	.tablediv {
+		float:left;
+		width:67%;
+	}
+	.product-availability-list {
+		width:5em !important;
+	}
+	.fa-2x {
+    	font-size: 1.7em !important;
+	}	
+	.error-form {
+		background-color: white !important;
+		border-radius: 0 !important; 
+	}
+	.item-details {
+		font-style:none !important;
+	}
+	table a {
+		color:black !important;
+		font-size:20px !important;
+		font-family: 'Montserrat'!important;
+		font-weight: bold !important;
+		font-style:normal !important;
+	 }
+	.order-totals-table {
+		line-height:2.5em !important;
+	}
+	tr td:first-child { 
+		border-top-left-radius: 30px; border-bottom-left-radius: 30px;
+		}
+	tr td:last-child { 
+		border-top-right-radius: 30px; border-bottom-right-radius: 30px;
+		}
+		
+	@media only screen and (min-width:1499px) and (max-width:1651px){
+		.btn-blue-in-white {
+			min-width: 131px !important;
+		}
+		a.card_button.blue {
+			min-width: 125px !important;
+		}
+	}
+
+	 @media only screen and (min-width:1500px){
+		 .summarydiv1 {
+			 width:25%;
+		 }
+		 .checkoutbtn1 {
+			width:25%
+		}
+		.checkoutButton {
+			margin-left:-20%;
+		}
+	 }
+
+	 @media only screen and (min-width:770px){
+	.item-list { border-collapse: separate !important;
+	border-spacing: 0 1em !important;
+	}
+	.item-list td {
+		margin-bottom: 20px;
+	}
+
+
+	 }
+	@media only screen and (max-width:1024px){
+		.checkoutbtn1 {
+			display:none;
+		}
+		.checkoutbtn2 {
+			display:block;
+		}
+		.summarydiv1{
+			float:left;
+			width:100%;
+			padding-left:0%;
+		}
+		.tablediv {
+			float:left;
+			width:100%;
+		}
+		.cart-empty {
+   			margin-top: 4rem;
+    		margin-bottom: 786px;
+		}
+		.wrap {
+			margin: 20% 7% 17% 7% !important;
+		}
+		
+	}
+	@media only screen and (min-width:551px) and (max-width:767px){
+		.item-total {
+			padding: 3% 3% 3% 0%;
+			text-align: center !important;
+			max-width: 150px !important;
+			margin-left: 5%;
+		}
+		.item-quantity {
+			margin-left: 7%;
+		}
+		.cart-empty {
+   			margin-top: 4rem;
+    		margin-bottom: 452px;
+		}
+		.wrap {
+			margin:20% 5% 17% 5% !important;
+			position:relative;
+		}
+	}
+	@media only screen and (max-width:550px){
+		
+		.item-quantity {
+			margin-left: 7%;
+		}
+		.cart-empty {
+			margin-top: 4rem;
+			margin-bottom: 360px;
+		}
+		.item-total {
+			padding: 3% 3% 3% 5%;
+			text-align: center !important;
+		}
+		.wrap {
+			margin: 30% 7% 17% 7% !important;
+		}
+	}
+	@media only screen and (max-width:400px){
+		.primaryButton {
+    		width: 100px;
+		}
+		.secondaryButton {
+			width:100px;
+		}
+		button {
+			padding:0em;
+		}
+		.cart-empty {
+			margin-top: 4rem;
+			margin-bottom: 360px;
+		}
+		.continueShoppingInCart{
+			margin-top:5px;
+		}
+		.wrap {
+			margin: 30% 7% 17% 7% !important;
+		}
+	}
+	@media only screen and (max-width:1250px){
+		.item-quantity-details {
+			display:none !important;
+		}
+		.spacerdiv {
+			display:none !important;
+		}
+		
+	}
+	@media only screen and (min-width:1025px) and (max-width:1359px){
+		.wrap {
+			margin:15% 5% 17% 5% !important;
+			position:relative;
+		}
+	}
+</style>
+
+	<isset name="enableCheckout" value="${pdict.EnableCheckout}" scope="page" />
+	<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableStorePickUp')}">
+	<isset name="store" value="${dw.catalog.StoreMgr.getStore(pdict.CurrentSession.custom.storeId)}" scope="page" />
+	</isif>
+	<isslot id="cart-banner" description="Banner for Cart page"	context="global" />
+	<h1 class="title-text">Shopping Cart</h1>
+	
+	<isif condition="${pdict.Basket == null || (empty(pdict.Basket.productLineItems) && empty(pdict.Basket.giftCertificateLineItems))}">
+		<div class="cart-empty">
+			<h1 class="headlineMedium">${Resource.msg('cart.cartempty','checkout',null)}</h1>
+				<div style="text-align:center">
+					<button onclick="window.location.href='${URLUtils.https('Shop-Show')}'" class="button-text" style="font-size:16px;" type="submit" value="${Resource.msg('global.continueshopping','locale',null)}" name="${pdict.CurrentForms.cart.continueShopping.htmlName}">
+						&#171; ${Resource.msg('global.continueshopping','locale',null)}
+					</button>
+				</div>
+			<isslot id="cart-empty" description="Empty Cart page slot." context="global" />
+		</div>
+	<iselse/>
+	<div class="desc">
+		<p style="font-weight:bold">Congratulations… You’re on your way to shining brighter!</p>
+	</div>
+		<iscomment>show checkout and continue shopping buttons above cart</iscomment>
+		<div class="cart-actions cart-actions-top">
+			<iscomment>continue shop url is a non-secure but checkout needs a secure and that is why separate forms!
+			<form class="cart-action-checkout" action="${URLUtils.httpsContinue()}" method="post" name="${pdict.CurrentForms.cart.dynamicHtmlName}" id="checkout-form">
+				<fieldset>
+					<isif condition="${enableCheckout}">
+						<button class="button-fancy-large" type="submit" value="${Resource.msg('global.checkout','locale',null)}" name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
+							${Resource.msg('global.checkout','locale',null)}
+						</button>
+						<isapplepay></isapplepay>
+					<iselse/>
+						<button class="button-fancy-large" disabled="disabled" type="submit" value="${Resource.msg('global.checkout','locale',null)}"	name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
+							${Resource.msg('global.checkout','locale',null)}
+						</button>
+					</isif>
+				</fieldset>
+			</form>
+
+			<form class="cart-action-continue-shopping" action="${URLUtils.httpContinue()}" method="post" name="${pdict.CurrentForms.cart.dynamicHtmlName}" id="continue-shopping">
+				<fieldset>
+					<button class="button-text" type="submit" value="${Resource.msg('global.continueshopping','locale',null)}" name="${pdict.CurrentForms.cart.continueShopping.htmlName}">
+						<i class="fa fa-angle-double-left left"></i>${Resource.msg('global.continueshopping','locale',null)}
+					</button>
+				</fieldset>
+			</form></iscomment>
+		</div>
+
+		<iscomment>Display approaching order and shipping promotions.</iscomment>
+		<isinclude template="checkout/components/approachingdiscounts"/>
+
+		<iscomment>prevent checkout if any product price is N/A or if invalid coupons</iscomment>
+		<isif condition="${pdict.BasketStatus != null && pdict.BasketStatus.error}">
+			<div class="error-form">
+				<i class="fa fa-exclamation-triangle fa-2x pull-left"></i>
+				<isif condition="${pdict.BasketStatus.code != null && pdict.BasketStatus.code=='CouponError'}">
+					${Resource.msg('cart.cartcouponinvalid','checkout',null)}
+				<iselseif condition="${pdict.BasketStatus.code != null && pdict.BasketStatus.code=='TaxError'}">
+					${Resource.msg('cart.taxinvalid','checkout',null)}
+				<iselse/>
+					${pdict.BasketStatus.code}
+					${Resource.msg('cart.carterror','checkout',null)}
+				</isif>
+			</div>
+		</isif>
+
+		<isif condition="${!enableCheckout}">
+			<div class="error-form">
+				<i class="fa fa-exclamation-triangle fa-2x pull-left"></i>
+				${Resource.msg('cart.limitedQuantity','checkout',null)}
+			</div>
+		</isif>
+
+		<iscomment>show the basket when we have data</iscomment>
+		<form action="${URLUtils.httpContinue()}" method="post"	name="${pdict.CurrentForms.cart.htmlName}" id="cart-items-form">
+			<fieldset>
+				<iscomment>This button is hidden but required to ensure that update cart is called whenever the "enter" key is pressed in an input field</iscomment>
+				<button class="visually-hidden" type="submit" value="${pdict.CurrentForms.cart.updateCart.htmlName}" name="${pdict.CurrentForms.cart.updateCart.htmlName}"></button>
+				<div class="tablediv">
+					<table id="cart-table" class="item-list" style="border-collapse: revert;">
+						<thead>
+							<tr>
+								<th class="itemListTableHeader" colspan="2">${Resource.msg('global.product','locale',null)}</th>
+								<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableStorePickUp')}">
+								<th class="itemListTableHeader">${Resource.msg('cart.store.deliveryoptions','checkout',null)}</th>
+								</isif>
+								<th class="itemListTableHeader">${Resource.msg('global.qty','locale',null)}</th>
+								<th class="itemListTableHeader spacerdiv"></th>
+								<iscomment><th class="itemListTableHeader">${Resource.msg('global.price','locale',null)}</th></iscomment>
+								<th class="itemListTableHeaderTotal" style="color: #1E4787;">Price</th>
+							</tr>
+						</thead>
+
+						<tbody class="tbodyBorder">
+							<iscomment>Display selected bonus products Order Promotion message</iscomment>
+							<isif condition="${!(pdict.Basket == null)}">
+								<isloop items="${pdict.Basket.bonusDiscountLineItems}"	var="bonusDiscountLineItem">
+									<isif condition="${bonusDiscountLineItem.getPromotion().getPromotionClass() == dw.campaign.Promotion.PROMOTION_CLASS_ORDER && bonusDiscountLineItem.getBonusProductLineItems().size() == 0}">
+										<div class="bonus-item-promo">
+
+											<iscomment>Display appropriate text based on status of bonus discount and number of selected bonus products.</iscomment>
+											<isif condition="${bonusDiscountLineItem.getBonusProductLineItems().size() > 0}">
+												<isif condition="${bonusDiscountLineItem.getMaxBonusItems() > 1}">
+													<isset	name="bonusButtonText"	value="${Resource.msg('cart.updatebonusproducts','checkout',null)}"	scope="page" />
+												<iselse/>
+													<isset name="bonusButtonText" value="${Resource.msg('cart.updatebonusproduct','checkout',null)}" scope="page" />
+												</isif>
+											<iselse/>
+												<isif condition="${bonusDiscountLineItem.getMaxBonusItems() > 1}">
+													<isset name="bonusButtonText" value="${Resource.msg('cart.selectbonusproducts','checkout',null)}" scope="page" />
+												<iselse/>
+													<isset name="bonusButtonText" value="${Resource.msg('cart.selectbonusproduct','checkout',null)}" scope="page" />
+												</isif>
+											</isif>
+											<tr class="cart-promo" style="background-color:white;">
+
+												<td colspan="3" class="bonus-item-details">
+													<isprint value="${bonusDiscountLineItem.getPromotion().getName()}" />
+													<isprint value="${bonusDiscountLineItem.getPromotion().getCalloutMsg()}" encoding="off"/>
+													<a class="tooltip" href="#">
+														${Resource.msg('product.promotiondetails','product',null)}
+														<div class="tooltip-content" data-layout="small">
+															<isprint value="${bonusDiscountLineItem.getPromotion().getDetails()}" />
+															<br />
+															${StringUtils.format(Resource.msg('cart.bonusmaxitems','checkout',null), bonusDiscountLineItem.getMaxBonusItems())}
+															${StringUtils.format(Resource.msg('cart.bonusnumselected','checkout',null),bonusDiscountLineItem.getBonusProductLineItems().size())}
+														</div>
+													</a>
+												</td>
+
+												<td colspan="4" class="bonus-item-actions">
+													<a class="select-bonus" href="${URLUtils.url('Product-GetBonusProducts','bonusDiscountLineItemUUID', bonusDiscountLineItem.UUID, 'lazyLoad', false)}" title="${bonusButtonText}">
+														${bonusButtonText}
+													</a>
+												</td>
+
+											</tr>
+										</div>
+									</isif>
+								</isloop>
+							</isif>
+							<iscomment>	LOOP TO SEPARATE DIFFERENT SHIPMENTS ex: Gift Registry Shipments Etc.</iscomment>
+							<isloop items="${pdict.CurrentForms.cart.shipments}" var="Shipment"	status="loopstate">
+								<isloop items="${Shipment.items}" alias="FormLi" status="loopstate" status="valuecount">
+									<isset name="lineItem" value="${FormLi.object}" scope="page" />
+									<isscript>
+										var isInWishList = false;
+										if (pdict.WishList) {
+											var wishListItems =	pdict.WishList.items;
+											var wishListItemsSize = wishListItems.size();
+											for each( var wishListItem in wishListItems ) {
+												if (lineItem.productID	== wishListItem.product.ID) {
+													isInWishList = true;
+													break;
+												}
+											}
+										}
+									</isscript>
+									<iscomment>Custom line added to count the element in the loop for table height compensation</iscomment>
+                                    <isset name="rowcount" value="${valuecount.count}" scope="page" />
+									<iscomment>	Skip bonus-choice products in first pass.	</iscomment>
+									<isif condition="${lineItem.bonusDiscountLineItem == null}">
+										<tr class="cart-row" data-uuid="${lineItem.getUUID()}" style="background:white">
+											<td class="item-image"  style="padding:3% 3% 3% 3%;">
+												<isif condition="${lineItem.product != null && lineItem.product.getImage('small',0) != null}">
+													<img width="100px" height="110px" src="${lineItem.product.getImage('small',0).getURL()}"	alt="${lineItem.product.getImage('small',0).alt}" title="${lineItem.product.getImage('small',0).title}" />
+												<iselse/>
+													<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${lineItem.productName}" title="${lineItem.productName}" />
+												</isif>
+											</td>
+											<td class="item-details" style="padding:3% 3% 3% 3%;" width="40%">
+
+												<iscomment>Call module to render product</iscomment>
+												<isdisplayliproduct p_productli="${lineItem}" p_formli="${FormLi}" p_editable="${true}" p_hideprice="${true}" p_hidepromo="${false}" />
+												<isif condition="${lineItem.custom.subproSubscriptionOptionMode}">
+												<isscript>
+                                                        var ProductMgr = require('dw/catalog/ProductMgr');
+                                                        var subscriptionProductPrice = ProductMgr.getProduct('NT18RP').priceModel.price;
+                                                        var quantity = lineItem.quantity.value;
+                                                        var TotalPrice = subscriptionProductPrice * quantity;
+                                                </isscript>
+                                                    <div class="subscription">
+                                                    	<isinclude url="${URLUtils.url('SubPro-Cart', 'pliUUID', productLineItem.getUUID(), 'RecurringPrice', TotalPrice.toFixed(2))}" />
+                                                    </div>
+												</isif>
+
+											</td>
+											<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableStorePickUp')}">
+											<td class="item-delivery-options">
+												<isinclude template="checkout/cart/storepickup/deliveryoptions" />
+											</td>
+											</isif>
+											<td class="item-quantity" style="padding:3% 3% 3% 3%;">
+												<isif condition="${lineItem.bonusProductLineItem}">
+													<isprint value="${lineItem.quantity}" />
+												<iselse/>
+													<input type="number" min="0" name="${FormLi.quantity.htmlName}" maxlength="6" value="${lineItem.quantity.value.toFixed()}" class="input-text" />
+												</isif>
+
+												<div class="item-user-actions" style="margin-top:5%">
+													<isif condition="${!lineItem.bonusProductLineItem || lineItem.getBonusDiscountLineItem() != null}">
+														<button class="button-text" type="submit" value="${Resource.msg('global.remove','locale',null)}" name="${FormLi.deleteProduct.htmlName}"><span>${Resource.msg('global.remove','locale',null)}</span></button>
+													</isif>
+													<isif condition="${empty(pdict.ProductAddedToWishlist) || pdict.ProductAddedToWishlist != lineItem.productID}">
+														<isif condition="${!isInWishList && !empty(lineItem.product)}">
+														<iscomment>	<a class="add-to-wishlist" href="${URLUtils.https('Cart-AddToWishlist', 'pid', lineItem.productID)}" name="${FormLi.addToWishList.htmlName}" title="${Resource.msg('global.addthisitemtowishlist.title','locale',null)}">
+																${Resource.msg('global.addtowishlist','locale',null)}
+															</a></iscomment>
+														</isif>
+													<iselse/>
+														<div class="in-wishlist">
+															${Resource.msg('global.iteminwishlist','locale',null)}
+														</div>
+													</isif>
+												</div>
+
+											</td>
+											<td class="item-quantity-details" style="padding:3% 3% 3% 3%;">
+												<iscomment>Product Existence and Product Availability</iscomment>
+												<isif condition="${!lineItem.bonusProductLineItem || lineItem.getBonusDiscountLineItem() != null}">
+													<isif condition="${lineItem.product == null}">
+														<span class="not-available">
+															${Resource.msg('cart.removeditem','checkout',null)}
+														</span>
+													<iselse/>
+														<isset name="product" value="${lineItem.product}" scope="page" />
+														<isset name="quantity"	value="${pdict.Basket.getAllProductQuantities().get(lineItem.product).value}" scope="page" />
+														<isinclude template="checkout/cart/cartavailability" />
+													</isif>
+												</isif>
+
+												
+
+											</td>
+											
+											<iscomment> item price column is removed</iscomment>
+
+											<td class="item-total" style="padding:3% 3% 3% 0%;text-align:left;">
+
+												<isif condition="${lineItem.bonusProductLineItem}">
+													<span class="bonus-item">
+														${Resource.msg('global.bonus','locale',null)}
+													</span>
+												<iselse/>
+
+													<iscomment>Display the unadjusted price if the line item has price adjustments.</iscomment>
+													<isif condition="${lineItem.priceAdjustments.length > 0}">
+
+														<span class="price-unadjusted">
+															${Resource.msg('cart.listprice','checkout',null)}
+															<span><isprint value="${lineItem.getBasePrice()}" /> </span>
+														</span>
+
+														<iscomment>Display the promotion name for each price adjustment.</iscomment>
+														<isloop	items="${lineItem.priceAdjustments}" var="pa" status="prAdloopstatus">
+															<div class="promo-adjustment">
+																<isif condition="${lineItem.quantityValue > 1 && lineItem.quantityValue != pa.quantity}">
+																	<isprint value="${pa.quantity}" /> x
+																</isif>
+																<isprint value="${pa.promotion.calloutMsg}" encoding="off"/>
+															</div>
+														</isloop>
+
+														<iscomment>Display	the adjusted item total.</iscomment>
+														<span class="price-adjusted-total">
+															${Resource.msg('cart.itemtotal','checkout',null)}
+															<span><isprint value="${lineItem.getAdjustedPrice()}" /></span>
+														</span>
+
+													<iselse/>
+
+														<iscomment>Display non-adjusted item total.</iscomment>
+														<span class="price-unadjusted">
+															${Resource.msg('cart.listprice','checkout',null)}
+															<span><isprint value="${lineItem.getBasePrice()}" /> </span>
+														</span>
+
+														<span class="price-adjusted-total">
+															${Resource.msg('cart.itemtotal','checkout',null)}
+															<span><isprint value="${lineItem.getAdjustedPrice()}" /></span>
+														</span>
+
+													</isif>
+
+
+
+
+
+												</isif>
+
+												<iscomment>Options</iscomment>
+												<isif condition="${lineItem.optionProductLineItems.size() > 0}">
+													<isloop items="${lineItem.optionProductLineItems}" var="oli">
+														<isif condition="${oli.price > 0}">
+															<isif condition="${oli.price > oli.adjustedPrice}">
+																<div class="price-option">
+																	<span class="label">
+																		${Resource.msg('cart.option','checkout',null)}:
+																	</span>
+																	<span class="value">
+																		<strike>
+																			<isprint value="${oli.price}" />
+																		</strike>
+																		+ <isprint value="${oli.adjustedPrice}" />
+																	</span>
+																</div>
+															<iselse/>
+																<div class="price-option">
+																	<span class="label">
+																		${Resource.msg('cart.option','checkout',null)}:
+																	</span>
+																	<span class="value">
+																		+ <isprint value="${oli.price}" />
+																	</span>
+																</div>
+															</isif>
+														</isif>
+													</isloop>
+												</isif>
+											</td>
+										</tr>
+
+
+										<iscomment>Bundles</iscomment>
+										<isif condition="${lineItem.bundledProductLineItems.size() > 0}">
+											<isloop items="${lineItem.bundledProductLineItems}" var="bli">
+
+												<iscomment>same color</iscomment>
+												<tr class="rowbundle">
+													<td class="item-image"  style="padding:3% 3% 3% 3%;"><!-- Blank to create bundle indent --></td>
+													<td class="item-details"  style="padding:3% 3% 3% 3%;">
+														<isif condition="${bli.product != null}">
+															<a href="${URLUtils.url('Product-Show','pid', bli.productID)}" title="${bli.productName}">
+																<isif condition="${bli.product.getImage('small',0) != null}">
+																	<img width="100px" height="150px" src="${bli.product.getImage('small',0).getURL()}" alt="${bli.product.getImage('small',0).alt}" title="${bli.product.getImage('small',0).title}" />
+																<iselse/>
+																	<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${bli.productName}" title="${bli.productName}" />
+																</isif>
+															</a>
+														<iselse/>
+															<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${bli.productName}" title="${bli.productName}" />
+														</isif>
+														<div class="name">
+															<a href="${URLUtils.url('Product-Show','pid', bli.productID)}" title="${bli.productName}">
+																<isprint value="${bli.lineItemText}" />
+															</a>
+														</div>
+														<div class="itemnumber">
+															<span class="label">
+																${Resource.msg('global.itemno','locale',null)}
+															</span>
+															<span class="value">
+																<isprint value="${bli.productID}" />
+															</span>
+														</div>
+													</td>
+													<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableStorePickUp')}">
+													<td class="item-delivery-options">
+														<isinclude template="checkout/cart/storepickup/deliveryoptions" />
+													</td>
+													</isif>
+													<td class="item-quantity" style="padding:3% 3% 3% 3%;">
+														<span class="bundleqtyincluded">
+															<isprint value="${bli.quantity}" />
+														</span>
+													</td>
+													<td class="item-quantity-details" style="padding:3% 3% 3% 3%;">
+														${Resource.msg('global.included','locale',null)}
+
+														<iscomment>Product Existence and Product Availability</iscomment>
+														<isif condition="${!bli.bonusProductLineItem}">
+															<isif condition="${bli.product == null}">
+																<span class="notavailable">
+																	${Resource.msg('cart.removeditem','checkout',null)}
+																</span>
+															<iselse/>
+																<isset name="product" value="${bli.product}" scope="page" />
+																<isset name="quantity" value="${pdict.Basket.getAllProductQuantities().get(bli.product).value}" scope="page" />
+																<isinclude template="checkout/cart/cartavailability" />
+															</isif>
+														</isif>
+													</td>
+													<iscomment>
+													<td class="item-price" style="padding:3% 3% 3% 3%;"></td>
+													</iscomment>
+													<td class="item-total" style="padding:3% 0% 3% 0%;text-align:left"/>
+												</tr>
+											</isloop>
+
+										</isif>
+									</isif>
+								</isloop>
+
+
+								<iscomment>Gift Certificates</iscomment>
+								<isloop items="${Shipment.giftcerts}" var="GiftCertificate" status="loopstate">
+
+									<tr class="rowgiftcert">
+
+										<td class="item-image"  style="padding:3% 3% 3% 3%;">
+											<img width="100px" height="150px" src="${URLUtils.staticURL('/images/gift_cert.gif')}" alt="${GiftCertificate.object.lineItemText}" />
+										</td>
+
+										<td class="item-details"  style="padding:3% 3% 3% 3%;">
+
+											<div class="name">
+												<isprint value="${GiftCertificate.object.lineItemText}" />
+											</div>
+
+											<p class="gift-cert-delivery">
+												${Resource.msg('cart.giftcertdelivery','checkout',null)}
+											</p>
+
+											<div class="giftcertamount clearfix">
+												<span class="label">
+													${Resource.msg('global.price','locale',null)}:
+												</span>
+												<span class="value">
+													<isprint value="${GiftCertificate.object.basePrice}" />
+												</span>
+											</div>
+
+											<div class="attribute">
+												<isif condition="${GiftCertificate.object.recipientName!=null}">
+
+													<span class="label">
+														${Resource.msg('global.to','locale',null)}:
+													</span>
+													<span class="value">
+														<isprint value="${GiftCertificate.object.recipientName}" />,
+														<isprint value="${GiftCertificate.object.recipientEmail}" />
+													</span>
+												</isif>
+											</div>
+
+											<div class="attribute">
+												<isif condition="${GiftCertificate.object.senderName!=null}">
+													<span class="label">
+														${Resource.msg('global.from','locale',null)}:
+													</span>
+													<span class="value">
+														<isprint value="${GiftCertificate.object.senderName}" />
+													</span>
+												</isif>
+											</div>
+
+
+											<iscomment>product list info</iscomment>
+											<isif condition="${GiftCertificate.object.productListItem != null}">
+												<span class="product-list-item">
+													<isif condition="${GiftCertificate.object.productListItem.list.type == dw.customer.ProductList.TYPE_WISH_LIST}">
+														<a href="${URLUtils.url('Wishlist-ShowOther','WishListID', GiftCertificate.object.productListItem.list.ID)}" title="${Resource.msg('cart.wishlistitem','checkout',null)}">
+															${Resource.msg('product.display.wishlistitem','product',null)}
+														</a>
+													<iselseif condition="${GiftCertificate.object.productListItem.list.type == dw.customer.ProductList.TYPE_GIFT_REGISTRY}">
+														<a href="${URLUtils.https('GiftRegistryCustomer-Show','ID', GiftCertificate.object.productListItem.list.ID)}" title="${Resource.msg('cart.registryitem','checkout',null)}">
+															${Resource.msg('cart.registryitem','checkout',null)}
+														</a>
+													</isif>
+												</span>
+											</isif>
+
+										</td>
+										<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableStorePickUp')}">
+										<td class="item-delivery-options">
+
+										</td>
+										</isif>
+										<td class="item-quantity" style="padding:3% 3% 3% 3%;">1</td>
+
+										<td class="item-quantity-details" style="padding:3% 3% 3% 3%;">
+											<div class="item-user-actions"  style="margin-top:5%">
+												<button class="button-text" type="submit" value="${Resource.msg('global.remove','locale',null)}" name="${GiftCertificate.deleteGiftCertificate.htmlName}">
+													${Resource.msg('global.remove','locale',null)}
+												</button>
+												<a href="${URLUtils.url('GiftCert-Edit','GiftCertificateLineItemID', GiftCertificate.object.UUID)}" title="${Resource.msg('global.editdetails','locale',null)}" >${Resource.msg('global.editdetails','locale',null)}</a>
+											</div>
+										</td>
+
+										<iscomment>
+										<td class="item-price" style="padding:3% 3% 3% 3%;"></td>
+										</iscomment>
+										<td class="item-total" style="padding:3% 0% 3% 0%;text-align:left">
+											<isprint value="${GiftCertificate.object.price}" />
+										</td>
+
+									</tr>
+
+								</isloop>
+
+							</isloop>
+
+
+							<iscomment>Coupons</iscomment>
+							<isloop items="${pdict.CurrentForms.cart.coupons}" var="FormCoupon" status="loopstateCoupons">
+								<iscomment>
+								<tr class="rowcoupons">
+
+									<td class="item-image"  style="padding:3% 3% 3% 3%;"><!-- BLANK IMAGE CELL --></td>
+
+									<td class="item-details"  style="padding:3% 3% 3% 3%;">
+
+										<div class="name">${Resource.msg('cart.coupon','checkout',null)}</div>
+										<div class="cartcoupon clearfix">
+											<span class="label">${Resource.msg('cart.couponcode','checkout',null)}</span>
+											<span class="value">
+												<isprint value="${FormCoupon.object.couponCode}" />
+											</span>
+										</div>
+
+										<isloop items="${FormCoupon.object.priceAdjustments}" var="Promo" status="loopstate">
+											<div class="discount">
+												<span class="label">
+													<isprint value="${Promo.lineItemText}" />
+												</span>
+												<span class="value">(<isprint value="${Promo.price}" />)</span>
+											</div>
+										</isloop>
+
+										<isif condition="${!FormCoupon.object.valid}">
+											<span class="not-applied">${Resource.msg('cart.couponinvalid','checkout',null)}</span>
+										</isif>
+
+									</td>
+
+									<td class="item-quantity" style="padding:3% 3% 3% 3%;"/>
+
+									<td class="item-quantity-details" style="padding:3% 3% 3% 3%;">
+
+										<button class="textbutton" type="submit" value="${Resource.msg('global.remove','locale',null)}" name="${FormCoupon.deleteCoupon.htmlName}">
+											${Resource.msg('global.remove','locale',null)}
+										</button>
+
+									</td>
+
+									<td class="item-price" style="padding:3% 3% 3% 3%;"></td>
+
+									<td class="item-total" style="padding:3% 0% 3% 0%;text-align:left">
+										<isif condition="${FormCoupon.object.applied}">
+											<span class="bonus-item">${Resource.msg('global.applied','locale',null)}</span>
+										<iselse/>
+											<span class="bonus-item">${Resource.msg('global.notapplied','locale',null)}</span>
+										</isif>
+									</td>
+
+								</tr>
+								</iscomment>
+							</isloop>
+
+
+							<iscomment>Bonus discount line items</iscomment>
+
+							<isloop items="${pdict.Basket.bonusDiscountLineItems}" var="bonusDiscountLineItem" status="loopstate">
+
+
+								<iscomment>Display appropriate text based on status of bonus discount and number of selected bonus products.</iscomment>
+								<isif condition="${bonusDiscountLineItem.getBonusProductLineItems().size() > 0}">
+									<isif condition="${bonusDiscountLineItem.getMaxBonusItems() > 1}">
+										<isset name="bonusButtonText" value="${Resource.msg('cart.updatebonusproducts','checkout',null)}" scope="page" />
+									<iselse/>
+										<isset name="bonusButtonText" value="${Resource.msg('cart.updatebonusproduct','checkout',null)}" scope="page" />
+									</isif>
+								<iselse/>
+									<isif condition="${bonusDiscountLineItem.getMaxBonusItems() > 1}">
+										<isset name="bonusButtonText" value="${Resource.msg('cart.selectbonusproducts','checkout',null)}" scope="page" />
+									<iselse/>
+										<isset name="bonusButtonText" value="${Resource.msg('cart.selectbonusproduct','checkout',null)}" scope="page" />
+									</isif>
+								</isif>
+
+								<tr class="cart-promo">
+
+									<td colspan="3" class="bonus-item-details">
+										<isprint value="${bonusDiscountLineItem.getPromotion().getName()}" />
+										<isprint value="${bonusDiscountLineItem.getPromotion().getCalloutMsg()}" encoding="off"/>
+										<a class="tooltip" href="#">
+											${Resource.msg('product.promotiondetails','product',null)}
+											<div class="tooltip-content" data-layout="small">
+												<isprint value="${bonusDiscountLineItem.getPromotion().getDetails()}" />
+												<br />
+												${StringUtils.format(Resource.msg('cart.bonusmaxitems','checkout',null), bonusDiscountLineItem.getMaxBonusItems())}
+												${StringUtils.format(Resource.msg('cart.bonusnumselected','checkout',null),bonusDiscountLineItem.getBonusProductLineItems().size())}
+											</div>
+										</a>
+									</td>
+
+									<td colspan="4" class="bonus-item-actions">
+										<a class="select-bonus" href="${URLUtils.url('Product-GetBonusProducts','bonusDiscountLineItemUUID', bonusDiscountLineItem.UUID, 'lazyLoad', false, 'pageSize',10, 'pageStart', 0, 'bpTotal', -1)}" title="${bonusButtonText}">
+											${bonusButtonText}
+										</a>
+									</td>
+
+								</tr>
+
+
+								<iscomment>
+									Display the selected bonus products for this bonus discount line item.
+									This requires looping through all form items and matching by UUID.
+
+									Note: we display these bonus products outside of any shipment even
+									though each one is contained in a shipment. This display does not make
+									sense in multiple-shipment scenario.
+								</iscomment>
+
+								<isloop items="${pdict.CurrentForms.cart.shipments}" var="Shipment" status="loopstate">
+
+									<isloop items="${Shipment.items}" alias="FormLi" status="loopstate">
+
+										<isset name="lineItem" value="${FormLi.object}" scope="page" />
+
+										<isif condition="${lineItem.getBonusDiscountLineItem() != null && lineItem.getBonusDiscountLineItem().getUUID().equals(bonusDiscountLineItem.getUUID())}">
+
+											<tr>
+												<td class="item-image"  style="padding:3% 3% 3% 3%;">
+													<isif condition="${lineItem.product != null && lineItem.product.getImage('small',0) != null}">
+														<img width="100px" height="150px" src="${lineItem.product.getImage('small',0).getURL()}" alt="${lineItem.product.getImage('small',0).alt}"  title="${lineItem.product.getImage('small',0).title}" />
+													<iselse/>
+														<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${lineItem.productName}" title="${lineItem.productName}" />
+													</isif>
+												</td>
+
+												<td class="item-details"  style="padding:3% 3% 3% 3%;">
+
+													<iscomment>Call module to render product</iscomment>
+													<isdisplayliproduct p_productli="${lineItem}" p_formli="${FormLi}" p_editable="${false}" p_hideprice="${true}" p_hidepromo="${true}" />
+													<isif condition="${lineItem.custom.subproSubscriptionOptionMode}">
+													<div class="subscription">
+													<isinclude url="${URLUtils.url('SubPro-Cart', 'pliUUID',
+													productLineItem.getUUID())}" />
+													</div>
+													</isif>
+													<div class="bonusproducts">
+														<a href="${URLUtils.url('Product-GetBonusProducts','bonusDiscountLineItemUUID', bonusDiscountLineItem.UUID)}" title="${bonusButtonText}">
+															${bonusButtonText}
+														</a>
+													</div>
+												</td>
+												<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableStorePickUp')}">
+												<td class="item-delivery-options">
+													<isinclude template="checkout/cart/storepickup/deliveryoptions" />
+												</td>
+												</isif>
+												<td class="item-quantity" style="padding:3% 3% 3% 3%;">
+													<isprint value="${lineItem.quantity}" />
+
+													<iscomment>Delete product **************************** </iscomment>
+														<button class="button-text" type="submit" value="${Resource.msg('global.remove','locale',null)}" name="${FormLi.deleteProduct.htmlName}">
+															${Resource.msg('global.remove','locale',null)}
+														</button>
+												</td>
+
+												<td class="item-quantity-details" style="padding:3% 3% 3% 0%;">
+													<div class="item-user-actions">
+
+														
+
+
+														<iscomment>Add to wish list **************************** 
+														<isif condition="${empty(pdict.ProductAddedToWishlist) || pdict.ProductAddedToWishlist != lineItem.productID}">
+															<isif condition="${!isInWishList}">
+																<a class="add-to-wishlist" href="${URLUtils.https('Cart-AddToWishlist', 'pid', lineItem.productID)}" title="${Resource.msg('global.addtowishlist','locale',null)}">
+																	${Resource.msg('global.addtowishlist','locale',null)}
+																</a>
+															</isif>
+														<iselse/>
+
+															<div class="in-wishlist">
+																${Resource.msg('global.iteminwishlist','locale',null)}
+															</div>
+
+														</isif></iscomment>
+
+														<iscomment>Add to registry	**************************** </iscomment>
+														<a class="add-to-registry" href="${URLUtils.https('GiftRegistry-AddProduct', 'pid', lineItem.productID)}" title="${Resource.msg('global.addtogiftregistry','locale',null)}">
+															${Resource.msg('global.addtogiftregistry','locale',null)}
+														</a>
+
+
+														<iscomment>Item Availability **************************** </iscomment>
+
+														<iscomment>Product Existence and Product Availability</iscomment>
+														<isif condition="${lineItem.product == null}">
+															<span class="not-available">
+																${Resource.msg('cart.removeditem','checkout',null)}
+															</span>
+														<iselse/>
+															<isset name="product" value="${lineItem.product}" scope="page" />
+															<isset name="quantity" value="${pdict.Basket.getAllProductQuantities().get(lineItem.product).value}" scope="page" />
+															<isinclude template="checkout/cart/cartavailability" />
+														</isif>
+													</div>
+												</td>
+
+												<isset name="PriceModel" value="${lineItem.product.getPriceModel()}" scope="page"/>
+												<isinclude template="product/components/standardprice" />
+												<isset name="bonusProductPrice" value="${lineItem.getAdjustedPrice()}" scope="page"/>
+												<iscomment>
+												<td class="item-price" style="padding:3% 3% 3% 3%;">
+													<div class="price-promotion">
+														<span class="price-standard"><isprint value="${StandardPrice}" /></span>
+														<span class="price-sales"><isprint value="${bonusProductPrice}"/></span>
+													</div>
+												</td>
+												</iscomment>
+												<td class="item-total" style="padding:3% 0% 3% 0%;text-align:left">
+													<span class="bonus-item">
+														<isinclude template="checkout/components/displaybonusproductprice" />
+														<isprint value="${bonusProductPriceValue}" />
+													</span>
+												</td>
+
+											</tr>
+
+
+											<iscomment>Bundles</iscomment>
+											<isif condition="${lineItem.bundledProductLineItems.size() > 0}">
+												<isloop items="${lineItem.bundledProductLineItems}" var="bli">
+
+													<iscomment>same color</iscomment>
+													<tr class="row-bundle">
+														<td class="item-image"  style="padding:3% 3% 3% 3%;"><!-- Blank to create bundle indent --></td>
+														<td class="item-details"  style="padding:3% 3% 3% 3%;">
+															<isif condition="${bli.product != null}">
+																<a href="${URLUtils.url('Product-Show','pid', bli.productID)}" title="${bli.productName}">
+																	<isif condition="${bli.product.getImage('small',0) != null}">
+																		<img width="100px" height="150px" src="${bli.product.getImage('small',0).getURL()}" alt="${bli.product.getImage('small',0).alt}" title="${bli.product.getImage('small',0).title}" />
+																	<iselse/>
+																		<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${bli.productName}" title="${bli.productName}" />
+																	</isif>
+																</a>
+															<iselse/>
+																<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${bli.productName}" title="${bli.productName}" />
+															</isif>
+
+															<div class="name">
+																<a href="${URLUtils.url('Product-Show','pid', bli.productID)}" title="${bli.productName}">
+																	<isprint value="${bli.lineItemText}" />
+																</a>
+															</div>
+
+															<div class="sku">
+																<span class="label">
+																	${Resource.msg('global.itemno','locale',null)}
+																</span>
+																<span class="value">
+																	<isprint value="${bli.productID}" />
+																</span>
+															</div>
+
+														</td>
+														<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableStorePickUp')}">
+														<td class="item-delivery-options">
+															<isinclude template="checkout/cart/storepickup/deliveryoptions" />
+														</td>
+														</isif>
+														<td class="item-quantity" style="padding:3% 3% 3% 3%;">
+															<isprint value="${bli.quantity}" />
+														</td>
+
+														<td class="item-quantity-details" style="padding:3% 3% 3% 3%;">
+															${Resource.msg('global.included','locale',null)}
+
+															<iscomment>Product Existence and Product Availability</iscomment>
+															<isif condition="${!bli.bonusProductLineItem}">
+																<isif condition="${bli.product == null}">
+																	<span class="not-available">
+																		${Resource.msg('cart.removeditem','checkout',null)}
+																	</span>
+																<iselse/>
+																	<isset name="product" value="${bli.product}" scope="page" />
+																	<isset name="quantity" value="${pdict.Basket.getAllProductQuantities().get(bli.product).value}" scope="page" />
+																	<isinclude template="checkout/cart/cartavailability" />
+																</isif>
+															</isif>
+														</td>
+														<iscomment>
+														<td class="item-price" style="padding:3% 3% 3% 3%;"></td>
+														</iscomment>
+														<td class="item-total" style="padding:3% 0% 3% 0%;text-align:left"><!-- ITEMTOTAL COLUMN --></td>
+
+													</tr>
+
+												</isloop>
+
+											</isif>
+
+										</isif>
+
+									</isloop>
+
+								</isloop>
+								<iscomment>Done looping selected bonus products.</iscomment>
+
+							</isloop>
+							<iscomment>Done looping selected bonus discount line items.</iscomment>
+						<iscomment>Extra table row added to compensate table height
+							<isif condition="${rowcount == '1.0'}">
+								<tr class="cart-row spacerdiv" style="height:200px;border-top:0px">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="spacerdiv"></td>
+								<td></td>
+								</tr>
+							<iselseif condition="${rowcount == '2.0'}">
+								<tr class="cart-row spacerdiv" style="height:100px;border-top:0px">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="spacerdiv"></td>
+								<td></td>
+								</tr>
+							</iselseif>
+							</isif></iscomment>
+						</tbody>
+
+						<tfoot style="display:none;">
+							<isloop items="${pdict.Basket.priceAdjustments}" var="priceAdjustment" status="cliloopstate">
+								<tr>
+									<td colspan="6" class="cart-promo">
+										<div>
+											<span class="label">${Resource.msg('summary.orderdiscount','checkout',null)}</span>
+											<span class="value">
+												<isprint value="${priceAdjustment.promotion.calloutMsg}" encoding="off" />
+											</span>
+										</div>
+									</td>
+								</tr>
+							</isloop>
+						</tfoot>
+					</table>
+				</div>
+
+				<div class="summarydiv1">
+		<div style="height:33px;"></div>
+					<iscomment>Update Cart</iscomment>
+						<div style="float:left;width:45%;padding-right:5%">
+							<button class="button1 btn-blue-in-white" style="font-size:13px;min-width:140px;" type="submit" value="${pdict.CurrentForms.cart.updateCart.htmlName}" name="${pdict.CurrentForms.cart.updateCart.htmlName}" id="update-cart">
+								${Resource.msg('global.updatecart','locale',null)}
+							</button>
+						</div>
+						<div style="float:right;width:45%;padding-left:5%">
+							<div style="float:right">
+							<a href="${URLUtils.https('Shop-Show')}" class="card_button blue ucase" style="font-size:13px;text-align: center;min-width: 140px;margin:0px;display:block;">
+								<p class="continueShoppingInCart" style="margin-top:1.1em">
+									Back To Shop
+								</p>
+							</a>
+							</div>
+						</div>
+					<input type="hidden" name="${pdict.CurrentForms.cart.updateCart.htmlName}" value="${pdict.CurrentForms.cart.updateCart.htmlName}"/>
+					
+					<div style="height:70px"></div>
+					<div>
+					<p style="font-weight:bold">Promo Code</p>
+					</div>
+					<iscomment> <isscript>
+						var merchTotalExclOrderDiscounts : dw.value.Money = pdict.Basket.getAdjustedMerchandizeTotalPrice(false);
+						var merchTotalInclOrderDiscounts : dw.value.Money = pdict.Basket.getAdjustedMerchandizeTotalPrice(true);
+						var orderDiscount : dw.value.Money = merchTotalExclOrderDiscounts.subtract( merchTotalInclOrderDiscounts );
+					</isscript> </iscomment>
+
+					<div style="float:left;width:68%;padding-right:2%">
+
+					<iscomment> <isif condition="${!empty(orderDiscount) && orderDiscount.value > 0.0}">
+					<input type="text" name="${pdict.CurrentForms.cart.couponCode.htmlName}" style="background-color: unset;" id="${pdict.CurrentForms.cart.couponCode.htmlName}" placeholder="${pdict.CurrentForms.cart.coupons[0].object.couponCode}" disabled/>
+					<iselse/>
+					<input type="text" name="${pdict.CurrentForms.cart.couponCode.htmlName}" id="${pdict.CurrentForms.cart.couponCode.htmlName}" placeholder="${Resource.msg('cart.entercouponcode','checkout',null)}" />
+					</isif> </iscomment>
+
+
+					<isif condition="${customer.profile.custom.promocode}">
+						<input type="text" name="${pdict.CurrentForms.cart.couponCode.htmlName}" style="background-color: unset;" id="${pdict.CurrentForms.cart.couponCode.htmlName}" placeholder="${customer.profile.custom.promocode}" disabled/>
+					<iselse/>
+						<input type="text" name="${pdict.CurrentForms.cart.couponCode.htmlName}" id="${pdict.CurrentForms.cart.couponCode.htmlName}" placeholder="${Resource.msg('cart.entercouponcode','checkout',null)}" />
+					</isif>
+
+					</div>
+					<div style="float:right;width:30%">
+					<iscomment>
+						<button class="button1 btn-pink" type="submit" style="width:100%;position:relative;height:35px" value="${pdict.CurrentForms.cart.addCoupon.htmlName}" name="${pdict.CurrentForms.cart.addCoupon.htmlName}" id="add-coupon">
+							${Resource.msg('global.apply','locale',null)}
+						</button>
+					</iscomment>
+					<iscomment>  </iscomment>
+					<isif condition="${customer.profile.custom.promocode}">
+							<button class="button1 btn-pink" type="submit" style="width:100%;position:relative;height:35px" value="${Resource.msg('global.remove','locale',null)}" name="${pdict.CurrentForms.cart.deleteCoupon.htmlName}">
+								${Resource.msg('global.remove','locale',null)}
+							</button>
+						<iselse/>
+							<button class="button1 btn-pink" type="submit" style="width:100%;position:relative;height:35px" value="${pdict.CurrentForms.cart.addCoupon.htmlName}" name="${pdict.CurrentForms.cart.addCoupon.htmlName}" id="add-coupon">
+								${Resource.msg('global.apply','locale',null)}
+							</button>
+					</isif>
+					</div>
+
+					<div style="float:left">
+						<isif condition="${pdict.CouponError && pdict.CouponError=='COUPON_CODE_MISSING'}">
+							<div class="error">
+								${Resource.msg('cart.COUPON_CODE_MISSING','checkout', null)}
+							</div>
+						<iselseif condition="${pdict.CouponError && pdict.CouponError=='NO_ACTIVE_PROMOTION'}">
+							<div class="error">
+								${Resource.msgf("cart.NO_ACTIVE_PROMOTION", "checkout", "", pdict.CurrentForms.cart.couponCode.htmlValue)}
+							</div>
+						<iselseif condition="${pdict.CouponError && pdict.CouponError=='CUSTOMER_NOT_AUTHENTICATED'}">
+							<div class="error">
+								Please login to apply promo code.
+							</div>
+						<iselseif condition="${pdict.CouponError && pdict.CouponError=='COUPON_CODE_INVALID'}">
+							<div class="error">
+								Invalid promo code.
+							</div>
+						<iselseif condition="${pdict.CouponError && pdict.CouponError=='COUPON_NOT_APPLICABLE'}">
+							<div class="error">
+								Promo code is not applicable.
+							</div>
+						<iselseif condition="${pdict.CouponError && pdict.CouponError=='COUPON_ALREADY_REDEEM'}">
+							<div class="error">
+								Promo code already redeemed.
+							</div>
+						<iselseif condition="${pdict.CouponError && pdict.CouponError=='COUPON_APPLIED'}">
+							<div class="error" style="color:green">
+								Promo code applied (free brush head).
+							</div>
+						<iscomment> <iselseif condition="${pdict.CouponStatus != null && pdict.CouponStatus.error}"> </iscomment>
+							<iscomment> <div class="error">
+								${Resource.msgf('cart.' + pdict.CouponStatus.code,'checkout', null, pdict.CurrentForms.cart.couponCode.htmlValue)}
+							</div> </iscomment>
+						</isif>
+					</div>
+
+					<div style="height:50px;"></div>
+					<div class="cart-order-totals left" style="float:left;width:100%">
+						<iscartordertotals p_lineitemctnr="${pdict.Basket}" p_totallabel="${Resource.msg('global.estimatedtotal','locale',null)}" />
+					</div>
+					
+				</div>
+				<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+
+			</fieldset>
+		</form>
+
+		<div class="checkoutbtn1">
+
+			<iscomment>continue shop url is a non-secure but checkout needs a secure and that is why separate forms!</iscomment>
+			<form action="${URLUtils.httpsContinue()}" method="post" name="${pdict.CurrentForms.cart.dynamicHtmlName}" id="checkout-form">
+				<fieldset>
+					<isif condition="${enableCheckout}">
+						<isif condition="${!empty(orderDiscount) && orderDiscount.value > 0.0}">
+							<button class="button1 btn-blue checkoutButton" style="margin-top:100px" type="submit" value="${Resource.msg('global.checkout','locale',null)}" name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
+								${Resource.msg('global.checkout','locale',null)}
+							</button>
+						<iselse/>
+							<button class="button1 btn-blue checkoutButton" style="margin-top:80px" type="submit" value="${Resource.msg('global.checkout','locale',null)}" name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
+								${Resource.msg('global.checkout','locale',null)}
+							</button>
+						</isif>
+						<isapplepay></isapplepay>
+					<iselse/>
+						<button class="button1 btn-blue checkoutButton" style="margin-top:80px" disabled="disabled" type="submit" value="${Resource.msg('global.checkout','locale',null)}"	name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
+							${Resource.msg('global.checkout','locale',null)}
+						</button>
+					</isif>
+				</fieldset>
+			</form>
+				
+			<form class="cart-action-continue-shopping" action="${URLUtils.httpContinue()}" method="post" name="${pdict.CurrentForms.cart.dynamicHtmlName}" id="continue-shopping">
+				<fieldset>
+				<iscomment>
+					<button class="button-text" type="submit" value="${Resource.msg('global.continueshopping','locale',null)}" name="${pdict.CurrentForms.cart.continueShopping.htmlName}">
+						<i class="fa fa-angle-double-left left"></i>${Resource.msg('global.continueshopping','locale',null)}
+					</button>
+				</iscomment>
+				</fieldset>
+			</form>
+
+		</div>
+		<div class="checkoutbtn2">
+
+			<iscomment>continue shop url is a non-secure but checkout needs a secure and that is why separate forms!</iscomment>
+			<form action="${URLUtils.httpsContinue()}" method="post" name="${pdict.CurrentForms.cart.dynamicHtmlName}" id="checkout-form">
+				<fieldset>
+					<isif condition="${enableCheckout}">
+						<button class="button1 btn-blue checkoutButton" type="submit" value="${Resource.msg('global.checkout','locale',null)}" name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
+							${Resource.msg('global.checkout','locale',null)}
+						</button>
+						<isapplepay></isapplepay>
+					<iselse/>
+						<button class="button1 btn-blue checkoutButton" disabled="disabled" type="submit" value="${Resource.msg('global.checkout','locale',null)}"	name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
+							${Resource.msg('global.checkout','locale',null)}
+						</button>
+					</isif>
+				</fieldset>
+			</form>
+				
+			<form class="cart-action-continue-shopping" action="${URLUtils.httpContinue()}" method="post" name="${pdict.CurrentForms.cart.dynamicHtmlName}" id="continue-shopping">
+				<fieldset>
+				<iscomment>
+					<button class="button-text" type="submit" value="${Resource.msg('global.continueshopping','locale',null)}" name="${pdict.CurrentForms.cart.continueShopping.htmlName}">
+						<i class="fa fa-angle-double-left left"></i>${Resource.msg('global.continueshopping','locale',null)}
+					</button>
+				</iscomment>
+				</fieldset>
+			</form>
+
+		</div>
+
+		<iscomment><div class="cart-recommendations">
+			<isinclude url="${URLUtils.url('Product-IncludeLastVisited')}"/>
+			<isslot id="cart-footer" description="Footer for Cart page" context="global" />
+		</div></iscomment>
+	</isif>
+
+</isdecorate>
+
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<iscomment><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script></iscomment>
+ <script>
+ var a= $('.product-availability-list').find('.not-available');
+ if($(a).hasClass("not-available")){
+		$('.checkoutButton').css("margin-top", "120px");
+ }
+
+$(document).ready(function(){
+        console.log("windows load");
+     /*var a = $(".mini-cart-product").find('.collapsed');
+        console.log($(".mini-cart-product"));
+        console.log("Has Class:"+$(a).hasClass('collapsed'));*/
+        if($(".mini-cart-product.collapsed")){
+            console.log("Collapsed");
+            $(".mini-cart-product.collapsed").removeClass("collapsed");
+		}
+		$('.mini-cart-toggle').attr('style', 'display: none !important');
+});
+</script>
+

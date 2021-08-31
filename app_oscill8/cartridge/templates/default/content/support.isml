@@ -1,0 +1,714 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+<title>FAQs About Electric Rechargeable Toothbrush Oscill8</title>
+<meta charset="UTF-8">
+  <meta name="description" content="Find all the FAQs on products, ordering, shipping, accounts, subscriptions, and warranty information for the Oscill8 Electric Rechargeable Toothbrush here.">
+  <meta name="keywords" content="conair, interplak, interplak by conair, interplak toothbrush, oscill8, oscill8 rechargeable toothbrush, contact us, support for the oscill8, faqs, oscill8 faqs, frequently asked questions, shipping, ordering, account, subscription, electric toothbrush, best electric toothbrush, electric toothbrush charger, electric toothbrush heads, rechargeable toothbrush, rechargeable electric toothbrush, battery powered toothbrush, nt18">
+  <meta name="viewport" maximum-scale=1.0 user-scalable=no>
+
+	<isscript>
+		var pageContext = {
+			title: 'Customer Service',
+			type: 'customerservice',
+			ns:'account'
+		};
+	</isscript>
+	
+	
+	<isinclude template="util/modules"/>
+
+	<iscomment>This page must be cachable. It inherits the caching attributes by the decorated template.</iscomment>
+
+	<isinclude template="components/header/htmlhead"/>
+	<isinclude template="content/pt_customerservice_UI"/>
+
+	<iscomment>Add template-specific header information here.</iscomment>
+
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/accessories/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/faq/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/about-product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/src/pages/product/styles.css')}"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="${URLUtils.absStatic('/css/reset.css')}"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I charge the toothbrush",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You simply plug the charging base into an outlet. Place the toothbrush onto the base to charge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is OSCILL8™ powered",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is powered by battery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I clean my unit",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unplug the charger base from the outlet and clean with a cloth or tissue moistened with warm water. Submerging the unit or using a dishwasher is not recommended and may cause damage or injury. The brush head has a hole and flush water into the hole."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does my unit need to be charged",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "16 hours is a full charge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can kids use the adult brush head",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They certainly can. However, the brush head is made for adult mouths and may be difficult for them to use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I switch my brush head",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simply twist and pull to switch it out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What type of toothpaste should I use with my OSCILL8™ toothbrush",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is recommended to use a gel toothpaste in order to maximize the life of the toothbrush and maintain longevity of the brush head."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often do I need to change the brush head",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The brush head on your OSCILL8™ toothbrush will last about 3 months with regular use. It should be replaced at that time or sooner if the bristles have frayed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I buy accessories and replacement parts",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Parts and accessories can be purchased directly from the OSCILL8™ website."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the subscription plan",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you choose to select our subscription plan when placing your first order. you'll receive a new brush head based on the frequency you select. Our recommendation is to receive a new brush head every three months. You will need to provide a credit card when you sign up and that card will be billed when your items ship."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know when my next order will ship",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Go to Login, click on Orders, then on Subscriptions and you can see the next shipment date. You can also choose to alter that date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I don’t need my next shipment. How do I cancel",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can simply go to Login, click on Subscriptions and click skip next delivery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I no longer want to be part of the subscription plan, how do I cancel",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We will miss you, but we understand. Just go to Login, click on Subscriptions, then on Cancel. We hope you return soon!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I want to order OSCILL8™ for a family member but don’t want to set up another account, how do I handle this",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just log in to your account and order a new set, then click Frequency for refills. Yay, more bright smiles in the world!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I moved. How do I update my address",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That’s super easy. Simply log in to your account and go to Address, then click on Edit address and follow the onscreen instructions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I track my Oscill8.com packages during delivery",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You will receive 2 emails when placing an order. The first one is a confirmation of your order. The second one will notify you that your product has been shipped; it will contain a tracking number for the delivery service chosen for your package."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where geographically can I ship my OSCILL8™ order",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most items can be shipped to any of the 50 states, as well as APO (Army Post Office) and FPO (Fleet Post Office) addresses. Conair does not ship to international addresses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there any options for shipping my Oscill8.com order",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Currently, Conair offers a Standard Shipping service only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I split the shipping of my OSCILL8™ order to multiple addresses",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To ship items to more than one address, you'll need to create a separate order for each shipping address."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take for my order to ship",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On average, an order is shipped from our warehouse within 72 hours after we receive the order."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Once my order ships, how long will it take to arrive at my address",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once your order ships, it takes on average from 2 to 6 days within the continental United States. Orders going to Alaska, Hawaii, Puerto Rico or being shipped to APO/FPO addresses may take additional time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Oscill8.com have any shipping restrictions",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Correctional Institutions: Be sure to contact the institution before sending a package; most facilities have their own rules and regulations related to deliveries from outside the facility.\nInternational: Conair does not ship to international destinations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm having some trouble at checkout",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Make sure your billing and shipping information is accurate and completely filled out. If you are still having issues, call us at 1-833-266-2475."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use my coupon code",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At checkout, you’ll see a box for promo code. Simply enter the code, click apply and voila! You’ll see an adjustment in the dollar amount."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Thinking about giving a gift that'll make someone smile",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No problem! Simply place a one-time order to be shipped to the lucky person. They can then go in and set up their own account to subscribe to new brush heads. Guaranteed smiles all around."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My order arrived and is damaged or I received the wrong item",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Please email or call us at 1-833-266-2475 to make arrangements for a return."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the warranty",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The OSCILL8™ Toothbrush comes with a 1-year limited warranty. Refer to the instruction manual for details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I return/replace a product",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your product is defective in workmanship or materials and it's still under warranty, send it to us and we will replace it for you free of charge. Our warranties go beyond most retail 30-day return policies and offer complete product replacement within the warranty period. We do not repair or replace products that are out of warranty. Please email or call us at 1-833-266-2475 before you mail your product to make arrangements for a return."
+      }
+    }
+  ]
+}
+</script>
+<!--FAQPage Code Generated by https://saijogeorge.com/json-ld-schema-generator/faq/-->
+</head>
+
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXP24K2"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) --> 
+
+<main class="main-page-wrapper">
+
+		<isinclude template="components/header/header"/>
+
+					<isinclude template="components/browsertoolscheck"/>
+				
+
+
+   <isinclude template="util/modules"/>
+
+    <style>
+
+    </style>
+
+	<section class="faq-container">
+        <div class="faq-title">
+            <h1 class="title-text">FAQs about Oscill8 Electric Toothbrush</h1>
+        </div>
+        <div class="marg-top-20">
+            <div class="radio styled-wrapper">
+                <input id="radio-1" name="radio" type="radio"/>
+                <label for="radio-1" class="radio-label cpointer">
+                    <span class="faq-item-title">Products</span>
+                </label>
+                <div class="faq-content">
+                    <div class="question-answer">
+                        <h6>How do I charge the toothbrush?</h6>
+                        <p>You simply plug the charging base into an outlet. Place the toothbrush onto the base to charge.</p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How is OSCILL8™ powered?</h6>
+                        <p>It is powered by battery.</p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How do I clean my unit?</h6>
+                        <p>
+                            Unplug the charger base from the outlet and clean 
+                            with a cloth or tissue moistened with warm water. 
+                            Submerging the unit or using a dishwasher is not 
+                            recommended and may cause damage or injury. The 
+                            brush head has a hole and flush water into the hole.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How long does my unit need to be charged?</h6>
+                        <p>16 hours is a full charge.</p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>Can kids use the adult brush head?</h6>
+                        <p>
+                            They certainly can. However, the brush head is made for 
+                            adult mouths and may be difficult for them to use.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How do I switch my brush head?</h6>
+                        <p>Simply twist and pull to switch it out.</p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>What type of toothpaste should I use with my OSCILL8™ toothbrush?</h6>
+                        <p>
+                            It is recommended to use a gel toothpaste in order to 
+                            maximize the life of the toothbrush and maintain longevity of the brush head.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How often do I need to change the brush head?</h6>
+                        <p>
+                            The brush head on your OSCILL8™ toothbrush will 
+                            last about 3 months with regular use. It should 
+                            be replaced at that time or sooner if the bristles have frayed.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>Where can I buy accessories and replacement parts?</h6>
+                        <p>
+                            Parts and accessories can be purchased directly from the OSCILL8™ website. 
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="radio styled-wrapper">
+                <input id="radio-2" name="radio" type="radio"/>
+                <label for="radio-2" class="radio-label">
+                    <span class="faq-item-title">Account & Subscription</span>
+                </label>
+                <div class="faq-content">
+                    <div class="question-answer">
+                        <h6>What is the subscription plan?</h6>
+                        <p>
+                            If you choose to select our subscription plan when placing 
+                            your first order. you'll receive a new brush head based on 
+                            the frequency you select. Our recommendation is to receive 
+                            a new brush head every three months. You will need to provide a 
+                            credit card when you sign up and that card will be billed 
+                            when your items ship. 
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How do I know when my next order will ship?</h6>
+                        <p>
+                            Go to Login, click on Orders, then on Subscriptions and
+                            you can see the next shipment date. You can also choose to
+                            alter that date.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>I don’t need my next shipment. How do I cancel?</h6>
+                        <p>
+                            You can simply go to Login, click on Subscriptions and click
+                            skip next delivery.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            I no longer want to be part of the subscription plan, how do I
+                            cancel?
+                        </h6>
+                        <p>
+                            We will miss you, but we understand. Just go to Login, click on
+                            Subscriptions, then on Cancel. We hope you return soon!
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            I want to order OSCILL8&trade; for a family member but don’t
+                            want to set up another account, how do I handle this?
+                        </h6>
+                        <p>
+                            Just log in to your account and order a new set, then click
+                            Frequency for refills. Yay, more bright smiles in the world!
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>I moved. How do I update my address?</h6>
+                        <p>
+                            That’s super easy. Simply log in to your account and go to
+                            Address, then click on Edit address and follow the onscreen
+                            instructions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="radio styled-wrapper">
+                <input id="radio-3" name="radio" type="radio"/>
+                <label for="radio-3" class="radio-label">
+                    <span class="faq-item-title">Shipping</span>
+                </label>
+                <div class="faq-content">
+                    <div class="question-answer">
+                        <h6>
+                            How can I track my Oscill8.com packages during delivery?
+                        </h6>
+                        <p>
+                            You will receive 2 emails when placing an order. The first one is a confirmation of your order. The second one will notify you that your product has been shipped; it will contain a tracking number for the delivery service chosen for your package. 
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            Where geographically can I ship my OSCILL8™ order?
+                        </h6>
+                        <p>
+                            Most items can be shipped to any of the 50 states, as well as APO (Army Post Office) and FPO (Fleet Post Office) addresses. Conair does not ship to international addresses.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            Are there any options for shipping my Oscill8.com order?
+                        </h6>
+                        <p>
+                            Currently, Conair offers a Standard Shipping service only. 
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            Can I split the shipping of my OSCILL8™ order to multiple addresses?
+                        </h6>
+                        <p>
+                            To ship items to more than one address, you'll need to create a separate order for each shipping address. 
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            How long does it take for my order to ship?
+                        </h6>
+                        <p>
+                            On average, an order is shipped from our warehouse within 72 hours after we receive the order.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            Once my order ships, how long will it take to arrive at my address?
+                        </h6>
+                        <p>
+                            Once your order ships, it takes on average from 2 to 6 days within the continental United States. Orders going to Alaska, Hawaii, Puerto Rico or being shipped to APO/FPO addresses may take additional time. 
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            Does Oscill8.com have any shipping restrictions?
+                        </h6>
+                        <p>
+                            Correctional Institutions: Be sure to contact the institution 
+                            before sending a package; most facilities have their own rules 
+                            and regulations related to deliveries from outside the facility.<br><br>
+
+                            International: Conair does not ship to international destinations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <iscomment>
+            <div class="radio styled-wrapper">
+                <input id="radio-4" name="radio" type="radio"/>
+                <label for="radio-4" class="radio-label">
+                    <span class="faq-item-title">Tracking</span>
+                </label>
+                <div class="faq-content">
+                    <div class="question-answer">
+                        <h6>How can I track my package?</h6>
+                        <p class="pink-text">
+                            Conair to complete.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How long will it take to ship my order?</h6>
+                        <p class="pink-text">
+                            Conair to complete.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </iscomment>
+
+            <div class="radio styled-wrapper">
+                <input id="radio-5" name="radio" type="radio"/>
+                <label for="radio-5" class="radio-label">
+                    <span class="faq-item-title">Ordering</span>
+                </label>
+                <div class="faq-content">
+                    <div class="question-answer">
+                        <h6>
+                        </h6>
+                    </div>
+                    <div class="question-answer">
+                        <h6>I'm having some trouble at checkout.</h6>
+                        <p>
+                            Make sure your billing and shipping information 
+                            is accurate and completely filled out. If you are still having issues, 
+                            call us at <span class="pink-text">1-833-266-2475</span>.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How do I use my coupon code?</h6>
+                        <p>
+                            At checkout, you’ll see a box for promo code. Simply enter the
+                            code, click apply and voila! You’ll see an adjustment in the
+                            dollar amount.
+                        </p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>
+                            Thinking about giving a gift that'll make someone smile?
+                        </h6>
+                        <p>
+                            No problem! Simply place a one-time order to be shipped to the
+                            lucky person. They can then go in and set up their own account
+                            to subscribe to new brush heads. Guaranteed smiles all around!
+                        </p>
+                    </div>
+
+                    <div class="question-answer">
+                        <h6>
+                            My order arrived and is damaged or I received the wrong item?
+                        </h6>
+                        <p>
+                            Please <a rel=“nofollow” href="https://www.conair.com/co/101/contact/#customer-returns" target="_blank"><span class="pink-text">email</span></a> or call us at <span class="pink-text">1-833-266-2475</span> to make arrangements for a return.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="radio styled-wrapper">
+                <input id="radio-7" name="radio" type="radio"/>
+                <label for="radio-7" class="radio-label">
+                    <span class="faq-item-title">Warranty</span>
+                </label>
+                <div class="faq-content">
+                    <div class="question-answer">
+                        <h6>What is the warranty?</h6>
+                        <p>The OSCILL8™ Toothbrush comes with a 1-year limited warranty. Refer to the instruction manual for details.</p>
+                    </div>
+                    <div class="question-answer">
+                        <h6>How do I return/replace a product?</h6>
+                        <p>
+                            If your product is defective in workmanship or materials 
+                            and it's still under warranty, send it to us and we will 
+                            replace it for you free of charge. Our warranties go beyond 
+                            most retail 30-day return policies and offer complete product 
+                            replacement within the warranty period. We do not repair or 
+                            replace products that are out of warranty. 
+
+                            Please <a rel=“nofollow” href="https://www.conair.com/co/101/contact/#customer-returns" target="_blank"><span class="pink-text">email</span></a> or call us at <span class="pink-text">1-833-266-2475</span> before you mail your product to make arrangements for a return.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact us -->
+    <section class="contact-us styled-wrapper-to-left">
+        <h3 class="title-text contact-title" style="margin:0px">Contact Us</h3>
+        <h3 class="contact-subtitle">How can we help you?</h3>
+        <div class="contact-desc">
+            <p style="line-height:1.5">
+                If you’re having issues with your OSCILL8&trade; Rechargeable Toothbrush or have questions about your
+                subscription plan, we’re here to help!<br>
+                Please contact us <a style="color:#184A8F;text-decoration:underline" rel=“nofollow” href="https://www.conair.com/co/101/contact/#customer-email" target="_blank">here.</a>
+            </p>
+        </div>
+        <iscomment>
+            <form action="#">
+            <div class="contact-inputs">
+                <div class="left-part">
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe"/>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="johndoe@mail.com"/>
+                    </div>
+                    <div class="form-field">
+                        <label for="subject">Subject</label>
+                        <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="How can we help"
+                        />
+                    </div>
+                </div>
+                <div class="right-part">
+                    <div class="form-field">
+                        <label for="subject">Message</label>
+                        <textarea name="message" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="button1 btn-blue" style="border:none;width:10rem">submit</button>
+                </div>
+            </div>
+        </form>
+        </iscomment>
+        
+    </section>
+    <script>
+    window.onload = function() {
+        console.log("Onload function");
+        $(document).on("click", "INPUT[type='radio']", function(){
+        thisRadio = $(this);
+        console.log("thisradio:"+JSON.stringify($(this)));
+        console.log($(this).hasClass("cpointer"));
+    if (thisRadio.hasClass("cpointer")) {
+        thisRadio.removeClass("cpointer");
+        thisRadio.prop('checked', false);
+    } else { 
+        thisRadio.prop('checked', true);
+        thisRadio.addClass("cpointer");
+    };
+    })
+    }
+  </script>
+
+
+
+
+
+		<isinclude template="components/footer/footer"/>
+		<isinclude template="content/pt_customerservice_VARS"/>
+</main>
+<script> 
+(function(){ 
+var s = document.createElement('script'), 
+e = ! document.body ? document.querySelector('head') : document.body; 
+s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; 
+s.async = true; 
+s.onload = function(){ 
+ acsbJS.init({ 
+ statementLink : '', 
+ footerHtml : '', 
+ hideMobile : false, 
+ hideTrigger : false, 
+ language : 'en', 
+ position : 'right', 
+ leadColor : '#146FF8', 
+ triggerColor : '#146FF8', 
+ triggerRadius : '50%', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'bottom', 
+ triggerIcon : 'people', 
+ triggerSize : 'medium', 
+ triggerOffsetX : 20, 
+ triggerOffsetY : 20, 
+ mobile : { 
+ triggerSize : 'small', 
+ triggerPositionX : 'right', 
+ triggerPositionY : 'center', 
+ triggerOffsetX : 0, 
+ triggerOffsetY : 0, 
+ triggerRadius : '50%' 
+ } 
+ }); 
+}; 
+e.appendChild(s); 
+}()); 
+</script>
+
+
+</body>
+</html>
+
+
+
+<script type="module" src="${URLUtils.absStatic('/js/functions.js')}"></script>
+<script type="module" src="${URLUtils.absStatic('/index.js')}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script type="module" src="${URLUtils.absStatic('/src/pages/faq/index.js')}"></script>

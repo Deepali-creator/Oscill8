@@ -1,0 +1,206 @@
+.active-section.addresses-section {
+    padding-top: 30px;
+}
+.add-address-row {
+    margin-bottom: 24px;
+    max-width: 975px;
+    width: 100%;
+    margin-left: 2.5%;
+}
+.add-address-row a {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #000000;
+    font-weight: 600;
+}
+.address-list {
+    margin-left: 2.5%;
+    max-width: 975px;
+    width: 100%;
+}
+.address-list .single-address {
+    width: calc((100% - 24px) / 2);
+    margin-bottom: 24px;
+    background: rgba(248, 248, 248, 0.5);
+    border-radius: 5px;
+    padding: 16px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+.address-list .single-address:hover {
+    background: rgba(220, 220, 220, 0.5);
+}
+.address-list .single-address .top-part {
+    border-bottom: 1px solid #C6CACC;
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+}
+.address-list .single-address .top-part .info-wrp {
+    margin-right: 30px;
+}
+.address-list .single-address .top-part .info-wrp .name {
+    font-family: 'Montserrat';
+    font-size: 17px;
+    line-height: 21px;
+    font-weight: 600;
+}
+.address-list .single-address .top-part .info-wrp .address {
+    line-height: 21px;
+}
+ .edit-address-btn {
+    background-color: #184A8F;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 9px 24px;
+    text-align: center;
+    border-radius: 200px;
+    margin-right: 28px;
+    font-family: 'Montserrat';
+}
+.delete-btn {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    color: #4D4D4D;
+}
+.address-list .single-address .bottom-part .checkbox-styles.default-ship {
+    margin-right: 17.4%;
+}
+.address-list .single-address .bottom-part .checkbox-styles label {
+    margin-top:10px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    color: #4D4D4D;
+    cursor: pointer;
+}
+.btns-wrp .mob-edit-address-btn,
+.btns-wrp .mob-delete-address-btn{
+    display: none;
+}
+
+@media all and (max-width: 1200px){
+    .active-section.addresses-section{
+        padding: 30px 0 0 0;
+    }
+    .active-section.addresses-section .address-list{
+        margin-right: 0;
+        margin-left: 0;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .add-address-row{
+        max-width: 100%;
+        padding: 0 15px;
+        margin-right: 0;
+        margin-left: 0;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+@media all and (max-width: 1025px){
+    .active-section.addresses-section .address-list{
+        flex-direction: column;
+    }
+    .active-section.addresses-section .address-list .single-address{
+        width: 100%;
+    }
+    .active-titles-item-wrap{
+        display: block;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@media all and (max-width: 769px){
+    .btns-wrp .edit-address-btn,
+    .btns-wrp .delete-btn{
+        display: none !important;
+    }
+    .btns-wrp .mob-edit-address-btn,
+    .btns-wrp .mob-delete-address-btn{
+        display: inherit;
+    }
+    .btns-wrp .mob-delete-address-btn{
+        margin-right: 16px;
+    }
+    .active-section.addresses-section .address-list .single-address .bottom-part{
+        flex-direction: column;
+    }
+    .address-list .single-address .bottom-part .checkbox-styles.default-ship{
+       margin-bottom: 16px;
+    }
+    .address-list .single-address .bottom-part .checkbox-styles.default-ship:last-child{
+        margin-bottom: 0;
+    }
+    .address-list .single-address .top-part{
+        padding-bottom: 30px;
+        margin-bottom: 16px;
+        align-items: flex-start;
+    }
+
+    .edit-popup form .popup-form-row.name-row{
+        flex-direction: column;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.name-row .inner-row:not(:last-child){
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .edit-popup form .popup-form-row.address-row{
+        flex-direction: column;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.address-row .inner-row{
+        max-width: 100% !important;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.address-row .inner-row:not(:last-child){
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .edit-popup form .popup-form-row.emailphone-row{
+        flex-direction: column;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.emailphone-row .inner-row{
+        max-width: 100% !important;
+    }
+    .edit-popup form .inner-wrp .popup-form-row.emailphone-row .inner-row:not(:last-child){
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .edit-popup form .popup-form-row.state-row{
+        flex-wrap: wrap;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.city_field{
+        order: 1;
+        width: 100%;
+        max-width: 60% !important;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.state_field{
+        order: 2;
+        width: 100%;
+        max-width: 30% !important;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.zip_code_field{
+        order: 4;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        max-width: 30% !important;
+        margin-top: 15px;
+    }
+    .edit-popup form .popup-form-row.state-row .inner-row.country_field{
+        order: 3;
+        width: 100%;
+        max-width: 60% !important;
+        margin-top: 15px;
+    }
+    .edit-popup form .form-btn{
+        margin: 0;
+        text-transform: uppercase;
+        padding: 14px;
+        width: 100%;
+        max-width: 100%;
+        display: block;
+    }
+}

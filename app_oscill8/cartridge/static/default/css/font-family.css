@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'ProximaNovaSoftW03';
+    src: url('../assets/font-family/ProximaNovaSoftW03-Semibold.woff2') format('woff2'),
+        url('../assets/font-family/ProximaNovaSoftW03-Semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../assets/font-family/Comfortaa.woff2') format('woff2'),
+        url('../assets/font-family/Comfortaa.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Comfortaa-Bold';
+    src: url('../assets/font-family/Comfortaa-Bold.woff2') format('woff2'),
+        url('../assets/font-family/Comfortaa-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+

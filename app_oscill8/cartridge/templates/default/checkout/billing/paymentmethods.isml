@@ -141,6 +141,7 @@
 		</iscomment>
 
 		<div class="payment-method" <isif condition="${!empty(pdict.selectedPaymentID) && pdict.selectedPaymentID=='Paypal'}">payment-method-expanded</isif> data-method="Custom">
+			<input id="Button1" type="button" value="button" onclick="showModalPopUp()" />
 			<iscomment> <button id="paypalButton" class="paypalButton" type="button">paypal</button> </iscomment>
 			<!-- Your custom payment method implementation goes here. -->
 			<iscomment> ${pdict.selectedPaymentID}
@@ -156,24 +157,20 @@
 	</div>
 </isif>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$('#paypalButton').on('click', function(event)
-{
+	<script>
 
-	console.log('fun called');
-	   $.ajax({
-      type: 'GET',
-      url: 'Paypal/paypal'
-      
-      success: function (data, xhr, status) {
+		var popUpObj;
 
-       console.log('success');
-        
-      },
-      error: function (xhr, textStatus, error) {
-           console.log('error')
-      }
-  });
+		function showModalPopUp(){
+           
+		
+			popUpObj=window.open("http://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-1TK15501UR605763A","ModalPopUp","width=400," + "height=300");
 
-});	
-</script>
+			popUpObj.focus();
+
+			LoadModalDiv();
+		//	location.href = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-1TK15501UR605763A";
+
+		}
+
+	</script>

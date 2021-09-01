@@ -305,6 +305,10 @@ declare class FormPaymentinstruments extends FormGroup {
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\paymentinstruments.xml#3) */
 	creditcards : FormPaymentinstrumentsCreditcards
 }
+/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#2)*/
+declare class FormOrders extends FormGroup {
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#3) */
+}
 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\ordertrack.xml#2)*/
 declare class FormOrdertrack extends FormGroup {
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\ordertrack.xml#3) */
@@ -315,10 +319,6 @@ declare class FormOrdertrack extends FormGroup {
 	postalCode : FormField<string>
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\ordertrack.xml#7) */
 	findorder : FormAction
-}
-/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#2)*/
-declare class FormOrders extends FormGroup {
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#3) */
 }
 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orderaddress.xml#2)*/
 declare class FormOrderaddress extends FormGroup {
@@ -344,15 +344,6 @@ declare class FormOrderaddress extends FormGroup {
 	cancel : FormAction
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orderaddress.xml#33) */
 	confirm : FormAction
-}
-/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#2)*/
-declare class FormOauthlogin extends FormGroup {
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#5) */
-	loginsucceeded : FormField<boolean>
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#7) */
-	login : FormAction
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#10) */
-	unregistered : FormAction
 }
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\multishipping.xml#2)*/
 declare class FormMultishippingAddressSelection extends FormGroup {
@@ -395,6 +386,15 @@ declare class FormMultishipping extends FormGroup {
 	shippingOptions : FormMultishippingShippingOptions
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\multishipping.xml#54) */
 	editAddress : FormMultishippingEditAddress
+}
+/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#2)*/
+declare class FormOauthlogin extends FormGroup {
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#5) */
+	loginsucceeded : FormField<boolean>
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#7) */
+	login : FormAction
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#10) */
+	unregistered : FormAction
 }
 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\login.xml#2)*/
 declare class FormLogin extends FormGroup {
@@ -848,11 +848,11 @@ interface SFCCForms {
 	product: FormProduct
 	paypal: FormPaypal
 	paymentinstruments: FormPaymentinstruments
-	ordertrack: FormOrdertrack
 	orders: FormOrders
+	ordertrack: FormOrdertrack
 	orderaddress: FormOrderaddress
-	oauthlogin: FormOauthlogin
 	multishipping: FormMultishipping
+	oauthlogin: FormOauthlogin
 	login: FormLogin
 	giftregistry: FormGiftregistry
 	giftcert: FormGiftcert
@@ -1233,6 +1233,10 @@ interface SfraFormPaymentinstruments extends SfraFormBase<FormPaymentinstruments
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\paymentinstruments.xml#3) */
 	creditcards : SfraFormPaymentinstrumentsCreditcards
 }
+/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#2)*/
+interface SfraFormOrders extends SfraFormBase<FormOrders> {
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#3) */
+}
 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\ordertrack.xml#2)*/
 interface SfraFormOrdertrack extends SfraFormBase<FormOrdertrack> {
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\ordertrack.xml#3) */
@@ -1243,10 +1247,6 @@ interface SfraFormOrdertrack extends SfraFormBase<FormOrdertrack> {
 	postalCode : SfraField<string> & SfraFieldString
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\ordertrack.xml#7) */
 	findorder : SfraAction
-}
-/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#2)*/
-interface SfraFormOrders extends SfraFormBase<FormOrders> {
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orders.xml#3) */
 }
 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orderaddress.xml#2)*/
 interface SfraFormOrderaddress extends SfraFormBase<FormOrderaddress> {
@@ -1272,15 +1272,6 @@ interface SfraFormOrderaddress extends SfraFormBase<FormOrderaddress> {
 	cancel : SfraAction
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\orderaddress.xml#33) */
 	confirm : SfraAction
-}
-/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#2)*/
-interface SfraFormOauthlogin extends SfraFormBase<FormOauthlogin> {
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#5) */
-	loginsucceeded : SfraField<boolean> & SfraFieldBoolean
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#7) */
-	login : SfraAction
-	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#10) */
-	unregistered : SfraAction
 }
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\multishipping.xml#2)*/
 interface SfraFormMultishippingAddressSelection {
@@ -1323,6 +1314,15 @@ interface SfraFormMultishipping extends SfraFormBase<FormMultishipping> {
 	shippingOptions : SfraFormMultishippingShippingOptions
 	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\multishipping.xml#54) */
 	editAddress : SfraFormMultishippingEditAddress
+}
+/** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#2)*/
+interface SfraFormOauthlogin extends SfraFormBase<FormOauthlogin> {
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#5) */
+	loginsucceeded : SfraField<boolean> & SfraFieldBoolean
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#7) */
+	login : SfraAction
+	 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\oauthlogin.xml#10) */
+	unregistered : SfraAction
 }
 /** @source [definition](file:c:\Users\Cyntexa\Desktop\Oscill8\Oscill8\app_oscill8\cartridge\forms\default\login.xml#2)*/
 interface SfraFormLogin extends SfraFormBase<FormLogin> {
@@ -1776,11 +1776,11 @@ interface SFRAServerForms {
 	getForm(name: 'product'): SfraFormProduct
 	getForm(name: 'paypal'): SfraFormPaypal
 	getForm(name: 'paymentinstruments'): SfraFormPaymentinstruments
-	getForm(name: 'ordertrack'): SfraFormOrdertrack
 	getForm(name: 'orders'): SfraFormOrders
+	getForm(name: 'ordertrack'): SfraFormOrdertrack
 	getForm(name: 'orderaddress'): SfraFormOrderaddress
-	getForm(name: 'oauthlogin'): SfraFormOauthlogin
 	getForm(name: 'multishipping'): SfraFormMultishipping
+	getForm(name: 'oauthlogin'): SfraFormOauthlogin
 	getForm(name: 'login'): SfraFormLogin
 	getForm(name: 'giftregistry'): SfraFormGiftregistry
 	getForm(name: 'giftcert'): SfraFormGiftcert
@@ -1812,11 +1812,11 @@ interface SRFAForms {
 	product: SfraFormProduct
 	paypal: SfraFormPaypal
 	paymentinstruments: SfraFormPaymentinstruments
-	ordertrack: SfraFormOrdertrack
 	orders: SfraFormOrders
+	ordertrack: SfraFormOrdertrack
 	orderaddress: SfraFormOrderaddress
-	oauthlogin: SfraFormOauthlogin
 	multishipping: SfraFormMultishipping
+	oauthlogin: SfraFormOauthlogin
 	login: SfraFormLogin
 	giftregistry: SfraFormGiftregistry
 	giftcert: SfraFormGiftcert

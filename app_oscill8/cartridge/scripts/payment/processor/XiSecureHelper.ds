@@ -165,41 +165,59 @@ exports.authorize=function(order:String,cvn:String){
 			// return service.serviceClient.authorize(request);
 			return service.serviceClient.soapOp(request);
 		},
-		parseResponse : function(service : Service, response : Object) : Object {
-			switch(response.getStatusCode()){
-				case 100:
-				case 104:
-				case 106:
-				case 107:
-				case 108:
-				case 110:
-					if("CuisinartCA"==Site.current.ID){
-						switch(response.getAVSCode()){
-							case "A3":
-							case "A4":
-							case "A7":
-							case "I1":
-							case "I2":
-							case "I3":
-								// TODO: check CVV reponse code
-								var infoItems = response.getInfoItems().getInfoItem();
-								for each(var item in infoItems){
-									if("TR_CARD_CIDRESPCODE" === item.getKey() && "M" === item.getValue()){
-										return {"AuthorizationCode": response.getAuthorizationCode(), "TransactionID": response.getTransactionID()};
-									}
-								}
-								throw new Error("Card could not be authorized for order "+response.getOrderID()+" (CVV failure)");
-							default:
-								throw new Error("Card could not be authorized for order "+response.getOrderID()+" (AVS failure)");
-						}
-					}else{
-						return {"AuthorizationCode": response.getAuthorizationCode(), "TransactionID": response.getTransactionID()};
-					}
-					break;
-				default:
-					throw new Error("Card could not be authorized for order "+response.getOrderID()+" (authorize failure)");
-			}
-		}
+		     parseResponse: function (service, response) {
+            var packet = response.getPackets();
+            var th = packet.getITransactionHeader()[0];
+            return {
+                AuthorizationCode: th.getAuthorizationCode(),
+                // AuthorizationCode: 'CVI695',
+                TransactionID: th.getTransactionID(),
+                AVSstreetOK: null,
+                AVSzipOK: null,
+                CVVOK: null,
+                AVSCode: th.getAVSCode(),
+                CVVCode: null,
+                StatusCode: th.getStatusCode(),
+                OrderID: th.getOrderID(),
+                CCType: 'PP',
+                ignoreCVV: false
+            };
+        }
+		// parseResponse : function(service : Service, response : Object) : Object {
+		// 	switch(response.getStatusCode()){
+		// 		case 100:
+		// 		case 104:
+		// 		case 106:
+		// 		case 107:
+		// 		case 108:
+		// 		case 110:
+		// 			if("CuisinartCA"==Site.current.ID){
+		// 				switch(response.getAVSCode()){
+		// 					case "A3":
+		// 					case "A4":
+		// 					case "A7":
+		// 					case "I1":
+		// 					case "I2":
+		// 					case "I3":
+		// 						// TODO: check CVV reponse code
+		// 						var infoItems = response.getInfoItems().getInfoItem();
+		// 						for each(var item in infoItems){
+		// 							if("TR_CARD_CIDRESPCODE" === item.getKey() && "M" === item.getValue()){
+		// 								return {"AuthorizationCode": response.getAuthorizationCode(), "TransactionID": response.getTransactionID()};
+		// 							}
+		// 						}
+		// 						throw new Error("Card could not be authorized for order "+response.getOrderID()+" (CVV failure)");
+		// 					default:
+		// 						throw new Error("Card could not be authorized for order "+response.getOrderID()+" (AVS failure)");
+		// 				}
+		// 			}else{
+		// 				return {"AuthorizationCode": response.getAuthorizationCode(), "TransactionID": response.getTransactionID()};
+		// 			}
+		// 			break;
+		// 		default:
+		// 			throw new Error("Card could not be authorized for order "+response.getOrderID()+" (authorize failure)");
+		// 	}
+		// }
 	}).call({order: order, cvn: cvn});
 };
 

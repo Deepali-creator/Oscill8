@@ -8,7 +8,7 @@ var Transaction = require('dw/system/Transaction');
 
 /* Script Modules */
 var app = require('~/cartridge/scripts/app');
-var XiSecure = require('int_paymetric/cartridge/scripts/XiSecureHelper.ds');
+var XiSecure = require('~/cartridge/scripts/payment/processor/XiSecureHelper.ds');
 
 /**
  * Verifies a credit card against a valid card number and expiration date and possibly invalidates invalid form fields.

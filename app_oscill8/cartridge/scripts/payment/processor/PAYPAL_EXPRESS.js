@@ -92,7 +92,7 @@ var XiSecure = require('~/cartridge/scripts/payment/processor/XiSecureHelper.ds'
 
  function DoExpressCheckoutPayment(){
     var callMethod = 'DoExpressCheckoutPayment';
-     var Token = 'EC-9SY75395TN047194U';
+     var Token = 'EC-4YS82851N41122635';
      var PayerID = '98B8VNEBH2NLU';
 
     //  var requestParams = request.getHttpParameters();

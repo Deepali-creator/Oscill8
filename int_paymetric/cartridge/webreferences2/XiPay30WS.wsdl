@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s0="http://Paymetric/XiPaySoap30/message/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Paymetric/XiPaySoap30" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://Paymetric/XiPaySoap30">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://Paymetric/XiPaySoap30/message/">
+            <s:element name="SoapOp">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="pPacketsIn" type="s0:IPackets" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="IPackets">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+                    <s:element minOccurs="1" maxOccurs="1" name="xipayvbresult" type="s:boolean" />
+                    <s:element minOccurs="0" maxOccurs="1" name="packets" type="s0:ArrayOfITransactionHeader" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfITransactionHeader">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="ITransactionHeader" nillable="true" type="s0:ITransactionHeader" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ITransactionHeader">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="AVSAddress" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AVSCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AVSZipCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AccountingDocNumber" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ActionCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AdditionalInfo" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AuthorizationDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AuthorizationReferenceCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AuthorizationTime" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="AuthorizedThroughCartridge" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="BankBatchID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="BankSubBatchID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="BankTransactionID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="BatchID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="BillingDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="BillingPlanItem" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CaptureDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CaptureReferenceCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardCVV2" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardDataSource" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardExpirationDate" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardFollowOnNumber" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderAddress1" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderAddress2" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderCity" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderCountry" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderDistrict" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderName1" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderName2" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderName" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderState" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardHolderZip" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="CardPresent" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardType" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CardValidFrom" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ChargeAmount" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CreationDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CurrencyKey" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CustTXN" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CustomerNumber" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="FiscalYear" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="GLAccount" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="LastModificationDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="LocationID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="MerchantTXN" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="MerchantTransactionID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ModifiedStatus" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="OrderDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="PONumber" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="PacketOperation" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Preauthorized" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ReferenceCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ReferenceLineItem" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ResponseCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SalesDocNumber" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SettlementAmount" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SettlementDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SettlementReferenceCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ShippingCaptureDate" type="s:dateTime" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ShippingLocationID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ShippingMethod" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="StatusTXN" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TaxLevel1" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TaxLevel2" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TaxLevel3" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TaxLevel4" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TerminalID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TransactionID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TransactionType" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="VATNumberCustomer" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="VATNumberMerchant" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="XIID" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="InfoItems" type="s0:ArrayOfInfoItem" />
+                    <s:element minOccurs="0" maxOccurs="1" name="LineItems" type="s0:ArrayOfLineItem" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SourceSystemInfoItems" type="s0:ArrayOfInfoItem" />
+                    <s:element minOccurs="0" maxOccurs="1" name="BlobItems" type="s0:ArrayOfBlobItem" />
+                    <s:element minOccurs="0" maxOccurs="1" name="CheckImages" type="s0:ArrayOfCheckImage" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfInfoItem">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="InfoItem" nillable="true" type="s0:InfoItem" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="InfoItem">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfLineItem">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="LineItem" nillable="true" type="s0:LineItem" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="LineItem">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="UPC" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="MaterialNumber" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SalesDocItemNumber" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ActualInvoicedQuantity" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SalesUnit" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="TaxAmount" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="NetValue" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="InfoItems" type="s0:ArrayOfInfoItem" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfBlobItem">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="BlobItem" nillable="true" type="s0:BlobItem" />
+            </s:sequence>
+            </s:complexType>
+            <s:complexType name="BlobItem">
+                <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" name="BlobXML" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ArrayOfCheckImage">
+                <s:sequence>
+                <s:element minOccurs="0" maxOccurs="2" name="CheckImage" nillable="true" type="s0:CheckImage" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="CheckImage">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Format" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="SoapOpResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="SoapOpResult" type="s0:IPackets" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="SoapOpSoapIn">
+        <wsdl:part name="parameters" element="s0:SoapOp" />
+    </wsdl:message>
+    <wsdl:message name="SoapOpSoapOut">
+        <wsdl:part name="parameters" element="s0:SoapOpResponse" />
+    </wsdl:message>
+    <wsdl:portType name="XiPayWSSoap">
+        <wsdl:operation name="SoapOp">
+            <wsdl:input message="tns:SoapOpSoapIn" />
+            <wsdl:output message="tns:SoapOpSoapOut" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="XiPayWSSoap" type="tns:XiPayWSSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="SoapOp">
+            <soap:operation soapAction="Paymetric/XiPaySoap30/action/XiGGE.SoapOp" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="XiPayWSSoap12" type="tns:XiPayWSSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="SoapOp">
+            <soap12:operation soapAction="Paymetric/XiPaySoap30/action/XiGGE.SoapOp" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="XiPayWS">
+        <wsdl:port name="XiPayWSSoap" binding="tns:XiPayWSSoap">
+			<soap:address location="https://cert-xipayapi.paymetric.com/PMXIGGE/XiPay30WS.asmx" />
+            <!-- <soap:address location="http://localhost/PMXiGGE/XiPay30WS.asmx" /> -->
+        </wsdl:port>
+        <wsdl:port name="XiPayWSSoap12" binding="tns:XiPayWSSoap12">
+            <soap12:address location="https://cert-xipayapi.paymetric.com/PMXIGGE/XiPay30WS.asmx" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

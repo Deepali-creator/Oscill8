@@ -9,10 +9,11 @@ var LocalServiceRegistry = require('dw/svc/LocalServiceRegistry');
 var redirectUrl = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=';
 var app = require('~/cartridge/scripts/app');
 var XiSecure = require('~/cartridge/scripts/payment/processor/XiSecureHelper.ds');
+var amount ;
+var Token ;
 
 /**
  * This is where additional PayPal integration would go. The current implementation simply creates a PaymentInstrument and
- * returns 'success'.  https%3A%2F%2Fdev02-na-conair.demandware.net%2Fon%2Fdemandware.store%2FSites-us-leandrolimited-Site%2Fdefault%2FXipay-returnBack%3F
  */
 
 // var totalCost = app.getModel('Cart').calculate();
@@ -48,7 +49,6 @@ var XiSecure = require('~/cartridge/scripts/payment/processor/XiSecureHelper.ds'
 
 
  function paypal(transactionAmount){
-    var Token = "null";
     var callMethod = "SetExpressCheckout";
     dw.system.Logger.warn("--------------transaction Amount---------"+transactionAmount);
     dw.system.Logger.warn('paypal main');
@@ -74,54 +74,49 @@ var XiSecure = require('~/cartridge/scripts/payment/processor/XiSecureHelper.ds'
             dw.system.Logger.warn('paypal response' + output.text);
             dw.system.Logger.warn('paypal error' + svc.isThrowOnError.toString);
             Token = decodeFormParams(output.text.toString()).TOKEN.toString();
-            redirectUrl=redirectUrl;
             return output;
         }
     });
     createTransaction.call();
-
-   return redirectUrl+Token;
-
-     
- 
-
-   
+    return redirectUrl+Token;
 
  }
 
 
+ function getExpressCheckout()
+ {
+    var callMethod = "GetExpressCheckoutDetails";
+    var PayerID = "null";
+    var getPayerId = LocalServiceRegistry.createService('paypal-nvp', {
+        createRequest: function (svc, args) {
+            var url = svc.getConfiguration().getCredential().getURL();
+            svc.setRequestMethod('POST');
+            svc.setURL(url);
+            svc.addHeader('Content-Type', 'application/x-www-form-urlencoded');
+            var payload = "USER=Stam_helpme_api1.conair.com&" +
+                "PWD=6ZS7F2NNZZZYW6GJ&SIGNATURE=AQEHES0Eiay.TjBiRotNn.U6SHwMA9G0e3kTHH4ImCMLF7lwe-FcKm.7&" +
+                "METHOD="+callMethod+"&VERSION=78&TOKEN="+Token;
+            dw.system.Logger.warn('paypal request' + payload);
+            return payload;
+        },
+        parseResponse: function (svc, output) {
+
+            dw.system.Logger.warn('paypal response' + output.text);
+            dw.system.Logger.warn('paypal error' + svc.isThrowOnError.toString);
+            PayerID = decodeFormParams(output.text.toString()).PAYERID.toString();
+            dw.system.Logger.warn('----PayerID----' + PayerID);
+            return output;
+        }
+    });
+    getPayerId.call();
+    return PayerID;
+    
+ }
+
+
  function DoExpressCheckoutPayment(){
-    var callMethod = 'DoExpressCheckoutPayment';
-     var Token = 'EC-4YS82851N41122635';
-     var PayerID = '98B8VNEBH2NLU';
-
-    //  var requestParams = request.getHttpParameters();
-    //  var Token = '';
-    //  var PayerID = '';
-
-//    for (let key in requestParams) {
-//        if (Object.hasOwnProperty.call(requestParams, key)) {
-//            if(key == 'token')
-//            {
-//                 Token = requestParams[key];
-
-
-//            }
-
-//            else if(key == 'PayerID')
-//            {
-//                 PayerID = requestParams[key];
-
-
-//            }
-
-//        }
-
-//    }
-
-
-
-  
+   var PayerID =  getExpressCheckout();
+   var callMethod = 'DoExpressCheckoutPayment'; 
    var TRANSACTIONID = '';
    var getTransId = LocalServiceRegistry.createService('paypal-nvp', {
    createRequest: function (svc, args) {
@@ -132,7 +127,7 @@ var XiSecure = require('~/cartridge/scripts/payment/processor/XiSecureHelper.ds'
        var payload = "USER=Stam_helpme_api1.conair.com&" +
            "PWD=6ZS7F2NNZZZYW6GJ&SIGNATURE=AQEHES0Eiay.TjBiRotNn.U6SHwMA9G0e3kTHH4ImCMLF7lwe-FcKm.7&" +
            "METHOD="+callMethod+"&VERSION=78&TOKEN="+Token+"&PayerID="+PayerID+"&PAYMENTACTION=Order&" +
-           "PAYMENTREQUEST_0_AMT=70&" +
+           "PAYMENTREQUEST_0_AMT="+amount+"&" +
            "PAYMENTREQUEST_0_CURRENCYCODE=USD&BUTTONSOURCE=Paymetric_SP";
            dw.system.Logger.warn('paypal request' + payload);
     
@@ -159,8 +154,11 @@ function Handle(args) {
     // dw.system.Logger.warn('TOTAL COST--------'+totalCost);
     var cart = Cart.get(args.Basket);
     var transactionAmount = cart.getNonGiftCertificateAmount();
+    amount = transactionAmount;
     var redirectUrl = paypal(transactionAmount);
-  
+    var accessTokenString = redirectUrl.split("=");
+    var accessToken = accessTokenString[1];
+    Token = accessToken; 
     dw.system.Logger.warn('------------url---------'+redirectUrl);
  
     var cart = Cart.get(args.Basket);
@@ -186,8 +184,8 @@ function Handle(args) {
 		return {error: true, errorMessage: ex.message};
     }
 
-    //  return redirectUrl;
-      return {success: true};
+      return redirectUrl;
+    //  return {success: true};
 }
 
 /**
@@ -199,6 +197,7 @@ function Authorize(args) {
    
     // var cart = Cart.get(args.Basket);
     // var transactionAmount = cart.getNonGiftCertificateAmount();
+
     var transId = DoExpressCheckoutPayment();
     var a =10;
     dw.system.Logger.warn("+++++++++transaction Id++++++++++"+transId);
@@ -209,7 +208,7 @@ function Authorize(args) {
     var paymentInstrument = args.PaymentInstrument;
     var paymentProcessor = PaymentMgr.getPaymentMethod(paymentInstrument.getPaymentMethod()).getPaymentProcessor();
   
-    var a =10;
+
 
     try{
         if(empty(paymentInstrument.creditCardToken)){

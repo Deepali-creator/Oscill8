@@ -657,7 +657,7 @@ span.error{
                         
                             <div class="botdivr">
                                 <div class="reviewOrderButtonDiv">
-                                    <button class="reviewOrderButton disableContent"  type="submit" style="opacity:0;display:none" name="${pdict.CurrentForms.billing.save.htmlName}" value="${Resource.msg('global.continueplaceorder','locale',null)}"><span>${Resource.msg('global.continueplaceorder','locale',null)}</span></button>
+                                    <button id="reviewOrderButton" class="reviewOrderButton disableContent"  type="submit" style="opacity:0;display:none" name="${pdict.CurrentForms.billing.save.htmlName}" value="${Resource.msg('global.continueplaceorder','locale',null)}"><span>${Resource.msg('global.continueplaceorder','locale',null)}</span></button>
                                     <isinclude template="edq/edqUnicorn" />
                                 </div>
                                 <input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
@@ -878,6 +878,24 @@ document.getElementById('errorcaption').style.display = "none";
 
 </iscomment>
 <script>
+
+$("#reviewOrderButton").on('click', function()
+{
+    console.log("hello");
+  $.ajax({
+      type: 'GET',
+      url: 'COBilling/Billing'
+      success: function (data, xhr, status) {
+       
+       console.log("Success");
+
+        
+      },
+      error: function (xhr, textStatus, error) {
+           console.log('4 '+error);
+      }
+  });
+});
     $(document).ready(function () {
         $('#dwfrm_billing_addressList').on('change', function() {
             $('#dwfrm_billing_billingAddress_email_emailAddress').val($(this).find(':selected').data('address').email);

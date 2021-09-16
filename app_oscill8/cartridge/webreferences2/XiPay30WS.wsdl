@@ -208,13 +208,13 @@
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
-    <wsdl:service name="XiPayWS">
+    <wsdl:service name="XiPay">
         <wsdl:port name="XiPayWSSoap" binding="tns:XiPayWSSoap">
-			<soap:address location="https://cert-xipayapi.paymetric.com/PMXIGGE/XiPay30WS.asmx" />
+			<soap:address location="https://dwpmp.service.conair.com/XiPayWSConnector/XiPayWSConnector.XiPay.svc" />
             <!-- <soap:address location="http://localhost/PMXiGGE/XiPay30WS.asmx" /> -->
         </wsdl:port>
         <wsdl:port name="XiPayWSSoap12" binding="tns:XiPayWSSoap12">
-            <soap12:address location="https://cert-xipayapi.paymetric.com/PMXIGGE/XiPay30WS.asmx" />
+            <soap12:address location="https://dwpmp.service.conair.com/XiPayWSConnector/XiPayWSConnector.XiPay.svc" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

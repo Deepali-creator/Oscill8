@@ -9,6 +9,7 @@ var LocalServiceRegistry = require('dw/svc/LocalServiceRegistry');
 var redirectUrl = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=';
 var app = require('~/cartridge/scripts/app');
 var XiSecure = require('~/cartridge/scripts/payment/processor/XiSecureHelper.ds');
+var SystemObjectMgr = require('dw/object/SystemObjectMgr');
 var amount ;
 var Token ;
 
@@ -87,6 +88,7 @@ var Token ;
  {
     var callMethod = "GetExpressCheckoutDetails";
     var PayerID = "null";
+    var Token = 'EC-3N347366YY4498906';
     var getPayerId = LocalServiceRegistry.createService('paypal-nvp', {
         createRequest: function (svc, args) {
             var url = svc.getConfiguration().getCredential().getURL();
@@ -118,6 +120,7 @@ var Token ;
    var PayerID =  getExpressCheckout();
    var callMethod = 'DoExpressCheckoutPayment'; 
    var TRANSACTIONID = '';
+   var Token = 'EC-3N347366YY4498906';
    var getTransId = LocalServiceRegistry.createService('paypal-nvp', {
    createRequest: function (svc, args) {
        var url = svc.getConfiguration().getCredential().getURL();

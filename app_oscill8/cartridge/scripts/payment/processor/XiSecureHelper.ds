@@ -135,14 +135,14 @@ exports.tokenize=function(iframeresult:Object,payment:OrderPaymentInstrument,cvn
 		'__VIEWSTATEGENERATOR': iframeresult.VIEWSTATEGENERATOR
 	});
 };
-exports.authorize=function(order:String,cvn:String){
+exports.authorize=function(order,cvn){
    
 
 
 	return LocalServiceRegistry.createService("XiInterceptAuthorize_"+Site.current.ID,{
-		initServiceClient : function(service : Service) : Object {
-			var webref : WebReference2 = webreferences2['XiPay30WS'];
-			var port : Port = webref.getDefaultService();
+		initServiceClient : function(service)  {
+			var webref  = webreferences2['XiPay30WS'];
+			var port  = webref.getDefaultService();
 			WSUtil.setUserNamePassword(service.configuration.credential.user, service.configuration.credential.password, port);
 			return port;
 		},
@@ -161,9 +161,11 @@ exports.authorize=function(order:String,cvn:String){
               
 			  
 		},
-		execute : function(service : Service, request : Object) : Object {
+		execute : function(service , request )  {
 			// return service.serviceClient.authorize(request);
-			return service.serviceClient.soapOp(request);
+			var result =  service.serviceClient.soapOp(request);
+			dw.system.Logger.warn("---------------execute result-----------"+result);
+			return result;
 		},
 		     parseResponse: function (service, response) {
             var packet = response.getPackets();
@@ -295,7 +297,6 @@ function createPaypalRequest(service, params) {
     th.setInfoItems(arrayOfInfo);
 
     var arrayTransHead = new webref.ArrayOfITransactionHeader();
-	var b = 10;
     arrayTransHead.ITransactionHeader.add(th);
     var packet = new webref.IPackets();
     packet.setCount(1);

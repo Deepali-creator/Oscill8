@@ -644,10 +644,10 @@ function billing() {
                     // A successful billing page will jump to the next checkout step.
                     app.getController('COSummary').Start();
                     
-                    if(PaymentMgr.getPaymentMethod(paymentMethodID).getPaymentProcessor().getID() == 'PAYPAL_EXPRESS')
-                    {
-                        response.redirect(PaymentSelectionResult);
-                    }
+                    // if(PaymentMgr.getPaymentMethod(paymentMethodID).getPaymentProcessor().getID() == 'PAYPAL_EXPRESS')
+                    // {
+                    //     response.redirect(PaymentSelectionResult);
+                    // }
                     
                     // Logger.warn("================params======"+params);
                     return;
